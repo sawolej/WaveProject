@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: 'Poppins', sans-serif;
+}
+.os_container {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(pic/temp_wallpaper.png);
+}
+#os_apps {
+    width: 100%;
+    padding: 10px;
+}
+#os_apps .app {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+#os_apps .app img {
+    width: 64px;
+    margin: 0 auto;
+}
+#os_apps .app p {
+    color: antiquewhite;
+    font-size: 14px;
+    text-align: center;
+}
+#taskbar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    background: rgb(175, 177, 176);
+    box-shadow: 0 -3px 5px rgba(113, 119, 114, 0.3),
+                0 -3px 10px rgba(113, 119, 114, 0.3);
+}
+
+.app_window {
+    position: absolute;
+    top: 20vh;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 60vh;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    overflow: hidden;
+    resize: both;
+    transition: 0.3s;
+}
+.app_window .window_bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: rgb(182, 182, 182);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 0 10px;
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.app_window .window_bar:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+.app_window .window_bar .brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app_window .window_bar .brand img {
+    width: 32px;
+}
+.app_window .window_bar .brand p {
+    color: rgb(73, 0, 0);
+    margin-left: 10px;
+}
+.app_window .window_bar .brand .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app_window .window_bar .brand .buttons button {
+    outline: 6px;
+    border: 6px;
+    margin-right: 6px;
+    color: rgb(0, 0, 0);
+    padding: 6px;
+    width: 30px;
+    height: 30px;
+    border-radius: 95%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.app_window .window_bar .brand .buttons button:first-child {
+    background: rgb(3, 82, 0);
+}
+.app_window .window_bar .brand .buttons button:nth-child(2) {
+    background: rgb(59, 0, 82);
+}
+.app_window .window_bar .brand .buttons button:nth-child(3) {
+    background: rgb(121, 45, 1);
+}
+.app_window .window_bar .brand .buttons button:last-child {
+    background: rgb(255, 43, 43);
+    margin-right: 0;
+}
+.app_window .window_bar .brand .buttons button:hover {
+    background: rgb(182, 182, 182);
+    color: rgb(255, 43, 43);
+}
+.app_window .app {
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    overflow: auto;
+}
+
+
+
+#os-ct-menu {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    background: #FFF;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 3px 5px 10px rgba(255, 255, 255, 0,3),
+                6px 10px 10px rgba(255, 255, 255, 0,3);
+}
+#os-ct-menu ul li {
+    color: rgb(46, 26, 3);
+}
+#os-ct-menu ul li:hover {
+    background: antiquewhite;
+}
+#os-ct-menu.active {
+    display: block;
+}
+
+
+
+
+
+
+#room{
+    margin: 10px;
+    padding: 0;
+    width: 1400px;
+    height: 900px;
+    background-image: url(pic/temp.jpg);
+}
+#room > *{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+#board{
+    position: absolute;
+    top: 100px;
+    left: 70px;
+    size: 10px;
+
+}
+#comp{
+    top: 0px;
+    left: 300px;
+    width: 1300px;
+
+}
+#ekran{
+    top: 275px;
+    left: 816px;
+   
+
+}
+
+
+#board_page{
+    margin: 10px;
+    padding: 0;
+    width: 1400px;
+    height: 900px;
+    background-image: url(pic/board.JPG);
+}
+#desktop_page{
+    margin: 10px;
+    padding: 0;
+    width: 1400px;
+    height: 900px;
+    background-image: url(pic/temp_wallpaper.png);
+}
+p{
+    color: black;
+}
+p1{
+    color: rgb(255, 255, 255);
+}
+
+
+h1 {
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Perfect DOS VGA 437";
+    src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
+  }
+
+  body {
+    background: #000;
+    font-family: "Perfect DOS VGA 437", monospace;
+    font-size: 22px;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    transform: scale(0.6) translateY(-25%);
+  }
+
+#screen_page {
+    font-family: "Perfect DOS VGA 437", monospace;
+    font-size: 18px;
+    margin: 10px;
+    padding: 0;
+    width: 1400px;
+    height: 900px;
+    background-color:rgb(0, 0, 0);
+    
+}
