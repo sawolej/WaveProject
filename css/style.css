@@ -4,8 +4,13 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Silkscreen', sans-serif;
 }
+@font-face {
+    font-family: "Silkscreen";
+    src: url("/WaveProject/font/Silkscreen-Regular.ttf") format("truetype");
+  }
+
 .os_container {
     width: 100%;
     min-height: 100vh;
@@ -28,7 +33,7 @@
     margin: 0 auto;
 }
 #os_apps .app p {
-    color: antiquewhite;
+    color: rgb(240, 219, 192);
     font-size: 14px;
     text-align: center;
 }
@@ -130,6 +135,7 @@
 
 #os-ct-menu {
     display: none;
+    font-size: small;
     position: absolute;
     z-index: 10;
     background: #FFF;
@@ -154,28 +160,30 @@
 
 
 #room{
+
     margin: 10px;
     padding: 0;
     width: 1400px;
-    height: 900px;
-    background-image: url(pic/temp.jpg);
+    height: 780px;
+    background-image: url(pic/room.png);
 }
-#room > *{
-    position: absolute;
-    margin: 0;
-    padding: 0;
-}
+
 #board{
+
     position: absolute;
     top: 100px;
     left: 70px;
     size: 10px;
+    cursor: zoom-in;
+    visibility: hidden;
 
 }
 #comp{
+    scale: 0.7 ;
     top: 0px;
     left: 300px;
     width: 1300px;
+    cursor: pointer;
 
 }
 #ekran{
@@ -212,14 +220,9 @@ h1 {
     font-weight: bold;
 }
 
-@font-face {
-    font-family: "Perfect DOS VGA 437";
-    src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
-  }
-
   body {
     background: #000;
-    font-family: "Perfect DOS VGA 437", monospace;
+    font-family: "Silkscreen", monospace;
     font-size: 22px;
     color: #888;
     display: flex;
@@ -230,7 +233,7 @@ h1 {
   }
 
 #screen_page {
-    font-family: "Perfect DOS VGA 437", monospace;
+    font-family: "Silkscreen", monospace;
     font-size: 18px;
     margin: 10px;
     padding: 0;

@@ -1,7 +1,7 @@
 //ELements
-const apps = document.querySelector("#br-os-apps")
+const apps = document.querySelector("#os_apps")
 var menu = document.querySelector("#os-ct-menu")
-const os_window = document.querySelector(".br-os-window")
+const os_window = document.querySelector(".app_window")
 const brand_window = document.querySelector(".brand")
 const app_main = document.querySelector ("#app-main")
 const maximise = document.querySelector("#maximise")
@@ -9,10 +9,9 @@ const shorter = document.querySelector("#shorter")
 const cross = document.querySelector("#cross")
 const taskbar = document.querySelector ("#taskbar")
 /* Sound effects */
-const click = new Audio("assets/music/click.wav")
-const con = new Audio("assets/music/alert.wav")
-const okay = new Audio("assets/music/positive.wav")
-const no = new Audio("assets/music/negative.wav")
+const click = new Audio("sounds/click.mp3")
+const con = new Audio("sounds/not.wav")
+
 
 //Operations
 /* Reseting window */
@@ -123,44 +122,18 @@ function open_menu (e, id) {
         remove_app(id)
     }
     menu.style.top = e.pageY + 5 + "px"
-    menu.style.left = e.pageX + 5 + "px"
+    menu.style.left = e.pageX -200 + "px"
     return false
 }
 
 function admin_access(id) {
     con.play()
-    vex.dialog.confirm({
-        message: "Are you sure to give admin access to this app?",
-        callback: function(value) {
-            if(value) {
-                okay.play()
-                window_open(id)
-            } else {
-                no.play()
-                vex.dialog.alert({
-                    message: "Request declined"
-                })
-            }
-        }
-    })
+    window_open(id)
 }
 
 function remove_app(id) {
     con.play()
-    vex.dialog.confirm({
-        message: "Are you sure to remove this app?",
-        callback: function(value) {
-            if(value) {
-                okay.play()
-                document.querySelector("#" + id).remove()
-            } else {
-                no.play()
-                vex.dialog.alert({
-                    message: "App is not removed"
-                })
-            }
-        }
-    })
+    document.querySelector("#" + id).remove()
 }
 
 //Anonimus functions in Event Listeners
