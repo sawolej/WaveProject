@@ -21,14 +21,21 @@ create_app("File manager", 'pics/icon_file.png', "file-manager")
 create_app("Recycle bin", "pics/icon_bin.png", "recycle-bin")
 create_app ("Settings", "pics/icon_settings.png", "settings")
 create_app("System Info", "pics/icon_system.png", "system-info")
+create_app("Whats that?", "pics/icon_game.png", "game")
 
 //Functions
-
+function click_game() {
+    window.location.href="main_game.html"
+}
 function create_app (name, image, id) {
     let app = document.createElement("div")
     app.classList.add("app")
     app.id = id
+    if (app.id=="game"){
+       app.setAttribute("onclick", "click_game()")
+    }else{
     app.setAttribute("onclick", "window_open('" + id + "')")
+    }
     app.oncontextmenu = e => {
         click.play()
         open_menu(e, id)

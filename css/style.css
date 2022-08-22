@@ -133,32 +133,8 @@
 
 
 
-#os-ct-menu {
-    display: none;
-    font-size: small;
-    position: absolute;
-    z-index: 10;
-    background: #FFF;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 3px 5px 10px rgba(255, 255, 255, 0,3),
-                6px 10px 10px rgba(255, 255, 255, 0,3);
-}
-#os-ct-menu ul li {
-    color: rgb(46, 26, 3);
-}
-#os-ct-menu ul li:hover {
-    background: antiquewhite;
-}
-#os-ct-menu.active {
-    display: block;
-}
 
-
-
-
-
-
+  
 #room{
 
     margin: 10px;
@@ -166,29 +142,41 @@
     width: 1400px;
     height: 780px;
     background-image: url(pic/room.png);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #board{
 
-    position: absolute;
-    top: 100px;
-    left: 70px;
-    size: 10px;
+    position: relative;
+    scale: 0.1 ;
+    width: 350px;
+    top: -60px;
+    left: -400px;
     cursor: zoom-in;
-    visibility: hidden;
+    opacity: 0;
 
 }
 #comp{
-    scale: 0.7 ;
+    scale: 0.5 ;
     top: 0px;
     left: 300px;
-    width: 1300px;
+    width: 350px;
     cursor: pointer;
+    opacity: 0;
+    position: relative; left:600px; top: 100px;
+   
 
 }
 #ekran{
     top: 275px;
     left: 816px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
    
 
 }
@@ -198,8 +186,15 @@
     margin: 10px;
     padding: 0;
     width: 1400px;
-    height: 900px;
-    background-image: url(pic/board.JPG);
+    height: 840px;
+    background-image: url(pic/board_page.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 #desktop_page{
     margin: 10px;
@@ -220,17 +215,7 @@ h1 {
     font-weight: bold;
 }
 
-  body {
-    background: #000;
-    font-family: "Silkscreen", monospace;
-    font-size: 22px;
-    color: #888;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    margin: 0;
-    transform: scale(0.6) translateY(-25%);
-  }
+
 
 #screen_page {
     font-family: "Silkscreen", monospace;
@@ -241,4 +226,24 @@ h1 {
     height: 900px;
     background-color:rgb(0, 0, 0);
     
+    
 }
+
+body {
+    background: black;
+  }
+  
+  #canvas1 {
+    background:brown;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid wheat;
+  }
+  
+  #playerImage, #floppyDiskImage, #enemyImage, #smallPlatformImage, 
+  #bigPlatformImage, #groundImage, #backgroundImage {
+    display: none;
+  }
+  
