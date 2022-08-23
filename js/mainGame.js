@@ -1,9 +1,9 @@
-import {InputHandler} from '../modules/inputHandler.js';
-import {Player} from '../modules/player.js';
-import {Background} from '../modules/background.js';
-import {Ground} from '../modules/ground.js';
-import {BigPlatform} from '../modules/bigPlatform.js';
-import {SmallPlatform} from '../modules/smallPlatform.js';
+import {InputHandler} from './modules/inputHandler.js';
+import {Player} from './modules/player.js';
+import {Background} from './modules/background.js';
+import {Ground} from './modules/ground.js';
+import {BigPlatform} from './modules/bigPlatform.js';
+import {SmallPlatform} from './modules/smallPlatform.js';
 
 // TODO: Add jumping on platforms
 // TODO: Add game music loop
