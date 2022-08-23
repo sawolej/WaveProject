@@ -24,7 +24,6 @@ class Disk {
   }
 
   playSound() {
-    console.log("Sound!");
     var audio = new Audio('./sounds/diskPickupSound.mp3');
     audio.play();
   }
