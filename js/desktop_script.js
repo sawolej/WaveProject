@@ -25,7 +25,7 @@ create_app("Whats that?", "pics/icon_game.png", "game")
 
 //Functions
 function click_game() {
-    window.location.href="main_game.html"
+    window.location.href="mainGame.html"
 }
 function create_app (name, image, id) {
     let app = document.createElement("div")
