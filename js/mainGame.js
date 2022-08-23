@@ -4,10 +4,12 @@ import {Background} from './modules/background.js';
 import {Ground} from './modules/ground.js';
 import {BigPlatform} from './modules/bigPlatform.js';
 import {SmallPlatform} from './modules/smallPlatform.js';
+import {Disk} from './modules/disk.js';
+import { states } from './modules/state.js';
 
 // TODO: Add jumping on platforms
-// TODO: Add game music loop
-// TODO: Refactor the code in animate()
+// TODO: Add sound effects to floppy disks on pickup
+// TODO: Add floppy disk counter "UI" for picked up ones (?)
 
 window.addEventListener('load', function() {
 
@@ -24,10 +26,11 @@ window.addEventListener('load', function() {
   const ground = new Ground(canvas.width, canvas.height, -1920);
   const bigPlatform = new BigPlatform(canvas.width, canvas.height, 1250, 720);
   const smallPlatform = new SmallPlatform(canvas.width, canvas.height, 700, 790);
+  const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 500, 800);
   
   // Main game loop - refresh every frame
   function animate() {
-
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     background.draw(ctx);
     ground.draw(ctx);
@@ -35,14 +38,16 @@ window.addEventListener('load', function() {
     bigPlatform.onPlatform(player);
     smallPlatform.draw(ctx);
     smallPlatform.onPlatform(player);
+    if (!diskBehav.isNear(player)) diskBehav.draw(ctx);
     player.update(input.keys);
     player.draw(ctx);
 
+
     // Side scrolling effect for moving rightwards
-    // Terrible way of coding, refactor once you have time
     if ((player.currentState === player.states[3] || player.currentState === player.states[5]) && 
       player.x === 800) {
       smallPlatform.x -= 10;
+      diskBehav.x -= 10;
       bigPlatform.x -= 10;
       background.x -= 3;
       ground.x -= 10;
@@ -51,12 +56,13 @@ window.addEventListener('load', function() {
     else if ((player.currentState == player.states[2] || player.currentState === player.states[4]) && 
       player.x === 400) {
       smallPlatform.x += 10;
+      diskBehav.x += 10;
       bigPlatform.x += 10;
       background.x += 3;
       ground.x += 10;
     }
 
-    // Reset the background image
+    // Repaint the background image for bugless scrolling
     if (background.x <= -3840 || background.x >= 0) background.x = -1920;
     if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
 
