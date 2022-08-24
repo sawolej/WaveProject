@@ -67,7 +67,8 @@ window.addEventListener('load', function() {
 
 
     // Side scrolling effect for moving rightwards
-    if ((player.currentState === player.states[3] || player.currentState === player.states[5]) && 
+    if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
+      input.keys.d.pressed)) && 
       player.x === 800) {
       smallPlatform.x -= 10;
       diskBehav.x -= 10;
@@ -89,7 +90,8 @@ window.addEventListener('load', function() {
     }
 
     // Side scrolling effect for moving leftwards
-    else if ((player.currentState == player.states[2] || player.currentState === player.states[4]) && 
+    else if ((player.currentState == player.states[2] || (player.currentState === player.states[4] &&
+      input.keys.a.pressed)) && 
       player.x === 400) {
       smallPlatform.x += 10;
       diskBehav.x += 10;
@@ -113,6 +115,8 @@ window.addEventListener('load', function() {
     // Repaint the background image for bugless scrolling
     if (background.x <= -3840 || background.x >= 0) background.x = -1920;
     if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
+
+    console.log(player.x);
 
     requestAnimationFrame(animate);
   }
