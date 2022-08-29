@@ -34,7 +34,7 @@ window.addEventListener('load', function() {
   const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 845, 935);
   const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 1205, 935);
   const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 2305, 500);
-  const diskMenagement = new Disk(canvas.width, canvas.height, "diskMenagementImage", 1505, 600);
+  const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 1505, 600);
   const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 3205, 500);
   const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 1705, 500);
   const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 1905, 700);
@@ -46,9 +46,9 @@ window.addEventListener('load', function() {
     background.draw(ctx);
     ground.draw(ctx);
     bigPlatform.draw(ctx);
-    bigPlatform.onPlatform(player);
+    bigPlatform.collide(player);
     smallPlatform.draw(ctx);
-    smallPlatform.onPlatform(player);
+    smallPlatform.collide(player);
     if (!diskBehav.isNear(player)) diskBehav.draw(ctx);
     if (!diskBio.isNear(player)) diskBio.draw(ctx);
     if (!diskChad.isNear(player)) diskChad.draw(ctx);
@@ -58,18 +58,19 @@ window.addEventListener('load', function() {
     if (!diskInter.isNear(player)) diskInter.draw(ctx);
     if (!diskLaw.isNear(player)) diskLaw.draw(ctx);
     if (!diskMaths.isNear(player)) diskMaths.draw(ctx);
-    if (!diskMenagement.isNear(player)) diskMenagement.draw(ctx);
+    if (!diskManagement.isNear(player)) diskManagement.draw(ctx);
     if (!diskPhilology.isNear(player)) diskPhilology.draw(ctx);
     if (!diskPhilosophy.isNear(player)) diskPhilosophy.draw(ctx);
     if (!diskTomaszow.isNear(player)) diskTomaszow.draw(ctx);
     player.update(input.keys);
     player.draw(ctx);
 
+    // Only the one called platform will work for onGround
+    player.getPlatformInfo(bigPlatform);
 
     // Side scrolling effect for moving rightwards
     if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
-      input.keys.d.pressed)) && 
-      player.x === 800) {
+      input.keys.d.pressed)) && player.x === 800) {
       smallPlatform.x -= 10;
       diskBehav.x -= 10;
       diskBio.x -= 10;
@@ -80,7 +81,7 @@ window.addEventListener('load', function() {
       diskInter.x -= 10;
       diskLaw.x -= 10;
       diskMaths.x -= 10;
-      diskMenagement.x -= 10;
+      diskManagement.x -= 10;
       diskPhilology.x -= 10;
       diskPhilosophy.x -= 10;
       diskTomaszow.x -= 10;
@@ -103,7 +104,7 @@ window.addEventListener('load', function() {
       diskInter.x += 10;
       diskLaw.x += 10;
       diskMaths.x += 10;
-      diskMenagement.x += 10;
+      diskManagement.x += 10;
       diskPhilology.x += 10;
       diskPhilosophy.x += 10;
       diskTomaszow.x += 10;
@@ -116,7 +117,7 @@ window.addEventListener('load', function() {
     if (background.x <= -3840 || background.x >= 0) background.x = -1920;
     if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
 
-    console.log(player.x);
+    console.log(player.currentState);  
 
     requestAnimationFrame(animate);
   }
