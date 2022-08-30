@@ -1,3 +1,13 @@
+
+@font-face {
+    font-family: "Silkscreen";
+    src: url("/WaveProject/font/Silkscreen-Regular.ttf") format("truetype");
+    
+  }
+@font-face {
+    font-family: "Perfect DOS VGA 437";
+    src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
+  }
 * {
     padding: 0;
     box-sizing: border-box;
@@ -5,15 +15,16 @@
     list-style-type: none;
     font-family: 'Silkscreen', sans-serif;
 }
-@font-face {
-    font-family: "Silkscreen";
-    src: url("/WaveProject/font/Silkscreen-Regular.ttf") format("truetype");
-  }
+
+/*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
 
 .os_container {
     width: 100%;
     min-height: 100vh;
     background-image: url(pic/temp_wallpaper.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #os_apps {
     width: 100%;
@@ -134,6 +145,7 @@
 
 
 
+/*-----------------------------------------------ROOM-----------------------------------------------------*/ 
 
 #wrapper {
     margin-left:auto;
@@ -149,7 +161,7 @@
     top: -60px;
     left: -400px;
     cursor: zoom-in;
-    opacity: 1;
+    opacity: 0;
 
 }
 #comp{
@@ -184,7 +196,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+/*-----------------------------------------------BOARD-----------------------------------------------------*/ 
 #board_page{
     padding: 0;
     width: 1400px;
@@ -213,28 +225,27 @@
     position: relative;
     scale: 1 ;
     width: 500px;
-    top: -1224px;
-    left: 200px;
+    top: -1421px;
+    left: 176px;
     cursor: pointer;
-    visibility: hidden;
+    visibility: hidden; 
    
 }
 #sheet3{
     position: relative;
     scale: 1 ;
-    top: 1;
     width: 500px;
-    top: -1729px;
-    left: 200px;
+    top: -1923px;
+    left: 193px;
     cursor: pointer;
-    visibility: hidden;
+    visibility: hidden; 
    
 }
 #sheet4{
     position: relative;
     scale: 1 ;
     width: 500px;
-    top: -2125px;
+    top: -2286px;
     left: 200px;
     cursor: pointer;
     visibility: hidden;
@@ -262,26 +273,51 @@
     opacity: 0;
 }
 #sheet3click{
-    position: absolute;
+    position: relative;
     scale: 1 ;
     width: 200px;
     height: 200px;
-    top: 360px;
-    left: 730px;
+    top: -986px;
+    left: 542px;
     cursor: pointer;
     opacity: 0;
 }
 #sheet4click{
-    position: absolute;
+    position: relative;
     scale: 1 ;
     width: 250px;
     height: 100px;
-    top: 150px;
-    left: 880px;
+    top: -1290px;
+    left: 482px;
     cursor: pointer;
     opacity: 0;
 }
 
+
+  #insta{
+    position: relative;
+    top: -2431px;
+    left: 36px;
+    opacity: 1;
+    visibility: hidden;
+  }
+  
+  #fb{
+    position: relative;
+    top: -2584px;
+    left: 337px;
+    opacity: 1;
+    visibility: hidden;
+  }
+
+  #tiktok{
+    position: relative;
+    top: -2300px;
+    left: -255px;
+    opacity: 1;
+    visibility: hidden;
+  }
+/*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
 #desktop_page{
     padding: 0;
     width: 1400px;
@@ -303,7 +339,7 @@ h1 {
 
 
 #screen_page {
-    font-family: "Silkscreen", monospace;
+    /* font-family: "Silkscreen", monospace; */
     font-size: 18px;
     padding: 0;
     width: 1400px;
@@ -329,20 +365,4 @@ body {
   #playerImage, #floppyDiskImage, #enemyImage, #smallPlatformImage, 
   #bigPlatformImage, #groundImage, #backgroundImage {
     display: none;
-  }
-
-  #insta{
-    position: absolute;
-    top: 330px;
-    left: 500px;
-    opacity: 1;
-    visibility: hidden;
-  }
-  
-  #fb{
-    position: absolute;
-    top: 180px;
-    left: 500px;
-    opacity: 1;
-    visibility: hidden;
   }
