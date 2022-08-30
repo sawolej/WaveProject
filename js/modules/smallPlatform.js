@@ -4,7 +4,7 @@ class SmallPlatform {
     this.gameHeight = gameHeight;
     this.image = document.getElementById('smallPlatformImage');
     this.width = 108;
-    this.height = 41;
+    this.height = 42;
     this.x = x;
     this.y = y;
   }

@@ -4,7 +4,7 @@ class BigPlatform {
     this.gameHeight = gameHeight;
     this.image = document.getElementById('bigPlatformImage');
     this.width = 282;
-    this.height = 59;
+    this.height = 60;
     this.x = x;
     this.y = y;
   }

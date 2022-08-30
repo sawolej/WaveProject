@@ -3,13 +3,19 @@ class Disk {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.image = document.getElementById(imageName);
+    this.glowImage = document.getElementById('glowImage');
+    this.glowWidth = 122; 
+    this.glowHeight = 122;
     this.width = 24;
     this.height = 24;
     this.x = x;
     this.y = y;
     this.isPicked = false;
   }
-
+    drawGlow(context) {
+      if (!this.isPicked) context.drawImage(this.glowImage, this.x - 49, this.y - 49)
+    }
+  
   isNear(player) {
     if (Math.abs(player.x - this.x) <= 30 && Math.abs(player.y - this.y) <= 40) {
       

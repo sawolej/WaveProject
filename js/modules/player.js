@@ -7,8 +7,8 @@ export class Player {
     this.states = [new StandingLeft(this), new StandingRight(this), new RunningLeft(this), 
       new RunningRight(this), new JumpingLeft(this), new JumpingRight(this)];
     this.currentState = this.states[0];
-    this.width = 35;
-    this.height = 44;
+    this.width = 24;
+    this.height = 45;
     this.x = 400;
     this.y = this.gameHeight - this.height - 105;
     this.image = document.getElementById('playerImage');

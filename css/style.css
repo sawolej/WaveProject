@@ -245,8 +245,9 @@ body {
   #playerImage, #floppyDiskImage, #enemyImage, #smallPlatformImage, 
   #bigPlatformImage, #groundImage, #backgroundImage, #diskBehavioralImage, 
   #diskBiologyImage, #diskChadImage, #diskChemistryImage, #diskEksocImage, 
-  #diskGeographyImage, #diskInternationalImage, #diskLawImage, #diskMenagementImage, 
-  #diskPhilologyImage, #diskPhilosophyImage, #diskTomaszowImage, #diskMathsImage {
+  #diskGeographyImage, #diskInternationalImage, #diskLawImage, #diskManagementImage, 
+  #diskPhilologyImage, #diskPhilosophyImage, #diskTomaszowImage, #diskMathsImage, 
+  #sunImage, #mountainsImage, #pcImage, #glowImage {
     display: none;
   }
   
