@@ -88,8 +88,6 @@ window.addEventListener('load', function() {
   // Main game loop - refresh every frame
   function animate() {
 
-    console.log(player.x);
-    
     // Draw background
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     background.draw(ctx);
@@ -121,7 +119,7 @@ window.addEventListener('load', function() {
 
     // Side scrolling effect for moving rightwards
     if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
-      input.keys.d.pressed)) && player.x === 800) {
+      input.keys.d.pressed)) && player.x === 948) {
       
       for (let i = 0; i < disks.length; ++i) disks[i].x -= 10;
       for (let i = 0; i < palms.length; ++i) palms[i].x -= 7;
