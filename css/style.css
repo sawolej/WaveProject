@@ -363,6 +363,10 @@ body {
   }
   
   #playerImage, #floppyDiskImage, #enemyImage, #smallPlatformImage, 
-  #bigPlatformImage, #groundImage, #backgroundImage {
+  #bigPlatformImage, #groundImage, #backgroundImage, #diskBehavioralImage, 
+  #diskBiologyImage, #diskChadImage, #diskChemistryImage, #diskEksocImage, 
+  #diskGeographyImage, #diskInternationalImage, #diskLawImage, #diskManagementImage, 
+  #diskPhilologyImage, #diskPhilosophyImage, #diskTomaszowImage, #diskMathsImage, 
+  #sunImage, #mountainsImage, #pcImage, #glowImage {
     display: none;
   }

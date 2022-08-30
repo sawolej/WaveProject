@@ -46,9 +46,8 @@ export class StandingRight extends State {
 
   handleInput(input) {
     if (input.a.pressed && input.d.pressed && input.w.pressed) this.player.setState(states.JUMPING_RIGHT);
-    else if (input.a.pressed && input.d.pressed) this.player.setState(states.STANDING_RIGHT);
-    else if (input.a.pressed) this.player.setState(states.RUNNING_LEFT);
-    else if (input.d.pressed) this.player.setState(states.RUNNING_RIGHT);
+    else if (input.a.pressed && !input.d.pressed) this.player.setState(states.RUNNING_LEFT);
+    else if (!input.a.pressed && input.d.pressed) this.player.setState(states.RUNNING_RIGHT);
     else if (input.w.pressed) this.player.setState(states.JUMPING_RIGHT);
   }
 }
@@ -99,7 +98,7 @@ export class JumpingLeft extends State {
   }
 
   enter() {
-    if (this.player.vy === 0 && this.player.canJump() === true) this.player.vy -= 25;
+    if (this.player.vy === 0) this.player.vy -= 25;
   }
 
   handleInput(input) {
@@ -118,11 +117,11 @@ export class JumpingRight extends State {
   }
 
   enter() {
-    if (this.player.vy === 0 && this.player.canJump() === true) this.player.vy -= 25;
+    if (this.player.vy === 0) this.player.vy -= 25;
   }
 
   handleInput(input) {
-    if (!input.d.pressed) this.player.setState(states.STANDING_RIGHT);
+    if (input.a.pressed && input.d.pressed) this.player.setState(states.STANDING_RIGHT);
     else if (input.a.pressed && this.player.vy !== 0) this.player.setState(states.RUNNING_LEFT);
     else if (input.w.pressed && input.d.pressed) this.player.setState(states.RUNNING_RIGHT);
     else if (!input.w.pressed) this.player.setState(states.STANDING_RIGHT);

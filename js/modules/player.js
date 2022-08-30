@@ -7,8 +7,8 @@ export class Player {
     this.states = [new StandingLeft(this), new StandingRight(this), new RunningLeft(this), 
       new RunningRight(this), new JumpingLeft(this), new JumpingRight(this)];
     this.currentState = this.states[0];
-    this.width = 35;
-    this.height = 44;
+    this.width = 24;
+    this.height = 45;
     this.x = 400;
     this.y = this.gameHeight - this.height - 105;
     this.image = document.getElementById('playerImage');
@@ -16,6 +16,9 @@ export class Player {
     this.maxSpeed = 10;
     this.vy = 0;
     this.weight = 1;
+    this.platformX;
+    this.platformY;
+    this.platformWidth;
   }
 
   // Draw player method
@@ -31,17 +34,14 @@ export class Player {
     // Horizontal movement & boundaries
     this.x += this.speed;
     if (this.x < 400) this.x = 400;
-    else if (this.x >= 800) this.x = 800;
+    else if (this.x >= 948) this.x = 948;
 
     // Vertical movement & boundaries
     this.y += this.vy;
-    if (!this.canJump()) {
-      this.vy += this.weight;
-    } else {
-      this.vy = 0;
-    }
+    if (!this.onGround()) this.vy += this.weight;
+    else this.vy = 0;
+    
     if (this.y > this.gameHeight - this.height - 105) this.y = this.gameHeight - this.height - 105;
-
   }
   
   setState(state) {
@@ -49,10 +49,16 @@ export class Player {
     this.currentState.enter();
   }
 
-  // KNOWN BUG - Can't jump on platforms
-  canJump() {
-    // Case on ground
-    if (this.y >= this.gameHeight - this.height - 105) return true;
+  getPlatformInfo(platform) {
+    this.platformX = platform.x;
+    this.platformY = platform.y;
+    this.platformWidth = platform.width;
   }
 
+  onGround() {
+    if (this.y >= this.gameHeight - this.height - 105 || (this.x + this.width >= this.platformX && 
+      this.x <= this.platformX + this.platformWidth && this.y + this.height <= this.platformY && 
+      this.y + this.height + this.vy >= this.platformY)) return true;
+    else return false;
+  }
 }
