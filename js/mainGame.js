@@ -60,26 +60,25 @@ window.addEventListener('load', function() {
   const pc = new Pc(canvas.width, canvas.height, 12390, 838); 
   const sun = new Sun(canvas.width, canvas.height);
   const mountains = new Mountains(canvas.width, canvas.height, -1920);
-  const palmLeftOne1 = new Palms(canvas.width, canvas.height, "palmLeftOneImage", 155, 265, 1600);
-  const palmLeftOne2 = new Palms(canvas.width, canvas.height, "palmLeftOneImage", 155, 265, 1600);
-  const palmLeftTwo1 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 3520);
-  const palmLeftTwo2 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 3520);
-  const palmLeftTwo3 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 3520);
-  const palmLeftTwo4 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 3520);
-  const palmRightOne1 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 175);
-  const palmRightOne2 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 175);
-  const palmRightOne3 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 175);
-  const palmRightOne4 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 175);
-  const palmRightTwo1 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 1050);
-  const palmRightTwo2 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 1050);
-  const palmRightTwo3 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 1050);
-  const palmRightTwo4 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 1050);
-  const palmRightTwo5 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 1050);
+  const palmLeftOne1 = new Palms(canvas.width, canvas.height, "palmLeftOneImage", 155, 265, 3360);
+  const palmLeftTwo1 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 1710);
+  const palmLeftTwo2 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 4690);
+  const palmLeftTwo3 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 8660);
+  const palmRightOne1 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 135);
+  const palmRightOne2 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 5900);
+  const palmRightOne3 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 9130);
+  const palmRightTwo1 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 1070);
+  const palmRightTwo2 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 2200);
+  const palmRightTwo3 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 5500);
+  const palmRightTwo4 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 6830);
+  const palmRightTwo5 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 8170);
 
   const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, diskManagement, 
     diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
 
-  const palms = [palmLeftOne1, palmLeftTwo1, palmRightOne1, palmRightTwo1];
+  const palms = [palmLeftOne1, palmLeftTwo1, palmLeftTwo2, palmLeftTwo3, 
+    palmRightOne1, palmRightOne2, palmRightOne3, palmRightTwo1, palmRightTwo2, palmRightTwo3,
+    palmRightTwo4, palmRightTwo5];
 
   const platforms = [smallPlatform1, smallPlatform2, smallPlatform3, smallPlatform4, smallPlatform5, 
     smallPlatform6, smallPlatform7, smallPlatform8, smallPlatform9, smallPlatform10, smallPlatform11, 
