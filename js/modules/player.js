@@ -16,6 +16,9 @@ export class Player {
     this.maxSpeed = 10;
     this.vy = 0;
     this.weight = 1;
+    this.platformX;
+    this.platformY;
+    this.platformWidth;
   }
 
   // Draw player method
@@ -35,13 +38,10 @@ export class Player {
 
     // Vertical movement & boundaries
     this.y += this.vy;
-    if (!this.canJump()) {
-      this.vy += this.weight;
-    } else {
-      this.vy = 0;
-    }
+    if (!this.onGround()) this.vy += this.weight;
+    else this.vy = 0;
+    
     if (this.y > this.gameHeight - this.height - 105) this.y = this.gameHeight - this.height - 105;
-
   }
   
   setState(state) {
@@ -49,10 +49,16 @@ export class Player {
     this.currentState.enter();
   }
 
-  // KNOWN BUG - Can't jump on platforms
-  canJump() {
-    // Case on ground
-    if (this.y >= this.gameHeight - this.height - 105) return true;
+  getPlatformInfo(platform) {
+    this.platformX = platform.x;
+    this.platformY = platform.y;
+    this.platformWidth = platform.width;
   }
 
+  onGround() {
+    if (this.y >= this.gameHeight - this.height - 105 || (this.x + this.width >= this.platformX && 
+      this.x <= this.platformX + this.platformWidth && this.y + this.height <= this.platformY && 
+      this.y + this.height + this.vy >= this.platformY)) return true;
+    else return false;
+  }
 }

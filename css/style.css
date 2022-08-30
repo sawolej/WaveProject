@@ -1,5 +1,4 @@
 * {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
@@ -134,29 +133,23 @@
 
 
 
-  
-#room{
 
-    margin: 10px;
-    padding: 0;
-    width: 1400px;
-    height: 780px;
-    background-image: url(pic/room.png);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+    width:960px;
 }
 
 #board{
 
     position: relative;
-    scale: 0.1 ;
-    width: 350px;
+    scale: 1 ;
+    width: 500px;
     top: -60px;
     left: -400px;
     cursor: zoom-in;
-    opacity: 0;
+    opacity: 1;
 
 }
 #comp{
@@ -180,10 +173,19 @@
    
 
 }
-
+  
+#room{
+    padding: 0;
+    width: 1400px;
+    height: 780px;
+    background-image: url(pic/room.png);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 #board_page{
-    margin: 10px;
     padding: 0;
     width: 1400px;
     height: 840px;
@@ -191,13 +193,96 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+
+    transform: translate(-16%, 0);
+    
 }
+
+#sheet1{
+    position: relative;
+    scale: 1 ;
+    width: 500px;
+    top: -720px;
+    left: 200px;
+    cursor: pointer;
+    visibility: hidden;
+   
+}
+#sheet2{
+    position: relative;
+    scale: 1 ;
+    width: 500px;
+    top: -1224px;
+    left: 200px;
+    cursor: pointer;
+    visibility: hidden;
+   
+}
+#sheet3{
+    position: relative;
+    scale: 1 ;
+    top: 1;
+    width: 500px;
+    top: -1729px;
+    left: 200px;
+    cursor: pointer;
+    visibility: hidden;
+   
+}
+#sheet4{
+    position: relative;
+    scale: 1 ;
+    width: 500px;
+    top: -2125px;
+    left: 200px;
+    cursor: pointer;
+    visibility: hidden;
+   
+}
+
+#sheet1click{
+    position: relative;
+    scale: 1 ;
+    width: 130px;
+    top: -1150px;
+    left: -670px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+#sheet2click{
+    position: relative;
+    scale: 1 ;
+    width: 280px;
+    height: 200px;
+    top: -920px;
+    left: -550px;
+    cursor: pointer;
+    opacity: 0;
+}
+#sheet3click{
+    position: absolute;
+    scale: 1 ;
+    width: 200px;
+    height: 200px;
+    top: 360px;
+    left: 730px;
+    cursor: pointer;
+    opacity: 0;
+}
+#sheet4click{
+    position: absolute;
+    scale: 1 ;
+    width: 250px;
+    height: 100px;
+    top: 150px;
+    left: 880px;
+    cursor: pointer;
+    opacity: 0;
+}
+
 #desktop_page{
-    margin: 10px;
     padding: 0;
     width: 1400px;
     height: 900px;
@@ -220,7 +305,6 @@ h1 {
 #screen_page {
     font-family: "Silkscreen", monospace;
     font-size: 18px;
-    margin: 10px;
     padding: 0;
     width: 1400px;
     height: 900px;
@@ -250,4 +334,19 @@ body {
   #sunImage, #mountainsImage, #pcImage, #glowImage {
     display: none;
   }
+
+  #insta{
+    position: absolute;
+    top: 330px;
+    left: 500px;
+    opacity: 1;
+    visibility: hidden;
+  }
   
+  #fb{
+    position: absolute;
+    top: 180px;
+    left: 500px;
+    opacity: 1;
+    visibility: hidden;
+  }

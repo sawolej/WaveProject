@@ -62,9 +62,9 @@ window.addEventListener('load', function() {
     palmRight1.draw(ctx);
     palmRight2.draw(ctx);
     bigPlatform.draw(ctx);
-    bigPlatform.onPlatform(player);
+    bigPlatform.collide(player);
     smallPlatform.draw(ctx);
-    smallPlatform.onPlatform(player);
+    smallPlatform.collide(player);
     if (!diskBehav.isNear(player)) {diskBehav.drawGlow(ctx); diskBehav.draw(ctx);}
     if (!diskBio.isNear(player)) {diskBio.drawGlow(ctx); diskBio.draw(ctx);}
     if (!diskChad.isNear(player)) {diskChad.drawGlow(ctx); diskChad.draw(ctx);}
@@ -82,10 +82,12 @@ window.addEventListener('load', function() {
     player.update(input.keys);
     player.draw(ctx);
 
+    // Only the one called platform will work for onGround
+    player.getPlatformInfo(bigPlatform);
 
     // Side scrolling effect for moving rightwards
-    if ((player.currentState === player.states[3] || player.currentState === player.states[5]) && 
-      player.x === 800) {
+    if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
+      input.keys.d.pressed)) && player.x === 800) {
       smallPlatform.x -= 10;
       diskBehav.x -= 10;
       diskBio.x -= 10;
@@ -112,7 +114,8 @@ window.addEventListener('load', function() {
     }
 
     // Side scrolling effect for moving leftwards
-    else if ((player.currentState == player.states[2] || player.currentState === player.states[4]) && 
+    else if ((player.currentState == player.states[2] || (player.currentState === player.states[4] &&
+      input.keys.a.pressed)) && 
       player.x === 400) {
         smallPlatform.x += 10;
       diskBehav.x += 10;
@@ -144,7 +147,7 @@ window.addEventListener('load', function() {
     if (mountains.x <= -3840 || mountains.x >= 0) mountains.x = -1920;
     if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animate)
   }
 
   animate();
