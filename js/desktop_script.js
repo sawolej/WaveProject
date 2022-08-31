@@ -116,34 +116,6 @@ function shorter_window () {
     os_window.style.height = "60vh"
 }
 
-function open_menu (e, id) {
-    e.preventDefault()
-    menu.classList.add("active")
-    menu.querySelectorAll("ul li")[0].childNodes[0].onclick = () => {
-        window_open(id)
-    }
-    menu.querySelectorAll("ul li")[1].childNodes[0].onclick = () => {
-        admin_access(id)
-    }
-    menu.querySelectorAll("ul li")[2].childNodes[0].onclick = () => {
-        remove_app(id)
-    }
-    menu.style.top = e.pageY + 5 + "px"
-    menu.style.left = e.pageX -200 + "px"
-    return false
-}
-
-function admin_access(id) {
-    con.play()
-    window_open(id)
-}
-
-function remove_app(id) {
-    con.play()
-    document.querySelector("#" + id).remove()
-}
-
-//Anonimus functions in Event Listeners
 window.onclick = e => {
     if (menu.classList.contains ("active")) {
         menu.classList.remove("active")

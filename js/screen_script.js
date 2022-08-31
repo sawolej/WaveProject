@@ -203,9 +203,9 @@ write_letter = function(num, txt) {
   
     turnOn() {
       return this.setHTML(".header", `
-        <img class="epa" src="https://www.uni.lodz.pl/fileadmin/inv_ul/Resources/Public/Images/Logo/logo_UL_white.png" alt="ul">
+        <img class="epa" src="pics/logo_ul.png" alt="ul">
         <div class="brand-text">
-          <img class="ribbon" src="https://www.uni.lodz.pl/fileadmin/inv_ul/Resources/Public/Images/Logo/logo_UL_white.png" alt="ul">
+          <img class="ribbon" src="pics/logo_ul.png" alt="ul">
             <p>
              Uniwersytet Łódzki v1.0, Veritas et Libertas<br>
                 Copyright (C) 1945-22, Award Software, Inc.
