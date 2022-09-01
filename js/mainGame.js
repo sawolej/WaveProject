@@ -8,17 +8,30 @@ import {Disk} from './modules/disk.js';
 import {Pc} from './modules/pc.js';
 import {Sun} from './modules/sun.js';
 import {Mountains} from './modules/mountains.js';
-import {Palms} from './modules/palms.js';
+import {Palms} from './modules/palms.js'; 
 
-// TODO: Add floppy disk counter "UI" for picked up ones (?)
+// Define canvas properties
+const canvas = document.getElementById('canvas1');
+const ctx = canvas.getContext('2d');
+canvas.width = 1920;
+canvas.height = 1080;
+
+// Instantiate exportable disk objects
+export const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
+export const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270);
+export const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9640, 135);
+export const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640);
+export const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625);
+export const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 3005, 224);
+export const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676);
+export const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303);
+export const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640);
+export const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645);
+export const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204);
+export const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150);
+export const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424);
 
 window.addEventListener('load', function() {
-
-  // Define canvas properties
-  const canvas = document.getElementById('canvas1');
-  const ctx = canvas.getContext('2d');
-  canvas.width = 1920;
-  canvas.height = 1080;
 
   // Instantiate objects
   const player = new Player(canvas.width, canvas.height);
@@ -44,19 +57,6 @@ window.addEventListener('load', function() {
   const smallPlatform10 = new SmallPlatform(canvas.width, canvas.height, 7302, 720);
   const smallPlatform11 = new SmallPlatform(canvas.width, canvas.height, 8008, 755);
   const smallPlatform12 = new SmallPlatform(canvas.width, canvas.height, 9095, 375);
-  const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
-  const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270);
-  const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9640, 135);
-  const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640);
-  const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625);
-  const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 3005, 224);
-  const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676);
-  const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303);
-  const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640);
-  const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645);
-  const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204);
-  const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150);
-  const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424);
   const pc = new Pc(canvas.width, canvas.height, 12390, 838); 
   const sun = new Sun(canvas.width, canvas.height);
   const mountains = new Mountains(canvas.width, canvas.height, -1920);
@@ -83,7 +83,7 @@ window.addEventListener('load', function() {
   const platforms = [smallPlatform1, smallPlatform2, smallPlatform3, smallPlatform4, smallPlatform5, 
     smallPlatform6, smallPlatform7, smallPlatform8, smallPlatform9, smallPlatform10, smallPlatform11, 
     smallPlatform12, bigPlatform1, bigPlatform2, bigPlatform3, bigPlatform4, bigPlatform5, bigPlatform6, 
-    bigPlatform7];
+    bigPlatform7]; 
 
   // Main game loop - refresh every frame
   function animate() {
@@ -94,7 +94,8 @@ window.addEventListener('load', function() {
     sun.draw(ctx);
     mountains.draw(ctx);
     ground.draw(ctx);
-    
+
+    // Draw palms
     for (let i = 0; i < palms.length; ++i) {
       palms[i].draw(ctx);
     }
