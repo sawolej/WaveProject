@@ -202,8 +202,7 @@ write_letter = function(num, txt) {
     }
   
     turnOn() {
-      return this.setHTML(".header", `
-        <img class="epa" src="pics/logo_ul.png" alt="ul">
+      return this.setHTML(".header", `        
         <div class="brand-text">
           <img class="ribbon" src="pics/logo_ul.png" alt="ul">
             <p>

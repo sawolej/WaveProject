@@ -1,3 +1,4 @@
+
 //ELements
 const apps = document.querySelector("#os_apps")
 var menu = document.querySelector("#os-ct-menu")
@@ -8,6 +9,7 @@ const maximise = document.querySelector("#maximise")
 const shorter = document.querySelector("#shorter")
 const cross = document.querySelector("#cross")
 const taskbar = document.querySelector ("#taskbar")
+const pickedOnes = []
 /* Sound effects */
 const click = new Audio("sounds/click.mp3")
 const con = new Audio("sounds/not.wav")
@@ -22,6 +24,59 @@ create_app("Recycle bin", "pics/icon_bin.png", "recycle-bin")
 create_app ("Settings", "pics/icon_settings.png", "settings")
 create_app("System Info", "pics/icon_system.png", "system-info")
 create_app("Whats that?", "pics/icon_game.png", "game")
+
+
+function make_disc(x){
+    switch(x) {
+        case 'diskBehav':
+            create_app("Wydział Nauk o Wychowaniu", 'pics/icon_file.png', x)
+          break;
+        case 'diskBio':
+            create_app("Wydział Biologii i Ochrony Środowiska", 'pics/icon_file.png', x)
+          break;
+          case 'diskChad':
+            create_app("Wydział Fizyki i Informatyki Stosowanej", 'pics/icon_file.png', x)
+          break;
+        case 'diskChem':
+            create_app("Wydział Chemii", 'pics/icon_file.png', x)
+          break;
+          case 'diskEksoc':
+            create_app("Wydział Ekonomiczno-Socjologiczny", 'pics/icon_file.png', x)
+          break;
+        case 'diskInter':
+            create_app("Wydział Studiów Międzynarodowych i Politologicznych", 'pics/icon_file.png', x)
+          break;
+          case 'diskLaw':
+            create_app("File manager", 'pics/icon_file.png', x)
+          break;
+        case 'diskMaths':
+            create_app("File manager", 'pics/icon_file.png', x)
+          break;
+          case 'diskTomaszow':
+            create_app("File manager", 'pics/icon_file.png', x)
+          break;
+        case 'diskManagement':
+            create_app("File manager", 'pics/icon_file.png', x)
+          break;
+          case 'diskPhilology':
+            create_app("File manager", 'pics/icon_file.png', x)
+          break;
+        case 'diskPhilosophy':
+            create_app("File manager", 'pics/icon_file.png', x)
+          break;
+          case 'diskGeo':
+            create_app("File manager", 'pics/icon_file.png', x)
+            break;
+        default:
+          // code block
+      }
+}
+function check_disc(){
+    for (let i=0; i<pickedOnes.length; i++){
+        makeDisc(i)
+    }
+       
+}
 
 //Functions
 function click_game() {
