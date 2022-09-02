@@ -73,6 +73,7 @@ window.addEventListener('load', function() {
   const palmRightTwo4 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 6830);
   const palmRightTwo5 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 8170);
 
+
   const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, diskManagement, 
     diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
 

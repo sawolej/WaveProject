@@ -163,8 +163,16 @@
     width: 350px;
     cursor: pointer;
     opacity: 0;
-    position: relative; left:600px; top: 100px;
-   
+    position: relative; left:600px; top: 100px;  
+
+}
+#cup{
+    scale: 0.5;
+    top: -702px;
+    left: -27px;
+    width: 350px;
+    cursor: pointer;
+    position: relative;
 
 }
 #ekranGif{

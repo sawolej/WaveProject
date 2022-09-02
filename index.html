@@ -2,6 +2,21 @@
 <html>
 
     <head>
+        <style> 
+        body {
+            animation: fadeInAnimation ease 10s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        </style>
         <link rel="stylesheet", href="css/style.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content ="IE=edge">
@@ -9,12 +24,13 @@
     </head>
 
 <body>
-    <embed src="sounds/tlo.wav" loop="true" autostart="true" width="2" height="0">
+    <!-- <embed src="sounds/tlo.wav" loop="true" autostart="true" width="2" height="0"> -->
     <div id="room"> 
         
         <img id="comp" src="pics/comp.png"onclick="click_screen()">
         <img id="board" src="pics/board.JPG" onclick="click_board()">
         <img id="ekranGif" src="pics/ekran.gif" onclick="click_screen()">
+        <img id="cup" src="pics/cup.png" onclick="click_cup()">
        
    
     </div>
