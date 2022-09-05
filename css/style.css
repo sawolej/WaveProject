@@ -365,6 +365,7 @@ body {
   #diskBiologyImage, #diskChadImage, #diskChemistryImage, #diskEksocImage, 
   #diskGeographyImage, #diskInternationalImage, #diskLawImage, #diskManagementImage, 
   #diskPhilologyImage, #diskPhilosophyImage, #diskTomaszowImage, #diskMathsImage, 
-  #sunImage, #mountainsImage, #pcImage, #glowImage {
+  #sunImage, #mountainsImage, #pcImage, #glowImage, #countdownImageFirst, #countdownImageSecond, 
+  #countdownImageThird, #countdownImageBase {
     display: none;
   }

@@ -8,7 +8,7 @@ import {Disk} from './modules/disk.js';
 import {Sun} from './modules/sun.js';
 import {Mountains} from './modules/mountains.js';
 import {Palms} from './modules/palms.js'; 
-import {Time} from './modules/time.js'; 
+import {Countdown} from './modules/countdown.js'; 
 
 // Define canvas properties
 const canvas = document.getElementById('canvas1');
@@ -33,24 +33,8 @@ export const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowI
 
 window.addEventListener('load', function() {
 
+  const countdown = new Countdown(canvas.width, canvas.height);
   let quit = false;
-  const time = new Time(canvas.width, canvas.height);
-
-  this.setTimeout(function() {
-    console.log("Collect the disks before time runs out!")
-  }, 0);
-
-  this.setTimeout(function() {
-    console.log("3");
-  }, 3000);
-    
-  this.setTimeout(function() {
-    console.log("2");
-  }, 4000);
-
-  this.setTimeout(function() {
-    console.log("1");
-  }, 5000);
 
   // Instantiate objects
   const player = new Player(canvas.width, canvas.height);
@@ -93,16 +77,33 @@ window.addEventListener('load', function() {
 
 
   const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, diskManagement, 
-    diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
+  diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
 
   const palms = [palmLeftOne1, palmLeftTwo1, palmLeftTwo2, palmLeftTwo3, 
-    palmRightOne1, palmRightOne2, palmRightOne3, palmRightTwo1, palmRightTwo2, palmRightTwo3,
-    palmRightTwo4, palmRightTwo5];
+  palmRightOne1, palmRightOne2, palmRightOne3, palmRightTwo1, palmRightTwo2, palmRightTwo3,
+  palmRightTwo4, palmRightTwo5];
 
   const platforms = [smallPlatform1, smallPlatform2, smallPlatform3, smallPlatform4, smallPlatform5, 
-    smallPlatform6, smallPlatform7, smallPlatform8, smallPlatform9, smallPlatform10, smallPlatform11, 
-    smallPlatform12, bigPlatform1, bigPlatform2, bigPlatform3, bigPlatform4, bigPlatform5, bigPlatform6, 
-    bigPlatform7]; 
+  smallPlatform6, smallPlatform7, smallPlatform8, smallPlatform9, smallPlatform10, smallPlatform11, 
+  smallPlatform12, bigPlatform1, bigPlatform2, bigPlatform3, bigPlatform4, bigPlatform5, bigPlatform6, 
+  bigPlatform7]; 
+
+  countdown.drawBase(ctx);
+
+  this.setTimeout(function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    countdown.drawFirst(ctx);
+  }, 3550)
+
+  this.setTimeout(function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    countdown.drawSecond(ctx);
+  }, 4550)
+  
+  this.setTimeout(function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    countdown.drawThird(ctx);
+  }, 5550)
 
   // Main game loop - refresh every frame
   this.setTimeout(function() {
@@ -171,5 +172,5 @@ window.addEventListener('load', function() {
       requestAnimationFrame(animate);
     }
     animate();  
-  }, 6000)
+  }, 6550)
 })
