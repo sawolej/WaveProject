@@ -5,7 +5,6 @@ import {Ground} from './modules/ground.js';
 import {BigPlatform} from './modules/bigPlatform.js';
 import {SmallPlatform} from './modules/smallPlatform.js';
 import {Disk} from './modules/disk.js';
-import {Pc} from './modules/pc.js';
 import {Sun} from './modules/sun.js';
 import {Mountains} from './modules/mountains.js';
 import {Palms} from './modules/palms.js'; 
@@ -57,7 +56,6 @@ window.addEventListener('load', function() {
   const smallPlatform10 = new SmallPlatform(canvas.width, canvas.height, 7302, 720);
   const smallPlatform11 = new SmallPlatform(canvas.width, canvas.height, 8008, 755);
   const smallPlatform12 = new SmallPlatform(canvas.width, canvas.height, 9095, 375);
-  const pc = new Pc(canvas.width, canvas.height, 12390, 838); 
   const sun = new Sun(canvas.width, canvas.height);
   const mountains = new Mountains(canvas.width, canvas.height, -1920);
   const palmLeftOne1 = new Palms(canvas.width, canvas.height, "palmLeftOneImage", 155, 265, 3360);
@@ -112,7 +110,6 @@ window.addEventListener('load', function() {
       if (!disks[i].isNear(player)) {disks[i].drawGlow(ctx); disks[i].draw(ctx);}
     }
 
-    pc.draw(ctx);
     player.update(input.keys);
     player.draw(ctx);
 
@@ -129,7 +126,6 @@ window.addEventListener('load', function() {
 
       background.x -= 0.05;
       ground.x -= 10;
-      pc.x -= 10;
       mountains.x -= 5;
     }
 
@@ -143,7 +139,6 @@ window.addEventListener('load', function() {
 
       background.x += 0.05;
       ground.x += 10;
-      pc.x += 10;
       mountains.x += 5;
     }
     
