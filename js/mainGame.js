@@ -8,6 +8,7 @@ import {Disk} from './modules/disk.js';
 import {Sun} from './modules/sun.js';
 import {Mountains} from './modules/mountains.js';
 import {Palms} from './modules/palms.js'; 
+import {Time} from './modules/time.js'; 
 
 // Define canvas properties
 const canvas = document.getElementById('canvas1');
@@ -31,6 +32,25 @@ export const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhiloso
 export const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424);
 
 window.addEventListener('load', function() {
+
+  let quit = false;
+  const time = new Time(canvas.width, canvas.height);
+
+  this.setTimeout(function() {
+    console.log("Collect the disks before time runs out!")
+  }, 0);
+
+  this.setTimeout(function() {
+    console.log("3");
+  }, 3000);
+    
+  this.setTimeout(function() {
+    console.log("2");
+  }, 4000);
+
+  this.setTimeout(function() {
+    console.log("1");
+  }, 5000);
 
   // Instantiate objects
   const player = new Player(canvas.width, canvas.height);
@@ -85,70 +105,71 @@ window.addEventListener('load', function() {
     bigPlatform7]; 
 
   // Main game loop - refresh every frame
-  function animate() {
+  this.setTimeout(function() {
+    function animate() {
 
-    // Draw background
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    background.draw(ctx);
-    sun.draw(ctx);
-    mountains.draw(ctx);
-    ground.draw(ctx);
-
-    // Draw palms
-    for (let i = 0; i < palms.length; ++i) {
-      palms[i].draw(ctx);
-    }
-
-    // Draw platforms
-    for (let i = 0; i < platforms.length; ++i) {
-      platforms[i].draw(ctx);
-      platforms[i].collide(player);
-    }
-
-    // Draw disks
-    for (let i = 0; i < disks.length; ++i) {
-      if (!disks[i].isNear(player)) {disks[i].drawGlow(ctx); disks[i].draw(ctx);}
-    }
-
-    player.update(input.keys);
-    player.draw(ctx);
-
-    // Only the one called platform will work for onGround - fix in the future
-    player.getPlatformInfo(bigPlatform1);
-
-    // Side scrolling effect for moving rightwards
-    if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
-      input.keys.d.pressed)) && player.x === 948) {
+      // Draw background
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      background.draw(ctx);
+      sun.draw(ctx);
+      mountains.draw(ctx);
+      ground.draw(ctx);
+  
+      // Draw palms
+      for (let i = 0; i < palms.length; ++i) {
+        palms[i].draw(ctx);
+      }
+  
+      // Draw platforms
+      for (let i = 0; i < platforms.length; ++i) {
+        platforms[i].draw(ctx);
+        platforms[i].collide(player);
+      }
+  
+      // Draw disks
+      for (let i = 0; i < disks.length; ++i) {
+        if (!disks[i].isNear(player)) {disks[i].drawGlow(ctx); disks[i].draw(ctx);}
+      }
+  
+      player.update(input.keys);
+      player.draw(ctx);
+  
+      // Only the one called platform will work for onGround - fix in the future
+      player.getPlatformInfo(bigPlatform1);
+  
+      // Side scrolling effect for moving rightwards
+      if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
+        input.keys.d.pressed)) && player.x === 948) {
+        
+        for (let i = 0; i < disks.length; ++i) disks[i].x -= 10;
+        for (let i = 0; i < palms.length; ++i) palms[i].x -= 7;
+        for (let i = 0; i < platforms.length; ++i) platforms[i].x -= 10;
+  
+        background.x -= 0.05;
+        ground.x -= 10;
+        mountains.x -= 5;
+      }
+  
+      // Side scrolling effect for moving leftwards
+      else if ((player.currentState == player.states[2] || (player.currentState === player.states[4] &&
+        input.keys.a.pressed)) && player.x === 400) {
+  
+        for (let i = 0; i < disks.length; ++i) disks[i].x += 10;
+        for (let i = 0; i < palms.length; ++i) palms[i].x += 7;
+        for (let i = 0; i < platforms.length; ++i) platforms[i].x += 10;
+  
+        background.x += 0.05;
+        ground.x += 10;
+        mountains.x += 5;
+      }
       
-      for (let i = 0; i < disks.length; ++i) disks[i].x -= 10;
-      for (let i = 0; i < palms.length; ++i) palms[i].x -= 7;
-      for (let i = 0; i < platforms.length; ++i) platforms[i].x -= 10;
-
-      background.x -= 0.05;
-      ground.x -= 10;
-      mountains.x -= 5;
+      // Scroll the background images endlessly
+      if (background.x <= -3840 || background.x >= 0) background.x = -1920;
+      if (mountains.x <= -3840 || mountains.x >= 0) mountains.x = -1920;
+      if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
+  
+      requestAnimationFrame(animate);
     }
-
-    // Side scrolling effect for moving leftwards
-    else if ((player.currentState == player.states[2] || (player.currentState === player.states[4] &&
-      input.keys.a.pressed)) && player.x === 400) {
-
-      for (let i = 0; i < disks.length; ++i) disks[i].x += 10;
-      for (let i = 0; i < palms.length; ++i) palms[i].x += 7;
-      for (let i = 0; i < platforms.length; ++i) platforms[i].x += 10;
-
-      background.x += 0.05;
-      ground.x += 10;
-      mountains.x += 5;
-    }
-    
-    // Scroll the background images endlessly
-    if (background.x <= -3840 || background.x >= 0) background.x = -1920;
-    if (mountains.x <= -3840 || mountains.x >= 0) mountains.x = -1920;
-    if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
+    animate();  
+  }, 6000)
 })

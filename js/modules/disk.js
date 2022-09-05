@@ -12,6 +12,7 @@ class Disk {
     this.y = y;
     this.isPicked = false;
   }
+  
     drawGlow(context) {
       if (!this.isPicked) context.drawImage(this.glowImage, this.x - 49, this.y - 49)
     }

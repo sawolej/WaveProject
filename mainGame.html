@@ -10,6 +10,7 @@
 
 <body>
   <canvas id="canvas1"></canvas>
+  <audio id="countdownSound" src="./sounds/countdown.mp3"></audio>
   <img id="playerImage" src="./graphics/player.png">
   <img id="backgroundImage" src="./graphics/background.png">
   <img id="smallPlatformImage" src="./graphics/smallPlatform.png">
@@ -36,6 +37,12 @@
   <img id="palmLeftTwoImage" src="./graphics/palmLeftTwo.png">
   <img id="palmRightOneImage" src="./graphics/palmRightOne.png">
   <img id="palmRightTwoImage" src="./graphics/palmRightTwo.png">
+
+  <script type="text/javascript">
+    this.setTimeout(function() {
+    document.getElementById("countdownSound").play();
+  }, 3250);
+  </script>
 
   <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
 
