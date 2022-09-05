@@ -76,6 +76,9 @@ window.addEventListener('load', function() {
   const palmRightTwo5 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 8170);
 
 
+  let diskCounter = 0;
+  let wasAdded = [];
+
   const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, diskManagement, 
   diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
 
@@ -88,6 +91,9 @@ window.addEventListener('load', function() {
   smallPlatform12, bigPlatform1, bigPlatform2, bigPlatform3, bigPlatform4, bigPlatform5, bigPlatform6, 
   bigPlatform7]; 
 
+  for (let i = 0; i < disks.length; ++i) wasAdded[i] = false;
+
+  // Draw game intro
   countdown.drawBase(ctx);
 
   this.setTimeout(function() {
@@ -104,6 +110,11 @@ window.addEventListener('load', function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     countdown.drawThird(ctx);
   }, 5550)
+
+  // End the game after 60 seconds
+  this.setTimeout(function() {
+    quit = true;
+  }, 66550)
 
   // Main game loop - refresh every frame
   this.setTimeout(function() {
@@ -168,9 +179,25 @@ window.addEventListener('load', function() {
       if (background.x <= -3840 || background.x >= 0) background.x = -1920;
       if (mountains.x <= -3840 || mountains.x >= 0) mountains.x = -1920;
       if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
-  
-      requestAnimationFrame(animate);
+
+      // Win after picking up all disks
+      for (let i = 0; i < disks.length; ++i) {
+        if (disks[i].isPicked && !wasAdded[i]) {
+          wasAdded[i] = true;
+          ++diskCounter;
+        }
+      }
+
+      // Known bug - set.Timeout is an immediate function call,no 3s interval after collecting all the disks 
+      // this.setTimeout(function() {
+      //   if (diskCounter === disks.length) quit = true;
+      // }, 3000)
+
+      if (!quit) requestAnimationFrame(animate);
+      if (quit) ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-    animate();  
+    
+    animate();
+      
   }, 6550)
 })
