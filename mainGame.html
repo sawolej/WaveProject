@@ -9,6 +9,8 @@
 </head>
 
 <body>
+
+
   <canvas id="canvas1"></canvas>
   <audio id="countdownSound" src="./sounds/countdown.mp3"></audio>
   <img id="playerImage" src="./graphics/player.png">
@@ -41,6 +43,8 @@
   <img id="countdownImageSecond" src="./graphics/countdownImage2.png">
   <img id="countdownImageThird" src="./graphics/countdownImage1.png">
   <img id="countdownImageBase" src="./graphics/countdownImageBase.png">
+  <img id="blackscreen" src="./graphics/blackScreen.png">
+
 
   <script type="text/javascript">
     this.setTimeout(function() {
@@ -54,7 +58,16 @@
     <source src="./sounds/mainGameMusic.mp3" type="audio/mp3">
   </audio>
   
+  <div class="text">
+   
+    <!-- text gets injected here -->
+    
+
+ </div>
+
   <script type="module" src="js/mainGame.js"></script>
+  <script type="module" src="js/modules/countdown.js"></script>
+
 </body>
 
 </html>

@@ -1,11 +1,11 @@
 
 @font-face {
-    font-family: "Silkscreen";
+    font-family: "Silkscreen2";
     src: url("/WaveProject/font/Silkscreen-Regular.ttf") format("truetype");
     
   }
 @font-face {
-    font-family: "Perfect DOS VGA 437";
+    font-family: "Silkscreen";
     src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
   }
 * {
@@ -15,6 +15,48 @@
     list-style-type: none;
     font-family: 'Silkscreen', sans-serif;
 }
+
+/*--*/
+
+.text span {
+    opacity: 0;
+ }
+ .text span.revealed {
+    opacity: 1;
+ }
+ .text span.green {
+    color: #27ae60;
+    
+ }
+ .text span.red {
+    color: #ffffff;
+    font-size: 200px;
+    white-space: pre;
+
+ }
+ .text span.gold {
+    color: #eeea09;
+    font-size: 150px;
+
+ }
+ 
+ /* Demo styles */
+ body {
+    background: #3498db;
+    padding: 15em;
+    font-family: 'Silkscreen', sans-serif;
+
+ }
+ .text {
+    text-align: center;
+    font-size: 40px;
+    word-spacing: 0.2em;
+    margin: 50px;
+    position:absolute;
+    line-height: 1.2em;
+    top: 50px;
+    color: #ffffff;
+ }
 
 /*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
 
@@ -353,8 +395,6 @@ body {
   
   #canvas1 {
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

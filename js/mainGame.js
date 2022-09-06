@@ -77,7 +77,9 @@ window.addEventListener('load', function() {
 
 
   let diskCounter = 0;
+  let ihaveit = [];
   let wasAdded = [];
+  let container = document.querySelector(".text");
 
   const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, diskManagement, 
   diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
@@ -114,7 +116,7 @@ window.addEventListener('load', function() {
   // End the game after 60 seconds
   this.setTimeout(function() {
     quit = true;
-  }, 66550)
+  }, 10550)
 
   // Main game loop - refresh every frame
   this.setTimeout(function() {
@@ -129,7 +131,7 @@ window.addEventListener('load', function() {
   
       // Draw palms
       for (let i = 0; i < palms.length; ++i) {
-        palms[i].draw(ctx);
+        palms[i].draw(ctx, diskCounter);
       }
   
       // Draw platforms
@@ -185,6 +187,7 @@ window.addEventListener('load', function() {
         if (disks[i].isPicked && !wasAdded[i]) {
           wasAdded[i] = true;
           ++diskCounter;
+          ihaveit.push(disks[i].image);
         }
       }
 
@@ -194,7 +197,10 @@ window.addEventListener('load', function() {
       // }, 3000)
 
       if (!quit) requestAnimationFrame(animate);
-      if (quit) ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (quit){ 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        countdown.drawEnd(ctx, diskCounter, ihaveit);
+      }
     }
     
     animate();
