@@ -43,7 +43,7 @@
  /* Demo styles */
  body {
     background: #3498db;
-    padding: 15em;
+
     font-family: 'Silkscreen', sans-serif;
 
  }
@@ -255,9 +255,8 @@
     position: relative;
     scale: 1 ;
     width: 500px;
-    top: -720px;
-    left: 200px;
-    cursor: pointer;
+    top: -807px;
+    left: -171px;
     visibility: hidden;
    
 }
@@ -266,8 +265,7 @@
     scale: 1 ;
     width: 500px;
     top: -1421px;
-    left: 176px;
-    cursor: pointer;
+    left: 48px;
     visibility: hidden; 
    
 }
@@ -275,9 +273,8 @@
     position: relative;
     scale: 1 ;
     width: 500px;
-    top: -1923px;
-    left: 193px;
-    cursor: pointer;
+    top: -1654px;
+    left: 378px;
     visibility: hidden; 
    
 }
@@ -285,9 +282,8 @@
     position: relative;
     scale: 1 ;
     width: 500px;
-    top: -2286px;
-    left: 200px;
-    cursor: pointer;
+    top: -2324px;
+    left: 539px;
     visibility: hidden;
    
 }
@@ -333,29 +329,133 @@
     opacity: 0;
 }
 
+#buttonsFB{
+    position: relative;
+    top: -80px;
+    left:-50px;
+    
+}
 
   #insta{
+
+    color: rgb(255, 255, 255);
+    border: 1px  #bceaab; /* Green */
+    background-color: rgba(255, 255, 255, 0);
     position: relative;
-    top: -2431px;
-    left: 36px;
+    top: -2203px;
+    left: 156px;
     opacity: 1;
     visibility: hidden;
   }
   
   #fb{
+
+
+    color: rgb(255, 255, 255);
+    border: 1px  #bceaab; /* Green */
+    background-color: rgba(255, 255, 255, 0);
     position: relative;
-    top: -2584px;
-    left: 337px;
+    top: -2469px;
+    left: 220px;
     opacity: 1;
     visibility: hidden;
   }
 
   #tiktok{
+
+    color: rgb(255, 255, 255);
+    border: 1px  #bceaab; /* Green */
+    background-color: rgba(255, 255, 255, 0);
     position: relative;
-    top: -2300px;
-    left: -255px;
+    top: -2335px;
+    left: -200px;
     opacity: 1;
     visibility: hidden;
+  }
+  #insta:hover{
+    background-color: #b6e8b8; /* Green */
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: -2203px;
+    left: 156px;
+    opacity: 1;
+    visibility: hidden;
+    cursor: pointer;
+    
+  }
+  
+  #fb:hover{
+    background-color: #b6e8b8; /* Green */
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: -2469px;
+    left: 220px;
+    opacity: 1;
+    visibility: hidden;
+    cursor: pointer;
+  }
+
+  #tiktok:hover{
+    background-color: #b6e8b8; /* Green */
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: -2335px;
+    left: -200px;
+    opacity: 1;
+    visibility: hidden;
+    cursor: pointer;
+  }
+
+  #buttonsUL{
+    z-index: 2;
+    position: relative;
+    top: -100px;
+    left:30px;
+    visibility: hidden;
+    
+}
+
+  #UL1:hover{
+    background-color: #d3b9ea; 
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: -2389px;
+    left: 190px;
+    opacity: 1;
+
+  }
+
+  #UL2:hover{
+    background-color: #d3b9ea; 
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: -2203px;
+    left: 0px;
+    opacity: 1;
+
+  }
+  #UL1{
+
+    color: rgb(255, 255, 255);
+    border: 1px  #bceaab; /* Green */
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    top: -2389px;
+    left: 190px;
+    opacity: 1;
+
+  }
+
+  #UL2{
+
+    color: rgb(255, 255, 255);
+    border: 1px  #bceaab; /* Green */
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    top: -2203px;
+    left: 0px;
+    opacity: 1;
+
   }
 /*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
 #desktop_page{
@@ -408,4 +508,51 @@ body {
   #sunImage, #mountainsImage, #pcImage, #glowImage, #countdownImageFirst, #countdownImageSecond, 
   #countdownImageThird, #countdownImageBase {
     display: none;
+  }
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #myBtn{
+    
+    color: rgb(255, 255, 255);
+    border: 1px  #bceaab; /* Green */
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    top:  -748px;
+    left: 540px;
+    opacity: 1;
+    visibility: hidden;
   }

@@ -38,10 +38,13 @@ class Countdown {
       console.log(count++);}
     },1000)
     var container = document.querySelector(".text");
+
     function showDisks(x){
      let result = "";
       for(let i=0; i<x; i++){
         result += i + " ";
+        console.log(arr[i]);
+       // document.getElementById(arr[i]).style.visibility = "visable";
       }
       return result;
     }

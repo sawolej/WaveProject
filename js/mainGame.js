@@ -97,7 +97,9 @@ window.addEventListener('load', function() {
 
   // Draw game intro
   countdown.drawBase(ctx);
-
+function setText(arr){
+  document.getElementById("tip").innerHTML = document.getElementById("tip").innerHTML + " \n New text!";
+}
   this.setTimeout(function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     countdown.drawFirst(ctx);
@@ -187,7 +189,7 @@ window.addEventListener('load', function() {
         if (disks[i].isPicked && !wasAdded[i]) {
           wasAdded[i] = true;
           ++diskCounter;
-          ihaveit.push(disks[i].image);
+          ihaveit.push(disks[i].name+"E");
         }
       }
 
@@ -196,10 +198,44 @@ window.addEventListener('load', function() {
       //   if (diskCounter === disks.length) quit = true;
       // }, 3000)
 
+      ///POPUP
+
+      // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+/////
       if (!quit) requestAnimationFrame(animate);
       if (quit){ 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         countdown.drawEnd(ctx, diskCounter, ihaveit);
+        console.log(ihaveit);
+        setText(ihaveit);
+        
+        setTimeout(function() {
+          document.getElementById("myBtn").style.visibility = 'visible';
+        }, 3550 + diskCounter*1000)
       }
     }
     

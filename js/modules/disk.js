@@ -11,6 +11,7 @@ class Disk {
     this.x = x;
     this.y = y;
     this.isPicked = false;
+    this.name = imageName;
   }
   
     drawGlow(context) {
