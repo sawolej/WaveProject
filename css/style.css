@@ -32,6 +32,7 @@
     color: #ffffff;
     font-size: 200px;
     white-space: pre;
+    
 
  }
  .text span.gold {
@@ -52,6 +53,7 @@
     font-size: 40px;
     word-spacing: 0.2em;
     margin: 50px;
+    margin-left: 300px;
     position:absolute;
     line-height: 1.2em;
     top: 50px;
@@ -97,8 +99,8 @@
     left: 20%;
     display: flex;
     flex-direction: column;
-    width: 60%;
-    height: 60vh;
+    width: 30%;
+    height:  30vh;
     border: 3px solid rgb(0, 0, 0);
     border-radius: 10px;
     overflow: hidden;
@@ -422,6 +424,7 @@
     top: -2389px;
     left: 190px;
     opacity: 1;
+    cursor: pointer;
 
   }
 
@@ -432,6 +435,7 @@
     top: -2203px;
     left: 0px;
     opacity: 1;
+    cursor: pointer;
 
   }
   #UL1{
@@ -529,6 +533,7 @@ body {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    height:300px;
   }
   
   /* The Close Button */
@@ -545,14 +550,73 @@ body {
     text-decoration: none;
     cursor: pointer;
   }
-  #myBtn{
-    
-    color: rgb(255, 255, 255);
-    border: 1px  #bceaab; /* Green */
-    background-color: rgba(255, 255, 255, 0);
+
+  #myBtn{   
+
     position: relative;
     top:  -748px;
-    left: 540px;
+    left: 700px;
     opacity: 1;
     visibility: hidden;
   }
+
+  #diskBehavioralImageE{   
+    margin: 20px;
+
+  }
+  #diskBehavioralImageE{   
+    margin: 20px;
+
+  }
+  #diskBiologyImageE{   
+
+    margin: 20px;
+}
+  #diskChadImageE{   
+
+    margin: 20px;
+}
+  #diskChemistryImageE{   
+
+    margin: 20px;
+
+  }
+  #diskEksocImageE{   
+
+    margin: 20px;
+  }
+  #diskGeographyImageE{   
+    margin: 20px;
+  }
+  #diskInternationalImageE{   
+
+    margin: 20px;
+  }
+  #diskLawImageE{   
+    margin: 20px;
+  }
+  #diskMathsImageE{   
+    margin: 20px;
+  }
+  #diskManagementImageE{   
+    margin: 20px;
+  }
+  #diskPhilologyImageE{   
+    margin: 20px;
+  }
+  #diskPhilosophyImageE{   
+    margin: 20px;
+  }
+  #diskTomaszowImageE{   
+    margin: 20px;
+  }
+  #endDisks{
+    visibility: hidden;
+    position: relative;
+    top:  -748px;
+    left: 150px;;
+    opacity: 1;
+    align-items: center;
+cursor: pointer;
+    }
+

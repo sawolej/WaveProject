@@ -118,7 +118,7 @@ function setText(arr){
   // End the game after 60 seconds
   this.setTimeout(function() {
     quit = true;
-  }, 10550)
+  }, 30550)
 
   // Main game loop - refresh every frame
   this.setTimeout(function() {
@@ -210,9 +210,59 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
+diskBehavioralImageE.onclick = function() {
   modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Nauk o Wychowaniu";
 }
+diskBiologyImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Biologii i Ochrony Środowiska";
+}
+diskChadImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
+}
+diskChemistryImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Chemii";
+}
+diskEksocImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Ekonomiczno-Socjologiczny";
+}
+diskGeographyImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Nauk Geograficznych";
+}
+diskInternationalImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
+}
+diskLawImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Prawa i Administracji";
+}
+diskMathsImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Matematyki i Informatyki";
+}
+diskManagementImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Zarządzania";
+}
+diskPhilologyImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Filologiczny";
+}
+diskPhilosophyImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Wydział Filozoficzno-Historyczny";
+}
+diskTomaszowImageE.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("tip").innerHTML = "Filia w Tomaszowie Mazowieckim";
+}
+
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -234,8 +284,12 @@ window.onclick = function(event) {
         setText(ihaveit);
         
         setTimeout(function() {
-          document.getElementById("myBtn").style.visibility = 'visible';
-        }, 3550 + diskCounter*1000)
+          for(let i =0; i<diskCounter;i++) {
+          document.getElementById(ihaveit[i]).style.visibility = 'visible';
+          console.log(ihaveit[i]);
+        }
+        }, 3550 + diskCounter*900)
+
       }
     }
     
