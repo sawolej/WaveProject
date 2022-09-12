@@ -118,7 +118,7 @@ function setText(arr){
   // End the game after 60 seconds
   this.setTimeout(function() {
     quit = true;
-  }, 30550)
+  }, 33550)
 
   // Main game loop - refresh every frame
   this.setTimeout(function() {
@@ -212,7 +212,18 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 diskBehavioralImageE.onclick = function() {
   modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Nauk o Wychowaniu";
+  document.getElementById("tip")
+  .innerHTML = `Wydział Nauk o Wychowaniu<br>
+  <br>
+  <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
+  <br>
+  <b>Czy wiesz, że...</b><br>
+  Na Uniwersytecie Łódzkim masz możliwość rozwijania swojej ścieżki naukowej między innymi dzięki grantom badawczym. 
+  Zespół badawczy związany z Wydziałem NAuk o Wychowaniu otrzymał 
+  grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej w redukcji stresu u osób dorosłych. 
+  Głównym celem projektu jest stworzenie aplikacji wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
+
+  `//"Wydział Nauk o Wychowaniu \n bajojajo";
 }
 diskBiologyImageE.onclick = function() {
   modal.style.display = "block";

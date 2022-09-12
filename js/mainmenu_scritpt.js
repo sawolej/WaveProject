@@ -9,6 +9,3 @@ function click_board() {
 function click_cup() {
     window.location.href="https://sklep.uni.lodz.pl/"
 }
-window.onload = function() {
-    document.getElementById("mac_sound").play();
-}
