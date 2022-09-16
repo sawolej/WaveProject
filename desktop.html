@@ -8,9 +8,14 @@
     <link rel="shortcut icon" href="pics\icon_system.png" type="image/x-icon"> 
     </head>
 
-<body>        
-    <embed src="sounds/desktop.wav" loop="true" autostart="true" width="2" height="0"> 
-    </div>
+<body>
+  
+  <!-- Workaround to autoplay looped sound in chromium based browsers -->
+  <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+  <audio id="desktopAudio" autoplay loop>
+    <source src="./sounds/desktop.mp3" type="audio/mp3">
+  </audio>
+
     <div id="wrapper">
     <!-- App container and bottom taskbar -->
     <div class="os_container"> <!--br-os-container -->

@@ -23,10 +23,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-<body>
+  <body>
+
+    <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
     
-    <iframe src="./sounds/tlo.wav" allow="autoplay" id="audio" style="display: none"></iframe>
-    <div id="room"> 
+    <audio id="tlo" autoplay loop>
+      <source src="./sounds/tlo.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="room">
         
         <img id="comp" src="pics/comp.png"onclick="click_screen()">
         <img id="board" src="pics/board.JPG" onclick="click_board()">
@@ -35,10 +40,7 @@
        
    
     </div>
-    <script src="js/mainmenu_scritpt.js">
-               
-
-    </script>
-</body>
+    <script src="js/mainmenu_scritpt.js"></script>
+  </body>
 
 </html>

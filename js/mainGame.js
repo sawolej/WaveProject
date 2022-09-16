@@ -193,10 +193,9 @@ function setText(arr){
         }
       }
 
-      // Known bug - set.Timeout is an immediate function call,no 3s interval after collecting all the disks 
-      // this.setTimeout(function() {
-      //   if (diskCounter === disks.length) quit = true;
-      // }, 3000)
+      // Render endscreen with a 3s delay after picking up all the disks
+      function callEndscreen() {quit = true;}
+      if (diskCounter === disks.length) setTimeout(callEndscreen, 3000);
 
       ///POPUP
 
@@ -223,7 +222,7 @@ diskBehavioralImageE.onclick = function() {
   grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej w redukcji stresu u osób dorosłych. 
   Głównym celem projektu jest stworzenie aplikacji wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
 
-  `//"Wydział Nauk o Wychowaniu \n bajojajo";
+  `//"Wydział Nauk o Wychowaniu \n bajojajo xd";
 }
 diskBiologyImageE.onclick = function() {
   modal.style.display = "block";
@@ -274,7 +273,6 @@ diskTomaszowImageE.onclick = function() {
   document.getElementById("tip").innerHTML = "Filia w Tomaszowie Mazowieckim";
 }
 
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
@@ -294,13 +292,13 @@ window.onclick = function(event) {
         console.log(ihaveit);
         setText(ihaveit);
         
+        // Make the animated disks visible after delay
         setTimeout(function() {
-          for(let i =0; i<diskCounter;i++) {
+          for (let i = 0; i < diskCounter; i++) {
           document.getElementById(ihaveit[i]).style.visibility = 'visible';
           console.log(ihaveit[i]);
         }
-        }, 3550 + diskCounter*900)
-
+        }, 9000 + diskCounter*900)
       }
     }
     
