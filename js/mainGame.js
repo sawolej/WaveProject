@@ -17,19 +17,19 @@ canvas.width = 1920;
 canvas.height = 1080;
 
 // Instantiate exportable disk objects
-export const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
-export const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270);
-export const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9640, 135);
-export const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640);
-export const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625);
-export const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 3005, 224);
-export const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676);
-export const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303);
-export const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640);
-export const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645);
-export const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204);
-export const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150);
-export const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424);
+const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
+const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270);
+const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9640, 135);
+const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640);
+const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625);
+const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 3005, 224);
+const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676);
+const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303);
+const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640);
+const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645);
+const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204);
+const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150);
+const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424);
 
 window.addEventListener('load', function() {
 
@@ -79,7 +79,6 @@ window.addEventListener('load', function() {
   let diskCounter = 0;
   let ihaveit = [];
   let wasAdded = [];
-  let container = document.querySelector(".text");
 
   const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, diskManagement, 
   diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
