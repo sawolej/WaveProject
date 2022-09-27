@@ -94,25 +94,13 @@ window.addEventListener('load', function() {
 
   for (let i = 0; i < disks.length; ++i) wasAdded[i] = false;
 
-  // Draw game intro
-  countdown.drawBase(ctx);
 function setText(arr){
   document.getElementById("tip").innerHTML = document.getElementById("tip").innerHTML + " \n New text!";
 }
-  this.setTimeout(function() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    countdown.drawFirst(ctx);
-  }, 3550)
-
-  this.setTimeout(function() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    countdown.drawSecond(ctx);
-  }, 4550)
-  
-  this.setTimeout(function() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    countdown.drawThird(ctx);
-  }, 5550)
+  // Draw the intro
+  this.setTimeout(() => {
+    countdown.updateCounter();
+  }, 2550)
 
   // End the game after 60 seconds
   this.setTimeout(function() {
@@ -132,13 +120,13 @@ function setText(arr){
     }, 4550)
   }
   
-  // Toggle visibility of the countdown timer on game start and end
+  // Toggle timer visibility
   setTimeout(() => {
     if (!quit) {countdownEl.style.display = "inline-flex"}
     else {countdownEl.style.display = "none"};
   }, 6550)
 
-  const intervalUpdate = setInterval(updateCountdown, 1000);
+  setInterval(updateCountdown, 1000);
 
   // Main game loop - refresh every frame
   this.setTimeout(() => {

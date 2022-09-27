@@ -10,7 +10,6 @@
 
 <body>
 
-
   <canvas id="canvas1"></canvas>
   <audio id="countdownSound" src="./sounds/countdown.mp3"></audio>
   <img id="playerImage" src="./graphics/player.png">
@@ -39,17 +38,11 @@
   <img id="palmLeftTwoImage" src="./graphics/palmLeftTwo.png">
   <img id="palmRightOneImage" src="./graphics/palmRightOne.png">
   <img id="palmRightTwoImage" src="./graphics/palmRightTwo.png">
-  <img id="countdownImageFirst" src="./graphics/countdownImage3.png">
-  <img id="countdownImageSecond" src="./graphics/countdownImage2.png">
-  <img id="countdownImageThird" src="./graphics/countdownImage1.png">
-  <img id="countdownImageBase" src="./graphics/countdownImageBase.png">
-  <img id="blackscreen" src="./graphics/blackScreen.png">
-
 
   <script type="text/javascript">
     this.setTimeout(function() {
-    document.getElementById("countdownSound").play();
-  }, 3800);
+      document.getElementById("countdownSound").play();
+    }, 3800);
   </script>
 
   <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
@@ -58,6 +51,8 @@
     <source src="./sounds/mainGameMusic.mp3" type="audio/mp3">
   </audio>
   
+  <p id="introText">COLLECT ALL DISKS BEFORE THE TIME RUNS OUT!</p>
+  <p id="introCountdown">3</p>
   <p id="countdown"></p>
 
   <div class="text">
@@ -68,31 +63,30 @@
 
  <!-- Trigger/Open The Modal -->
  <div id = "endDisks">
- <img id="myBtn" src="./graphics/FloppyDiskBehavioralHoney.png">
- <img id="diskBehavioralImageE" src="./graphics/beh.gif">
- <img id="diskBiologyImageE" src="./graphics/lime.gif">
- <img id="diskChadImageE" src="./graphics/hom.gif">
- <img id="diskChemistryImageE" src="./graphics/chem.gif">
- <img id="diskEksocImageE" src="./graphics/eks.gif">
- <img id="diskGeographyImageE" src="./graphics/geo.gif">
- <img id="diskInternationalImageE" src="./graphics/inter.gif">
- <img id="diskLawImageE" src="./graphics/law.gif">
- <img id="diskMathsImageE" src="./graphics/mata.gif">
- <img id="diskManagementImageE" src="./graphics/mana.gif">
- <img id="diskPhilologyImageE" src="./graphics/philo.gif">
- <img id="diskPhilosophyImageE" src="./graphics/sofy.gif">
- <img id="diskTomaszowImageE" src="./graphics/toma.gif">
-</div>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p id="tip">Some text in the Modal..</p>
+    <img id="myBtn" src="./graphics/FloppyDiskBehavioralHoney.png">
+    <img id="diskBehavioralImageE" src="./graphics/beh.gif">
+    <img id="diskBiologyImageE" src="./graphics/lime.gif">
+    <img id="diskChadImageE" src="./graphics/hom.gif">
+    <img id="diskChemistryImageE" src="./graphics/chem.gif">
+    <img id="diskEksocImageE" src="./graphics/eks.gif">
+    <img id="diskGeographyImageE" src="./graphics/geo.gif">
+    <img id="diskInternationalImageE" src="./graphics/inter.gif">
+    <img id="diskLawImageE" src="./graphics/law.gif">
+    <img id="diskMathsImageE" src="./graphics/mata.gif">
+    <img id="diskManagementImageE" src="./graphics/mana.gif">
+    <img id="diskPhilologyImageE" src="./graphics/philo.gif">
+    <img id="diskPhilosophyImageE" src="./graphics/sofy.gif">
+    <img id="diskTomaszowImageE" src="./graphics/toma.gif">
   </div>
-
-</div>
+  
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="tip">Some text in the Modal..</p>
+    </div>
+  </div>
 
   <script type="module" src="js/mainGame.js"></script>
   <script type="module" src="js/modules/countdown.js"></script>

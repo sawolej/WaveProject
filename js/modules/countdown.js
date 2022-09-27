@@ -4,13 +4,27 @@ class Countdown {
     this.gameHeight = gameHeight;
     this.x = 0;
     this.y = 0;
-    this.time = 600;
+    // this.time = 600;
+    this.seconds = 3;
     this.countdownEl = document.getElementById('countdown');
-    this.imageBase = document.getElementById('countdownImageBase');
+    this.introText = document.getElementById('introText');
+    this.introNumbers = document.getElementById('introCountdown');
     this.imageFirst = document.getElementById('countdownImageFirst');
     this.imageSecond = document.getElementById('countdownImageSecond');
     this.imageThird = document.getElementById('countdownImageThird');
     this.imageBlack = document.getElementById('blackscreen');
+  }
+
+  updateCounter() {
+    setInterval(() => {
+      this.introNumbers.innerHTML = this.seconds;
+      if (this.seconds === 3) this.introNumbers.style.display = "inline-flex";
+      if (this.seconds > 0) this.seconds--;
+      else {
+        this.introNumbers.style.display = "none";
+        this.introText.style.display = "none";
+      };
+    }, 1000)
   }
 
   drawBase(context) {

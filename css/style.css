@@ -14,6 +14,10 @@
     text-decoration: none;
     list-style-type: none;
     font-family: 'Silkscreen', sans-serif;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 /*--*/
@@ -472,19 +476,17 @@
     height: 900px;
     background-image: url(pic/temp_wallpaper.png);
 }
-p{
+
+p {
     color: black;
 }
-p1{
+p1 {
     color: rgb(255, 255, 255);
 }
-
 
 h1 {
     font-weight: bold;
 }
-
-
 
 #screen_page {
     /* font-family: "Silkscreen", monospace; */
@@ -512,7 +514,7 @@ body {
     top: 15px;
     left: 1805px;
     height: 50px;
-    width: 100px;
+    width: 100px; 
     background-color: #fff;
     display: none;
     align-items: center;
@@ -520,17 +522,42 @@ body {
     font-size: 50px;
     margin: 0;
   }
+
+  #introText {
+    position: absolute;
+    top: 215px;
+    left: 0px;
+    width: 1920px;
+    display: inline-flex;
+    font-size: 70px;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+    margin-top: 0px;
+  }
+
+  #introCountdown {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    display: none;
+    font-size: 400px;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+  }
   
   #playerImage, #floppyDiskImage, #enemyImage, #smallPlatformImage, 
   #bigPlatformImage, #groundImage, #backgroundImage, #diskBehavioralImage, 
   #diskBiologyImage, #diskChadImage, #diskChemistryImage, #diskEksocImage, 
   #diskGeographyImage, #diskInternationalImage, #diskLawImage, #diskManagementImage, 
   #diskPhilologyImage, #diskPhilosophyImage, #diskTomaszowImage, #diskMathsImage, 
-  #sunImage, #mountainsImage, #pcImage, #glowImage, #countdownImageFirst, #countdownImageSecond, 
-  #countdownImageThird, #countdownImageBase, #palmLeftOneImage, #palmLeftTwoImage, #palmRightOneImage,
-  #palmRightTwoImage, #blackscreen {
+  #sunImage, #mountainsImage, #pcImage, #glowImage, #palmLeftOneImage, #palmLeftTwoImage, #palmRightOneImage,
+  #palmRightTwoImage {
     display: none;
   }
+  
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
