@@ -119,8 +119,29 @@ function setText(arr){
     quit = true;
   }, 33550)
 
+  // Draw countdown timer when the game runs. Move this to a countdown.js class later.
+  let time = 600;
+  const countdownEl = document.getElementById('countdown');
+
+  function updateCountdown() {
+    setTimeout(() => {
+      let seconds = time % 60;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      countdownEl.innerHTML = `${seconds}`;
+      --time;
+    }, 4550)
+  }
+  
+  // Toggle visibility of the countdown timer on game start and end
+  setTimeout(() => {
+    if (!quit) {countdownEl.style.display = "inline-flex"}
+    else {countdownEl.style.display = "none"};
+  }, 6550)
+
+  const intervalUpdate = setInterval(updateCountdown, 1000);
+
   // Main game loop - refresh every frame
-  this.setTimeout(function() {
+  this.setTimeout(() => {
     function animate() {
 
       // Draw background
@@ -192,9 +213,13 @@ function setText(arr){
         }
       }
 
-      // Render endscreen with a 3s delay after picking up all the disks
-      function callEndscreen() {quit = true;}
-      if (diskCounter === disks.length) setTimeout(callEndscreen, 3000);
+      // Render endscreen with a 3s delay after win condition
+      // Was: if (diskCounter === disks.length) setTimeout(callEndscreen, 3000); changes made for testing 
+      function callEndscreen() {
+        quit = true;
+        countdownEl.style.display = "none";
+      }
+      if (diskCounter === 1) setTimeout(callEndscreen, 3000);
 
       ///POPUP
 
@@ -285,9 +310,9 @@ window.onclick = function(event) {
 }
 /////
       if (!quit) requestAnimationFrame(animate);
-      if (quit){ 
+      if (quit) { 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        countdown.drawEnd(ctx, diskCounter, ihaveit);
+        countdown.drawEnd(diskCounter, ihaveit);
         console.log(ihaveit);
         setText(ihaveit);
         
@@ -297,7 +322,7 @@ window.onclick = function(event) {
           document.getElementById(ihaveit[i]).style.visibility = 'visible';
           console.log(ihaveit[i]);
         }
-        }, 9000 + diskCounter*900)
+        }, 900 + diskCounter*900)
       }
     }
     

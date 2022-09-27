@@ -4,6 +4,8 @@ class Countdown {
     this.gameHeight = gameHeight;
     this.x = 0;
     this.y = 0;
+    this.time = 600;
+    this.countdownEl = document.getElementById('countdown');
     this.imageBase = document.getElementById('countdownImageBase');
     this.imageFirst = document.getElementById('countdownImageFirst');
     this.imageSecond = document.getElementById('countdownImageSecond');
@@ -26,12 +28,17 @@ class Countdown {
   drawThird(context) {
     context.drawImage(this.imageThird, this.x, this.y);
   }
-
+  
+  // updateCountdown() {
+    // let seconds = this.time % 60;
+    // this.countdownEl.innerHTML = `${seconds}`;
+    // --this.time;
+  // }
 
   //=========================================================
-  drawEnd(context, discI, arr) {
+  drawEnd(discI, arr) {
     let end =0;
-    //context.drawImage(this.imageBlack, this.x, this.y);
+    // context.drawImage(this.imageBlack, this.x, this.y);
     var count=0;
     setInterval(()=>{
     if (count<=discI) {
@@ -48,7 +55,7 @@ class Countdown {
       }
       return result;
     }
-    function showRest(x){
+    function showRest(x) {
      
         container.replaceChildren(" ");
         console.log(arr);
