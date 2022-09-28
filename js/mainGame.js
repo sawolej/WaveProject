@@ -168,7 +168,7 @@ function setText(arr){
   
       // Side scrolling effect for moving rightwards
       if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
-        input.keys.d.pressed)) && player.x === 948) {
+        input.keys.d.pressed)) && player.x === 948 && palmRightOne3.x >= 2500) {
         
         for (let i = 0; i < disks.length; ++i) disks[i].x -= 10;
         for (let i = 0; i < palms.length; ++i) palms[i].x -= 7;
@@ -181,7 +181,7 @@ function setText(arr){
   
       // Side scrolling effect for moving leftwards
       else if ((player.currentState == player.states[2] || (player.currentState === player.states[4] &&
-        input.keys.a.pressed)) && player.x === 400) {
+        input.keys.a.pressed)) && player.x === 400 && palmRightOne3.x <= 9500) {
   
         for (let i = 0; i < disks.length; ++i) disks[i].x += 10;
         for (let i = 0; i < palms.length; ++i) palms[i].x += 7;
@@ -192,7 +192,7 @@ function setText(arr){
         mountains.x += 5;
       }
       
-      // Scroll the background images endlessly
+      // Redraw the background images endlessly
       if (background.x <= -3840 || background.x >= 0) background.x = -1920;
       if (mountains.x <= -3840 || mountains.x >= 0) mountains.x = -1920;
       if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
