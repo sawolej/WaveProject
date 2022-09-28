@@ -89,6 +89,11 @@
 #os_apps .app img {
     width: 64px;
     margin: 0 auto;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 #os_apps .app p {
     color: rgb(240, 219, 192);
@@ -247,6 +252,14 @@
     transform: translate(-50%, -50%);
 }
 /*-----------------------------------------------BOARD-----------------------------------------------------*/ 
+.undraggable {
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 #board_page{
     padding: 0;
     width: 1400px;
@@ -470,7 +483,7 @@
 
   }
 /*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
-#desktop_page{
+#desktop_page {
     padding: 0;
     width: 1400px;
     height: 900px;
