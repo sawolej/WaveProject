@@ -55,3 +55,7 @@ function openUL() {
 function closeUL() {
   ule.style.visibility = 'hidden';
 }
+
+function goBack() {
+  location.href = "index.html";
+}

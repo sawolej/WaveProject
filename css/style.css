@@ -482,6 +482,28 @@
     opacity: 1;
 
   }
+
+.arrow {
+  width: 105px;
+  height: 90px;
+  position: relative;
+  left: 1005px;
+  top: -1190px;
+  display: inline-block;
+}
+
+.arrow .img-top {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.arrow:hover .img-top {
+  display: inline;
+  cursor: pointer;
+}
+  
 /*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
 #desktop_page {
     padding: 0;
