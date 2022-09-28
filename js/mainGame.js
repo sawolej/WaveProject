@@ -105,6 +105,11 @@ function setText(arr){
   // End the game after 60 seconds
   this.setTimeout(function() {
     quit = true;
+    if (!countdown.wasCleared) {
+      countdown.wasCleared = true;
+      clearInterval(countdown.introInterval);
+      clearInterval(countdownInterval);
+    }
   }, 33550)
 
   // Draw countdown timer when the game runs. Move this to a countdown.js class later.
@@ -126,7 +131,7 @@ function setText(arr){
     else {countdownEl.style.display = "none"};
   }, 6550)
 
-  setInterval(updateCountdown, 1000);
+  let countdownInterval = setInterval(updateCountdown, 1000);
 
   // Main game loop - refresh every frame
   this.setTimeout(() => {
@@ -207,7 +212,14 @@ function setText(arr){
         quit = true;
         countdownEl.style.display = "none";
       }
-      if (diskCounter === 1) setTimeout(callEndscreen, 3000);
+      if (diskCounter === 1) {
+        setTimeout(callEndscreen, 3000);
+        if (!countdown.wasCleared) {
+          countdown.wasCleared = true;
+          clearInterval(countdown.introInterval);
+          clearInterval(countdownInterval);
+        }
+      }
 
       ///POPUP
 

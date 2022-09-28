@@ -6,6 +6,8 @@ class Countdown {
     this.y = 0;
     // this.time = 600;
     this.seconds = 3;
+    this.introInterval;
+    this.wasCleared = false;
     this.countdownEl = document.getElementById('countdown');
     this.introText = document.getElementById('introText');
     this.introNumbers = document.getElementById('introCountdown');
@@ -16,7 +18,7 @@ class Countdown {
   }
 
   updateCounter() {
-    setInterval(() => {
+    this.introInterval = setInterval(() => {
       this.introNumbers.innerHTML = this.seconds;
       if (this.seconds === 3) this.introNumbers.style.display = "inline-flex";
       if (this.seconds > 0) this.seconds--;
