@@ -17,34 +17,25 @@ class Countdown {
     this.imageBlack = document.getElementById('blackscreen');
   }
 
-  updateCounter() {
-    this.introInterval = setInterval(() => {
-      this.introNumbers.innerHTML = this.seconds;
-      if (this.seconds === 3) this.introNumbers.style.display = "inline-flex";
-      if (this.seconds > 0) this.seconds--;
-      else {
-        this.introNumbers.style.display = "none";
-        this.introText.style.display = "none";
-      };
-    }, 1000)
+  update() {
+    let close = false;
+    if (!close) {
+      this.introInterval = setInterval(() => {
+        this.introNumbers.innerHTML = this.seconds;
+        if (this.seconds === 3) this.introNumbers.style.display = "inline-flex";
+        if (this.seconds > 0) this.seconds--;
+        else {
+          this.introNumbers.style.display = "none";
+          this.introText.style.display = "none";
+          close = true;
+        };
+      }, 1000)
+    }
+
+    // Clear the interval after 
+    if (close) clearInterval(this.introInterval);
   }
 
-  drawBase(context) {
-    context.drawImage(this.imageBase, this.x, this.y);
-  }
-
-  drawFirst(context) {
-    context.drawImage(this.imageFirst, this.x, this.y);
-  }
-
-  drawSecond(context) {
-    context.drawImage(this.imageSecond, this.x, this.y);
-  }
-
-  drawThird(context) {
-    context.drawImage(this.imageThird, this.x, this.y);
-  }
-  
   // updateCountdown() {
     // let seconds = this.time % 60;
     // this.countdownEl.innerHTML = `${seconds}`;

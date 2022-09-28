@@ -99,11 +99,11 @@ function setText(arr){
 }
   // Draw the intro
   this.setTimeout(() => {
-    countdown.updateCounter();
+    countdown.update();
   }, 2550)
 
   // End the game after 60 seconds
-  this.setTimeout(function() {
+  this.setTimeout(() => {
     quit = true;
     if (!countdown.wasCleared) {
       countdown.wasCleared = true;
@@ -116,7 +116,7 @@ function setText(arr){
   let time = 600;
   const countdownEl = document.getElementById('countdown');
 
-  function updateCountdown() {
+  function update() {
     setTimeout(() => {
       let seconds = time % 60;
       seconds = seconds < 10 ? '0' + seconds : seconds;
@@ -131,7 +131,7 @@ function setText(arr){
     else {countdownEl.style.display = "none"};
   }, 6550)
 
-  let countdownInterval = setInterval(updateCountdown, 1000);
+  setInterval(update, 1000);
 
   // Main game loop - refresh every frame
   this.setTimeout(() => {
