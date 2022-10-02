@@ -27,9 +27,11 @@
 
   <body>
 
-    <audio id="tlo" autoplay loop>
-      <source src="./sounds/tlo.mp3&muted=1" type="audio/mp3">
-    </audio>
+
+    <iframe src="./sounds/tlo.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+    <!-- <audio id="tlo" autoplay loop muted="0">
+      <source src="./sounds/tlo.mp3" type="audio/mp3">
+    </audio> -->
 
     <div id="room">    
       <img id="comp" src="pics/comp.png" onclick="click_screen()">
