@@ -57,5 +57,5 @@ function closeUL() {
 }
 
 function goBack() {
-  location.href = "index.html";
+  location.href = "main.html";
 }
