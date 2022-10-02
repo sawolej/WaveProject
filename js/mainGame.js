@@ -17,19 +17,19 @@ canvas.width = 1920;
 canvas.height = 1080;
 
 // Instantiate exportable disk objects
-export const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
-export const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270);
-export const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9640, 135);
-export const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640);
-export const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625);
-export const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 3005, 224);
-export const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676);
-export const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303);
-export const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640);
-export const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645);
-export const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204);
-export const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150);
-export const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424);
+const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
+const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270);
+const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9640, 135);
+const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640);
+const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625);
+const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 3005, 224);
+const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676);
+const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303);
+const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640);
+const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645);
+const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204);
+const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150);
+const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424);
 
 window.addEventListener('load', function() {
 
@@ -79,7 +79,6 @@ window.addEventListener('load', function() {
   let diskCounter = 0;
   let ihaveit = [];
   let wasAdded = [];
-  let container = document.querySelector(".text");
 
   const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, diskManagement, 
   diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
@@ -95,33 +94,47 @@ window.addEventListener('load', function() {
 
   for (let i = 0; i < disks.length; ++i) wasAdded[i] = false;
 
-  // Draw game intro
-  countdown.drawBase(ctx);
 function setText(arr){
   document.getElementById("tip").innerHTML = document.getElementById("tip").innerHTML + " \n New text!";
 }
-  this.setTimeout(function() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    countdown.drawFirst(ctx);
-  }, 3550)
-
-  this.setTimeout(function() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    countdown.drawSecond(ctx);
-  }, 4550)
-  
-  this.setTimeout(function() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    countdown.drawThird(ctx);
-  }, 5550)
+  // Draw the intro
+  this.setTimeout(() => {
+    countdown.update();
+  }, 2550)
 
   // End the game after 60 seconds
-  this.setTimeout(function() {
+  this.setTimeout(() => {
     quit = true;
+    if (!countdown.wasCleared) {
+      countdown.wasCleared = true;
+      clearInterval(countdown.introInterval);
+      clearInterval(countdownInterval);
+    }
   }, 33550)
 
+  // Draw countdown timer when the game runs. Move this to a countdown.js class later.
+  let time = 600;
+  const countdownEl = document.getElementById('countdown');
+
+  function update() {
+    setTimeout(() => {
+      let seconds = time % 60;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      countdownEl.innerHTML = `${seconds}`;
+      --time;
+    }, 4550)
+  }
+  
+  // Toggle timer visibility
+  setTimeout(() => {
+    if (!quit) {countdownEl.style.display = "inline-flex"}
+    else {countdownEl.style.display = "none"};
+  }, 6550)
+
+  setInterval(update, 1000);
+
   // Main game loop - refresh every frame
-  this.setTimeout(function() {
+  this.setTimeout(() => {
     function animate() {
 
       // Draw background
@@ -155,7 +168,7 @@ function setText(arr){
   
       // Side scrolling effect for moving rightwards
       if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
-        input.keys.d.pressed)) && player.x === 948) {
+        input.keys.d.pressed)) && player.x === 948 && palmRightOne3.x >= 2500) {
         
         for (let i = 0; i < disks.length; ++i) disks[i].x -= 10;
         for (let i = 0; i < palms.length; ++i) palms[i].x -= 7;
@@ -168,7 +181,7 @@ function setText(arr){
   
       // Side scrolling effect for moving leftwards
       else if ((player.currentState == player.states[2] || (player.currentState === player.states[4] &&
-        input.keys.a.pressed)) && player.x === 400) {
+        input.keys.a.pressed)) && player.x === 400 && palmRightOne3.x <= 9500) {
   
         for (let i = 0; i < disks.length; ++i) disks[i].x += 10;
         for (let i = 0; i < palms.length; ++i) palms[i].x += 7;
@@ -179,7 +192,7 @@ function setText(arr){
         mountains.x += 5;
       }
       
-      // Scroll the background images endlessly
+      // Redraw the background images endlessly
       if (background.x <= -3840 || background.x >= 0) background.x = -1920;
       if (mountains.x <= -3840 || mountains.x >= 0) mountains.x = -1920;
       if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
@@ -193,10 +206,20 @@ function setText(arr){
         }
       }
 
-      // Known bug - set.Timeout is an immediate function call,no 3s interval after collecting all the disks 
-      // this.setTimeout(function() {
-      //   if (diskCounter === disks.length) quit = true;
-      // }, 3000)
+      // Render endscreen with a 3s delay after win condition
+      // Was: if (diskCounter === disks.length) setTimeout(callEndscreen, 3000); changes made for testing 
+      function callEndscreen() {
+        quit = true;
+        countdownEl.style.display = "none";
+      }
+      if (diskCounter === 1) {
+        setTimeout(callEndscreen, 3000);
+        if (!countdown.wasCleared) {
+          countdown.wasCleared = true;
+          clearInterval(countdown.introInterval);
+          clearInterval(countdownInterval);
+        }
+      }
 
       ///POPUP
 
@@ -223,7 +246,7 @@ diskBehavioralImageE.onclick = function() {
   grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej w redukcji stresu u osób dorosłych. 
   Głównym celem projektu jest stworzenie aplikacji wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
 
-  `//"Wydział Nauk o Wychowaniu \n bajojajo";
+  `//"Wydział Nauk o Wychowaniu \n bajojajo xd";
 }
 diskBiologyImageE.onclick = function() {
   modal.style.display = "block";
@@ -274,7 +297,6 @@ diskTomaszowImageE.onclick = function() {
   document.getElementById("tip").innerHTML = "Filia w Tomaszowie Mazowieckim";
 }
 
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
@@ -288,19 +310,19 @@ window.onclick = function(event) {
 }
 /////
       if (!quit) requestAnimationFrame(animate);
-      if (quit){ 
+      if (quit) { 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        countdown.drawEnd(ctx, diskCounter, ihaveit);
+        countdown.drawEnd(diskCounter, ihaveit);
         console.log(ihaveit);
         setText(ihaveit);
         
+        // Make the animated disks visible after delay
         setTimeout(function() {
-          for(let i =0; i<diskCounter;i++) {
+          for (let i = 0; i < diskCounter; i++) {
           document.getElementById(ihaveit[i]).style.visibility = 'visible';
           console.log(ihaveit[i]);
         }
-        }, 3550 + diskCounter*900)
-
+        }, 900 + diskCounter*900)
       }
     }
     

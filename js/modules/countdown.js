@@ -4,34 +4,48 @@ class Countdown {
     this.gameHeight = gameHeight;
     this.x = 0;
     this.y = 0;
-    this.imageBase = document.getElementById('countdownImageBase');
+    // this.time = 600;
+    this.seconds = 3;
+    this.introInterval;
+    this.wasCleared = false;
+    this.countdownEl = document.getElementById('countdown');
+    this.introText = document.getElementById('introText');
+    this.introNumbers = document.getElementById('introCountdown');
     this.imageFirst = document.getElementById('countdownImageFirst');
     this.imageSecond = document.getElementById('countdownImageSecond');
     this.imageThird = document.getElementById('countdownImageThird');
     this.imageBlack = document.getElementById('blackscreen');
   }
 
-  drawBase(context) {
-    context.drawImage(this.imageBase, this.x, this.y);
+  update() {
+    let close = false;
+    if (!close) {
+      this.introInterval = setInterval(() => {
+        this.introNumbers.innerHTML = this.seconds;
+        if (this.seconds === 3) this.introNumbers.style.display = "inline-flex";
+        if (this.seconds > 0) this.seconds--;
+        else {
+          this.introNumbers.style.display = "none";
+          this.introText.style.display = "none";
+          close = true;
+        };
+      }, 1000)
+    }
+
+    // Clear the interval after 
+    if (close) clearInterval(this.introInterval);
   }
 
-  drawFirst(context) {
-    context.drawImage(this.imageFirst, this.x, this.y);
-  }
-
-  drawSecond(context) {
-    context.drawImage(this.imageSecond, this.x, this.y);
-  }
-
-  drawThird(context) {
-    context.drawImage(this.imageThird, this.x, this.y);
-  }
-
+  // updateCountdown() {
+    // let seconds = this.time % 60;
+    // this.countdownEl.innerHTML = `${seconds}`;
+    // --this.time;
+  // }
 
   //=========================================================
-  drawEnd(context, discI, arr) {
+  drawEnd(discI, arr) {
     let end =0;
-    //context.drawImage(this.imageBlack, this.x, this.y);
+    // context.drawImage(this.imageBlack, this.x, this.y);
     var count=0;
     setInterval(()=>{
     if (count<=discI) {
@@ -48,7 +62,7 @@ class Countdown {
       }
       return result;
     }
-    function showRest(x){
+    function showRest(x) {
      
         container.replaceChildren(" ");
         console.log(arr);
