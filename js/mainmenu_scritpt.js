@@ -4,7 +4,7 @@ function click_screen() {
 
 }
 function click_board() {
-    window.location.href="board.html"
+    location.href="board.html"
 }
 function click_cup() {
     window.location.href="https://sklep.uni.lodz.pl/"
