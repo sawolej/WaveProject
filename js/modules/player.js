@@ -34,7 +34,7 @@ export class Player {
     // Horizontal movement & boundaries
     this.x += this.speed;
     if (this.x < 400) this.x = 400;
-    else if (this.x >= 948) this.x = 948w;
+    else if (this.x >= 690) this.x = 690;
 
     // Vertical movement & boundaries
     this.y += this.vy;

@@ -6,7 +6,7 @@ class Mountains {
     this.width = 5760;
     this.height = 476;
     this.x = x;
-    this.y = gameHeight - this.height;
+    this.y = gameHeight - this.height + 80;
   }
 
   draw(context) {

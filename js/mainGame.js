@@ -13,23 +13,23 @@ import {Countdown} from './modules/countdown.js';
 // Define canvas properties
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
-canvas.width = 1920;
-canvas.height = 1080;
+canvas.width = 1400;
+canvas.height = 900;
 
 // Instantiate exportable disk objects
 const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
-const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270);
-const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9640, 135);
-const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640);
-const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625);
-const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 3005, 224);
-const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676);
-const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303);
-const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640);
-const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645);
-const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204);
-const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150);
-const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424);
+const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270-65);
+const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9460, 135);
+const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640-95);
+const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625-90);
+const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 2925, 224-35);
+const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676-125);
+const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303-80);
+const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640-105);
+const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645-105);
+const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204-105);
+const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150-65);
+const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424-105);
 
 window.addEventListener('load', function() {
 
@@ -41,25 +41,25 @@ window.addEventListener('load', function() {
   const input = new InputHandler();
   const background = new Background(canvas.width, canvas.height, -1920);
   const ground = new Ground(canvas.width, canvas.height, -1920);
-  const bigPlatform1 = new BigPlatform(canvas.width, canvas.height, 390, 715);
-  const bigPlatform2 = new BigPlatform(canvas.width, canvas.height, 1370, 715);
-  const bigPlatform3 = new BigPlatform(canvas.width, canvas.height, 2730, 715);
-  const bigPlatform4 = new BigPlatform(canvas.width, canvas.height, 4005, 751);
-  const bigPlatform5 = new BigPlatform(canvas.width, canvas.height, 4555, 565);
-  const bigPlatform6 = new BigPlatform(canvas.width, canvas.height, 5106, 378);
-  const bigPlatform7 = new BigPlatform(canvas.width, canvas.height, 8464, 565);
-  const smallPlatform1 = new SmallPlatform(canvas.width, canvas.height, 222, 455);
-  const smallPlatform2 = new SmallPlatform(canvas.width, canvas.height, 1620, 505);
-  const smallPlatform3 = new SmallPlatform(canvas.width, canvas.height, 1265, 345);
-  const smallPlatform4 = new SmallPlatform(canvas.width, canvas.height, 2285, 590);
-  const smallPlatform5 = new SmallPlatform(canvas.width, canvas.height, 2520, 380);
-  const smallPlatform6 = new SmallPlatform(canvas.width, canvas.height, 6034, 279);
-  const smallPlatform7 = new SmallPlatform(canvas.width, canvas.height, 6351, 389);
-  const smallPlatform8 = new SmallPlatform(canvas.width, canvas.height, 6668, 499);
-  const smallPlatform9 = new SmallPlatform(canvas.width, canvas.height, 6985, 610);
-  const smallPlatform10 = new SmallPlatform(canvas.width, canvas.height, 7302, 720);
-  const smallPlatform11 = new SmallPlatform(canvas.width, canvas.height, 8008, 755);
-  const smallPlatform12 = new SmallPlatform(canvas.width, canvas.height, 9095, 375);
+  const bigPlatform1 = new BigPlatform(canvas.width, canvas.height, 390, 625);
+  const bigPlatform2 = new BigPlatform(canvas.width, canvas.height, 1370, 625);
+  const bigPlatform3 = new BigPlatform(canvas.width, canvas.height, 2730, 625);
+  const bigPlatform4 = new BigPlatform(canvas.width, canvas.height, 4005, 641);
+  const bigPlatform5 = new BigPlatform(canvas.width, canvas.height, 4555, 475);
+  const bigPlatform6 = new BigPlatform(canvas.width, canvas.height, 5106, 308);
+  const bigPlatform7 = new BigPlatform(canvas.width, canvas.height, 8464, 475);
+  const smallPlatform1 = new SmallPlatform(canvas.width, canvas.height, 222, 465);
+  const smallPlatform2 = new SmallPlatform(canvas.width, canvas.height, 1620, 435);
+  const smallPlatform3 = new SmallPlatform(canvas.width, canvas.height, 1265, 295);
+  const smallPlatform4 = new SmallPlatform(canvas.width, canvas.height, 2285, 530);
+  const smallPlatform5 = new SmallPlatform(canvas.width, canvas.height, 2520, 350);
+  const smallPlatform6 = new SmallPlatform(canvas.width, canvas.height, 6034, 190);
+  const smallPlatform7 = new SmallPlatform(canvas.width, canvas.height, 6351, 299);
+  const smallPlatform8 = new SmallPlatform(canvas.width, canvas.height, 6668, 409);
+  const smallPlatform9 = new SmallPlatform(canvas.width, canvas.height, 6985, 520);
+  const smallPlatform10 = new SmallPlatform(canvas.width, canvas.height, 7302, 630);
+  const smallPlatform11 = new SmallPlatform(canvas.width, canvas.height, 8128, 665);
+  const smallPlatform12 = new SmallPlatform(canvas.width, canvas.height, 8975, 285);
   const sun = new Sun(canvas.width, canvas.height);
   const mountains = new Mountains(canvas.width, canvas.height, -1920);
   const palmLeftOne1 = new Palms(canvas.width, canvas.height, "palmLeftOneImage", 155, 265, 3360);
@@ -108,9 +108,8 @@ function setText(arr){
     if (!countdown.wasCleared) {
       countdown.wasCleared = true;
       clearInterval(countdown.introInterval);
-      clearInterval(countdownInterval);
     }
-  }, 33550)
+  }, 955550) // 33550 = 30 seconds
 
   // Draw countdown timer when the game runs. Move this to a countdown.js class later.
   let time = 600;
@@ -165,10 +164,12 @@ function setText(arr){
   
       // Only the one called platform will work for onGround - fix in the future
       player.getPlatformInfo(bigPlatform1);
+
+      console.log(player.x);
   
       // Side scrolling effect for moving rightwards
       if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
-        input.keys.d.pressed)) && player.x === 948 && palmRightOne3.x >= 2500) {
+        input.keys.d.pressed && !input.keys.a.pressed)) && player.x === 690 && palmRightOne3.x >= 2500) {
         
         for (let i = 0; i < disks.length; ++i) disks[i].x -= 10;
         for (let i = 0; i < palms.length; ++i) palms[i].x -= 7;
@@ -212,12 +213,11 @@ function setText(arr){
         quit = true;
         countdownEl.style.display = "none";
       }
-      if (diskCounter === 1) {
+      if (diskCounter === 13) {
         setTimeout(callEndscreen, 3000);
         if (!countdown.wasCleared) {
           countdown.wasCleared = true;
           clearInterval(countdown.introInterval);
-          clearInterval(countdownInterval);
         }
       }
 
@@ -322,11 +322,11 @@ window.onclick = function(event) {
           document.getElementById(ihaveit[i]).style.visibility = 'visible';
           console.log(ihaveit[i]);
         }
-        }, 900 + diskCounter*900)
+        }, 4550 + diskCounter*900)
       }
     }
     
     animate();
       
-  }, 6550)
+  }, 1550)
 })

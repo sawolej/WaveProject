@@ -1,257 +1,266 @@
-
 @font-face {
-    font-family: "Silkscreen2";
-    src: url("/WaveProject/font/Silkscreen-Regular.ttf") format("truetype");
-    
-  }
-@font-face {
-    font-family: "Silkscreen";
-    src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
-  }
-* {
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style-type: none;
-    font-family: 'Silkscreen', sans-serif;
-    -webkit-user-select: none; /* Safari */        
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
+  font-family: "Silkscreen2";
+  src: url("/WaveProject/font/Silkscreen-Regular.ttf") format("truetype");
 }
 
-/*--*/
+@font-face {
+  font-family: "Silkscreen";
+  src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: 'Silkscreen', sans-serif;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
 
 .text span {
-    opacity: 0;
- }
- .text span.revealed {
-    opacity: 1;
- }
- .text span.green {
-    color: #27ae60;
-    
- }
- .text span.red {
-    color: #ffffff;
-    font-size: 200px;
-    white-space: pre;
-    
+  opacity: 0;
+}
 
- }
- .text span.gold {
-    color: #eeea09;
-    font-size: 150px;
+.text span.revealed {
+  opacity: 1;
+}
 
- }
- 
- /* Demo styles */
- body {
-    background: #3498db;
+.text span.green {
+  color: #27ae60;
+}
 
-    font-family: 'Silkscreen', sans-serif;
+.text span.red {
+  color: #ffffff;
+  font-size: 200px;
+  white-space: pre;
+}
 
- }
- .text {
-    text-align: center;
-    font-size: 40px;
-    word-spacing: 0.2em;
-    margin: 50px;
-    margin-left: 300px;
-    position:absolute;
-    line-height: 1.2em;
-    top: 50px;
-    color: #ffffff;
- }
+.text span.gold {
+  color: #eeea09;
+  font-size: 150px;
+}
+
+/* Demo styles */
+body {
+  background: #3498db;
+  font-family: 'Silkscreen', sans-serif;
+}
+
+.text {
+  text-align: center;
+  font-size: 40px;
+  word-spacing: 0.2em;
+  margin: 50px;
+  margin-left: 300px;
+  position:absolute;
+  line-height: 1.2em;
+  top: 50px;
+  color: #ffffff;
+}
 
 /*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
 
 .os_container {
-    width: 100%;
-    min-height: 100vh;
-    background-image: url(pic/temp_wallpaper.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-#os_apps {
-    width: 100%;
-    padding: 10px;
-}
-#os_apps .app {
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-#os_apps .app img {
-    width: 64px;
-    margin: 0 auto;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-}
-#os_apps .app p {
-    color: rgb(240, 219, 192);
-    font-size: 14px;
-    text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(pic/temp_wallpaper.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+#os_apps {
+  width: 100%;
+  padding: 10px;
+}
+
+#os_apps .app {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+#os_apps .app img {
+  width: 64px;
+  margin: 0 auto;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+#os_apps .app p {
+  color: rgb(240, 219, 192);
+  font-size: 14px;
+  text-align: center;
+}
 
 .app_window {
-    position: absolute;
-    top: 20vh;
-    left: 20%;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    height:  30vh;
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    overflow: hidden;
-    resize: both;
-    transition: 0.3s;
+  position: absolute;
+  top: 20vh;
+  left: 20%;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height:  30vh;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  overflow: hidden;
+  resize: both;
+  transition: 0.3s;
 }
+
 .app_window .window_bar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    background: rgb(182, 182, 182);
-    border: 1px solid rgb(0, 0, 0);
-    padding: 0 10px;
-    cursor: move;
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: rgb(182, 182, 182);
+  border: 1px solid rgb(0, 0, 0);
+  padding: 0 10px;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
 }
+
 .app_window .window_bar:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
+
 .app_window .window_bar .brand {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .app_window .window_bar .brand img {
-    width: 32px;
+  width: 32px;
 }
+
 .app_window .window_bar .brand p {
-    color: rgb(73, 0, 0);
-    margin-left: 10px;
+  color: rgb(73, 0, 0);
+  margin-left: 10px;
 }
+
 .app_window .window_bar .brand .buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .app_window .window_bar .brand .buttons button {
-    outline: 6px;
-    border: 6px;
-    margin-right: 6px;
-    color: rgb(0, 0, 0);
-    padding: 6px;
-    width: 30px;
-    height: 30px;
-    border-radius: 95%;
-    cursor: pointer;
-    transition: 0.3s;
+  outline: 6px;
+  border: 6px;
+  margin-right: 6px;
+  color: rgb(0, 0, 0);
+  padding: 6px;
+  width: 30px;
+  height: 30px;
+  border-radius: 95%;
+  cursor: pointer;
+  transition: 0.3s;
 }
+
 .app_window .window_bar .brand .buttons button:first-child {
-    background: rgb(3, 82, 0);
+  background: rgb(3, 82, 0);
 }
+
 .app_window .window_bar .brand .buttons button:nth-child(2) {
-    background: rgb(59, 0, 82);
+  background: rgb(59, 0, 82);
 }
+
 .app_window .window_bar .brand .buttons button:nth-child(3) {
-    background: rgb(121, 45, 1);
+  background: rgb(121, 45, 1);
 }
+
 .app_window .window_bar .brand .buttons button:last-child {
-    background: rgb(255, 43, 43);
-    margin-right: 0;
+  background: rgb(255, 43, 43);
+  margin-right: 0;
 }
+
 .app_window .window_bar .brand .buttons button:hover {
-    background: rgb(182, 182, 182);
-    color: rgb(255, 43, 43);
+  background: rgb(182, 182, 182);
+  color: rgb(255, 43, 43);
 }
+
 .app_window .app {
-    width: 100%;
-    height: 100%;
-    background: #FFF;
-    overflow: auto;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  overflow: auto;
 }
-
-
-
-
 
 /*-----------------------------------------------ROOM-----------------------------------------------------*/ 
 
 #wrapper {
-    margin-left:auto;
-    margin-right:auto;
-    width:960px;
+  margin-left:auto;
+  margin-right:auto;
+  width:960px;
 }
 
-#board{
-
-    position: relative;
-    scale: 1 ;
-    width: 500px;
-    top: -60px;
-    left: -400px;
-    cursor: zoom-in;
-    opacity: 0;
-
+#board {
+  position: relative;
+  scale: 1 ;
+  width: 500px;
+  top: -60px;
+  left: -400px;
+  cursor: zoom-in;
+  opacity: 0;
 }
-#comp{
-    scale: 0.5 ;
-    top: 0px;
-    left: 300px;
-    width: 350px;
-    cursor: pointer;
-    opacity: 0;
-    position: relative; left:600px; top: 100px;  
 
+#comp {
+  scale: 0.5 ;
+  top: 0px;
+  left: 300px;
+  width: 350px;
+  cursor: pointer;
+  opacity: 0;
+  position: relative; left:600px; top: 100px;  
 }
-#cup{
-    scale: 0.5;
-    top: -702px;
-    left: -27px;
-    width: 350px;
-    cursor: pointer;
-    position: relative;
 
+#cup {
+  scale: 0.5;
+  top: -702px;
+  left: -27px;
+  width: 350px;
+  cursor: pointer;
+  position: relative;
 }
+
 /* Commented the below due to a empty rulesets warning popping up, it just annoyed me */
 /* #cup:hover{ */
 /* } */
 
-#ekranGif{
-    scale: 0.23 ;
-    position: relative;
-    top: -365px;
-    left: 274px;
-    cursor: pointer; 
+#ekranGif {
+  scale: 0.23 ;
+  position: relative;
+  top: -365px;
+  left: 274px;
+  cursor: pointer; 
+}
+  
+#room {
+  padding: 0;
+  width: 1400px;
+  height: 780px;
+  background-image: url(pic/room.png);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-  
-#room{
-    padding: 0;
-    width: 1400px;
-    height: 780px;
-    background-image: url(pic/room.png);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 /*-----------------------------------------------BOARD-----------------------------------------------------*/ 
+
 .undraggable {
   -webkit-user-drag: none;
   user-select: none;
@@ -260,228 +269,216 @@
   -ms-user-select: none;
 }
 
-#board_page{
-    padding: 0;
-    width: 1400px;
-    height: 840px;
-    background-image: url(pic/board_page.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-
-    transform: translate(-16%, 0);
-    
+#board_page {
+  padding: 0;
+  width: 1400px;
+  height: 840px;
+  background-image: url(pic/board_page.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  transform: translate(-16%, 0);
 }
 
-#sheet1{
-    position: relative;
-    scale: 1 ;
-    width: 500px;
-    top: -807px;
-    left: -171px;
-    visibility: hidden;
-   
-}
-#sheet2{
-    position: relative;
-    scale: 1 ;
-    width: 500px;
-    top: -1421px;
-    left: 48px;
-    visibility: hidden; 
-   
-}
-#sheet3{
-    position: relative;
-    scale: 1 ;
-    width: 500px;
-    top: -1654px;
-    left: 378px;
-    visibility: hidden; 
-   
-}
-#sheet4{
-    position: relative;
-    scale: 1 ;
-    width: 500px;
-    top: -2324px;
-    left: 539px;
-    visibility: hidden;
-   
+#sheet1 {
+  position: relative;
+  scale: 1 ;
+  width: 500px;
+  top: -807px;
+  left: -171px;
+  visibility: hidden;
 }
 
-#sheet1click{
-    position: relative;
-    scale: 1 ;
-    width: 130px;
-    top: -1150px;
-    left: -670px;
-    cursor: pointer;
-    opacity: 0;
+#sheet2 {
+  position: relative;
+  scale: 1 ;
+  width: 500px;
+  top: -1421px;
+  left: 48px;
+  visibility: hidden; 
 }
 
-#sheet2click{
-    position: relative;
-    scale: 1 ;
-    width: 280px;
-    height: 200px;
-    top: -920px;
-    left: -550px;
-    cursor: pointer;
-    opacity: 0;
-}
-#sheet3click{
-    position: relative;
-    scale: 1 ;
-    width: 200px;
-    height: 200px;
-    top: -986px;
-    left: 542px;
-    cursor: pointer;
-    opacity: 0;
-}
-#sheet4click{
-    position: relative;
-    scale: 1 ;
-    width: 250px;
-    height: 100px;
-    top: -1290px;
-    left: 482px;
-    cursor: pointer;
-    opacity: 0;
+#sheet3 {
+  position: relative;
+  scale: 1 ;
+  width: 500px;
+  top: -1654px;
+  left: 378px;
+  visibility: hidden; 
 }
 
-#buttonsFB{
-    position: relative;
-    top: -80px;
-    left:-50px;
-    
+#sheet4 {
+  position: relative;
+  scale: 1 ;
+  width: 500px;
+  top: -2324px;
+  left: 539px;
+  visibility: hidden;
 }
 
-  #insta{
-
-    color: rgb(255, 255, 255);
-    border: 1px  #bceaab; /* Green */
-    background-color: rgba(255, 255, 255, 0);
-    position: relative;
-    top: -2203px;
-    left: 156px;
-    opacity: 1;
-    visibility: hidden;
-  }
-  
-  #fb{
-
-
-    color: rgb(255, 255, 255);
-    border: 1px  #bceaab; /* Green */
-    background-color: rgba(255, 255, 255, 0);
-    position: relative;
-    top: -2469px;
-    left: 220px;
-    opacity: 1;
-    visibility: hidden;
-  }
-
-  #tiktok{
-
-    color: rgb(255, 255, 255);
-    border: 1px  #bceaab; /* Green */
-    background-color: rgba(255, 255, 255, 0);
-    position: relative;
-    top: -2335px;
-    left: -200px;
-    opacity: 1;
-    visibility: hidden;
-  }
-  #insta:hover{
-    background-color: #b6e8b8; /* Green */
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: -2203px;
-    left: 156px;
-    opacity: 1;
-    visibility: hidden;
-    cursor: pointer;
-    
-  }
-  
-  #fb:hover{
-    background-color: #b6e8b8; /* Green */
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: -2469px;
-    left: 220px;
-    opacity: 1;
-    visibility: hidden;
-    cursor: pointer;
-  }
-
-  #tiktok:hover{
-    background-color: #b6e8b8; /* Green */
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: -2335px;
-    left: -200px;
-    opacity: 1;
-    visibility: hidden;
-    cursor: pointer;
-  }
-
-  #buttonsUL{
-    z-index: 2;
-    position: relative;
-    top: -100px;
-    left:30px;
-    visibility: hidden;
-    
+#sheet1click {
+  position: relative;
+  scale: 1 ;
+  width: 130px;
+  top: -1150px;
+  left: -670px;
+  cursor: pointer;
+  opacity: 0;
 }
 
-  #UL1:hover{
-    background-color: #d3b9ea; 
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: -2389px;
-    left: 190px;
-    opacity: 1;
-    cursor: pointer;
+#sheet2click {
+  position: relative;
+  scale: 1 ;
+  width: 280px;
+  height: 200px;
+  top: -920px;
+  left: -550px;
+  cursor: pointer;
+  opacity: 0;
+}
 
-  }
+#sheet3click {
+  position: relative;
+  scale: 1 ;
+  width: 200px;
+  height: 200px;
+  top: -986px;
+  left: 542px;
+  cursor: pointer;
+  opacity: 0;
+}
 
-  #UL2:hover{
-    background-color: #d3b9ea; 
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: -2203px;
-    left: 0px;
-    opacity: 1;
-    cursor: pointer;
+#sheet4click {
+  position: relative;
+  scale: 1 ;
+  width: 250px;
+  height: 100px;
+  top: -1290px;
+  left: 482px;
+  cursor: pointer;
+  opacity: 0;
+}
 
-  }
-  #UL1{
+#buttonsFB {
+  position: relative;
+  top: -80px;
+  left:-50px;
+}
 
-    color: rgb(255, 255, 255);
-    border: 1px  #bceaab; /* Green */
-    background-color: rgba(255, 255, 255, 0);
-    position: relative;
-    top: -2389px;
-    left: 190px;
-    opacity: 1;
+#insta {
+  color: rgb(255, 255, 255);
+  border: 1px  #bceaab; /* Green */
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+  top: -2203px;
+  left: 156px;
+  opacity: 1;
+  visibility: hidden;
+}
 
-  }
+#fb {
+  color: rgb(255, 255, 255);
+  border: 1px  #bceaab; /* Green */
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+  top: -2469px;
+  left: 220px;
+  opacity: 1;
+  visibility: hidden;
+}
 
-  #UL2{
+#tiktok {
+  color: rgb(255, 255, 255);
+  border: 1px  #bceaab; /* Green */
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+  top: -2335px;
+  left: -200px;
+  opacity: 1;
+  visibility: hidden;
+}
 
-    color: rgb(255, 255, 255);
-    border: 1px  #bceaab; /* Green */
-    background-color: rgba(255, 255, 255, 0);
-    position: relative;
-    top: -2203px;
-    left: 0px;
-    opacity: 1;
+#insta:hover {
+  background-color: #b6e8b8; /* Green */
+  color: rgb(0, 0, 0);
+  position: relative;
+  top: -2203px;
+  left: 156px;
+  opacity: 1;
+  visibility: hidden;
+  cursor: pointer;
+}
 
-  }
+#fb:hover {
+  background-color: #b6e8b8; /* Green */
+  color: rgb(0, 0, 0);
+  position: relative;
+  top: -2469px;
+  left: 220px;
+  opacity: 1;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+#tiktok:hover {
+  background-color: #b6e8b8; /* Green */
+  color: rgb(0, 0, 0);
+  position: relative;
+  top: -2335px;
+  left: -200px;
+  opacity: 1;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+#buttonsUL {
+  z-index: 2;
+  position: relative;
+  top: -100px;
+  left:30px;
+  visibility: hidden;
+}
+
+#UL1:hover {
+  background-color: #d3b9ea; 
+  color: rgb(0, 0, 0);
+  position: relative;
+  top: -2389px;
+  left: 190px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#UL2:hover {
+  background-color: #d3b9ea; 
+  color: rgb(0, 0, 0);
+  position: relative;
+  top: -2203px;
+  left: 0px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#UL1 {
+  color: rgb(255, 255, 255);
+  border: 1px  #bceaab; /* Green */
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+  top: -2389px;
+  left: 190px;
+  opacity: 1;
+}
+
+#UL2 {
+  color: rgb(255, 255, 255);
+  border: 1px  #bceaab; /* Green */
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+  top: -2203px;
+  left: 0px;
+  opacity: 1;
+}
 
 .arrow {
   width: 105px;
@@ -499,205 +496,160 @@
   left: 0;
   z-index: 99;
 }
+
 .arrow:hover .img-top {
   display: inline;
   cursor: pointer;
 }
   
-/*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
+/*-------------------------------DESKTOP-----------------------------------*/ 
+
 #desktop_page {
-    padding: 0;
-    width: 1400px;
-    height: 900px;
-    background-image: url(pic/temp_wallpaper.png);
+  padding: 0;
+  width: 1400px;
+  height: 900px;
+  background-image: url(pic/temp_wallpaper.png);
 }
 
 p {
-    color: black;
+  color: black;
 }
+
 p1 {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 h1 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #screen_page {
-    /* font-family: "Silkscreen", monospace; */
-    font-size: 18px;
-    padding: 0;
-    width: 1400px;
-    height: 900px;
-    background-color:rgb(0, 0, 0);
-    
-    
+  /* font-family: "Silkscreen", monospace; */
+  font-size: 18px;
+  padding: 0;
+  width: 1400px;
+  height: 900px;
+  background-color:rgb(0, 0, 0);
 }
 
 body {
-    background: black;
-    font-family: 'Silkscreen', sans-serif;
-    margin: 0;
-  }
-  
-  #canvas1 {
-    z-index: 0;
-  }
-
-  #countdown {
-    position: absolute;
-    top: 15px;
-    left: 1805px;
-    height: 50px;
-    width: 100px; 
-    background-color: #fff;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-    margin: 0;
-  }
-
-  #introText {
-    position: absolute;
-    top: 215px;
-    left: 0px;
-    width: 1920px;
-    display: inline-flex;
-    font-size: 70px;
-    color: #fff;
-    text-align: center;
-    justify-content: center;
-    margin-top: 0px;
-  }
-
-  #introCountdown {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1920px;
-    display: none;
-    font-size: 400px;
-    color: #fff;
-    text-align: center;
-    justify-content: center;
-  }
-  
-  #playerImage, #floppyDiskImage, #enemyImage, #smallPlatformImage, 
-  #bigPlatformImage, #groundImage, #backgroundImage, #diskBehavioralImage, 
-  #diskBiologyImage, #diskChadImage, #diskChemistryImage, #diskEksocImage, 
-  #diskGeographyImage, #diskInternationalImage, #diskLawImage, #diskManagementImage, 
-  #diskPhilologyImage, #diskPhilosophyImage, #diskTomaszowImage, #diskMathsImage, 
-  #sunImage, #mountainsImage, #pcImage, #glowImage, #palmLeftOneImage, #palmLeftTwoImage, #palmRightOneImage,
-  #palmRightTwoImage {
-    display: none;
-  }
-  
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    height:300px;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  #myBtn{   
-
-    position: relative;
-    top:  -748px;
-    left: 700px;
-    opacity: 1;
-    visibility: hidden;
-  }
-
-  #diskBehavioralImageE{   
-    margin: 20px;
-
-
-  }
-  #diskBehavioralImageE{   
-    margin: 20px;
-
-  }
-  #diskBiologyImageE{   
-
-    margin: 20px;
+  background: black;
+  font-family: 'Silkscreen', sans-serif;
+  margin: 0;
 }
-  #diskChadImageE{   
 
-    margin: 20px;
+/*-------------------------------MAIN-GAME-----------------------------------*/ 
+  
+#canvas1 {
+  z-index: 0;
 }
-  #diskChemistryImageE{   
 
-    margin: 20px;
+#countdown {
+  position: absolute;
+  top: 15px;
+  left: 1805px;
+  height: 50px;
+  width: 100px; 
+  background-color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  margin: 0;
+}
 
-  }
-  #diskEksocImageE{   
+#introText {
+  position: absolute;
+  top: 215px;
+  left: 0px;
+  width: 1920px;
+  display: inline-flex;
+  font-size: 70px;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  margin-top: 0px;
+}
 
-    margin: 20px;
-  }
-  #diskGeographyImageE{   
-    margin: 20px;
-  }
-  #diskInternationalImageE{   
+#introCountdown {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1920px;
+  display: none;
+  font-size: 400px;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+}
 
-    margin: 20px;
-  }
-  #diskLawImageE{   
-    margin: 20px;
-  }
-  #diskMathsImageE{   
-    margin: 20px;
-  }
-  #diskManagementImageE{   
-    margin: 20px;
-  }
-  #diskPhilologyImageE{   
-    margin: 20px;
-  }
-  #diskPhilosophyImageE{   
-    margin: 20px;
-  }
-  #diskTomaszowImageE{   
-    margin: 20px;
-  }
-  #endDisks{
-    visibility: hidden;
-    position: relative;
-    top:  -748px;
-    left: 150px;;
-    opacity: 1;
-    align-items: center;
-cursor: pointer;
-    }
+#playerImage, #floppyDiskImage, #enemyImage, #smallPlatformImage, 
+#bigPlatformImage, #groundImage, #backgroundImage, #diskBehavioralImage, 
+#diskBiologyImage, #diskChadImage, #diskChemistryImage, #diskEksocImage, 
+#diskGeographyImage, #diskInternationalImage, #diskLawImage, #diskManagementImage, 
+#diskPhilologyImage, #diskPhilosophyImage, #diskTomaszowImage, #diskMathsImage, 
+#sunImage, #mountainsImage, #pcImage, #glowImage, #palmLeftOneImage, #palmLeftTwoImage, #palmRightOneImage,
+#palmRightTwoImage {
+  display: none;
+}
 
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height:300px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#myBtn {   
+  position: relative;
+  top:  -748px;
+  left: 700px;
+  opacity: 1;
+  visibility: hidden;
+}
+
+#diskBehavioralImageE, #diskBiologyImageE, #diskChadImageE, #diskChemistryImageE, 
+#diskEksocImageE, #diskGeographyImageE, #diskInternationalImageE, #diskLawImageE, #diskMathsImageE,
+#diskManagementImageE, #diskPhilologyImageE, #diskPhilosophyImageE, #diskTomaszowImageE {   
+  margin: 20px;
+}
+
+#endDisks {
+  visibility: hidden;
+  position: relative;
+  top:  -748px;
+  left: 150px;;
+  opacity: 1;
+  align-items: center;
+  cursor: pointer;
+}
