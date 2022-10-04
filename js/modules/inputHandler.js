@@ -16,21 +16,33 @@ export class InputHandler {
       }      
     }
 
-    // Assign last WSAD + E input to keys
+    // Assign last WSAD 
     window.addEventListener('keydown', (e) => {
 
       switch(e.key) {
+
         case 'a':
           this.keys.a.pressed = true;
           break;
+
+        case 'A':
+          this.keys.a.pressed = true;
+          break;
+
         case 'd':
           this.keys.d.pressed = true;
           break;
+
+        case 'D':
+          this.keys.d.pressed = true;
+          break;
+
         case 'w':
           this.keys.w.pressed = true;
           break;
-        case 'e':
-          this.keys.e.pressed = true;
+
+        case 'W':
+          this.keys.w.pressed = true;
           break;
       }
     });
@@ -38,17 +50,29 @@ export class InputHandler {
     window.addEventListener('keyup', (e) => {
 
       switch(e.key) {
+
         case 'a':
           this.keys.a.pressed = false;
+        break;
+
+        case 'A':
+          this.keys.a.pressed = false;
           break;
+
         case 'd':
           this.keys.d.pressed = false;
           break;
+
+        case 'D':
+          this.keys.d.pressed = false;
+          break;
+
         case 'w':
           this.keys.w.pressed = false;
           break;
-        case 'e':
-          this.keys.e.pressed = false;
+
+        case 'W':
+          this.keys.w.pressed = false;
           break;
       }
     })

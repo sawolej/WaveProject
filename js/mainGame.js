@@ -18,18 +18,18 @@ canvas.height = 900;
 
 // Instantiate exportable disk objects
 const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
-const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 270-65);
+const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 205);
 const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9460, 135);
-const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 640-95);
-const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 625-90);
-const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 2925, 224-35);
-const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 676-125);
-const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 303-80);
-const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 640-105);
-const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 645-105);
-const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 204-105);
-const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 150-65);
-const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 424-105);
+const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 545);
+const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 535);
+const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 2925, 189);
+const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 551);
+const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 223);
+const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 535);
+const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 540);
+const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 99);
+const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 85);
+const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 319);
 
 window.addEventListener('load', function() {
 
@@ -80,8 +80,8 @@ window.addEventListener('load', function() {
   let ihaveit = [];
   let wasAdded = [];
 
-  const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, diskManagement, 
-  diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
+  const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw, 
+  diskManagement, diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
 
   const palms = [palmLeftOne1, palmLeftTwo1, palmLeftTwo2, palmLeftTwo3, 
   palmRightOne1, palmRightOne2, palmRightOne3, palmRightTwo1, palmRightTwo2, palmRightTwo3,
@@ -98,9 +98,7 @@ function setText(arr){
   document.getElementById("tip").innerHTML = document.getElementById("tip").innerHTML + " \n New text!";
 }
   // Draw the intro
-  this.setTimeout(() => {
-    countdown.update();
-  }, 2550)
+  this.setTimeout(() => {countdown.update()}, 2550)
 
   // End the game after 60 seconds
   this.setTimeout(() => {
@@ -108,8 +106,9 @@ function setText(arr){
     if (!countdown.wasCleared) {
       countdown.wasCleared = true;
       clearInterval(countdown.introInterval);
+      countdownEl.style.display = "none"
     }
-  }, 955550) // 33550 = 30 seconds
+  }, 67550) // 67550 = 60 seconds
 
   // Draw countdown timer when the game runs. Move this to a countdown.js class later.
   let time = 600;
@@ -165,8 +164,6 @@ function setText(arr){
       // Only the one called platform will work for onGround - fix in the future
       player.getPlatformInfo(bigPlatform1);
 
-      console.log(player.x);
-  
       // Side scrolling effect for moving rightwards
       if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
         input.keys.d.pressed && !input.keys.a.pressed)) && player.x === 690 && palmRightOne3.x >= 2500) {
@@ -198,7 +195,7 @@ function setText(arr){
       if (mountains.x <= -3840 || mountains.x >= 0) mountains.x = -1920;
       if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
 
-      // Win after picking up all disks
+      // Store picked disks to render them on endscreen
       for (let i = 0; i < disks.length; ++i) {
         if (disks[i].isPicked && !wasAdded[i]) {
           wasAdded[i] = true;
@@ -208,12 +205,13 @@ function setText(arr){
       }
 
       // Render endscreen with a 3s delay after win condition
-      // Was: if (diskCounter === disks.length) setTimeout(callEndscreen, 3000); changes made for testing 
       function callEndscreen() {
         quit = true;
         countdownEl.style.display = "none";
       }
-      if (diskCounter === 13) {
+
+      // Call endscreen with a 3s delay after picking up all the disks 
+      if (diskCounter === disks.length) {
         setTimeout(callEndscreen, 3000);
         if (!countdown.wasCleared) {
           countdown.wasCleared = true;
@@ -221,112 +219,117 @@ function setText(arr){
         }
       }
 
-      ///POPUP
-
       // Get the modal
-var modal = document.getElementById("myModal");
+      var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
-diskBehavioralImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip")
-  .innerHTML = `Wydział Nauk o Wychowaniu<br>
-  <br>
-  <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
-  <br>
-  <b>Czy wiesz, że...</b><br>
-  Na Uniwersytecie Łódzkim masz możliwość rozwijania swojej ścieżki naukowej między innymi dzięki grantom badawczym. 
-  Zespół badawczy związany z Wydziałem NAuk o Wychowaniu otrzymał 
-  grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej w redukcji stresu u osób dorosłych. 
-  Głównym celem projektu jest stworzenie aplikacji wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
+      // When the user clicks on the button, open the modal
+      diskBehavioralImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = 
+        `Wydział Nauk o Wychowaniu<br>
+        <br>
+        <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
+        <br>
+        <b>Czy wiesz, że...</b><br>
+        Na Uniwersytecie Łódzkim masz możliwość rozwijania swojej ścieżki naukowej między innymi 
+        dzięki grantom badawczym. Zespół badawczy związany z Wydziałem NAuk o Wychowaniu otrzymał 
+        grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej 
+        w redukcji stresu u osób dorosłych. Głównym celem projektu jest stworzenie aplikacji 
+        wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny 
+        w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
+        `
+      }
 
-  `//"Wydział Nauk o Wychowaniu \n bajojajo xd";
-}
-diskBiologyImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Biologii i Ochrony Środowiska";
-}
-diskChadImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
-}
-diskChemistryImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Chemii";
-}
-diskEksocImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Ekonomiczno-Socjologiczny";
-}
-diskGeographyImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Nauk Geograficznych";
-}
-diskInternationalImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
-}
-diskLawImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Prawa i Administracji";
-}
-diskMathsImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Matematyki i Informatyki";
-}
-diskManagementImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Zarządzania";
-}
-diskPhilologyImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Filologiczny";
-}
-diskPhilosophyImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Wydział Filozoficzno-Historyczny";
-}
-diskTomaszowImageE.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById("tip").innerHTML = "Filia w Tomaszowie Mazowieckim";
-}
+      diskBiologyImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Biologii i Ochrony Środowiska";
+      }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+      diskChadImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
+      }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-/////
+      diskChemistryImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Chemii";
+      }
+
+      diskEksocImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Ekonomiczno-Socjologiczny";
+      }
+
+      diskGeographyImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Nauk Geograficznych";
+      }
+
+      diskInternationalImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
+      }
+
+      diskLawImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Prawa i Administracji";
+      }
+      diskMathsImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Matematyki i Informatyki";
+      }
+
+      diskManagementImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Zarządzania";
+      }
+
+      diskPhilologyImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Filologiczny";
+      }
+
+      diskPhilosophyImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Wydział Filozoficzno-Historyczny";
+      }
+
+      diskTomaszowImageE.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("tip").innerHTML = "Filia w Tomaszowie Mazowieckim";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {if (event.target == modal) {modal.style.display = "none"}}
+
+      // Clear the main game canvas on game end
       if (!quit) requestAnimationFrame(animate);
       if (quit) { 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         countdown.drawEnd(diskCounter, ihaveit);
-        console.log(ihaveit);
         setText(ihaveit);
         
         // Make the animated disks visible after delay
         setTimeout(function() {
           for (let i = 0; i < diskCounter; i++) {
           document.getElementById(ihaveit[i]).style.visibility = 'visible';
-          console.log(ihaveit[i]);
-        }
+          }
         }, 4550 + diskCounter*900)
       }
     }
     
     animate();
       
-  }, 1550)
+  }, 6550)
 })
