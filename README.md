@@ -27,4 +27,4 @@ Vaporwave-style game made for university
 ## Notes
 1. Please make sure to create divs only when necessary - stacking those makes code complicated and a lot of those were not needed
 2. Please use `position: absolute;` CSS values rather than `position: relative;` for images and divs - the `relative` property is too unpredictible and not suited for those
-3. Please use % values in CSS `width` & `height` properites rather than hard-coded px values - it's 10 times easier to create a responsive page design later should we want to
+3. Please use % values in CSS `width` & `height`, `top` & `left` properites rather than hard-coded px values - it's 10 times easier to create a responsive page design later should we want to
