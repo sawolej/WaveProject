@@ -4,26 +4,25 @@ let ap3 = document.getElementById("tiktok");
 let ule = document.getElementById("buttonsUL");
 
 function openSheet(x) {
-  console.log("hehe open");
   var x = document.getElementById(x);
   if (x.style.visibility === 'hidden') {
     closeAll();
     closeApp();
     closeUL();
     x.style.visibility = 'visible';
-    if(x==sheet1){
-        if (ap1.style.visibility === 'hidden') {            
-            openApp();
-          } else {
-            ap1.style.visibility = 'hidden';
-          }
-    }else if(x==sheet2){
-      if (ule.style.visibility === 'hidden') {            
+    if (x == sheet1) {
+      if (ap1.style.visibility === 'hidden') {
+        openApp();
+      } else {
+        ap1.style.visibility = 'hidden';
+      }
+    } else if (x == sheet2) {
+      if (ule.style.visibility === 'hidden') {
         openUL();
-        } else {
-          ule.style.visibility = 'hidden';
-        }
-  }
+      } else {
+        ule.style.visibility = 'hidden';
+      }
+    }
   } else {
     x.style.visibility = 'hidden';
     closeApp();
@@ -32,20 +31,19 @@ function openSheet(x) {
 }
 
 function closeAll() {
-    for (let i=1; i<5; i++) document.getElementById(`sheet${i}`).style.visibility = 'hidden';
-
+  for (let i = 1; i < 5; i++) document.getElementById(`sheet${i}`).style.visibility = 'hidden';
 }
 
 function closeApp() {
-    ap2.style.visibility = 'hidden';
-    ap1.style.visibility = 'hidden';
-    ap3.style.visibility = 'hidden';
+  ap2.style.visibility = 'hidden';
+  ap1.style.visibility = 'hidden';
+  ap3.style.visibility = 'hidden';
 }
 
 function openApp() {
-    ap2.style.visibility = 'visible';
-    ap1.style.visibility = 'visible';
-    ap3.style.visibility = 'visible';
+  ap2.style.visibility = 'visible';
+  ap1.style.visibility = 'visible';
+  ap3.style.visibility = 'visible';
 }
 
 function openUL() {
