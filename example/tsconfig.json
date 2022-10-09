@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "target": "ES2018",
+        "module": "Node16",
+        "lib": [
+            "ES2018",
+            "DOM"
+        ],
+        "moduleResolution": "Node16",
+        "rootDir": ".",
+        "outDir": "build",
+        "allowSyntheticDefaultImports": true,
+        "importHelpers": true,
+        "alwaysStrict": true,
+        "sourceMap": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "strictNullChecks": false,
+        "removeComments": true
+    },
+    // "include": [
+    //     // "init.ts",
+    //     "server/**/*",
+    //     "web/**/*"
+    // ]
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Wave</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="shortcut icon" href="pics\icon_system.png" type="image/x-icon">
+</head>
+
+<body>
+  
+  <div id="game-wrapper" class="centred">
+    <canvas id="canvas1"></canvas>
+    <p id="introText">COLLECT ALL DISKS BEFORE THE TIME RUNS OUT!</p>
+    <p id="introCountdown"></p>
+    <p id="countdown"></p>
+  </div>
+  
+  <div id="endgame-text" class="text">
+   
+    <!-- text gets injected here -->
+  
+  </div>
+  
+  <audio id="countdownSound" src="./sounds/countdown.mp3"></audio>
+  <img id="playerImage" src="./graphics/player.png">
+  <img id="backgroundImage" src="./graphics/background.png">
+  <img id="smallPlatformImage" src="./graphics/smallPlatform.png">
+  <img id="bigPlatformImage" src="./graphics/bigPlatform.png">
+  <img id="groundImage" src="./graphics/ground.png">
+  <img id="diskBehavioralImage" src="./graphics/FloppyDiskBehavioralHoney.png">
+  <img id="diskBiologyImage" src="./graphics/FloppyDiskBiologyLime.png">
+  <img id="diskChadImage" src="./graphics/FloppyDiskChadColour.png">
+  <img id="diskChemistryImage" src="./graphics/FloppyDiskChemistryMarine.png">
+  <img id="diskEksocImage" src="./graphics/FloppyDiskEksocPurple.png">
+  <img id="diskGeographyImage" src="./graphics/FloppyDiskGeographyDingyGreen.png">
+  <img id="diskInternationalImage" src="./graphics/FloppyDiskInternationalBlue.png">
+  <img id="diskLawImage" src="./graphics/FloppyDiskLawRaspberry.png">
+  <img id="diskMathsImage" src="./graphics/FloppyDiskMathsGreen.png">
+  <img id="diskManagementImage" src="./graphics/FloppyDiskManagementAzure.png">
+  <img id="diskPhilologyImage" src="./graphics/FloppyDiskPhilologyNavy.png">
+  <img id="diskPhilosophyImage" src="./graphics/FloppyDiskPhilosophyTurquoise.png">
+  <img id="diskTomaszowImage" src="./graphics/FloppyDiskTomaszowCrimson.png">
+  <img id="pcImage" src="./graphics/pc.png">
+  <img id="sunImage" src="./graphics/sun.png">
+  <img id="glowImage" src="./graphics/diskGlow.png">
+  <img id="mountainsImage" src="./graphics/mountains.png">
+  <img id="palmLeftOneImage" src="./graphics/palmLeftOne.png">
+  <img id="palmLeftTwoImage" src="./graphics/palmLeftTwo.png">
+  <img id="palmRightOneImage" src="./graphics/palmRightOne.png">
+  <img id="palmRightTwoImage" src="./graphics/palmRightTwo.png">
+
+  <script type="text/javascript">
+    this.setTimeout(function() {
+      document.getElementById("countdownSound").play();
+    }, 3800);
+  </script>
+
+  <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+
+  <audio id="player" autoplay loop>
+    <source src="./sounds/mainGameMusic.mp3" type="audio/mp3">
+  </audio>
+
+ <!-- Trigger/Open The Modal -->
+ <div id = "endDisks" class="centred">
+    <img id="myBtn" src="./graphics/FloppyDiskBehavioralHoney.png"> <!-- Why is myBtn a disk image? -->
+    <img id="diskBehavioralImageE" src="./graphics/beh.gif" class="undraggable">
+    <img id="diskBiologyImageE" src="./graphics/lime.gif" class="undraggable">
+    <img id="diskChadImageE" src="./graphics/hom.gif" class="undraggable">
+    <img id="diskChemistryImageE" src="./graphics/chem.gif" class="undraggable">
+    <img id="diskEksocImageE" src="./graphics/eks.gif" class="undraggable">
+    <img id="diskGeographyImageE" src="./graphics/geo.gif" class="undraggable">
+    <img id="diskInternationalImageE" src="./graphics/inter.gif" class="undraggable">
+    <img id="diskLawImageE" src="./graphics/law.gif" class="undraggable">
+    <img id="diskMathsImageE" src="./graphics/mata.gif" class="undraggable">
+    <img id="diskManagementImageE" src="./graphics/mana.gif" class="undraggable">
+    <img id="diskPhilologyImageE" src="./graphics/philo.gif" class="undraggable">
+    <img id="diskPhilosophyImageE" src="./graphics/sofy.gif" class="undraggable">
+    <img id="diskTomaszowImageE" src="./graphics/toma.gif" class="undraggable">
+  </div>
+  
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="tip">Some text in the Modal..</p>
+    </div>
+  </div>
+
+  <script type="module" src="js/mainGame.js"></script>
+  <script type="module" src="js/modules/countdown.js"></script>
+
+</body>
+
+</html>

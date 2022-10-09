@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet", href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content ="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <!-- <iframe src="./sounds/tlo_b.mp3" allow="autoplay" id="audio" style="display: none"></iframe> -->
+  <audio id="audio" autoplay loop>
+    <source src="./sounds/tlo_b.mp3" type="audio/mp3">
+  </audio>
+  
+  <div id="wrapper">
+    <div id="board_page"></div>
+
+    <div class="arrow">
+      <img id="arrow" src="./graphics/arrow.png" alt="img">
+      <img id="arrowHover" src="./graphics/arrowHover.png" class="img-top" onclick="goBack()" alt="img">
+    </div>
+
+      <img id="sheet1" src="pics/sheet1.png" class="undraggable" alt="img">
+      <img id="sheet1click" src="pics/sheet1.png" onclick="openSheet('sheet1')" class="undraggable" alt="img">
+      <img id="sheet2click" src="pics/sheet1.png" onclick="openSheet('sheet2')" class="undraggable" alt="img">
+      <img id="sheet3click" src="pics/sheet1.png" onclick="openSheet('sheet3')" class="undraggable" alt="img">
+      <img id="sheet4click" src="pics/sheet1.png" onclick="openSheet('sheet4')" class="undraggable" alt="img">
+      <img id="sheet2" src="pics/sheet2.png" class="undraggable" alt="img">
+      <img id="sheet3" src="pics/sheet3.png" class="undraggable" alt="img">
+      <img id="sheet4" src="pics/sheet4.png" class="undraggable" alt="img">
+      <div id = "buttonsFB" >
+        <form>
+          <button id = "fb" formaction="http://stackoverflow.com">Facebook</button>
+          <button id = "insta" formaction="http://stackoverflow.com">Instagram</button>
+          <button id = "tiktok" formaction="http://stackoverflow.com">TikTok</button>
+        </form>
+      </div>
+    <div id = "buttonsUL" >
+      <form>
+            <button id = "UL1" formaction="https://rekrutacja.uni.lodz.pl/pl/">Portal Rekrutacyjny</button>
+            <button id = "UL2" formaction="http://static.uni.lodz.pl/dso/irk2/terminarz_2022_2023.pdf">Terminarz Rekrutacji 2022/2023</button>
+          </form>
+        </div>
+  </div>
+</body>
+
+<script src="js/board_script.js"></script>
+</html>
