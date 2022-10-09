@@ -27,17 +27,12 @@
 
   <body>
 
-
     <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
     <audio id="tlo" autoplay loop>
         <source src="./sounds/tlo.mp3" type="audio/mp3">
     </audio>
 
-    <!-- <audio id="tlo" autoplay loop muted="0">
-      <source src="./sounds/tlo.mp3" type="audio/mp3">
-    </audio> -->
-
-    <div id="room">    
+    <div id="room" class="room-background">
       <img id="comp" src="pics/comp.png" onclick="click_screen()">
       <img id="board" src="pics/board.JPG" onclick="click_board()" class="undraggable">
       <img id="ekranGif" src="pics/ekran.gif" onclick="click_screen()" class="undraggable">

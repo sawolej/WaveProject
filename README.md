@@ -4,7 +4,9 @@ Vaporwave-style game made for university
 ## List of known bugs
 
 ### main.html
-- The room graphics are zoomed in needlessly
+- The gif is unresponsive
+- The board is unresponsive and the element shold be a div, the board.JPG is redundant
+- The fade-in animation is played on every page load rather than once
 
 ### board.html
 - The notes clickboxes are not ligned up with notes images

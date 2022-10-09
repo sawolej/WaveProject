@@ -20,12 +20,6 @@
   user-select: none; /* Standard */
 }
 
-/* Demo styles */
-body {
-  background: #3498db;
-  font-family: 'Silkscreen', sans-serif;
-}
-
 /*-----------------------------------------------DESKTOP-----------------------------------------------------*/ 
 
 .os_container {
@@ -166,65 +160,77 @@ body {
 
 /*-----------------------------------------------ROOM-----------------------------------------------------*/ 
 
-#wrapper {
-  margin-left:auto;
-  margin-right:auto;
-  width:960px;
+.room-background {
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  resize: horizontal;
+  aspect-ratio: 1.79487179;
+  background: url(pic/room.png) no-repeat;
+  background-size: contain;
 }
 
+#room {
+  top: -3%;
+  width: 1920px;
+  height: 1080px;
+  border: 1px solid orangered;
+}
+
+/* Replace with a div in future, delete board.jpg */
 #board {
-  position: relative;
-  scale: 1 ;
-  width: 500px;
-  top: -60px;
-  left: -400px;
+  position: absolute;
+  border: 1px solid orangered;
+  width: 447px;
+  height: 262px;
+  top: 1.8%;
+  left: 0%;
   cursor: zoom-in;
   opacity: 0;
 }
 
 #comp {
-  scale: 0.5 ;
+  position: absolute;
+  scale: 0.5;
   top: 0px;
   left: 300px;
   width: 350px;
   cursor: pointer;
   opacity: 0;
-  position: relative; left:600px; top: 100px;  
 }
 
 #cup {
-  scale: 0.5;
-  top: -702px;
-  left: -27px;
-  width: 350px;
+  position: absolute;
+  /* scale: 0.5; */
+  top: 43%;
+  left: 9%;
+  width: 175px;
   cursor: pointer;
-  position: relative;
 }
-
-/* Commented the below due to a empty rulesets warning popping up, it just annoyed me */
-/* #cup:hover{ */
-/* } */
 
 #ekranGif {
-  scale: 0.23 ;
-  position: relative;
-  top: -365px;
-  left: 274px;
-  cursor: pointer; 
-}
-  
-#room {
-  padding: 0;
-  width: 1400px;
-  height: 780px;
-  background-image: url(pic/room.png);
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 20.67%;
+  top: 16.65%;
+  left: 52.5%;
+  cursor: pointer; 
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  object-fit: contain;
+  resize: horizontal;
 }
 
+
 /*-----------------------------------------------BOARD-----------------------------------------------------*/ 
+
+#wrapper {
+  margin-left:auto;
+  margin-right:auto;
+  width:960px;
+}
 
 .undraggable {
   -webkit-user-drag: none;
@@ -500,7 +506,7 @@ h1 {
 body {
   background: black;
   font-family: 'Silkscreen', sans-serif;
-  margin: 0;
+  margin: 0px;
   overflow: hidden;
 }
 
