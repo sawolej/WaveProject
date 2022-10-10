@@ -270,7 +270,7 @@ write_letter = function(num, txt) {
     }
   
     disableEPA() {
-      this.shadowRoot.querySelector(".epa").classList.add("fadeoff");
+      this.shadowRoot.querySelector(".epa").classList.add("fadeoff"); // error here: undefined shadowRoot
     }
   
     render() {

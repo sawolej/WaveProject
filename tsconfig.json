@@ -22,7 +22,7 @@
         "noImplicitAny": false,
         "noImplicitThis": false,
         "strictNullChecks": false,
-        "removeComments": true
+        // "removeComments": true
     },
     // "include": [
     //     // "init.ts",

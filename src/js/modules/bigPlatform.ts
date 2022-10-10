@@ -1,10 +1,18 @@
-class SmallPlatform {
+class BigPlatform {
+  width: number;
+  gameWidth: any;
+  gameHeight: any;
+  image: HTMLElement;
+  height: number;
+  x: any;
+  y: any;
+  
   constructor(gameWidth, gameHeight, x, y) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('smallPlatformImage');
-    this.width = 108;
-    this.height = 42;
+    this.image = document.getElementById('bigPlatformImage');
+    this.width = 282;
+    this.height = 60;
     this.x = x;
     this.y = y;
   }
@@ -20,4 +28,4 @@ class SmallPlatform {
 
 }
 
-export {SmallPlatform};
+export {BigPlatform};

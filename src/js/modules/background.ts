@@ -1,4 +1,12 @@
 class Background {
+  gameWidth: any;
+  gameHeight: any;
+  image: HTMLElement;
+  width: number;
+  height: number;
+  x: any;
+  y: number;
+  
   constructor(gameWidth, gameHeight, x) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;

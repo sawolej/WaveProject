@@ -1,4 +1,17 @@
 class Disk {
+  gameWidth: any;
+  gameHeight: any;
+  image: HTMLElement;
+  glowImage: HTMLElement;
+  glowWidth: number;
+  glowHeight: number;
+  width: number;
+  height: number;
+  x: any;
+  y: any;
+  isPicked: boolean;
+  name: any;
+  
   constructor(gameWidth, gameHeight, imageName, x, y) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;

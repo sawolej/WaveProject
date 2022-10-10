@@ -12,7 +12,7 @@ const taskbar = document.querySelector ("#taskbar")
 const pickedOnes = []
 /* Sound effects */
 const click = new Audio("sounds/click.mp3")
-const con = new Audio("sounds/not.wav")
+// const con = new Audio("sounds/not.wav")
 
 
 //Operations

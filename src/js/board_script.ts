@@ -3,20 +3,20 @@ let ap2 = document.getElementById("fb");
 let ap3 = document.getElementById("tiktok");
 let ule = document.getElementById("buttonsUL");
 
-function openSheet(x) {
-  var x = document.getElementById(x);
+function openSheet(id) {
+  const x = document.getElementById(id);
   if (x.style.visibility === 'hidden') {
     closeAll();
     closeApp();
     closeUL();
     x.style.visibility = 'visible';
-    if (x == sheet1) {
+    if (id === "sheet1") {
       if (ap1.style.visibility === 'hidden') {
         openApp();
       } else {
         ap1.style.visibility = 'hidden';
       }
-    } else if (x == sheet2) {
+    } else if (id === "sheet2") {
       if (ule.style.visibility === 'hidden') {
         openUL();
       } else {

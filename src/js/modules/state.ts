@@ -8,6 +8,8 @@ export const states = {
 }
 
 class State {
+  state: any;
+
   constructor(state) {
     this.state = state;
   }
@@ -15,6 +17,8 @@ class State {
 
 
 export class StandingLeft extends State {
+  player: any;
+
   constructor(player) {
     super("STANDING_LEFT");
     this.player = player;
@@ -35,6 +39,8 @@ export class StandingLeft extends State {
 
 
 export class StandingRight extends State {
+  player: any;
+
   constructor(player) {
     super("STANDING_RIGHT");
     this.player = player;
@@ -55,6 +61,8 @@ export class StandingRight extends State {
 
 
 export class RunningLeft extends State {
+  player: any;
+
   constructor(player) {
     super("RUNNING_LEFT");
     this.player = player;
@@ -74,6 +82,8 @@ export class RunningLeft extends State {
 
 
 export class RunningRight extends State {
+  player: any;
+
   constructor(player) {
     super("RUNNING_RIGHT");
     this.player = player;
@@ -93,6 +103,8 @@ export class RunningRight extends State {
 
 
 export class JumpingLeft extends State {
+  player: any;
+
   constructor(player) {
     super("JUMPING_LEFT");
     this.player = player;
@@ -112,6 +124,8 @@ export class JumpingLeft extends State {
 
 
 export class JumpingRight extends State {
+  player: any;
+  
   constructor(player) {
     super("JUMPING_RIGHT");
     this.player = player;

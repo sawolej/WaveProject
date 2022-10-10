@@ -1,6 +1,23 @@
 import {StandingLeft, StandingRight, RunningLeft, RunningRight, JumpingLeft, JumpingRight} from './state.js';
 
 export class Player {
+  gameWidth: any;
+  currentState: any;
+  gameHeight: any;
+  states: (StandingLeft | StandingRight | RunningLeft | RunningRight | JumpingLeft | JumpingRight)[];
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  image: HTMLElement;
+  speed: number;
+  maxSpeed: number;
+  vy: number;
+  weight: number;
+  platformX: any;
+  platformY: any;
+  platformWidth: any;
+  
   constructor(gameWidth, gameHeight) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;

@@ -1,6 +1,11 @@
 # WaveProject
 Vaporwave-style game made for university
 
+## Setup env
+- install typescript globally `npm i -g typescript`
+- install node modules `npm i`
+- run dev server `npm run dev`
+
 ## List of known bugs
 
 ### main.html

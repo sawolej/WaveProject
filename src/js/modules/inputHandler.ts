@@ -1,4 +1,10 @@
 export class InputHandler {
+  keys: { 
+    d: { pressed: boolean; }; 
+    a: { pressed: boolean; }; 
+    w: { pressed: boolean; }; 
+    e: { pressed: boolean; }; 
+  };
   constructor() {
     
     this.keys = {

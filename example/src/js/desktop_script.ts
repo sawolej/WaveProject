@@ -1,7 +1,9 @@
 
 //ELements
-const apps = document.querySelector("#os_apps")
-var menu = document.querySelector("#os-ct-menu")
+
+// const apps = document.querySelector("#os_apps")
+const apps = document.getElementById("os_apps")
+let menu = document.querySelector("#os-ct-menu")
 const os_window = document.querySelector(".app_window")
 const brand_window = document.querySelector(".brand")
 const app_main = document.querySelector ("#app-main")
@@ -12,7 +14,7 @@ const taskbar = document.querySelector ("#taskbar")
 const pickedOnes = []
 /* Sound effects */
 const click = new Audio("sounds/click.mp3")
-const con = new Audio("sounds/not.wav")
+// const con = new Audio("sounds/not.wav")
 
 
 //Operations
@@ -42,7 +44,8 @@ function create_app (name, image, id) {
     }
     app.oncontextmenu = e => {
         click.play()
-        open_menu(e, id)
+        // open_menu(e, id)
+        window_open(id)
     }
 
     let img = document.createElement("img")
@@ -69,7 +72,8 @@ function window_open (id) {
     app_main.innerHTML = ""
     init_window()
 
-    let main = document.querySelector("#" + id)
+    // let main = document.querySelector("#" + id)
+    let main = document.getElementById(id)
 
     let img = document.createElement("img")
     img.src = main.childNodes[0].src
@@ -85,15 +89,15 @@ function window_open (id) {
 
 function init_window() {
     close(shorter)
-    maximise.onclick = e => {
+    maximise.onclick = () => {
         click.play()
         maximise_window()
     }
-    shorter.onclick = e => {
+    shorter.onclick = () => {
         click.play()
         shorter_window()
     }
-    cross.onclick = e => {
+    cross.onclick = () => {
         click.play()
         close(os_window)
         os_window

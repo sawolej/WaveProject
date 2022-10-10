@@ -1,4 +1,12 @@
 class Sun {
+  gameWidth: any;
+  gameHeight: any;
+  image: HTMLElement;
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  
   constructor(gameWidth, gameHeight) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;

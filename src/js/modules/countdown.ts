@@ -1,4 +1,19 @@
 class Countdown {
+  gameWidth: any;
+  gameHeight: any;
+  x: number;
+  y: number;
+  seconds: number;
+  introInterval: any;
+  wasCleared: boolean;
+  countdownEl: HTMLElement;
+  introText: HTMLElement;
+  introNumbers: HTMLElement;
+  imageFirst: HTMLElement;
+  imageSecond: HTMLElement;
+  imageThird: HTMLElement;
+  imageBlack: HTMLElement;
+  
   constructor(gameWidth, gameHeight) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;

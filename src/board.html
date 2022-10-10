@@ -10,7 +10,11 @@
 </head>
 
 <body>
-  <iframe style="display: none" src="./sounds/tlo_b.mp3" allow="autoplay" id="audio"></iframe>
+  <!-- <iframe style="display: none" src="./sounds/tlo_b.mp3" allow="autoplay" id="audio"></iframe> -->
+  <audio id="audio" autoplay loop>
+    <source src="./sounds/tlo_b.mp3" type="audio/mp3">
+  </audio>
+  
   <div id="wrapper" class="board-wrapper">
 
     <img id="arrow" src="./graphics/arrow.png" onclick="goBack()">
