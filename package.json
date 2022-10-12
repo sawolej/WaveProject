@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "game",
   "main": "",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "snowpack build && echo \"host: localhost:8080/build/\" && live-server build",
