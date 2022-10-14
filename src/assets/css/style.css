@@ -170,8 +170,8 @@
   height: auto;
   margin: auto;
   resize: horizontal;
-  aspect-ratio: 1.79487179;
-  background: url(pic/room.png) no-repeat;
+  /* aspect-ratio: 1.79487179; */
+  background: url(./assets/css/pic/room.png) no-repeat;
   background-size: contain;
 }
 
