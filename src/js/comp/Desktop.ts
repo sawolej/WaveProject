@@ -32,21 +32,25 @@ export const Desktop = {
 
     //Functions
     function click_game() {
-      window.location.href = "mainGame.html"
+      glob.document.location.hash = "#game"
     }
     function create_app(name, image, id) {
       let app = document.createElement("div")
       app.classList.add("app")
       app.id = id
-      if (app.id == "game") {
-        app.setAttribute("onclick", "click_game()")
-      } else {
-        app.setAttribute("onclick", "window_open('" + id + "')")
+      // if (app.id == "game") {
+      //   app.setAttribute("onclick", "click_game()")
+      // } else {
+      //   app.setAttribute("onclick", "window_open('" + id + "')")
+      // }
+      app.onclick = () => {
+        if(id == "game") click_game()
+        else window_open(id)
       }
-      app.oncontextmenu = e => {
+      
+      app.oncontextmenu = (e) => {
         click.play()
         // open_menu(e, id)
-        window_open(id)
       }
 
       let img = document.createElement("img")
@@ -89,15 +93,15 @@ export const Desktop = {
 
     function init_window() {
       close(shorter)
-      maximise.onclick = e => {
+      maximise.onclick = () => {
         click.play()
         maximise_window()
       }
-      shorter.onclick = e => {
+      shorter.onclick = () => {
         click.play()
         shorter_window()
       }
-      cross.onclick = e => {
+      cross.onclick = () => {
         click.play()
         close(os_window)
         os_window

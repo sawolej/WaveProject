@@ -417,7 +417,7 @@ export const Boot = {
   </div>`;
         setTimeout(() => this.exitBIOS(), 2000);
         setTimeout(() => this.remove(), 4000);
-        setTimeout(() => window.location.href = "desktop.html", 4000);
+        setTimeout(() => glob.document.location.hash = "#desktop", 4000);
 
 
       }
