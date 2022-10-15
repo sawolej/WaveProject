@@ -2,15 +2,21 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 // import '../../assets/css/main.css'
 
-export const Main = {
+export const Room = {
   init() {
-    insertHTML(glob.document.body, Main.audio)
-    replaceHTML(canvas, Main.html)
+    insertHTML(glob.document.body, Room.audio)
+    replaceHTML(canvas, Room.html)
+
+    // Music fix: DOMException: play() failed because the user didn't interact with the document first.
+    glob.document.onclick = () => {
+      const audio = document.getElementById("tlo") as HTMLAudioElement
+      audio.play()
+    }
   },
 
   html: `<div id="room" class="room-background">
   <a href="#board"><img id="board" class="undraggable"></a>
-  <a href="#screen"><img id="ekranGif" src="./assets/pics/ekran.gif" class="undraggable"></a>
+  <a href="#boot"><img id="ekranGif" src="./assets/pics/ekran.gif" class="undraggable"></a>
   <a href="https://sklep.uni.lodz.pl/"><img id="cup" src="./assets/pics/cup.png" class="undraggable"></a>
 </div>`,
 

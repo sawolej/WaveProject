@@ -1,8 +1,8 @@
-import { Main } from './js/comp/Main.js'
-// import { Board } from './js/comp/Board.js'
-// import { Boot } from './js/comp/Boot.js'
-// import { Desktop } from './js/comp/Desktop.js'
-// import { Game } from './js/comp/Game.js'
+import { Room } from './js/views/room.js'
+import { Board } from './js/views/board.js'
+import { Boot } from './js/views/boot.js'
+import { Desktop } from './js/views/desktop.js'
+import { Game } from './js/views/game.js'
 
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./js/helpers.js";
 // import { TodoStore } from "./store.js";
@@ -17,7 +17,7 @@ const App = {
 
   init() {
     // Todos.addEventListener("save", App.render);
-    
+
     App.filter = getURLHash();
     glob.window.addEventListener("hashchange", () => {
       App.filter = getURLHash();
@@ -25,14 +25,20 @@ const App = {
     });
 
     App.setAspect()
-    glob.window.addEventListener("resize", () => App.setAspect() , true);
+    glob.window.addEventListener("resize", () => App.setAspect(), true);
 
     App.render();
   },
 
   setAspect() {
-    canvas.style.width = String(glob.window.innerWidth) + 'px';
-    canvas.style.height = String(21 * glob.window.innerWidth / 35) + 'px';
+    const h1 = 21 * glob.window.innerWidth / 35;
+    const h2  = 35 * glob.window.innerHeight / 21;
+    canvas.style.width = h1 < glob.window.innerHeight
+      ? String(glob.window.innerWidth) + 'px'
+      : String(h2) + 'px'
+    canvas.style.height = h1 < glob.window.innerHeight
+      ? String(h1) + 'px'
+      : String(glob.window.innerHeight) + 'px'
   },
 
   render() {
@@ -42,26 +48,33 @@ const App = {
     switch (glob.document.location.hash) { // or window?
       case "#desktop":
         console.log("loading component.. [desktop]")
-        // desktop.init()
+        Desktop.init()
         break
       case "#board":
         console.log("loading component.. [board]")
-        // board.init()
+        Board.init()
         break
-      case "#screen":
-        console.log("loading component.. [screen]")
-        // screen.init()
+      case "#boot": // or booting..
+        console.log("loading component.. [boot]")
+        Boot.init()
         break
       case "#game":
         console.log("loading component.. [game]")
-        // game.init()
+        Game.init()
         break
       default:
         console.log("loading component.. [main]")
-        Main.init()
+        Room.init()
         break
     }
   },
+
+  // some destructing here when we define components as classes: const -> classes
+  destructor(id) {
+    // id != "desktop" ? 
+    // id != "board" ? 
+    // id != "game" ? 
+  }
 };
 
 App.init();

@@ -45,7 +45,7 @@ class Disk {
   }
 
   playSound() {
-    var audio = new Audio('./sounds/diskPickupSound.mp3');
+    var audio = new Audio('./assets/sounds/diskPickupSound.mp3');
     audio.play();
   }
 

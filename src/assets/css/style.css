@@ -24,6 +24,10 @@
   /* Standard */
 }
 
+#render {
+  margin: auto;
+}
+
 /*-----------------------------------------------DESKTOP-----------------------------------------------------*/
 
 .os_container {
@@ -165,22 +169,26 @@
 /*-----------------------------------------------ROOM-----------------------------------------------------*/
 
 .room-background {
-  position: absolute;
-  max-width: 100%;
-  height: auto;
-  margin: auto;
+  /* position: absolute; */
+  position: relative;
+  /* max-width: 100%; */
+  /* height: auto; */
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
   resize: horizontal;
   /* aspect-ratio: 1.79487179; */
+  border: 1px solid orangered;
   background: url(./assets/css/pic/room.png) no-repeat;
   background-size: contain;
 }
 
-#room {
+/* #room {
   top: -3%;
   width: 1920px;
   height: 1080px;
-  /* border: 1px solid orangered; */
-}
+  border: 1px solid orangered;
+} */
 
 /* Replace with a div in future, delete board.jpg */
 #board {
@@ -196,17 +204,18 @@
 #cup {
   position: absolute;
   /* scale: 0.5; */
-  top: 43%;
+  top: 53%;
   left: 9%;
-  width: 175px;
+  /* width: 175px; */
+  width: 16%;
   cursor: pointer;
 }
 
 #ekranGif {
   position: absolute;
-  max-width: 100%;
+  /* max-width: 100%; */
   width: 20.67%;
-  top: 16.65%;
+  top: 23.65%;
   left: 52.5%;
   cursor: pointer;
   height: auto;
@@ -234,7 +243,7 @@
   margin: auto;
   resize: horizontal;
   aspect-ratio: 1.66666667;
-  background: url(pic/board_page.png) no-repeat;
+  background: url(./assets/css/pic/board_page.png) no-repeat;
   background-size: contain;
 }
 
@@ -756,4 +765,16 @@ body {
   position: absolute;
   left: 63.125%;
   top: 101.5%;
+}
+
+/* -------------------------------------- BOOT ------------------------------------------- */
+.monitor {
+  background: #000;
+  font-family: "Perfect DOS VGA 437", monospace;
+  font-size: 22px;
+  color: #888;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
 }

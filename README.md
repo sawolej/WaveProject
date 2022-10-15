@@ -29,6 +29,9 @@ Vaporwave-style game made for university
 - Player states overlap each other in many different scenarios
 - The endscreen disks are unresponsive
 
+- blue user-selection box appears for .2s on opening discs at endgame screen
+
+
 ## Notes
 1. Please make sure to create divs only when necessary - stacking those makes code complicated and a lot of those were not needed
 2. Please use `position: absolute;` CSS values rather than `position: relative;` for images and divs - the `relative` property is too unpredictible and not suited for those
