@@ -8,12 +8,13 @@ export const Boot = {
   init() {
     replaceHTML(canvas, Boot.html)
 
-    BootEngine.init()
+    const newBoot = new BootEngine
+    newBoot.init()
   },
 
   html: `<div class="monitor">
   <award-boot></award-boot>
-</div>`,
+</div>`
 }
 
 // body { // added to style.css as class .monitor

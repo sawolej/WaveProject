@@ -1,6 +1,7 @@
 import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
 
-export const Desktop = {
+export const Desktop = class {
+  constructor(){}
   init() {
     //ELements
     const apps = document.querySelector("#os_apps")

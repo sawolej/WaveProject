@@ -1,6 +1,9 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
 
-export const Boot = {
+export const Boot = class {
+  shadowRoot: any // errors because its not inicialised
+  
+  constructor(){}
   init() {
     const SIZES = [
       "42GB",
@@ -205,7 +208,7 @@ export const Boot = {
       turnOn() {
         return this.setHTML(".header", `        
       <div class="brand-text">
-        <img class="ribbon" src="pics/logo_ul.png" alt="ul">
+        <img class="ribbon" src="./assets/pics/logo_ul.png" alt="ul">
           <p>
            Uniwersytet Łódzki v1.0, Veritas et Libertas<br>
               Copyright (C) 1945-22, Award Software, Inc.

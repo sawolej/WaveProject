@@ -1,11 +1,21 @@
 import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
 
-export const Board = {
+export const Board = class {
+  constructor(){}
   init() {
+    // click listeners
+    document.getElementById('arrow').onclick = () => goBack()
+    document.getElementById('sheet1click').onclick = () => openSheet('sheet1')
+    document.getElementById('sheet2click').onclick = () => openSheet('sheet2')
+    document.getElementById('sheet3click').onclick = () => openSheet('sheet3')
+    document.getElementById('sheet4click').onclick = () => openSheet('sheet4')
+
     let ap1 = document.getElementById("insta");
     let ap2 = document.getElementById("fb");
     let ap3 = document.getElementById("tiktok");
     let ule = document.getElementById("buttonsUL");
+    // we can add listeners to redirect
+    ap1.onclick = () => glob.document.location.href='http://stackoverflow.com' 
 
     function openSheet(id) {
       const x = document.getElementById(id);
@@ -59,8 +69,12 @@ export const Board = {
     }
 
     function goBack() {
-      location.hash = "";
+      glob.document.location.hash = "";
     }
 
+  }
+  
+  goBack() {
+    glob.document.location.hash = "";
   }
 }

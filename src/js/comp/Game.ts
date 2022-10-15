@@ -12,7 +12,8 @@ import {Mountains} from './modules/mountains.js';
 import {Palms} from './modules/palms.js'; 
 import {Countdown} from './modules/countdown.js'; 
 
-export const Game = {
+export const Game = class {
+  constructor(){}
   init() {
 // Define canvas properties
 const canvas = document.getElementById('canvas1') as HTMLCanvasElement;

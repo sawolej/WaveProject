@@ -6,17 +6,19 @@ import { Game as GameEngine } from '../comp/Game.js'
 
 export const Game = {
   init() {
-    insertHTML(glob.document.body, Game.audio)
     replaceHTML(canvas, Game.html)
+    insertHTML(canvas, Game.audio)
     
-    GameEngine.init()
+    const newGame = new GameEngine
+    newGame.init()
 
     // Music fix: DOMException: play() failed because the user didn't interact with the document first.
-    glob.document.onclick = () => {
-      const audio = document.getElementById("player") as HTMLAudioElement
-      audio.play()
-      Game.countdownTrigger()
-    }
+    // glob.document.onclick = () => {
+    //   const audio = document.getElementById("player") as HTMLAudioElement
+    //   audio.play()
+    //   Game.countdownTrigger()
+    // }
+    Game.countdownTrigger()
   },
 
   countdownTrigger() { 

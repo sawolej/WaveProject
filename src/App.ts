@@ -12,6 +12,8 @@ import './assets/css/style.css'
 
 const App = {
   filter: null,
+  newRoom: null,
+  newBoot: null,
   // $: {
   // },
 
@@ -42,29 +44,34 @@ const App = {
   },
 
   render() {
-    // probably better to put this in Router
+    // probably better to put this in Router, but do we need it to be responsive so much?
     //
     console.log(glob.document.location.hash)
-    switch (glob.document.location.hash) { // or window?
+    switch (glob.document.location.hash) {
       case "#desktop":
         console.log("loading component.. [desktop]")
         Desktop.init()
+        App.destructor('desktop')
         break
       case "#board":
         console.log("loading component.. [board]")
         Board.init()
+        App.destructor('board')
         break
       case "#boot": // or booting..
         console.log("loading component.. [boot]")
         Boot.init()
+        App.destructor('boot')
         break
       case "#game":
         console.log("loading component.. [game]")
         Game.init()
+        App.destructor('game')
         break
       default:
-        console.log("loading component.. [main]")
+        console.log("loading component.. [room]")
         Room.init()
+        App.destructor('room')
         break
     }
   },
@@ -72,8 +79,9 @@ const App = {
   // some destructing here when we define components as classes: const -> classes
   destructor(id) {
     // id != "desktop" ? destruct("desktop")
-    // id != "board" ? 
+    // id != "board" ? delete Boad : ""
     // id != "game" ? 
+    // id != "room" ? delete Rom : ""
   }
 };
 

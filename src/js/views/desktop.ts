@@ -6,15 +6,16 @@ import { Desktop as DesktopEngine } from '../comp/Desktop.js'
 
 export const Desktop = {
   init() {
-    insertHTML(glob.document.body, Desktop.audio)
     replaceHTML(canvas, Desktop.html)
+    insertHTML(canvas, Desktop.audio)
 
-    DesktopEngine.init()
+    const newDesktop = new DesktopEngine
+    newDesktop.init()
 
-    glob.document.onclick = () => {
-      const audio = document.getElementById("desktopAudio") as HTMLAudioElement
-      audio.play()
-    }
+    // glob.document.onclick = () => {
+    //   const audio = document.getElementById("desktopAudio") as HTMLAudioElement
+    //   audio.play()
+    // }
   },
 
   html: `<div id="wrapper">

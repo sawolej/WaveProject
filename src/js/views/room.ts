@@ -3,14 +3,18 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 // import '../../assets/css/main.css'
 
 export const Room = {
+  music: false,
   init() {
-    insertHTML(glob.document.body, Room.audio)
     replaceHTML(canvas, Room.html)
-
+    insertHTML(canvas, Room.audio)
+    
+    // Music fix: make it less distorted
+    const audio = glob.document.getElementById("tlo") as HTMLAudioElement
+    audio.volume = 0.7; 
     // Music fix: DOMException: play() failed because the user didn't interact with the document first.
-    glob.document.onclick = () => {
-      const audio = document.getElementById("tlo") as HTMLAudioElement
-      audio.play()
+    if (Room.music === false) { //if (audio.duration == 0) 
+      glob.document.onclick = () => audio.play(); 
+      Room.music = true
     }
   },
 
