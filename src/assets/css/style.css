@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Silkscreen2";
-  src: url("/WaveProject/font/Silkscreen-Regular.ttf") format("truetype");
+  src: url("./assets/css/font/Silkscreen-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -33,7 +33,7 @@
 .os_container {
   width: 100%;
   min-height: 100vh;
-  background-image: url(pic/temp_wallpaper.png);
+  background-image: url(./assets/css/pic/temp_wallpaper.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -451,7 +451,7 @@
   padding: 0;
   width: 1400px;
   height: 900px;
-  background-image: url(pic/temp_wallpaper.png);
+  background-image: url(./assets/css/pic/temp_wallpaper.png);
 }
 
 p {
