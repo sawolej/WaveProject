@@ -71,7 +71,7 @@ const App = {
 
   // some destructing here when we define components as classes: const -> classes
   destructor(id) {
-    // id != "desktop" ? 
+    // id != "desktop" ? destruct("desktop")
     // id != "board" ? 
     // id != "game" ? 
   }
