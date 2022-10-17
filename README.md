@@ -1,8 +1,11 @@
 # WaveProject
 Vaporwave-style game made for university
 
+`alt + x for dev commands shortcuts`
+
 ## Implementation
 `App.ts` `<-` `views/room.ts` as `Room`
+
 `App.ts` `<-` `views/game.ts` as `Game` `<-` `comp/Game.ts` as `GameEngine` `<-` `comp/modules/`
 
 ## Project structure
@@ -34,7 +37,10 @@ Vaporwave-style game made for university
 - run dev server `npm run dev`
 
 ## Build project
-`if compiler errors notifications are annoying, you can just build it and live-server from /build, or simply open index.html with a browser, anyway this is the way to deploy our app`
+`if compiler errors notifications are annoying, you can just build it and live-server from /build, or simply open index.html with a browser`
+
+`anyway this is the way to deploy our app`
+
 - run dev server `npm run build`
 
 ## List of known bugs
