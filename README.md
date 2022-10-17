@@ -1,7 +1,7 @@
 # WaveProject
 Vaporwave-style game made for university
 
-`alt + x for dev commands shortcuts`
+`alt + t` and then `r` for dev commands shortcuts
 
 ## Implementation
 `App.ts` `<-` `views/room.ts` as `Room`
