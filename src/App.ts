@@ -12,8 +12,15 @@ import './assets/css/style.css'
 
 const App = {
   filter: null,
-  newRoom: null,
-  newBoot: null,
+  // newRoom: null,
+  // newBoot: null,
+  comp: {
+    Desktop,
+    Boot,
+    Board,
+    Game,
+    Room
+  },
   // $: {
   // },
 
@@ -50,27 +57,37 @@ const App = {
     switch (glob.document.location.hash) {
       case "#desktop":
         console.log("loading component.. [desktop]")
-        Desktop.init()
+        // Desktop.init()
+        App.comp.Desktop = Desktop
+        App.comp.Desktop.init()
         App.destructor('desktop')
         break
       case "#board":
         console.log("loading component.. [board]")
-        Board.init()
+        // Board.init()
+        App.comp.Board = Board
+        App.comp.Board.init()
         App.destructor('board')
         break
       case "#boot": // or booting..
         console.log("loading component.. [boot]")
-        Boot.init()
+        // Boot.init()
+        App.comp.Boot = Boot
+        App.comp.Boot.init()
         App.destructor('boot')
         break
       case "#game":
         console.log("loading component.. [game]")
-        Game.init()
+        // Game.init()
+        App.comp.Game = Game
+        App.comp.Game.init()
         App.destructor('game')
         break
       default:
         console.log("loading component.. [room]")
-        Room.init()
+        // Room.init()
+        App.comp.Room = Room
+        App.comp.Room.init()
         App.destructor('room')
         break
     }
@@ -78,10 +95,10 @@ const App = {
 
   // some destructing here when we define components as classes: const -> classes
   destructor(id) {
-    // id != "desktop" ? destruct("desktop")
-    // id != "board" ? delete Boad : ""
-    // id != "game" ? 
-    // id != "room" ? delete Rom : ""
+    id !== "desktop" ? delete App.comp.Desktop : ''
+    id !== "board" ? delete App.comp.Board : ''
+    id !== "game" ? delete App.comp.Game : ''
+    id !== "room" ? delete App.comp.Room : ''
   }
 };
 

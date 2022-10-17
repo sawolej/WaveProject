@@ -1,10 +1,41 @@
 # WaveProject
 Vaporwave-style game made for university
 
-## Setup env
+## Implementation
+`App.ts` `<-` `views/room.ts` as `Room`
+`App.ts` `<-` `views/game.ts` as `Game` `<-` `comp/Game.ts` as `GameEngine` `<-` `comp/modules/`
+
+## Project structure
+`static:`
+
+    src/                - project source
+        assets/             - code: css (pics, fonts); media files: pics, sounds;
+        js/                 - code source
+            comp/               - components classes (game, board, etc.)
+                modules/            - game modules classes
+            views/              - rendering html
+            helpers.ts          - commonly used methods
+        App.ts              - App initialization
+        index.html          - html initialization
+    snowpack.config.mjs - code structure compiler
+    tsconfig.json       - typescript compiler
+    package.json        - npm setup file
+
+`dynamic:`
+
+    node_modules/       - npm generated modules
+    package-lock.json   - npm generated modules file
+
+## Setup project environment
 - install typescript globally `npm i -g typescript`
 - install node modules `npm i`
+
+## Run development server
 - run dev server `npm run dev`
+
+## Build project
+`if compiler errors notifications are annoying, you can just build it and live-server from /build, or simply open index.html with a browser, anyway this is the way to deploy our app`
+- run dev server `npm run build`
 
 ## List of known bugs
 
@@ -29,7 +60,7 @@ Vaporwave-style game made for university
 - Player states overlap each other in many different scenarios
 - The endscreen disks are unresponsive
 
-- blue user-selection box appears for .2s on opening discs at endgame screen
+- [new: 15 Oct] blue user-selection box appears for .2s on opening discs at endgame screen
 
 
 ## Notes
