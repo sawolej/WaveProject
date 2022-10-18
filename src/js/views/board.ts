@@ -12,6 +12,11 @@ export const Board = {
     const newBoard = new BoardEngine
     newBoard.init()
 
+    const audio = document.getElementById("audio") as HTMLAudioElement
+    // fix: make it less distorted
+    audio.volume = 0.1//0.7; // FOR DEVELOPING ;~~)))
+
+    // not needed, user already interacted with window on room page
     // glob.document.onclick = () => {
     //   const audio = document.getElementById("audio") as HTMLAudioElement
     //   audio.play()

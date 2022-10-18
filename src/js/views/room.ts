@@ -8,13 +8,18 @@ export const Room = {
     replaceHTML(canvas, Room.html)
     insertHTML(canvas, Room.audio)
     
-    // Music fix: make it less distorted
+    // Music
     const audio = glob.document.getElementById("tlo") as HTMLAudioElement
-    audio.volume = 0.7; 
+    // fix: make it less distorted
+    audio.volume = 0.1//0.7; // FOR DEVELOPING ;~~)))
+
     // Music fix: DOMException: play() failed because the user didn't interact with the document first.
-    if (Room.music === false) { //if (audio.duration == 0) 
-      glob.document.onclick = () => audio.play(); 
-      Room.music = true
+    if (this.music === false && audio.duration === 0) { 
+      // Music fix: audio.duration === 0 
+      // fixes music playing in the background from previous 
+      // instances not yet destroyed by js garbage collector
+      glob.document.onclick = () => audio.play();
+      this.music = true
     }
   },
 
