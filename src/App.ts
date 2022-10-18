@@ -10,6 +10,11 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./j
 
 import './assets/css/style.css'
 
+const aspectRatio = { 
+  width: 35, 
+  height: 21 
+}
+
 const App = {
   filter: null,
   // newRoom: null,
@@ -40,8 +45,9 @@ const App = {
   },
 
   setAspect() {
-    const h1 = 21 * glob.window.innerWidth / 35;
-    const h2  = 35 * glob.window.innerHeight / 21;
+    const ratio = aspectRatio
+    const h1 = ratio.height * glob.window.innerWidth / ratio.width;
+    const h2  = ratio.width * glob.window.innerHeight / ratio.height;
     canvas.style.width = h1 < glob.window.innerHeight
       ? String(glob.window.innerWidth) + 'px'
       : String(h2) + 'px'
