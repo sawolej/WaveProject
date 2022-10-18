@@ -28,6 +28,7 @@ export const Board = {
   <img id="sheet2" src="./assets/pics/sheet2.png" class="undraggable">
   <img id="sheet3" src="./assets/pics/sheet3.png" class="undraggable">
   <img id="sheet4" src="./assets/pics/sheet4.png" class="undraggable">
+  <p>test</p>
   
   <button id="fb" onclick="location.href='http://stackoverflow.com';">Facebook</button>
   <button id="insta">Instagram</button>

@@ -147,8 +147,6 @@ export const Game = class {
           mountains.draw(ctx);
           ground.draw(ctx);
 
-          console.log("test")
-
           // Draw palms
           for (let i = 0; i < palms.length; ++i) {
             palms[i].draw(ctx); // expected 1 argument not 2: (ctx, diskCounter)
@@ -332,16 +330,17 @@ export const Game = class {
             modal.style.display = "none";
           }
 
+          
           // When the user clicks anywhere outside of the modal, close it
           window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none" } }
-
+          
           // Clear the main game canvas on game end
           if (!quit) requestAnimationFrame(animate);
           if (quit) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             countdown.drawEnd(diskCounter, ihaveit);
             setText(ihaveit);
-
+            
             // Make the animated disks visible after delay
             setTimeout(function () {
               for (let i = 0; i < diskCounter; i++) {
