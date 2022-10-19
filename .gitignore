@@ -21,3 +21,7 @@ package-lock.json
 
 # awesome-typescript
 .awcache
+
+# dotenv environment variables file
+.env
+.env.test
