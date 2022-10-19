@@ -8,7 +8,7 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./j
 // import { TodoStore } from "./store.js";
 // const Todos = new TodoStore("todo-modern-vanillajs");
 
-import './assets/css/style.css'
+import './style.css'
 
 const App = {
   filter: null,
