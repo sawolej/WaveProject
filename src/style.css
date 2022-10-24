@@ -46,11 +46,40 @@
   opacity: 0;
 }
 
+.cup-wrapper {
+  display: inline-flex;
+  position: fixed;
+  border: 1px solid orange;
+  top: 63%;
+  left: 13.5%;
+  width: 13%;
+  height: 20%;
+}
+
 #cup {
-  position: absolute;
-  top: 53%;
-  left: 9%;
-  width: 16%;
+  background: url("./assets/pics/cup.png") no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.cup-outline-wrapper {
+  display: inline-flex;
+  position: fixed;
+  border: 1px solid cyan;
+  top: calc(63% - 10px);
+  left: calc(13.5% - 13px);
+  width: calc(13% + 28px);
+  height: calc(20% + 24px);
+}
+
+#cupOutline {
+  display: hidden;
+}
+
+#cupOutline:hover {
+  display: inline-flex;
+  background: url("./assets/pics/cupOutline.png") no-repeat;
+  background-size: contain;
   cursor: pointer;
 }
 
@@ -79,7 +108,7 @@
 }
 
 .board-wrapper {
-  position: absolute;
+  position: fixed;
   max-width: 88.6%;
   height: auto;
   margin: auto;
@@ -90,7 +119,6 @@
 }
 
 #wrapper {
-  left: 5.75%;
   width: 100%;
 }
 
@@ -273,18 +301,23 @@
   cursor: pointer;
 }
 
-#arrow {
-  position: absolute;
+.arrow-wrapper {
+  position: fixed;
   display: inline-flex;
-  width: 1;
-  height: 1;
-  top: 7%;
-  right: 5%;
+  width: 7%;
+  height: 13%;
+  right: 10%;
+  top: 8%;
+}
+
+#arrow {
+  background: url("./assets/pics/arrow.png") no-repeat;
+  background-size: contain;
 }
 
 #arrow:hover {
-  display: inline-flex;
-  filter: brightness(1.75);
+  background: url("./assets/pics/arrowOutline.png") no-repeat;
+  background-size: contain;
 }
 
 /*-------------------------------DESKTOP-----------------------------------*/

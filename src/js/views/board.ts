@@ -24,7 +24,7 @@ export const Board = {
   },
 
   html: `<div id="wrapper" class="board-wrapper">
-  <img id="arrow" src="./assets/pics/arrow.png">
+  <div id="arrow" class="arrow-wrapper"></div>
   <img id="sheet1" src="./assets/pics/sheet1.png" class="undraggable">
   <img id="sheet1click" src="./assets/pics/sheet1.png" class="undraggable">
   <img id="sheet2click" src="./assets/pics/sheet1.png" class="undraggable">
