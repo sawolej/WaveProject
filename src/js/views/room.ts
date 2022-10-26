@@ -26,8 +26,9 @@ export const Room = {
   html: `<div id="room" class="room-background">
   <a href="#board"><img id="board" class="undraggable"></a>
   <a href="#boot"><img id="ekranGif" src="./assets/pics/ekran.gif" class="undraggable"></a>
-  <div id="cup" class="cup-wrapper"></div>
-  <a href="https://sklep.uni.lodz.pl/"><div id="cupOutline" class="cup-outline-wrapper"></div></a>
+  <a target="_blank" rel="noopener noreferrer" href="https://sklep.uni.lodz.pl/">
+    <div id="cup" class="cup-wrapper"></div></a>
+  <div id="plant" class="plant-wrapper"></div>
 </div>`,
 
   audio: `<audio id="tlo" autoplay loop>

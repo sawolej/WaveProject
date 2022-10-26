@@ -49,7 +49,6 @@
 .cup-wrapper {
   display: inline-flex;
   position: fixed;
-  border: 1px solid orange;
   top: 63%;
   left: 13.5%;
   width: 13%;
@@ -62,25 +61,26 @@
   cursor: pointer;
 }
 
-.cup-outline-wrapper {
-  display: inline-flex;
-  position: fixed;
-  border: 1px solid cyan;
-  top: calc(63% - 10px);
-  left: calc(13.5% - 13px);
-  width: calc(13% + 28px);
-  height: calc(20% + 24px);
-}
-
-#cupOutline {
-  display: hidden;
-}
-
-#cupOutline:hover {
+#cup:hover {
   display: inline-flex;
   background: url("./assets/pics/cupOutline.png") no-repeat;
   background-size: contain;
   cursor: pointer;
+}
+
+.plant-wrapper {
+  position: fixed;
+  display: inline-flex;
+  width: 26%;
+  height: 36.667%;
+  left: 22.5%;
+  top: 29.9%;
+}
+
+#plant {
+  background: url("./assets/pics/plant.png") no-repeat;
+  background-size: contain;
+  z-index: 0;
 }
 
 #ekranGif {
