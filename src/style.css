@@ -306,11 +306,11 @@
 }
 
 .arrow-wrapper {
-  position: fixed;
+  position: absolute;
   display: inline-flex;
   width: 7%;
   height: 13%;
-  right: 10%;
+  right: 5%;
   top: 8%;
 }
 
