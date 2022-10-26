@@ -232,27 +232,18 @@
 }
 
 #fb:hover {
-  position: absolute;
-  top: 15%;
-  left: 18%;
   color: black;
   background-color: #b6e8b8;
   cursor: pointer;
 }
 
 #insta:hover {
-  position: absolute;
-  top: 41%;
-  left: 18%;
   color: black;
   background-color: #b6e8b8;
   cursor: pointer;
 }
 
 #tiktok:hover {
-  position: absolute;
-  top: 27.5%;
-  left: 12%;
   color: black;
   background-color: #b6e8b8;
   cursor: pointer;
@@ -288,18 +279,12 @@
 }
 
 #UL1:hover {
-  position: absolute;
-  top: 25%;
-  left: 25.5%;
   background-color: #d3b9ea;
   color: black;
   cursor: pointer;
 }
 
 #UL2:hover {
-  position: absolute;
-  top: 47%;
-  left: 22.5%;
   background-color: #d3b9ea;
   color: black;
   cursor: pointer;
