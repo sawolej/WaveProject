@@ -37,20 +37,24 @@
 
 #board {
   position: absolute;
-  border: 3px solid cyan;
-  width: 447px;
-  height: 262px;
-  top: 1.8%;
-  left: 0%;
-  cursor: zoom-in;
-  opacity: 0;
+  width: 36.2%;
+  height: 38.4%;
+  top: inherit;
+  left: inherit;
+  cursor: pointer;
+  background: url("./assets/pics/board.png") no-repeat;
+  background-size: contain;
+}
+
+#board:hover {
+  background-image: url("./assets/pics/boardOutline.png");
 }
 
 .cup-wrapper {
   display: inline-flex;
-  position: fixed;
+  position: absolute;
   top: 63%;
-  left: 13.5%;
+  left: 11%;
   width: 13%;
   height: 20%;
 }
@@ -69,12 +73,12 @@
 }
 
 .plant-wrapper {
-  position: fixed;
+  position: absolute;
   display: inline-flex;
   width: 26%;
   height: 36.667%;
-  left: 22.5%;
-  top: 29.9%;
+  left: 19.1%;
+  top: 30.01%;
 }
 
 #plant {
@@ -85,9 +89,9 @@
 
 #ekranGif {
   position: absolute;
-  width: 20.67%;
-  top: 23.65%;
+  width: 20.6%;
   left: 52.5%;
+  top: 23.5%;
   cursor: pointer;
   height: auto;
   margin: 0px;

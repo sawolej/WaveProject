@@ -23,13 +23,14 @@ export const Room = {
     }
   },
 
-  html: `<div id="room" class="room-background">
-  <a href="#board"><img id="board" class="undraggable"></a>
-  <a href="#boot"><img id="ekranGif" src="./assets/pics/ekran.gif" class="undraggable"></a>
-  <a target="_blank" rel="noopener noreferrer" href="https://sklep.uni.lodz.pl/">
+  html: `
+  <div id="room" class="room-background">
+    <a href="#board"><div id="board"></div></a>
+    <a href="#boot"><img id="ekranGif" src="./assets/pics/ekran.gif" class="undraggable"></a>
+    <a target="_blank" rel="noopener noreferrer" href="https://sklep.uni.lodz.pl/">
     <div id="cup" class="cup-wrapper"></div></a>
-  <div id="plant" class="plant-wrapper"></div>
-</div>`,
+    <div id="plant" class="plant-wrapper"></div>
+  </div>`,
 
   audio: `<audio id="tlo" autoplay loop>
   <source src="./assets/sounds/tlo.mp3" type="audio/mp3">
