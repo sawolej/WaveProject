@@ -14,8 +14,6 @@ export const Board = class {
     let ap2 = document.getElementById("fb");
     let ap3 = document.getElementById("tiktok");
     let ule = document.getElementById("buttonsUL");
-    // we can add listeners to redirect
-    ap1.onclick = () => glob.document.location.href='http://stackoverflow.com' 
 
     function openSheet(id) {
       const x = document.getElementById(id);
