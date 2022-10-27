@@ -7,6 +7,8 @@
 - Branch names keywords: `feature`, `fix`, `refactor`
 - Exemplary commit name: `Feature update graphics to .jpg`
 - Exemplary branch name: `feature-add-character`
+- Everything in JS is written in `camelCase` but for class names, which are in `PascalCase`
+- PR in a nutshell [article](https://namingconvention.org/git/pull-request-naming.html)
 
 ## Implementation
 `App.ts` <- `views/room.ts` as `Room`
@@ -32,25 +34,3 @@ dynamic:
 
     node_modules/       - npm generated modules
     package-lock.json   - npm generated modules file
-
-## List of known bugs
-### room.ts
-- The board is unresponsive, the element shold be a div
-- The fade-in animation is played on every page load rather than once
-
-### board.ts
-- The board does not respond if `sheet2` has been clicked - sth to do with `comp/Board.ts`
-- The go-back arrow should be a button and shouldn't be this ugly
-- The `filter()` property in `#arrow:hover` is sometimes causing a whitebox to appear on arrow (I'll be changing the graphic anyway, I'll handle this)
-- The `sheet1click`, `sheet2click`, `sheet3click` and `sheet4click` images should be modals or divs 
-- Some notes i. e. `sheet2` are not closing on click after opening (switching to modals would solve this)
-
-### desktop.ts
-- The click sound effects are not always played if clicked fast enough
-- The programmes' windows can be dragged outside of the screen
-
-### game.ts
-- [new: 15 Oct] blue user-selection box appears for .2s on opening discs at endgame screen
-- Player can jump mid air in peak height when the `player.vy === 0`
-- Player states overlap each other in many different scenarios
-- The endscreen disks are unresponsive
