@@ -134,11 +134,11 @@ export const Desktop = class {
       os_window.style.height = "60vh"
     }
 
-    window.onclick = () => {
-      if (menu.classList.contains("active")) {
-        menu.classList.remove("active")
-      }
-    }
+    // window.onclick = () => {
+    //   if (menu.classList.contains("active")) {
+    //     menu.classList.remove("active")
+    //   }
+    // }
 
     os_window.ondragend = (e) => {
       let go_top = e.pageY

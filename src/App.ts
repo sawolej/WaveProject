@@ -8,8 +8,12 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./j
 // import { TodoStore } from "./store.js";
 // const Todos = new TodoStore("todo-modern-vanillajs");
 
-import './style.css'
-
+import './css/app.css'
+import './css/board.css'
+import './css/desktop.css'
+import './css/boot.css'
+import './css/game.css'
+import './css/style.css'
 const aspectRatio = { 
   width: 35, 
   height: 21 
@@ -31,7 +35,7 @@ const App = {
 
   init() {
     // Todos.addEventListener("save", App.render);
-
+    
     App.filter = getURLHash();
     glob.window.addEventListener("hashchange", () => {
       App.filter = getURLHash();
