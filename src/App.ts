@@ -35,7 +35,7 @@ const App = {
 
   init() {
     // Todos.addEventListener("save", App.render);
-    
+
     App.filter = getURLHash();
     glob.window.addEventListener("hashchange", () => {
       App.filter = getURLHash();
@@ -60,9 +60,11 @@ const App = {
       : String(glob.window.innerHeight) + 'px'
   },
 
+  
   render() {
     // probably better to put this in Router, but do we need it to be responsive so much?
     //
+    console.log("innit");
     console.log(glob.document.location.hash)
     switch (glob.document.location.hash) {
       case "#desktop":
