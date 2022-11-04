@@ -28,6 +28,7 @@
 .room-background {
   position: relative;
   height: 100%;
+  /* width: 100%; */
   margin-left: auto;
   margin-right: auto;
   resize: horizontal;
@@ -44,6 +45,7 @@
   cursor: pointer;
   background: url("./assets/pics/board.png") no-repeat;
   background-size: contain;
+  /* border: 1px solid orange; */
 }
 
 #board:hover {
@@ -133,12 +135,7 @@
 }
 
 .board-wrapper {
-  position: fixed;
-  max-width: 88.6%;
-  height: auto;
-  margin: auto;
-  resize: horizontal;
-  aspect-ratio: 1.66666667;
+  height: 100%;
   background: url(./assets/pics/corkBoard.png) no-repeat;
   background-size: contain;
 }
@@ -151,7 +148,8 @@
   position: absolute;
   width: 30%;
   top: 5.1%;
-  left: 3.1%;
+  left: 8.1%;
+  z-index: 1;
   visibility: hidden;
 }
 
@@ -181,75 +179,94 @@
 
 #sheet1click {
   position: absolute;
-  width: 8%;
-  height: 15%;
-  top: 6.8%;
-  left: 5%;
+  width: 9.30%;
+  height: 19.2%;
+  top: 4.6%;
+  left: 9%;
+  z-index: 0;
+}
+
+#sheet1click:hover {
   cursor: pointer;
-  opacity: 0;
+  border: 14px solid #fbeca4;
 }
 
 #sheet2click {
   position: absolute;
-  width: 17%;
-  height: 21.6%;
-  top: 26.7%;
-  left: 23%;
+  width: 17.25%;
+  height: 25.7%;
+  top: 24.7%;
+  left: 25%;
+  z-index: 0;
+}
+
+#sheet2click:hover {
   cursor: pointer;
-  opacity: 0;
+  border: 14px solid #fbeca4;
 }
 
 #sheet3click {
   position: absolute;
-  width: 13.1%;
-  height: 21.8%;
-  top: 43.3%;
-  left: 55%;
+  width: 13.6%;
+  height: 25.5%;
+  top: 41.3%;
+  left: 53.4%;
+  z-index: 0;
+}
+
+#sheet3click:hover {
   cursor: pointer;
-  opacity: 0;
+  border: 14px solid #fbeca4;
 }
 
 #sheet4click {
   position: absolute;
-  width: 16.1%;
-  height: 8.36%;
-  top: 20%;
-  left: 66%;
+  width: 16.4%;
+  height: 12.4%;
+  top: 18%;
+  left: 63.1%;
+  z-index: 0;
+}
+
+#sheet4click:hover {
   cursor: pointer;
-  opacity: 0;
+  border: 14px solid #fbeca4;
 }
 
 #fb {
   position: absolute;
-  top: 15%;
-  left: 18%;
+  top: 16%;
+  left: 22%;
   color: rgb(255, 255, 255);
   border: none;
-  font-size: 1vw;
+  font-size: 2vw;
   background-color: rgba(0, 0, 0, 0);
   visibility: hidden;
-}
-
-#insta {
-  position: absolute;
-  top: 41%;
-  left: 18%;
-  color: rgb(255, 255, 255);
-  border: none;
-  font-size: 1vw;
-  background-color: rgba(0, 0, 0, 0);
-  visibility: hidden;
+  z-index: 1;
 }
 
 #tiktok {
   position: absolute;
-  top: 27.5%;
-  left: 12%;
+  top: 30%;
+  left: 15%;
   color: rgb(255, 255, 255);
   border: none;
-  font-size: 1vw;
+  font-size: 2vw;
   background-color: rgba(0, 0, 0, 0);
   visibility: hidden;
+  z-index: 1;
+}
+
+#insta {
+  position: absolute;
+  top: 47%;
+  left: 22%;
+  color: rgb(255, 255, 255);
+  border: none;
+  font-size: 2vw;
+  background-color: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  z-index: 1;
 }
 
 #fb:hover {
@@ -282,19 +299,19 @@
 #UL1 {
   position: absolute;
   top: 25%;
-  left: 25.5%;
+  left: 21.3%;
   border: none;
-  font-size: 1vw;
+  font-size: 2vw;
   color: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0);
 }
 
 #UL2 {
   position: absolute;
-  top: 47%;
-  left: 25.5%;
+  top: 49%;
+  left: 20.8%;
   border: none;
-  font-size: 1vw;
+  font-size: 2vw;
   color: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0);
 }
@@ -316,7 +333,7 @@
   display: inline-flex;
   width: 7%;
   height: 13%;
-  right: 5%;
+  right: 10%;
   top: 8%;
 }
 
