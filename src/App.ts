@@ -56,7 +56,7 @@ const App = {
 
   render() {
     // probably better to put this in Router, but do we need it to be responsive so much?
-    switch (glob.document.location.hash) {
+    switch (App.filter) {
       case "#desktop":
         console.log("loading component.. [desktop]")
         App.comp.Desktop = DesktopView
