@@ -2,8 +2,6 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { Boot as BootEngine } from '../comp/Boot.js'
 
-// import '../../assets/css/main.css'
-
 export const BootView = {
   init() {
     replaceHTML(canvas, BootView.html)
@@ -16,15 +14,4 @@ export const BootView = {
   <award-boot></award-boot>
 </div>`
 }
-
-// body { // added to style.css as class .monitor
-//     background: #000;
-//     font-family: "Perfect DOS VGA 437", monospace;
-//     font-size: 22px;
-//     color: #888;
-//     display: flex;
-//     justify-content: center;
-//     overflow: hidden;
-//     margin: 0;
-//   }
 

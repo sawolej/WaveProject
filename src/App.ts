@@ -18,8 +18,19 @@ const aspectRatio: { width: number, height: number } = {
   height: 21 
 }
 
+export function audioLoader(filename: string, loop=true, volume=1) {
+  App.audio = new Audio(filename)
+  //App.audio.play()
+  if (loop !== false) App.audio.loop = true
+  if (volume !== 1) App.audio.volume = volume
+  // App.audio.playbackRate = 1;
+  App.audio.volume = 0.1 // FOR DEVELOPING ;~~)))
+  App.audio.play()
+}
+
 const App = {
   filter: null,
+  audio: null,
   comp: {
     Desktop: null,
     Boot: null,
@@ -86,6 +97,13 @@ const App = {
   },
 
   destructor() {
+    // pause and destruct audio
+    if (App.audio) {     // necessary this is
+      App.audio.pause()  // https://meme-generator.com/wp-content/uploads/mememe/2020/05/mememe_75419badc3525afde64fdfaf0d166f11-1.jpg
+      App.audio = null   // https://pics.onsizzle.com/everything-is-important-9903115.png
+    }
+
+    // destruct comp
     for (let c in App.comp) {
       if (App.comp.hasOwnProperty(c))
         App.comp[c] = null
