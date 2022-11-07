@@ -2,11 +2,11 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 // import '../../assets/css/main.css'
 
-export const Room = {
+export const RoomView = {
   music: false,
   init() {
-    replaceHTML(canvas, Room.html)
-    insertHTML(canvas, Room.audio)
+    replaceHTML(canvas, RoomView.html)
+    insertHTML(canvas, RoomView.audio)
     
     // Music
     const audio = glob.document.getElementById("tlo") as HTMLAudioElement

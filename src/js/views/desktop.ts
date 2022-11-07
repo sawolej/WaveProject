@@ -4,10 +4,10 @@ import { Desktop as DesktopEngine } from '../comp/Desktop.js'
 
 // import '../../assets/css/main.css'
 
-export const Desktop = {
+export const DesktopView = {
   init() {
-    replaceHTML(canvas, Desktop.html)
-    insertHTML(canvas, Desktop.audio)
+    replaceHTML(canvas, DesktopView.html)
+    insertHTML(canvas, DesktopView.audio)
 
     const newDesktop = new DesktopEngine
     newDesktop.init()

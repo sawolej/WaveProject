@@ -4,10 +4,10 @@ import { Board as BoardEngine } from '../comp/Board.js'
 
 // import '../../assets/css/main.css'
 
-export const Board = {
+export const BoardView = {
   init() {
-    replaceHTML(canvas, Board.html)
-    insertHTML(canvas, Board.audio)
+    replaceHTML(canvas, BoardView.html)
+    insertHTML(canvas, BoardView.audio)
 
     const newBoard = new BoardEngine
     newBoard.init()

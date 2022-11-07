@@ -4,10 +4,10 @@ import { Game as GameEngine } from '../comp/Game.js'
 
 // import '../../assets/css/main.css'
 
-export const Game = {
+export const GameView = {
   init() {
-    replaceHTML(canvas, Game.html)
-    insertHTML(canvas, Game.audio)
+    replaceHTML(canvas, GameView.html)
+    insertHTML(canvas, GameView.audio)
     
     const newGame = new GameEngine
     newGame.init()
@@ -18,7 +18,7 @@ export const Game = {
     //   audio.play()
     //   Game.countdownTrigger()
     // }
-    Game.countdownTrigger()
+    GameView.countdownTrigger()
   },
 
   countdownTrigger() { 

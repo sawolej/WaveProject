@@ -4,9 +4,9 @@ import { Boot as BootEngine } from '../comp/Boot.js'
 
 // import '../../assets/css/main.css'
 
-export const Boot = {
+export const BootView = {
   init() {
-    replaceHTML(canvas, Boot.html)
+    replaceHTML(canvas, BootView.html)
 
     const newBoot = new BootEngine
     newBoot.init()
