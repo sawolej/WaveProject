@@ -13,7 +13,7 @@ import './css/desktop.css'
 import './css/boot.css'
 import './css/game.css'
 
-const aspectRatio = { 
+const aspectRatio: { width: number, height: number } = { 
   width: 35, 
   height: 21 
 }
