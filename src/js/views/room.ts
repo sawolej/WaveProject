@@ -1,12 +1,26 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
 
 import { audioLoader } from "../../App.js"
+const loadAudio = () => audioLoader("./assets/sounds/tlo.mp3")
 
 export const RoomView = {
   music: false,
   init() {
     replaceHTML(canvas, RoomView.html)
-    audioLoader("./assets/sounds/tlo.mp3")
+    loadAudio()
+
+    // Music fix: DOMException: play() failed because the user didn't interact with the document first.
+    glob.document.onclick = () => {
+      if (RoomView.music === false) {
+        loadAudio()
+        RoomView.music = true
+      }
+
+      // below =null is propably ok as long as we dont use glob.document.onclick anywhere else,
+      // we can try to add this to id or class element instead
+      if (RoomView.music === true) glob.document.onclick = null 
+    }
+    
   },
 
   html: `<div id="room" class="room-background">
