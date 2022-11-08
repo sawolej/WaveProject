@@ -14,4 +14,3 @@ export const BootView = {
   <award-boot></award-boot>
 </div>`
 }
-

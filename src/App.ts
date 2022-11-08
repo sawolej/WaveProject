@@ -13,17 +13,19 @@ import './css/desktop.css'
 import './css/boot.css'
 import './css/game.css'
 
-const aspectRatio: { width: number, height: number } = { 
-  width: 35, 
-  height: 21 
+const aspectRatio: { width: number, height: number } = {
+  width: 35,
+  height: 21
 }
 
-export function audioLoader(filename: string, loop=true, volume=1) {
+export const audioLoader = (filename: string, loop: boolean = true, volume: number = 1) => {
+  console.log("currently playing: " + filename)
   App.audio = new Audio(filename)
-  //App.audio.play()
+
   if (loop !== false) App.audio.loop = true
   if (volume !== 1) App.audio.volume = volume
-  // App.audio.playbackRate = 1;
+
+  App.audio.playbackRate = 2.137;
   App.audio.volume = 0.1 // FOR DEVELOPING ;~~)))
   App.audio.play()
 }
@@ -45,6 +47,8 @@ const App = {
       App.filter = getURLHash()
 
       App.destructor() // call destructing function
+      glob.location.reload() // reload and clear audio leftovers
+
       App.render()
     });
     App.render()
@@ -56,7 +60,7 @@ const App = {
   setAspect() {
     const ratio = aspectRatio
     const h1 = ratio.height * glob.window.innerWidth / ratio.width;
-    const h2  = ratio.width * glob.window.innerHeight / ratio.height;
+    const h2 = ratio.width * glob.window.innerHeight / ratio.height;
     canvas.style.width = h1 < glob.window.innerHeight
       ? String(glob.window.innerWidth) + 'px'
       : String(h2) + 'px'
@@ -98,9 +102,9 @@ const App = {
 
   destructor() {
     // pause and destruct audio
-    if (App.audio) {     // necessary this is
-      App.audio.pause()  // https://meme-generator.com/wp-content/uploads/mememe/2020/05/mememe_75419badc3525afde64fdfaf0d166f11-1.jpg
-      App.audio = null   // https://pics.onsizzle.com/everything-is-important-9903115.png
+    if (App.audio) {
+      App.audio.pause()
+      App.audio = null
     }
 
     // destruct comp
