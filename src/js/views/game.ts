@@ -2,29 +2,22 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { Game as GameEngine } from '../comp/Game.js'
 
-// import '../../assets/css/main.css'
+import { audioLoader } from "../../App.js"
 
-export const Game = {
+export const GameView = {
   init() {
-    replaceHTML(canvas, Game.html)
-    insertHTML(canvas, Game.audio)
+    replaceHTML(canvas, GameView.html)
+    audioLoader("./assets/sounds/mainGameMusic.mp3")
     
     const newGame = new GameEngine
     newGame.init()
 
-    // Music fix: DOMException: play() failed because the user didn't interact with the document first.
-    // glob.document.onclick = () => {
-    //   const audio = document.getElementById("player") as HTMLAudioElement
-    //   audio.play()
-    //   Game.countdownTrigger()
-    // }
-    Game.countdownTrigger()
+    GameView.countdownTrigger()
   },
 
   countdownTrigger() { 
     setTimeout( () => {
-      const audio = document.getElementById("countdownSound") as HTMLAudioElement
-      audio.play();
+      audioLoader("./assets/sounds/countdown.mp3", false)
     }, 3800)
   },
 
@@ -93,15 +86,4 @@ export const Game = {
     <p id="tip">Some text in the Modal..</p>
   </div>
 </div>`,
-
-  audio: `<audio id="countdownSound" src="./assets/sounds/countdown.mp3"></audio>
-<audio id="player" autoplay loop>
-  <source src="./assets/sounds/mainGameMusic.mp3" type="audio/mp3">
-</audio>`,
-
-// <audio id="countdownSound" src="./assetssounds/countdown.mp3"></audio>
-//
-// `<audio id="countdownSound" autoplay>
-//   <source src="./assets/sounds/countdown.mp3" type="audio/mp3">
-// </audio>`
 }

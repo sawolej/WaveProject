@@ -2,25 +2,15 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { Board as BoardEngine } from '../comp/Board.js'
 
-// import '../../assets/css/main.css'
+import { audioLoader } from "../../App.js"
 
-export const Board = {
+export const BoardView = {
   init() {
-    replaceHTML(canvas, Board.html)
-    insertHTML(canvas, Board.audio)
+    replaceHTML(canvas, BoardView.html)
+    audioLoader("./assets/sounds/tlo_b.mp3")
 
     const newBoard = new BoardEngine
     newBoard.init()
-
-    const audio = document.getElementById("audio") as HTMLAudioElement
-    // fix: make it less distorted
-    audio.volume = 0.1//0.7; // FOR DEVELOPING ;~~)))
-
-    // not needed, user already interacted with window on room page
-    // glob.document.onclick = () => {
-    //   const audio = document.getElementById("audio") as HTMLAudioElement
-    //   audio.play()
-    // }
   },
 
   html: `<div id="wrapper" class="board-wrapper">
@@ -46,8 +36,4 @@ export const Board = {
     </form>
   </div>
 </div>`,
-
-  audio: `<audio id="audio" autoplay loop>
-  <source src="./assets/sounds/tlo_b.mp3" type="audio/mp3">
-</audio>`
 }
