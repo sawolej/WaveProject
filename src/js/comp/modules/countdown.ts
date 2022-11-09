@@ -31,11 +31,13 @@ class Countdown {
     this.imageBlack = document.getElementById('blackscreen');
   }
 
+  // getCountdownEl = () => { return this.countdownEl }
+
   update() {
     let close = false;
     if (!close) {
       this.introInterval = setInterval(() => {
-        this.introNumbers.innerHTML = this.seconds;
+        this.introNumbers.innerHTML = String(this.seconds);
         if (this.seconds === 3) this.introNumbers.style.display = "inline-flex";
         if (this.seconds > 0) this.seconds--;
         else {

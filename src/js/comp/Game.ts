@@ -1,4 +1,4 @@
-import { glob, canvas as canvas0, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, canvas as canvasRender, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
 
 import { InputHandler } from './modules/inputHandler.js';
 import { Player } from './modules/player.js';
@@ -12,347 +12,385 @@ import { Mountains } from './modules/mountains.js';
 import { Palms } from './modules/palms.js';
 import { Countdown } from './modules/countdown.js';
 
+import { GameView } from "../views/game.js";
+
 export const Game = class {
-  constructor() { }
+  canvas: HTMLCanvasElement
+  ctx: CanvasRenderingContext2D 
+
+  player: Player;
+  input: InputHandler;
+  background: Background;
+  ground: Ground;
+  sun: Sun;
+  mountains: Mountains;
+
+  platforms: { smallPlatform1: SmallPlatform; smallPlatform2: SmallPlatform; smallPlatform3: SmallPlatform; 
+    smallPlatform4: SmallPlatform; smallPlatform5: SmallPlatform; smallPlatform6: SmallPlatform; 
+    smallPlatform7: SmallPlatform; smallPlatform8: SmallPlatform; smallPlatform9: SmallPlatform; 
+    smallPlatform10: SmallPlatform; smallPlatform11: SmallPlatform; smallPlatform12: SmallPlatform; 
+    bigPlatform1: BigPlatform; bigPlatform2: BigPlatform; bigPlatform3: BigPlatform; bigPlatform4: BigPlatform; 
+    bigPlatform5: BigPlatform; bigPlatform6: BigPlatform; bigPlatform7: BigPlatform; };
+  palms: { palmLeftOne1: Palms; palmLeftTwo1: Palms; palmLeftTwo2: Palms; palmLeftTwo3: Palms; 
+    palmRightOne1: Palms; palmRightOne2: Palms; palmRightOne3: Palms; palmRightTwo1: Palms; palmRightTwo2: Palms; 
+    palmRightTwo3: Palms; palmRightTwo4: Palms; palmRightTwo5: Palms; };
+  disks: {
+    diskBehav: Disk; diskBio: Disk; diskChad: Disk; diskChem: Disk; diskEksoc: Disk; diskGeo: Disk; 
+    diskInter: Disk; diskLaw: Disk; diskManagement: Disk; diskMaths: Disk; diskPhilology: Disk; 
+    diskPhilosophy: Disk; diskTomaszow: Disk; };
+
+  diskCounter: number;
+  ihaveit: any[];
+  wasAdded: any[];
+
+  countdown: Countdown;
+  quit: boolean;
+  time: number;
+  countdownEl: HTMLElement;
+
+  constructor() {
+        // Define canvas properties
+        this.canvas = glob.document.getElementById('canvas1') as HTMLCanvasElement;
+        this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+        this.canvas.width = 1400;
+        this.canvas.height = 900;
+    
+        // Define InputHandler
+        this.input = new InputHandler();
+    
+        // Instantiate objects
+        this.player = new Player(this.canvas.width, this.canvas.height);
+        this.background = new Background(this.canvas.width, this.canvas.height, -1920);
+        this.ground = new Ground(this.canvas.width, this.canvas.height, -1920);
+        this.sun = new Sun(this.canvas.width, this.canvas.height);
+        this.mountains = new Mountains(this.canvas.width, this.canvas.height, -1920);
+    
+        const bigPlatform1 = new BigPlatform(this.canvas.width, this.canvas.height, 390, 625);
+        const bigPlatform2 = new BigPlatform(this.canvas.width, this.canvas.height, 1370, 625);
+        const bigPlatform3 = new BigPlatform(this.canvas.width, this.canvas.height, 2730, 625);
+        const bigPlatform4 = new BigPlatform(this.canvas.width, this.canvas.height, 4005, 641);
+        const bigPlatform5 = new BigPlatform(this.canvas.width, this.canvas.height, 4555, 475);
+        const bigPlatform6 = new BigPlatform(this.canvas.width, this.canvas.height, 5106, 308);
+        const bigPlatform7 = new BigPlatform(this.canvas.width, this.canvas.height, 8464, 475);
+        const smallPlatform1 = new SmallPlatform(this.canvas.width, this.canvas.height, 222, 465);
+        const smallPlatform2 = new SmallPlatform(this.canvas.width, this.canvas.height, 1620, 435);
+        const smallPlatform3 = new SmallPlatform(this.canvas.width, this.canvas.height, 1265, 295);
+        const smallPlatform4 = new SmallPlatform(this.canvas.width, this.canvas.height, 2285, 530);
+        const smallPlatform5 = new SmallPlatform(this.canvas.width, this.canvas.height, 2520, 350);
+        const smallPlatform6 = new SmallPlatform(this.canvas.width, this.canvas.height, 6034, 190);
+        const smallPlatform7 = new SmallPlatform(this.canvas.width, this.canvas.height, 6351, 299);
+        const smallPlatform8 = new SmallPlatform(this.canvas.width, this.canvas.height, 6668, 409);
+        const smallPlatform9 = new SmallPlatform(this.canvas.width, this.canvas.height, 6985, 520);
+        const smallPlatform10 = new SmallPlatform(this.canvas.width, this.canvas.height, 7302, 630);
+        const smallPlatform11 = new SmallPlatform(this.canvas.width, this.canvas.height, 8128, 665);
+        const smallPlatform12 = new SmallPlatform(this.canvas.width, this.canvas.height, 8975, 285);
+        
+        const palmLeftOne1 = new Palms(this.canvas.width, this.canvas.height, "palmLeftOneImage", 155, 265, 3360);
+        const palmLeftTwo1 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 1710);
+        const palmLeftTwo2 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 4690);
+        const palmLeftTwo3 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 8660);
+        const palmRightOne1 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 135);
+        const palmRightOne2 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 5900);
+        const palmRightOne3 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 9130);
+        const palmRightTwo1 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 1070);
+        const palmRightTwo2 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 2200);
+        const palmRightTwo3 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 5500);
+        const palmRightTwo4 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 6830);
+        const palmRightTwo5 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 8170);
+    
+        // Instantiate exportable disk objects
+        const diskBehav = new Disk(this.canvas.width, this.canvas.height, "diskBehavioralImage", 264, 380);
+        const diskBio = new Disk(this.canvas.width, this.canvas.height, "diskBiologyImage", 1307, 205);
+        const diskChad = new Disk(this.canvas.width, this.canvas.height, "diskChadImage", 9460, 135);
+        const diskChem = new Disk(this.canvas.width, this.canvas.height, "diskChemistryImage", 1499, 545);
+        const diskEksoc = new Disk(this.canvas.width, this.canvas.height, "diskEksocImage", 2859, 535);
+        const diskGeo = new Disk(this.canvas.width, this.canvas.height, "diskGeographyImage", 2925, 189);
+        const diskInter = new Disk(this.canvas.width, this.canvas.height, "diskInternationalImage", 4134, 551);
+        const diskLaw = new Disk(this.canvas.width, this.canvas.height, "diskLawImage", 5235, 223);
+        const diskMaths = new Disk(this.canvas.width, this.canvas.height, "diskMathsImage", 519, 535);
+        const diskManagement = new Disk(this.canvas.width, this.canvas.height, "diskManagementImage", 7344, 540);
+        const diskPhilology = new Disk(this.canvas.width, this.canvas.height, "diskPhilologyImage", 6076, 99);
+        const diskPhilosophy = new Disk(this.canvas.width, this.canvas.height, "diskPhilosophyImage", 4850, 85);
+        const diskTomaszow = new Disk(this.canvas.width, this.canvas.height, "diskTomaszowImage", 6710, 319);
+    
+        this.platforms = { smallPlatform1, smallPlatform2, smallPlatform3, smallPlatform4, smallPlatform5,
+          smallPlatform6, smallPlatform7, smallPlatform8, smallPlatform9, smallPlatform10, smallPlatform11,
+          smallPlatform12, bigPlatform1, bigPlatform2, bigPlatform3, bigPlatform4, bigPlatform5, bigPlatform6,
+          bigPlatform7 };
+    
+        this.palms = { palmLeftOne1, palmLeftTwo1, palmLeftTwo2, palmLeftTwo3,
+          palmRightOne1, palmRightOne2, palmRightOne3, palmRightTwo1, palmRightTwo2, palmRightTwo3,
+          palmRightTwo4, palmRightTwo5 };
+    
+        this.disks = { diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw,
+          diskManagement, diskMaths, diskPhilology, diskPhilosophy, diskTomaszow };
+    
+        this.diskCounter = 0;
+        this.ihaveit = [];
+        this.wasAdded = [];
+    
+        this.countdown = new Countdown(this.canvas.width, this.canvas.height);
+        this.quit = false;
+    
+        // Draw countdown timer when the game runs. Move this to a countdown.js class later.
+        this.time = 600;
+        this.countdownEl = glob.document.getElementById("countdown") as HTMLElement //this.countdown.getCountdownEl()
+  }
+
   init() {
-    // Define canvas properties
-    const canvas = document.getElementById('canvas1') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d');
-    canvas.width = 1400;
-    canvas.height = 900;
-
-    // Instantiate exportable disk objects
-    const diskBehav = new Disk(canvas.width, canvas.height, "diskBehavioralImage", 264, 380);
-    const diskBio = new Disk(canvas.width, canvas.height, "diskBiologyImage", 1307, 205);
-    const diskChad = new Disk(canvas.width, canvas.height, "diskChadImage", 9460, 135);
-    const diskChem = new Disk(canvas.width, canvas.height, "diskChemistryImage", 1499, 545);
-    const diskEksoc = new Disk(canvas.width, canvas.height, "diskEksocImage", 2859, 535);
-    const diskGeo = new Disk(canvas.width, canvas.height, "diskGeographyImage", 2925, 189);
-    const diskInter = new Disk(canvas.width, canvas.height, "diskInternationalImage", 4134, 551);
-    const diskLaw = new Disk(canvas.width, canvas.height, "diskLawImage", 5235, 223);
-    const diskMaths = new Disk(canvas.width, canvas.height, "diskMathsImage", 519, 535);
-    const diskManagement = new Disk(canvas.width, canvas.height, "diskManagementImage", 7344, 540);
-    const diskPhilology = new Disk(canvas.width, canvas.height, "diskPhilologyImage", 6076, 99);
-    const diskPhilosophy = new Disk(canvas.width, canvas.height, "diskPhilosophyImage", 4850, 85);
-    const diskTomaszow = new Disk(canvas.width, canvas.height, "diskTomaszowImage", 6710, 319);
-
-    window.addEventListener('load', function () {
-
-      const countdown = new Countdown(canvas.width, canvas.height);
-      let quit = false;
-
-      // Instantiate objects
-      const player = new Player(canvas.width, canvas.height);
-      const input = new InputHandler();
-      const background = new Background(canvas.width, canvas.height, -1920);
-      const ground = new Ground(canvas.width, canvas.height, -1920);
-      const bigPlatform1 = new BigPlatform(canvas.width, canvas.height, 390, 625);
-      const bigPlatform2 = new BigPlatform(canvas.width, canvas.height, 1370, 625);
-      const bigPlatform3 = new BigPlatform(canvas.width, canvas.height, 2730, 625);
-      const bigPlatform4 = new BigPlatform(canvas.width, canvas.height, 4005, 641);
-      const bigPlatform5 = new BigPlatform(canvas.width, canvas.height, 4555, 475);
-      const bigPlatform6 = new BigPlatform(canvas.width, canvas.height, 5106, 308);
-      const bigPlatform7 = new BigPlatform(canvas.width, canvas.height, 8464, 475);
-      const smallPlatform1 = new SmallPlatform(canvas.width, canvas.height, 222, 465);
-      const smallPlatform2 = new SmallPlatform(canvas.width, canvas.height, 1620, 435);
-      const smallPlatform3 = new SmallPlatform(canvas.width, canvas.height, 1265, 295);
-      const smallPlatform4 = new SmallPlatform(canvas.width, canvas.height, 2285, 530);
-      const smallPlatform5 = new SmallPlatform(canvas.width, canvas.height, 2520, 350);
-      const smallPlatform6 = new SmallPlatform(canvas.width, canvas.height, 6034, 190);
-      const smallPlatform7 = new SmallPlatform(canvas.width, canvas.height, 6351, 299);
-      const smallPlatform8 = new SmallPlatform(canvas.width, canvas.height, 6668, 409);
-      const smallPlatform9 = new SmallPlatform(canvas.width, canvas.height, 6985, 520);
-      const smallPlatform10 = new SmallPlatform(canvas.width, canvas.height, 7302, 630);
-      const smallPlatform11 = new SmallPlatform(canvas.width, canvas.height, 8128, 665);
-      const smallPlatform12 = new SmallPlatform(canvas.width, canvas.height, 8975, 285);
-      const sun = new Sun(canvas.width, canvas.height);
-      const mountains = new Mountains(canvas.width, canvas.height, -1920);
-      const palmLeftOne1 = new Palms(canvas.width, canvas.height, "palmLeftOneImage", 155, 265, 3360);
-      const palmLeftTwo1 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 1710);
-      const palmLeftTwo2 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 4690);
-      const palmLeftTwo3 = new Palms(canvas.width, canvas.height, "palmLeftTwoImage", 165, 270, 8660);
-      const palmRightOne1 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 135);
-      const palmRightOne2 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 5900);
-      const palmRightOne3 = new Palms(canvas.width, canvas.height, "palmRightOneImage", 185, 265, 9130);
-      const palmRightTwo1 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 1070);
-      const palmRightTwo2 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 2200);
-      const palmRightTwo3 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 5500);
-      const palmRightTwo4 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 6830);
-      const palmRightTwo5 = new Palms(canvas.width, canvas.height, "palmRightTwoImage", 120, 185, 8170);
 
 
-      let diskCounter = 0;
-      let ihaveit = [];
-      let wasAdded = [];
+      for (let i = 0; i < Object.keys(this.disks).length; ++i) this.wasAdded[i] = false;
 
-      const disks = [diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw,
-        diskManagement, diskMaths, diskPhilology, diskPhilosophy, diskTomaszow];
-
-      const palms = [palmLeftOne1, palmLeftTwo1, palmLeftTwo2, palmLeftTwo3,
-        palmRightOne1, palmRightOne2, palmRightOne3, palmRightTwo1, palmRightTwo2, palmRightTwo3,
-        palmRightTwo4, palmRightTwo5];
-
-      const platforms = [smallPlatform1, smallPlatform2, smallPlatform3, smallPlatform4, smallPlatform5,
-        smallPlatform6, smallPlatform7, smallPlatform8, smallPlatform9, smallPlatform10, smallPlatform11,
-        smallPlatform12, bigPlatform1, bigPlatform2, bigPlatform3, bigPlatform4, bigPlatform5, bigPlatform6,
-        bigPlatform7];
-
-      for (let i = 0; i < disks.length; ++i) wasAdded[i] = false;
-
-      function setText(arr) {
-        document.getElementById("tip").innerHTML = document.getElementById("tip").innerHTML + " \n New text!";
-      }
       // Draw the intro
-      this.setTimeout(() => { countdown.update() }, 2550)
+      setTimeout(() => { this.countdown.update() }, 2550)
 
       // End the game after 60 seconds
-      this.setTimeout(() => {
-        quit = true;
-        if (!countdown.wasCleared) {
-          countdown.wasCleared = true;
-          clearInterval(countdown.introInterval);
-          countdownEl.style.display = "none"
+      setTimeout(() => {
+        this.quit = true;
+        if (!this.countdown.wasCleared) {
+          this.countdown.wasCleared = true;
+          clearInterval(this.countdown.introInterval);
+          this.countdownEl.style.display = "none"
         }
       }, 67550) // 67550 = 60 seconds
 
-      // Draw countdown timer when the game runs. Move this to a countdown.js class later.
-      let time = 600;
-      const countdownEl = document.getElementById('countdown');
-
-      function update() {
-        setTimeout(() => {
-          let seconds: string = String(time % 60);
-          seconds = Number(seconds) < 10 ? '0' + seconds : seconds;
-          countdownEl.innerHTML = `${seconds}`;
-          --time;
-        }, 4550)
-      }
-
       // Toggle timer visibility
       setTimeout(() => {
-        if (!quit) { countdownEl.style.display = "inline-flex" }
-        else { countdownEl.style.display = "none" };
+        if (!this.quit) { this.countdownEl.style.display = "inline-flex" }
+        else { this.countdownEl.style.display = "none" };
       }, 6550)
 
-      setInterval(update, 1000);
+      // Timer
+      setInterval(this.update, 1000);
 
       // Main game loop - refresh every frame
-      this.setTimeout(() => {
-        function animate() {
+      setTimeout(() => this.animate(), 6550)
+  }
 
-          // Draw background
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          background.draw(ctx);
-          sun.draw(ctx);
-          mountains.draw(ctx);
-          ground.draw(ctx);
+  update = () => {
+    setTimeout(() => {
+      let seconds: string = String(this.time % 60);
+      seconds = Number(seconds) < 10 ? '0' + seconds : seconds;
+      this.countdownEl.innerHTML = seconds;
+      --this.time;
+    }, 4550)
+  }
 
-          // Draw palms
-          for (let i = 0; i < palms.length; ++i) {
-            palms[i].draw(ctx); // expected 1 argument not 2: (ctx, diskCounter)
-          }
+  animate = () => {
+    // Draw background
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.background.draw(this.ctx);
+    this.sun.draw(this.ctx);
+    this.mountains.draw(this.ctx);
+    this.ground.draw(this.ctx);
 
-          // Draw platforms
-          for (let i = 0; i < platforms.length; ++i) {
-            platforms[i].draw(ctx);
-            platforms[i].collide(player);
-          }
+    // Draw palms
+    for (let key in this.palms) {
+      this.palms[key].draw(this.ctx); // expected 1 argument not 2: (this.ctx, diskCounter)
+    }
 
-          // Draw disks
-          for (let i = 0; i < disks.length; ++i) {
-            if (!disks[i].isNear(player)) { disks[i].drawGlow(ctx); disks[i].draw(ctx); }
-          }
+    // Draw platforms
+    for (let key in this.platforms) {
+      this.platforms[key].draw(this.ctx);
+      this.platforms[key].collide(this.player);
+    }
 
-          player.update(input.keys);
-          player.draw(ctx);
+    // Draw disks
+    for (let key in this.disks) {
+      if (!this.disks[key].isNear(this.player)) { this.disks[key].drawGlow(this.ctx); this.disks[key].draw(this.ctx); }
+    }
 
-          // Only the one called platform will work for onGround - fix in the future
-          player.getPlatformInfo(bigPlatform1);
+    this.player.update(this.input.keys);
+    this.player.draw(this.ctx);
 
-          // Side scrolling effect for moving rightwards
-          if ((player.currentState === player.states[3] || (player.currentState === player.states[5] &&
-            input.keys.d.pressed && !input.keys.a.pressed)) && player.x === 690 && palmRightOne3.x >= 2500) {
+    // Only the one called platform will work for onGround - fix in the future
+    this.player.getPlatformInfo(this.platforms.bigPlatform1);
 
-            for (let i = 0; i < disks.length; ++i) disks[i].x -= 10;
-            for (let i = 0; i < palms.length; ++i) palms[i].x -= 7;
-            for (let i = 0; i < platforms.length; ++i) platforms[i].x -= 10;
+    // Side scrolling effect for moving rightwards
+    if ((this.player.currentState === this.player.states[3] || (this.player.currentState === this.player.states[5] &&
+      this.input.keys.d.pressed && !this.input.keys.a.pressed)) && this.player.x === 690 && this.palms.palmRightOne3.x >= 2500) {
 
-            background.x -= 0.05;
-            ground.x -= 10;
-            mountains.x -= 5;
-          }
+      for (let key in this.disks) this.disks[key].x -= 10;
+      for (let key in this.palms) this.palms[key].x -= 7;
+      for (let key in this.platforms) this.platforms[key].x -= 10;
 
-          // Side scrolling effect for moving leftwards
-          else if ((player.currentState == player.states[2] || (player.currentState === player.states[4] &&
-            input.keys.a.pressed)) && player.x === 400 && palmRightOne3.x <= 9500) {
+      this.background.x -= 0.05;
+      this.ground.x -= 10;
+      this.mountains.x -= 5;
+    }
 
-            for (let i = 0; i < disks.length; ++i) disks[i].x += 10;
-            for (let i = 0; i < palms.length; ++i) palms[i].x += 7;
-            for (let i = 0; i < platforms.length; ++i) platforms[i].x += 10;
+    // Side scrolling effect for moving leftwards
+    else if ((this.player.currentState == this.player.states[2] || (this.player.currentState === this.player.states[4] &&
+      this.input.keys.a.pressed)) && this.player.x === 400 && this.palms.palmRightOne3.x <= 9500) {
 
-            background.x += 0.05;
-            ground.x += 10;
-            mountains.x += 5;
-          }
+      for (let key in this.disks) this.disks[key].x += 10;
+      for (let key in this.palms) this.palms[key].x += 7;
+      for (let key in this.platforms) this.platforms[key].x += 10;
 
-          // Redraw the background images endlessly
-          if (background.x <= -3840 || background.x >= 0) background.x = -1920;
-          if (mountains.x <= -3840 || mountains.x >= 0) mountains.x = -1920;
-          if (ground.x <= -3840 || ground.x >= 0) ground.x = -1920;
+      this.background.x += 0.05;
+      this.ground.x += 10;
+      this.mountains.x += 5;
+    }
 
-          // Store picked disks to render them on endscreen
-          for (let i = 0; i < disks.length; ++i) {
-            if (disks[i].isPicked && !wasAdded[i]) {
-              wasAdded[i] = true;
-              ++diskCounter;
-              ihaveit.push(disks[i].name + "E");
-            }
-          }
+    // Redraw the background images endlessly
+    if (this.background.x <= -3840 || this.background.x >= 0) this.background.x = -1920;
+    if (this.mountains.x <= -3840 || this.mountains.x >= 0) this.mountains.x = -1920;
+    if (this.ground.x <= -3840 || this.ground.x >= 0) this.ground.x = -1920;
 
-          // Render endscreen with a 3s delay after win condition
-          function callEndscreen() {
-            quit = true;
-            countdownEl.style.display = "none";
-          }
+    // Store picked disks to render them on endscreen
+    for (let key in this.disks) {
+      const i = Object.keys(this.disks).map(e => e).indexOf(key);
+      if (this.disks[key].isPicked && !this.wasAdded[i]) {
+        this.wasAdded[i] = true;
+        ++this.diskCounter;
+        this.ihaveit.push(this.disks[key].name + "E");
+      }
+    }
 
-          // Call endscreen with a 3s delay after picking up all the disks 
-          if (diskCounter === disks.length) {
-            setTimeout(callEndscreen, 3000);
-            if (!countdown.wasCleared) {
-              countdown.wasCleared = true;
-              clearInterval(countdown.introInterval);
-            }
-          }
+    // Render endscreen with a 3s delay after win condition
+    const callEndscreen = () => {
+      this.quit = true;
+      this.countdownEl.style.display = "none";
+    }
 
-          // Get the modal
-          var modal = document.getElementById("myModal");
+    // Call endscreen with a 3s delay after picking up all the disks 
+    if (this.diskCounter === Object.keys(this.disks).length) {
+      setTimeout(callEndscreen, 3000);
+      if (!this.countdown.wasCleared) {
+        this.countdown.wasCleared = true;
+        clearInterval(this.countdown.introInterval);
+      }
+    }
 
-          // Get the button that opens the modal
-          var btn = document.getElementById("myBtn");
+    // Get the modal
+    var modal = glob.document.getElementById("myModal");
 
-          // Get the <span> element that closes the modal
-          var span = document.getElementsByClassName("close")[0] as HTMLButtonElement;
+    // Get the button that opens the modal
+    var btn = glob.document.getElementById("myBtn");
 
-          // define ids
-          const diskBehavioralImageE = document.getElementById('diskBehavioralImageE')
-          const diskBiologyImageE = document.getElementById('diskBiologyImageE')
-          const diskChadImageE = document.getElementById('diskChadImageE')
-          const diskChemistryImageE = document.getElementById('diskChemistryImageE')
-          const diskEksocImageE = document.getElementById('diskEksocImageE')
-          const diskGeographyImageE = document.getElementById('diskGeographyImageE')
-          const diskInternationalImageE = document.getElementById('diskInternationalImageE')
-          const diskLawImageE = document.getElementById('diskLawImageE')
-          const diskMathsImageE = document.getElementById('diskMathsImageE')
-          const diskManagementImageE = document.getElementById('diskManagementImageE')
-          const diskPhilologyImageE = document.getElementById('diskPhilologyImageE')
-          const diskPhilosophyImageE = document.getElementById('diskPhilosophyImageE')
-          const diskTomaszowImageE = document.getElementById('diskTomaszowImageE')
+    // Get the <span> element that closes the modal
+    var span = glob.document.getElementsByClassName("close")[0] as HTMLButtonElement;
 
-          // When the user clicks on the button, open the modal
-          diskBehavioralImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML =
-              `Wydział Nauk o Wychowaniu<br>
-        <br>
-        <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
-        <br>
-        <b>Czy wiesz, że...</b><br>
-        Na Uniwersytecie Łódzkim masz możliwość rozwijania swojej ścieżki naukowej między innymi 
-        dzięki grantom badawczym. Zespół badawczy związany z Wydziałem NAuk o Wychowaniu otrzymał 
-        grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej 
-        w redukcji stresu u osób dorosłych. Głównym celem projektu jest stworzenie aplikacji 
-        wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny 
-        w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
-        `
-          }
+    // define ids
+    const diskBehavioralImageE = glob.document.getElementById('diskBehavioralImageE')
+    const diskBiologyImageE = glob.document.getElementById('diskBiologyImageE')
+    const diskChadImageE = glob.document.getElementById('diskChadImageE')
+    const diskChemistryImageE = glob.document.getElementById('diskChemistryImageE')
+    const diskEksocImageE = glob.document.getElementById('diskEksocImageE')
+    const diskGeographyImageE = glob.document.getElementById('diskGeographyImageE')
+    const diskInternationalImageE = glob.document.getElementById('diskInternationalImageE')
+    const diskLawImageE = glob.document.getElementById('diskLawImageE')
+    const diskMathsImageE = glob.document.getElementById('diskMathsImageE')
+    const diskManagementImageE = glob.document.getElementById('diskManagementImageE')
+    const diskPhilologyImageE = glob.document.getElementById('diskPhilologyImageE')
+    const diskPhilosophyImageE = glob.document.getElementById('diskPhilosophyImageE')
+    const diskTomaszowImageE = glob.document.getElementById('diskTomaszowImageE')
 
-          diskBiologyImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Biologii i Ochrony Środowiska";
-          }
+    // When the user clicks on the button, open the modal
+    diskBehavioralImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML =
+        `Wydział Nauk o Wychowaniu<br>
+  <br>
+  <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
+  <br>
+  <b>Czy wiesz, że...</b><br>
+  Na Uniwersytecie Łódzkim masz możliwość rozwijania swojej ścieżki naukowej między innymi 
+  dzięki grantom badawczym. Zespół badawczy związany z Wydziałem NAuk o Wychowaniu otrzymał 
+  grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej 
+  w redukcji stresu u osób dorosłych. Głównym celem projektu jest stworzenie aplikacji 
+  wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny 
+  w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
+  `
+    }
 
-          diskChadImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
-          }
+    diskBiologyImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Biologii i Ochrony Środowiska";
+    }
 
-          diskChemistryImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Chemii";
-          }
+    diskChadImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
+    }
 
-          diskEksocImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Ekonomiczno-Socjologiczny";
-          }
+    diskChemistryImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Chemii";
+    }
 
-          diskGeographyImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Nauk Geograficznych";
-          }
+    diskEksocImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Ekonomiczno-Socjologiczny";
+    }
 
-          diskInternationalImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
-          }
+    diskGeographyImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Nauk Geograficznych";
+    }
 
-          diskLawImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Prawa i Administracji";
-          }
-          diskMathsImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Matematyki i Informatyki";
-          }
+    diskInternationalImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
+    }
 
-          diskManagementImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Zarządzania";
-          }
+    diskLawImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Prawa i Administracji";
+    }
+    diskMathsImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Matematyki i Informatyki";
+    }
 
-          diskPhilologyImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Filologiczny";
-          }
+    diskManagementImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Zarządzania";
+    }
 
-          diskPhilosophyImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Wydział Filozoficzno-Historyczny";
-          }
+    diskPhilologyImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Filologiczny";
+    }
 
-          diskTomaszowImageE.onclick = function () {
-            modal.style.display = "block";
-            document.getElementById("tip").innerHTML = "Filia w Tomaszowie Mazowieckim";
-          }
+    diskPhilosophyImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Wydział Filozoficzno-Historyczny";
+    }
 
-          // When the user clicks on <span> (x), close the modal
-          span.onclick = function () {
-            modal.style.display = "none";
-          }
+    diskTomaszowImageE.onclick = () => {
+      modal.style.display = "block";
+      glob.document.getElementById("tip").innerHTML = "Filia w Tomaszowie Mazowieckim";
+    }
 
-          
-          // When the user clicks anywhere outside of the modal, close it
-          window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none" } }
-          
-          // Clear the main game canvas on game end
-          if (!quit) requestAnimationFrame(animate);
-          if (quit) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            countdown.drawEnd(diskCounter, ihaveit);
-            setText(ihaveit);
-            
-            // Make the animated disks visible after delay
-            setTimeout(function () {
-              for (let i = 0; i < diskCounter; i++) {
-                document.getElementById(ihaveit[i]).style.visibility = 'visible';
-              }
-            }, 4550 + diskCounter * 900)
-          }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = () => {
+      modal.style.display = "none";
+    }
+
+    
+    // When the user clicks anywhere outside of the modal, close it
+    glob.document.body.onclick = (event) => { if (event.target == modal) modal.style.display = "none" }
+    
+    const setText = (arr) => {
+      let text = document.getElementById("tip").innerHTML
+      text = text + " \n New text!";
+    }
+
+    // Clear the main game canvas on game end
+    if (!this.quit) requestAnimationFrame(this.animate);
+    if (this.quit) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.countdown.drawEnd(this.diskCounter, this.ihaveit);
+      setText(this.ihaveit);
+      
+      // Make the animated disks visible after delay
+      setTimeout(() => {
+        for (let i = 0; i < this.diskCounter; i++) {
+          glob.document.getElementById(this.ihaveit[i]).style.visibility = 'visible';
         }
-
-        animate();
-
-      }, 6550)
-    })
+      }, 4550 + this.diskCounter * 900)
+    }
   }
 }

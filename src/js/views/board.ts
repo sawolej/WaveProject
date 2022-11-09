@@ -9,7 +9,7 @@ export const BoardView = {
     replaceHTML(canvas, BoardView.html)
     audioLoader("./assets/sounds/tlo_b.mp3")
 
-    const newBoard = new BoardEngine
+    const newBoard = new BoardEngine()
     newBoard.init()
   },
 

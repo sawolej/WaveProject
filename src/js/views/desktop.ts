@@ -9,7 +9,7 @@ export const DesktopView = {
     replaceHTML(canvas, DesktopView.html)
     audioLoader("./assets/sounds/desktop.mp3")
 
-    const newDesktop = new DesktopEngine
+    const newDesktop = new DesktopEngine()
     newDesktop.init()
   },
 
