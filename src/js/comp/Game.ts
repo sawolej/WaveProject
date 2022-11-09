@@ -30,14 +30,17 @@ export const Game = class {
     smallPlatform7: SmallPlatform; smallPlatform8: SmallPlatform; smallPlatform9: SmallPlatform; 
     smallPlatform10: SmallPlatform; smallPlatform11: SmallPlatform; smallPlatform12: SmallPlatform; 
     bigPlatform1: BigPlatform; bigPlatform2: BigPlatform; bigPlatform3: BigPlatform; bigPlatform4: BigPlatform; 
-    bigPlatform5: BigPlatform; bigPlatform6: BigPlatform; bigPlatform7: BigPlatform; };
+    bigPlatform5: BigPlatform; bigPlatform6: BigPlatform; bigPlatform7: BigPlatform; 
+  };
   palms: { palmLeftOne1: Palms; palmLeftTwo1: Palms; palmLeftTwo2: Palms; palmLeftTwo3: Palms; 
-    palmRightOne1: Palms; palmRightOne2: Palms; palmRightOne3: Palms; palmRightTwo1: Palms; palmRightTwo2: Palms; 
-    palmRightTwo3: Palms; palmRightTwo4: Palms; palmRightTwo5: Palms; };
+    palmRightOne1: Palms; palmRightOne2: Palms; palmRightOne3: Palms; palmRightTwo1: Palms;
+    palmRightTwo2: Palms; palmRightTwo3: Palms; palmRightTwo4: Palms; palmRightTwo5: Palms; 
+  };
   disks: {
     diskBehav: Disk; diskBio: Disk; diskChad: Disk; diskChem: Disk; diskEksoc: Disk; diskGeo: Disk; 
     diskInter: Disk; diskLaw: Disk; diskManagement: Disk; diskMaths: Disk; diskPhilology: Disk; 
-    diskPhilosophy: Disk; diskTomaszow: Disk; };
+    diskPhilosophy: Disk; diskTomaszow: Disk; 
+  };
 
   diskCounter: number;
   ihaveit: any[];
@@ -263,13 +266,13 @@ export const Game = class {
     }
 
     // Get the modal
-    var modal = glob.document.getElementById("myModal");
+    const modal = glob.document.getElementById("myModal");
 
     // Get the button that opens the modal
-    var btn = glob.document.getElementById("myBtn");
+    const btn = glob.document.getElementById("myBtn");
 
     // Get the <span> element that closes the modal
-    var span = glob.document.getElementsByClassName("close")[0] as HTMLButtonElement;
+    const span = glob.document.getElementsByClassName("close")[0] as HTMLButtonElement;
 
     // define ids
     const diskBehavioralImageE = glob.document.getElementById('diskBehavioralImageE')
