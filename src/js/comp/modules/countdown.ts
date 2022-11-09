@@ -31,8 +31,6 @@ class Countdown {
     this.imageBlack = document.getElementById('blackscreen');
   }
 
-  // getCountdownEl = () => { return this.countdownEl }
-
   update() {
     let close = false;
     if (!close) {

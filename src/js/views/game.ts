@@ -9,7 +9,7 @@ export const GameView = {
     replaceHTML(canvas, GameView.html)
     audioLoader("./assets/sounds/mainGameMusic.mp3")
     
-    const newGame = new GameEngine() // constructor calls GameEngine.init()
+    const newGame = new GameEngine()
     newGame.init()
 
     GameView.countdownTrigger()

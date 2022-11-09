@@ -134,11 +134,10 @@ export const Game = class {
     
         // Draw countdown timer when the game runs. Move this to a countdown.js class later.
         this.time = 600;
-        this.countdownEl = glob.document.getElementById("countdown") as HTMLElement //this.countdown.getCountdownEl()
+        this.countdownEl = glob.document.getElementById("countdown") as HTMLElement
   }
 
   init() {
-
 
       for (let i = 0; i < Object.keys(this.disks).length; ++i) this.wasAdded[i] = false;
 
@@ -168,7 +167,7 @@ export const Game = class {
       setTimeout(() => this.animate(), 6550)
   }
 
-  update = () => {
+  update = () => { // arrow function in order to reach class by this.
     setTimeout(() => {
       let seconds: string = String(this.time % 60);
       seconds = Number(seconds) < 10 ? '0' + seconds : seconds;
@@ -177,7 +176,7 @@ export const Game = class {
     }, 4550)
   }
 
-  animate = () => {
+  animate = () => { // arrow function in order to reach class by this.
     // Draw background
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.background.draw(this.ctx);
