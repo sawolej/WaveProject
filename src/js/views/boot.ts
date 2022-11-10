@@ -6,7 +6,7 @@ export const BootView = {
   init() {
     replaceHTML(canvas, BootView.html)
 
-    const newBoot = new BootEngine
+    const newBoot = new BootEngine()
     newBoot.init()
   },
 
