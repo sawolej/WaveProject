@@ -5,6 +5,9 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    /* custom cursor */
+    cursor: url(https://cur.cursors-4u.net/nature/nat-10/nat927.ani), url(https://cur.cursors-4u.net/nature/nat-10/nat927.png), auto !important;
   }
   
   #os_apps {
@@ -59,16 +62,16 @@
     background: rgb(182, 182, 182);
     border: 1px solid rgb(0, 0, 0);
     padding: 0 10px;
-    cursor: move;
-    cursor: grab;
+    /* cursor: move; */
     cursor: -moz-grab;
     cursor: -webkit-grab;
+    cursor: grab;
   }
   
   .app_window .window_bar:active {
-    cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+    cursor: grabbing;
   }
   
   .app_window .window_bar .brand {
@@ -161,3 +164,14 @@
     overflow: hidden;
   }
   
+  /* .custom_cursor {
+    background-image: url('../assets/pics/cup.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    opacity: .8;
+  } */

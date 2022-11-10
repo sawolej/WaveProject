@@ -11,6 +11,19 @@ export const DesktopView = {
 
     const newDesktop = new DesktopEngine()
     newDesktop.init()
+
+    // // custom desktop cursor
+    // // const cursor = document.querySelector('.cursor') as HTMLElement
+    // const cursor = glob.document.createElement('div')
+    // cursor.className = 'cursor custom_cursor'
+    // canvas.appendChild(cursor)
+
+    // const moveCursor = (e)=> {
+    // const mouseY = e.clientY
+    // const mouseX = e.clientX
+    // cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`
+    // }
+    // glob.window.addEventListener('mousemove', moveCursor)
   },
 
   html: `<div id="wrapper">
