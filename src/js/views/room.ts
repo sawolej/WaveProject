@@ -5,21 +5,27 @@ const loadAudio = () => audioLoader("./assets/sounds/tlo.mp3")
 
 export const RoomView = {
   music: false,
+  
   init() {
     replaceHTML(canvas, RoomView.html)
     loadAudio()
 
+    // Workaround to not play music for a second time in parallel on localhost,
+    // its not needed if we would make first quest: turn on the music
+    if (glob.location.hostname === "localhost") RoomView.music = true
+
     // Music fix: DOMException: play() failed because the user didn't interact with the document first.
-    glob.document.onclick = () => {
+    const firstClick = () => {
       if (RoomView.music === false) {
         loadAudio()
         RoomView.music = true
       }
-
-      // below =null is propably ok as long as we dont use glob.document.onclick anywhere else,
-      // we can try to add this to id or class element instead
-      if (RoomView.music === true) glob.document.onclick = null 
+      // removing of a listener like below is propably ok as long as
+      // we dont use any other document.body listeners in this view,
+      // otherwise, we can try to add this to id or class element instead
+      document.body.removeEventListener("click", firstClick)
     }
+    document.body.addEventListener('click', firstClick)
     
   },
 

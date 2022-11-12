@@ -25,7 +25,7 @@ export const audioLoader = (filename: string, loop: boolean = true, volume: numb
   if (loop !== false) App.audio.loop = true
   if (volume !== 1) App.audio.volume = volume
 
-  App.audio.playbackRate = 2.137;
+  App.audio.playbackRate = 2.137; // SUPER SONIC SPEED
   App.audio.volume = 0.1 // FOR DEVELOPING ;~~)))
   App.audio.play()
 }
