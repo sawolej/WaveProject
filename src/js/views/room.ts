@@ -1,53 +1,43 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
 
-// import '../../assets/css/main.css'
+import { audioLoader } from "../../App.js"
 
-export const Room = {
+export const RoomView = {
   music: false,
-  init() {
-    replaceHTML(canvas, Room.html)
-    insertHTML(canvas, Room.audio)
-    
-    // Music
-    const audio = glob.document.getElementById("tlo") as HTMLAudioElement
-    // fix: make it less distorted
-    audio.volume = 0.1//0.7; // FOR DEVELOPING ;~~)))
 
-    // Music fix: DOMException: play() failed because the user didn't interact with the document first.
-    if (this.music === false && audio.duration === 0) { 
-      // Music fix: audio.duration === 0 
-      // fixes music playing in the background from previous 
-      // instances not yet destroyed by js garbage collector
-      glob.document.onclick = () => audio.play();
-      this.music = true
+  init() {
+    replaceHTML(canvas, RoomView.html)
+    RoomView.loadAudio()
+
+    // Workaround to not play music for a second time in parallel on localhost,
+    // its not needed if we would make first quest: turn on the music
+    if (glob.location.hostname === "localhost") RoomView.music = true
+
+    // click event listener
+    glob.document.body.addEventListener('click', RoomView.firstClick)
+  },
+
+  loadAudio: () => audioLoader("./assets/sounds/tlo.mp3"),
+
+  // Music fix: DOMException: play() failed because the user didn't interact with the document first.
+  firstClick: () => {
+    if (RoomView.music === false) {
+      RoomView.loadAudio()
+      RoomView.music = true
     }
+    // removing of a listener like below is propably ok as long as
+    // we dont use any other document.body listeners in this view,
+    // otherwise, we can try to add this to id or class element instead
+    glob.document.body.removeEventListener('click', RoomView.firstClick)
   },
 
   html: `
-  <div id="room" class="room-background">
-    <a href="#board"><div id="board"></div></a>
+  <div class="room">
+    <a href="#board"><div class="board"></div></a>
     <a target="_blank" rel="noopener noreferrer" href="https://sklep.uni.lodz.pl/">
-    <div id="cup" class="cup-wrapper"></div></a>
-    <div id="plant" class="plant-wrapper"></div>
-    <div id="pc" class="pc-wrapper"><a href="#boot"><img id="ekranGif" src=
-    "./assets/pics/ekran.gif" class="undraggable"></a></div>
-  </div>`,
-
-  audio: `<audio id="tlo" autoplay loop>
-  <source src="./assets/sounds/tlo.mp3" type="audio/mp3">
-</audio>`
+      <div class="cup-wrapper cup"></div>
+    </a>
+    <div class="plant-wrapper plant"></div>
+    <div class="pc-wrapper pc"><a href="#boot"><img class="screen-gif" src="./assets/pics/screen.gif"></a></div>
+  </div>`
 }
-
-// do we need it? use DOM <a href="url"> instead
-//
-// const click_screen = () => {
-//   glob.window.location.href="screen.html";
-// }
-
-// const click_board = () =>  {
-//   glob.window.location.href="board.html";
-// }
-
-// const click_cup = () =>  {
-//   glob.window.location.href="https://sklep.uni.lodz.pl/";
-// }

@@ -1,0 +1,248 @@
+.undraggable {
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.board-wrapper {
+  height: 100%;
+}
+
+.cork-board {
+  position: relative;
+  width: 100%;
+  background: no-repeat url("./assets/pics/corkBoard.png");
+  background-size: contain;
+}
+
+#sheet1 {
+  position: absolute;
+  width: 30%;
+  top: 5%;
+  left: 2%;
+  z-index: 1;
+  visibility: hidden;
+  box-sizing: border-box;
+}
+
+#sheet2 {
+  position: absolute;
+  width: 30%;
+  top: 20%;
+  left: 17%;
+  visibility: hidden;
+}
+
+#sheet3 {
+  position: absolute;
+  width: 30%;
+  top: 30%;
+  left: 46.5%;
+  visibility: hidden;
+}
+
+#sheet4 {
+  position: absolute;
+  width: 30%;
+  top: 11%;
+  left: 60%;
+  visibility: hidden;
+}
+
+#sheet1click {
+  position: absolute;
+  width: 8%;
+  height: 15%;
+  top: 6.7%;
+  left: 5%;
+}
+
+#sheet1click:hover {
+  cursor: pointer;
+  outline: 16px solid #fbeca4;
+}
+
+#sheet2click {
+  position: absolute;
+  width: 17%;
+  height: 21.6%;
+  top: 26.7%;
+  left: 23%;
+}
+
+#sheet2click:hover {
+  cursor: pointer;
+  outline: 16px solid #fbeca4;
+}
+
+#sheet3click {
+  position: absolute;
+  width: 13%;
+  height: 21.7%;
+  top: 43.3%;
+  left: 55%;
+}
+
+#sheet3click:hover {
+  cursor: pointer;
+  outline: 16px solid #fbeca4;
+}
+
+#sheet4click {
+  position: absolute;
+  width: 16%;
+  height: 8.3%;
+  top: 20%;
+  left: 66%;
+}
+
+#sheet4click:hover {
+  cursor: pointer;
+  outline: 16px solid #fbeca4;
+}
+
+#fb {
+  position: absolute;
+  top: 14%;
+  left: 15%;
+  color: rgb(255, 255, 255);
+  font-size: 2vw;
+  visibility: hidden;
+  z-index: 1;
+}
+
+#fb:hover {
+  color: black;
+  background-color: #b6e8b8;
+  cursor: pointer;
+}
+
+#tiktok {
+  position: absolute;
+  top: 27%;
+  left: 7%;
+  color: white;
+  font-size: 2vw;
+  visibility: hidden;
+  z-index: 1;
+}
+
+#tiktok:hover {
+  color: black;
+  background-color: #b6e8b8;
+  cursor: pointer;
+}
+
+#insta {
+  position: absolute;
+  top: 41%;
+  left: 14.5%;
+  color: rgb(255, 255, 255);
+  font-size: 2vw;
+  visibility: hidden;
+  z-index: 1;
+}
+
+#insta:hover {
+  color: black;
+  background-color: #b6e8b8;
+  cursor: pointer;
+}
+
+#buttonsUL {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+#UL1 {
+  position: absolute;
+  top: 25%;
+  left: 22%;
+  font-size: 1.5vw;
+  color: white;
+}
+
+#UL1:hover {
+  background-color: #d3b9ea;
+  color: black;
+  cursor: pointer;
+}
+
+#UL2 {
+  position: absolute;
+  top: 46%;
+  left: 22%;
+  font-size: 1.5vw;
+  color: white;
+}
+
+#UL2:hover {
+  background-color: #d3b9ea;
+  color: black;
+  cursor: pointer;
+}
+
+.arrow-wrapper {
+  position: absolute;
+  width: 7.43%;
+  height: 12.38%;
+  right: 5%;
+  top: 8%;
+}
+
+#arrow {
+  background: no-repeat url("./assets/pics/arrow.png");
+  background-size: contain;
+}
+
+#arrow:hover {
+  background: no-repeat url("./assets/pics/arrowOutline.png");
+  background-size: contain;
+}
+
+/* Change the outline width depending on the screen width */
+@media only screen and (min-width: 1px) {
+  #sheet1click:hover,
+  #sheet2click:hover,
+  #sheet3click:hover,
+  #sheet4click:hover {outline-width: 8px;}
+}
+
+@media only screen and (min-width: 1366px) {
+  #sheet1click:hover,
+  #sheet2click:hover,
+  #sheet3click:hover,
+  #sheet4click:hover {outline-width: 10px;}
+}
+
+@media only screen and (min-width: 1600px) {
+  #sheet1click:hover,
+  #sheet2click:hover,
+  #sheet3click:hover,
+  #sheet4click:hover {outline-width: 12px;}
+}
+
+@media only screen and (min-width: 1920px) {
+  #sheet1click:hover,
+  #sheet2click:hover,
+  #sheet3click:hover,
+  #sheet4click:hover {outline-width: 16px;}
+}
+
+@media only screen and (min-width: 2560px) {
+  #sheet1click:hover,
+  #sheet2click:hover,
+  #sheet3click:hover,
+  #sheet4click:hover {outline-width: 22px;}
+}
+
+@media only screen and (min-width: 3840px) {
+  #sheet1click:hover,
+  #sheet2click:hover,
+  #sheet3click:hover,
+  #sheet4click:hover {outline-width: 28px;}
+}

@@ -2,20 +2,15 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { Desktop as DesktopEngine } from '../comp/Desktop.js'
 
-// import '../../assets/css/main.css'
+import { audioLoader } from "../../App.js"
 
-export const Desktop = {
+export const DesktopView = {
   init() {
-    replaceHTML(canvas, Desktop.html)
-    insertHTML(canvas, Desktop.audio)
+    replaceHTML(canvas, DesktopView.html)
+    audioLoader("./assets/sounds/desktop.mp3")
 
-    const newDesktop = new DesktopEngine
+    const newDesktop = new DesktopEngine()
     newDesktop.init()
-
-    // glob.document.onclick = () => {
-    //   const audio = document.getElementById("desktopAudio") as HTMLAudioElement
-    //   audio.play()
-    // }
   },
 
   html: `<div id="wrapper">
@@ -59,9 +54,5 @@ export const Desktop = {
 
     <!-- Hide App -->
     <div id="app-hide"></div>
-  </div>`,
-
-  audio: `<audio id="desktopAudio" autoplay loop>
-  <source src="./assets/sounds/desktop.mp3" type="audio/mp3">
-</audio>`
+  </div>`
 }

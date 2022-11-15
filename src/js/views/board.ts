@@ -2,29 +2,25 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { Board as BoardEngine } from '../comp/Board.js'
 
-// import '../../assets/css/main.css'
+import { audioLoader } from "../../App.js"
 
-export const Board = {
+export const BoardView = {
   init() {
-    replaceHTML(canvas, Board.html)
-    insertHTML(canvas, Board.audio)
+    replaceHTML(canvas, BoardView.html)
+    audioLoader("./assets/sounds/tlo_b.mp3")
 
-    const newBoard = new BoardEngine
+    const newBoard = new BoardEngine()
     newBoard.init()
-
-    const audio = document.getElementById("audio") as HTMLAudioElement
-    // fix: make it less distorted
-    audio.volume = 0.1//0.7; // FOR DEVELOPING ;~~)))
   },
 
   html: `
-  <div id="wrapper" class="board-wrapper">
+  <div class="board-wrapper cork-board">
     <div id="arrow" class="arrow-wrapper"></div>
-    <img id="sheet1" src="./assets/pics/sheet1.png" class="undraggable">
     <div id="sheet1click" class="undraggable"></div>
     <div id="sheet2click" class="undraggable"></div>
     <div id="sheet3click" class="undraggable"></div>
     <div id="sheet4click" class="undraggable"></div>
+    <img id="sheet1" src="./assets/pics/sheet1.png" class="undraggable">
     <img id="sheet2" src="./assets/pics/sheet2.png" class="undraggable">
     <img id="sheet3" src="./assets/pics/sheet3.png" class="undraggable">
     <img id="sheet4" src="./assets/pics/sheet4.png" class="undraggable">
@@ -38,10 +34,5 @@ export const Board = {
     <a target="_blank" rel="noopener noreferrer" id="UL2" href=
       "http://static.uni.lodz.pl/dso/irk2/terminarz_2022_2023.pdf">Terminarz Rekrutacji</a>
     </div>
-  </div>`,
-
-  audio: `
-    <audio id="audio" autoplay loop>
-    <source src="./assets/sounds/tlo_b.mp3" type="audio/mp3">
-  </audio>`
+  </div>`
 }

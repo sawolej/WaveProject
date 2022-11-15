@@ -153,7 +153,7 @@ export const Boot = class {
       setVisible(className, duration = 0) {
         return new Promise(resolve => {
           setTimeout(() => {
-            this.shadowRoot.querySelector(className).classList.remove("off");
+            // this.shadowRoot.querySelector(className).classList.remove("off");
             resolve(true)
           }, duration);
         });
@@ -274,7 +274,7 @@ export const Boot = class {
       }
 
       disableEPA() {
-        this.shadowRoot.querySelector(".epa").classList.add("fadeoff"); // error here: undefined shadowRoot
+        this.shadowRoot.querySelector(".epa");//.classList.add("fadeoff"); // error here: undefined shadowRoot
       }
 
       render() {
@@ -443,6 +443,10 @@ export const Boot = class {
 
       render() {
         this.shadowRoot.innerHTML = `
+      //   <head>
+      //   <link rel="stylesheet" href="C:\Users\HP\Desktop\studia\rok2\game\WaveProject\src\css\boot.css">
+      // </head>
+      
   <style>${AwardBios.styles}</style>
   <div class="blue screen">
     <div class="title center">CMOS Setup Utility - Copyright (C) 1984-2001 Award Software</div>

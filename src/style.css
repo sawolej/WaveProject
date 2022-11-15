@@ -28,7 +28,6 @@
 .room-background {
   position: relative;
   height: 100%;
-  /* width: 100%; */
   margin-left: auto;
   margin-right: auto;
   resize: horizontal;
@@ -43,9 +42,6 @@
   top: inherit;
   left: inherit;
   cursor: pointer;
-  background: url("./assets/pics/board.png") no-repeat;
-  background-size: contain;
-  /* border: 1px solid orange; */
 }
 
 #board:hover {

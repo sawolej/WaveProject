@@ -1,0 +1,81 @@
+.room {
+  position: relative;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: no-repeat url("./assets/pics/room.png");
+  background-size: contain;
+}
+
+.board {
+  position: absolute;
+  width: 36%;
+  height: 38.35%;
+  z-index: 1;
+}
+
+/* The borders do not scale for some reason */
+.board:hover {
+  background: no-repeat url("./assets/pics/boardOutline.png");
+  background-size: contain;
+  cursor: pointer;
+}
+
+.cup-wrapper {
+  position: absolute;
+  width: 14%;
+  height: 20%;
+  top: 65%;
+  left: 10%;
+}
+
+.cup {
+  background: no-repeat url("./assets/pics/cup.png");
+  background-size: contain;
+}
+
+.cup:hover {
+  cursor: pointer;
+  background: no-repeat url("./assets/pics/cupOutline.png");  
+  background-size: contain;
+}
+
+.plant-wrapper {
+  position: absolute;
+  width: 26%;
+  height: 36.8%;
+  left: 18.98%;
+  top: 29.91%;
+  z-index: 0;
+}
+
+.plant {
+  background: no-repeat url("./assets/pics/plant.png");
+  background-size: contain;
+}
+
+.pc-wrapper {
+  position: absolute;
+  width: 52.21%;
+  height: 78.33%;
+  top: 12.5%;
+  left: 31.8%;
+}
+
+.pc {
+  background: no-repeat url("./assets/pics/pc.png");
+  background-size: contain;
+}
+
+.pc:hover {
+  background-image: url("./assets/pics/pcOutline.png");
+}
+
+.screen-gif {
+  position: absolute;
+  width: 39.4%;
+  top: 13.8%;
+  left: 39.8%;
+  cursor: pointer;
+  background-image: no-repeat url("./assets/pics/screen.gif");
+}

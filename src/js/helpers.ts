@@ -2,7 +2,7 @@ export const glob = globalThis
 
 export const canvas = glob.document.getElementById('render')
 
-export const getURLHash = () => glob.document.location.hash.replace(/^#\//, "");
+export const getURLHash = () => glob.document.location.hash
 
 export const delegate = (el, selector, event, handler) => {
 	el.addEventListener(event, (e) => {
