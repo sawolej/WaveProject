@@ -10,7 +10,8 @@ export const BootView = {
     newBoot.init()
   },
 
-  html: `<div class="monitor">
-  <award-boot></award-boot>
-</div>`
+  html: `
+  <div class="monitor">
+    <award-boot></award-boot>
+  </div>`
 }

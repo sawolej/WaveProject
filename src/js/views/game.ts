@@ -85,5 +85,5 @@ export const GameView = {
     <span class="close">&times;</span>
     <p id="tip">Some text in the Modal..</p>
   </div>
-</div>`,
+</div>`
 }

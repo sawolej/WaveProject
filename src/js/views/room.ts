@@ -31,23 +31,13 @@ export const RoomView = {
     glob.document.body.removeEventListener('click', RoomView.firstClick)
   },
 
-  html: `<div id="room" class="room-background">
-  <a href="#board"><img id="board" class="undraggable"></a>
-  <a href="#boot"><img id="ekranGif" src="./assets/pics/ekran.gif" class="undraggable"></a>
-  <a href="https://sklep.uni.lodz.pl/"><img id="cup" src="./assets/pics/cup.png" class="undraggable"></a>
-</div>`,
+  html: `
+  <div class="room">
+    <a href="#board"><div class="board"></div></a>
+    <a target="_blank" rel="noopener noreferrer" href="https://sklep.uni.lodz.pl/">
+      <div class="cup-wrapper cup"></div>
+    </a>
+    <div class="plant-wrapper plant"></div>
+    <div class="pc-wrapper pc"><a href="#boot"><img class="screen-gif" src="./assets/pics/screen.gif"></a></div>
+  </div>`
 }
-
-// do we need it? use DOM <a href="url"> instead
-//
-// const click_screen = () => {
-//   glob.window.location.href="screen.html";
-// }
-
-// const click_board = () =>  {
-//   glob.window.location.href="board.html";
-// }
-
-// const click_cup = () =>  {
-//   glob.window.location.href="https://sklep.uni.lodz.pl/";
-// }

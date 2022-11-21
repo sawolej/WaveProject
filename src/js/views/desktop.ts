@@ -54,5 +54,5 @@ export const DesktopView = {
 
     <!-- Hide App -->
     <div id="app-hide"></div>
-  </div>`,
+  </div>`
 }

@@ -7,7 +7,7 @@ import { GameView } from './js/views/game.js'
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./js/helpers.js";
 
 import './css/style.css'
-import './css/app.css' // should be room.css?
+import './css/room.css' // should be room.css?
 import './css/board.css'
 import './css/desktop.css'
 import './css/boot.css'

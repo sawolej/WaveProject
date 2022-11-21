@@ -23,11 +23,11 @@ export const Desktop = class {
     /* Reseting window */
     close(os_window)
     /* Creating apps */
-    create_app("File manager", './assets/pics/icon_file.png', "file-manager")
-    create_app("Recycle bin", "./assets/pics/icon_bin.png", "recycle-bin")
-    create_app("Settings", "./assets/pics/icon_settings.png", "settings")
-    create_app("System Info", "./assets/pics/icon_system.png", "system-info")
-    create_app("Whats that?", "./assets/pics/icon_game.png", "game")
+    create_app("File manager", './assets/pics/fileIcon.png', "file-manager")
+    create_app("Recycle bin", "./assets/pics/binIcon.png", "recycle-bin")
+    create_app("Settings", "./assets/pics/settingsIcon.png", "settings")
+    create_app("System Info", "./assets/pics/systemIcon.png", "system-info")
+    create_app("Whats that?", "./assets/pics/gameIcon.png", "game")
 
 
 
