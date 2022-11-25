@@ -89,22 +89,22 @@ body {
 }
 
 .app_window .window_bar .brand p {
-  color: rgb(73, 0, 0);
+  color: rgb(0, 0, 0);
   margin-left: 10px;
 }
 
-.app_window .window_bar .brand .buttons {
+.app_window .window_bar .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.app_window .window_bar .brand .buttons button {
+.app_window .window_bar .buttons button {
   outline: 6px;
   border: 6px;
   margin-right: 6px;
   color: rgb(0, 0, 0);
-  padding: 6px;
+  padding: 5px;
   width: 30px;
   height: 30px;
   border-radius: 95%;
@@ -112,26 +112,30 @@ body {
   transition: 0.3s;
 }
 
-.app_window .window_bar .brand .buttons button:first-child {
-  background: rgb(3, 82, 0);
+.app_window .window_bar .buttons button:hover {
+  background: rgb(203, 203, 203);
+  color: rgb(0, 43, 43);
 }
 
-.app_window .window_bar .brand .buttons button:nth-child(2) {
-  background: rgb(59, 0, 82);
+.maximise-icon {
+  width: 70%;
+  height: 70%;
+  border: 2px solid rgb(100, 100, 100);
+  margin: auto;
 }
 
-.app_window .window_bar .brand .buttons button:nth-child(3) {
-  background: rgb(121, 45, 1);
+.shorter-icon {
+  width: 70%;
+  border-top: 3px solid rgb(100, 100, 100);
+  margin: auto;
 }
 
-.app_window .window_bar .brand .buttons button:last-child {
-  background: rgb(255, 43, 43);
-  margin-right: 0;
-}
-
-.app_window .window_bar .brand .buttons button:hover {
-  background: rgb(182, 182, 182);
-  color: rgb(255, 43, 43);
+.cross-icon {
+  width: 50%;
+  font-size: 18px;
+  border: 1px solid rgb(255, 255, 255);
+  border-color: transparent;
+  margin: auto;
 }
 
 .app_window .app {
