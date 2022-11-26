@@ -111,27 +111,27 @@ const app = class App {
     switch (this.filter) {
       case "#desktop":
         console.log("loading component.. [desktop]")
-        this.comp.Desktop = DesktopView
+        this.comp.Desktop = new DesktopView()
         this.comp.Desktop.init()
         break
       case "#board":
         console.log("loading component.. [board]")
-        this.comp.Board = BoardView
+        this.comp.Board = new BoardView()
         this.comp.Board.init()
         break
       case "#boot": // or booting..
         console.log("loading component.. [boot]")
-        this.comp.Boot = BootView
+        this.comp.Boot = new BootView()
         this.comp.Boot.init()
         break
       case "#game":
         console.log("loading component.. [game]")
-        this.comp.Game = GameView
+        this.comp.Game = new GameView()
         this.comp.Game.init()
         break
       default:
         console.log("loading component.. [room]")
-        this.comp.Room = RoomView
+        this.comp.Room = new RoomView()
         this.comp.Room.init()
         break
     }

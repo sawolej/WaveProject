@@ -4,16 +4,18 @@ import { Board as BoardEngine } from '../comp/Board.js'
 
 import { audioLoader } from "../../App.js"
 
-export const BoardView = {
+export class BoardView {
+  constructor() {}
+
   init() {
-    replaceHTML(canvas, BoardView.html)
-    audioLoader("./assets/sounds/tlo_b.mp3")
+    replaceHTML(canvas, this.html)
+    audioLoader("./assets/sounds/tlo_b.mp3", true, .1)//, 2.137)
 
     const newBoard = new BoardEngine()
     newBoard.init()
-  },
+  }
 
-  html: `
+  html = `
   <div class="board-wrapper cork-board">
     <div id="arrow" class="arrow-wrapper"></div>
     <div id="sheet1click" class="undraggable"></div>

@@ -4,16 +4,18 @@ import { Desktop as DesktopEngine } from '../comp/Desktop.js'
 
 import { audioLoader } from "../../App.js"
 
-export const DesktopView = {
+export class DesktopView {
+  constructor() {}
+
   init() {
-    replaceHTML(canvas, DesktopView.html)
+    replaceHTML(canvas, this.html)
     audioLoader("./assets/sounds/desktop.mp3")
 
     const newDesktop = new DesktopEngine()
     newDesktop.init()
-  },
+  }
 
-  html: `<div id="wrapper">
+  html = `<div id="wrapper">
   <!-- App container and bottom taskbar -->
   <div class="os_container">
     <!--br-os-container -->

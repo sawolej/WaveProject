@@ -2,15 +2,17 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { Boot as BootEngine } from '../comp/Boot.js'
 
-export const BootView = {
+export class BootView {
+  constructor() {}
+  
   init() {
-    replaceHTML(canvas, BootView.html)
+    replaceHTML(canvas, this.html)
 
     const newBoot = new BootEngine()
     newBoot.init()
-  },
+  }
 
-  html: `
+  html = `
   <div class="monitor">
     <award-boot></award-boot>
   </div>`

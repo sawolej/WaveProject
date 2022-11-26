@@ -4,24 +4,26 @@ import { Game as GameEngine } from '../comp/Game.js'
 
 import { audioLoader } from "../../App.js"
 
-export const GameView = {
+export class GameView {
+  constructor() {}
+  
   init() {
-    replaceHTML(canvas, GameView.html)
+    replaceHTML(canvas, this.html)
     audioLoader("./assets/sounds/mainGameMusic.mp3")
     
     const newGame = new GameEngine()
     newGame.init()
 
-    GameView.countdownTrigger()
-  },
+    this.countdownTrigger()
+  }
 
   countdownTrigger() { 
     setTimeout( () => {
       audioLoader("./assets/sounds/countdown.mp3", false)
     }, 3800)
-  },
+  }
 
-  html: `<div id="game-wrapper" class="centred">
+  html = `<div id="game-wrapper" class="centred">
   <canvas id="canvas1"></canvas>
   <p id="introText">COLLECT ALL DISKS BEFORE THE TIME RUNS OUT!</p>
   <p id="introCountdown"></p>
