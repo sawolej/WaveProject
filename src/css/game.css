@@ -1,8 +1,7 @@
 .centred {
   margin: auto;
-  resize: horizontal;
   max-width: 83%;
-  aspect-ratio: 1.55556;
+  /* aspect-ratio: 1.55556; */
 }
 
 #game-wrapper {

@@ -2,17 +2,10 @@ import { glob, canvas as canvasRender, delegate, getURLHash, insertHTML, replace
 
 import { InputHandler } from './modules/inputHandler.js';
 import { Player } from './modules/player.js';
-import { Background } from './modules/background.js';
-import { Ground } from './modules/ground.js';
-import { BigPlatform } from './modules/bigPlatform.js';
-import { SmallPlatform } from './modules/smallPlatform.js';
-import { Disk } from './modules/disk.js';
-import { Sun } from './modules/sun.js';
-import { Mountains } from './modules/mountains.js';
-import { Palms } from './modules/palms.js';
+import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, Disk } from './modules/Items.js';
 import { Countdown } from './modules/countdown.js';
 
-import { GameView } from "../views/game.js";
+import { GameView } from "../views/GameView.js";
 
 export const Game = class {
   canvas: HTMLCanvasElement

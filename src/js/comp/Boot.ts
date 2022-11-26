@@ -1,6 +1,8 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
 
-export const Boot = class {
+import { audioLoader } from "../../App.js"
+
+export class Boot {
   shadowRoot: any // errors because its not inicialised
   
   constructor(){}
@@ -74,7 +76,8 @@ export const Boot = class {
       setTimeout(() => write_letter(num, txt), delay);
     }
 
-    const sound = new Audio("./assets/sounds/startup.mp3");
+    // const sound = new Audio("./assets/sounds/startup.mp3");
+    // replaced in sound.play() line
 
     const date = () => {
       const date = new Date();
@@ -240,7 +243,8 @@ export const Boot = class {
           { action: () => this.enterBIOS() }
         ];
 
-        sound.play();
+        // sound.play();
+        audioLoader("./assets/sounds/startup.mp3", false, 1)
 
         let i = 0;
         while (i < timeline.length) {
@@ -303,7 +307,8 @@ export const Boot = class {
       }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    customElements.define("award-boot", AwardBoot);
+    try { customElements.define("award-boot", AwardBoot) }
+    catch (error) { console.log(error) }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //AWARD-BIOS/////////////////////////////////////////////////////////////////////////////////////
@@ -483,7 +488,8 @@ export const Boot = class {
       }
     }
 
-    customElements.define("award-bios", AwardBios);
+    try { customElements.define("award-bios", AwardBios) }
+    catch (error) { console.log(error) }
     // customElements.define("desktop-p", DesktopP);
   }
 }
