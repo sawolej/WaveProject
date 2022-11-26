@@ -1,8 +1,8 @@
 import { RoomView } from './js/views/room.js'
-import { BoardView } from './js/views/board.js'
-import { BootView } from './js/views/boot.js'
-import { DesktopView } from './js/views/desktop.js'
-import { GameView } from './js/views/game.js'
+import { BoardView } from './js/views/BoardView.js'
+import { BootView } from './js/views/BootView.js'
+import { DesktopView } from './js/views/Desktop.js'
+import { GameView } from './js/views/GameView.js'
 
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./js/helpers.js";
 

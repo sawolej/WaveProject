@@ -5,7 +5,7 @@ import { Player } from './modules/player.js';
 import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, Disk } from './modules/Items.js';
 import { Countdown } from './modules/countdown.js';
 
-import { GameView } from "../views/game.js";
+import { GameView } from "../views/GameView.js";
 
 export const Game = class {
   canvas: HTMLCanvasElement
