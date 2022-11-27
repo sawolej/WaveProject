@@ -1,6 +1,6 @@
 class Countdown {
-  gameWidth: any;
-  gameHeight: any;
+  gameWidth: number;
+  gameHeight: number;
   x: number;
   y: number;
   seconds: number;
@@ -14,7 +14,7 @@ class Countdown {
   imageThird: HTMLElement;
   imageBlack: HTMLElement;
   
-  constructor(gameWidth, gameHeight) {
+  constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.x = 0;
@@ -22,13 +22,13 @@ class Countdown {
     this.seconds = 3;
     this.introInterval;
     this.wasCleared = false;
-    this.countdownEl = document.getElementById('countdown');
-    this.introText = document.getElementById('introText');
-    this.introNumbers = document.getElementById('introCountdown');
-    this.imageFirst = document.getElementById('countdownImageFirst');
-    this.imageSecond = document.getElementById('countdownImageSecond');
-    this.imageThird = document.getElementById('countdownImageThird');
-    this.imageBlack = document.getElementById('blackscreen');
+    this.countdownEl = document.getElementById('countdown') as HTMLElement;
+    this.introText = document.getElementById('introText') as HTMLElement;
+    this.introNumbers = document.getElementById('introCountdown') as HTMLElement;
+    this.imageFirst = document.getElementById('countdownImageFirst') as HTMLElement;
+    this.imageSecond = document.getElementById('countdownImageSecond') as HTMLElement;
+    this.imageThird = document.getElementById('countdownImageThird') as HTMLElement;
+    this.imageBlack = document.getElementById('blackscreen') as HTMLElement;
   }
 
   update() {
@@ -51,14 +51,14 @@ class Countdown {
   }
 
 
-  drawEnd(discI, arr) {
+  drawEnd(discI: number, arr: any[]) {
     let end = 0;
     var count = 0;
     setInterval(() => {if (count <= discI) {console.log(count++)}}, 1000)
 
-    var container = document.querySelector(".text");
+    var container = document.querySelector(".text") as HTMLElement;
 
-    function showDisks(x) {
+    function showDisks(x: number) {
       let result = "";
       
       for (let i = 0; i < x; i++) {
@@ -69,7 +69,7 @@ class Countdown {
       return result;
     }
     
-    function showRest(x) {
+    function showRest(x: any) {
       container.replaceChildren(" ");
       console.log(arr);
       return " ";
@@ -95,7 +95,7 @@ class Countdown {
       {speed: 200, string: showRest(discI)}
     ];
 
-    var characters = [];
+    var characters: { span: HTMLSpanElement; isSpace: boolean; delayAfter: number; classes: string[]; }[] = [];
 
     textLines.forEach((line, index) => {
       if (index < textLines.length - 1) {
@@ -116,10 +116,10 @@ class Countdown {
       });
     });
 
-    function revealOneCharacter(list) {
+    function revealOneCharacter(list: any[]) {
       var next = list.splice(0, 1)[0];
       next.span.classList.add("revealed");
-      next.classes.forEach((c) => {
+      next.classes.forEach((c: any) => {
           next.span.classList.add(c);
       });
 

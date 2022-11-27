@@ -4,11 +4,11 @@ export const Desktop = class {
   constructor(){}
   init() {
     //ELements
-    const apps = document.querySelector("#os_apps")
+    const apps = document.querySelector("#os_apps") as HTMLElement
     var menu = document.querySelector("#os-ct-menu")
     const os_window = document.querySelector(".app_window") as HTMLButtonElement
-    const brand_window = document.querySelector(".brand")
-    const app_main = document.querySelector("#app-main")
+    const brand_window = document.querySelector(".brand") as HTMLElement
+    const app_main = document.querySelector("#app-main") as HTMLElement
     const maximise = document.querySelector("#maximise") as HTMLButtonElement
     const shorter = document.querySelector("#shorter") as HTMLButtonElement
     const cross = document.querySelector("#cross") as HTMLButtonElement
@@ -35,7 +35,7 @@ export const Desktop = class {
     function click_game() {
       glob.document.location.hash = "#game"
     }
-    function create_app(name, image, id) {
+    function create_app(name: any, image: any, id: any) {
       let app = document.createElement("div")
       app.classList.add("app")
       app.id = id
@@ -64,25 +64,26 @@ export const Desktop = class {
       apps.appendChild(app)
     }
 
-    function open(tag) {
+    function open(tag: any) {
       tag.style.display = "inline-block"
     }
 
-    function close(tag) {
+    function close(tag: any) {
       tag.style.display = "none"
     }
 
-    function window_open(id) {
+    function window_open(id: any) {
       click.play()
       brand_window.innerHTML = ""
       app_main.innerHTML = ""
       init_window()
 
-      let main = document.querySelector("#" + id)
+      let main = document.getElementById(id) as HTMLImageElement
+      let tmp = main.getAttribute("alt") as string
 
       let img = document.createElement("img")
-      img.src = (main.childNodes[0] as HTMLImageElement).src
-      img.setAttribute("alt", (main.childNodes[0] as HTMLElement).getAttribute("alt"))
+      img.src = main.src
+      img.setAttribute("alt", tmp)
 
       let p = document.createElement("p")
       p.innerText = (main.childNodes[1] as HTMLElement).innerText

@@ -1,3 +1,4 @@
+import { SmallPlatform, BigPlatform } from './Items.js';
 import {StandingLeft, StandingRight, RunningLeft, RunningRight, JumpingLeft, JumpingRight} from './state.js';
 
 export class Player {
@@ -18,7 +19,7 @@ export class Player {
   platformY: any;
   platformWidth: any;
   
-  constructor(gameWidth, gameHeight) {
+  constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.states = [new StandingLeft(this), new StandingRight(this), new RunningLeft(this), 
@@ -28,7 +29,7 @@ export class Player {
     this.height = 45;
     this.x = 400;
     this.y = this.gameHeight - this.height - 105;
-    this.image = document.getElementById('playerImage');
+    this.image = document.getElementById('playerImage') as HTMLImageElement;
     this.speed = 0;
     this.maxSpeed = 10;
     this.vy = 0;
@@ -39,13 +40,13 @@ export class Player {
   }
 
   // Draw player method
-  draw(context) {
+  draw(context: CanvasRenderingContext2D) {
     context.fillStyle = 'transparent';
     context.fillRect(this.x, this.y, this.width, this.height);
-    context.drawImage(this.image, this.x, this.y);
+    context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   } 
 
-  update(input) {
+  update(input: { [key: string]: { pressed: boolean } }) {
     this.currentState.handleInput(input);
 
     // Horizontal movement & boundaries
@@ -61,12 +62,12 @@ export class Player {
     if (this.y > this.gameHeight - this.height - 105) this.y = this.gameHeight - this.height - 105;
   }
   
-  setState(state) {
+  setState(state: number) {
     this.currentState = this.states[state];
     this.currentState.enter();
   }
 
-  getPlatformInfo(platform) {
+  getPlatformInfo(platform: SmallPlatform | BigPlatform) {
     this.platformX = platform.x;
     this.platformY = platform.y;
     this.platformWidth = platform.width;

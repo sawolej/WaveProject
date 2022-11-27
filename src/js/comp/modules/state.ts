@@ -1,3 +1,5 @@
+import { Player } from "./player";
+
 export const states = {
   STANDING_LEFT: 0,
   STANDING_RIGHT: 1,
@@ -10,7 +12,7 @@ export const states = {
 class State {
   state: any;
 
-  constructor(state) {
+  constructor(state: any) {
     this.state = state;
   }
 }
@@ -19,7 +21,7 @@ class State {
 export class StandingLeft extends State {
   player: any;
 
-  constructor(player) {
+  constructor(player: Player) {
     super("STANDING_LEFT");
     this.player = player;
   }
@@ -28,7 +30,7 @@ export class StandingLeft extends State {
     this.player.speed = 0;
   }
 
-  handleInput(input) {
+  handleInput(input: { [key: string]: { pressed: boolean } }) {
     if (input.a.pressed && input.d.pressed && input.w.pressed) this.player.setState(states.JUMPING_LEFT);
     else if (input.a.pressed && input.d.pressed) this.player.setState(states.STANDING_LEFT);
     else if (input.d.pressed) this.player.setState(states.RUNNING_RIGHT);
@@ -41,7 +43,7 @@ export class StandingLeft extends State {
 export class StandingRight extends State {
   player: any;
 
-  constructor(player) {
+  constructor(player: Player) {
     super("STANDING_RIGHT");
     this.player = player;
   }
@@ -50,7 +52,7 @@ export class StandingRight extends State {
     this.player.speed = 0;
   }
 
-  handleInput(input) {
+  handleInput(input: { [key: string]: { pressed: boolean } }) {
     if (input.a.pressed && input.d.pressed && input.w.pressed) this.player.setState(states.JUMPING_RIGHT);
     else if (input.a.pressed && input.d.pressed) this.player.setState(states.STANDING_RIGHT);
     else if (input.a.pressed) this.player.setState(states.RUNNING_LEFT);
@@ -63,7 +65,7 @@ export class StandingRight extends State {
 export class RunningLeft extends State {
   player: any;
 
-  constructor(player) {
+  constructor(player: Player) {
     super("RUNNING_LEFT");
     this.player = player;
   }
@@ -72,7 +74,7 @@ export class RunningLeft extends State {
     this.player.speed = -this.player.maxSpeed;
   }
 
-  handleInput(input) {
+  handleInput(input: { [key: string]: { pressed: boolean } }) {
     if (input.a.pressed && input.d.pressed) this.player.setState(states.STANDING_LEFT);
     else if (input.d.pressed) this.player.setState(states.RUNNING_RIGHT);
     else if (!input.a.pressed) this.player.setState(states.STANDING_LEFT);
@@ -84,7 +86,7 @@ export class RunningLeft extends State {
 export class RunningRight extends State {
   player: any;
 
-  constructor(player) {
+  constructor(player: Player) {
     super("RUNNING_RIGHT");
     this.player = player;
   }
@@ -93,7 +95,7 @@ export class RunningRight extends State {
     this.player.speed = this.player.maxSpeed;
   }
 
-  handleInput(input) {
+  handleInput(input: { [key: string]: { pressed: boolean } }) {
     if (input.a.pressed && input.d.pressed) this.player.setState(states.STANDING_RIGHT);
     else if (input.a.pressed) this.player.setState(states.RUNNING_LEFT);
     else if (!input.d.pressed) this.player.setState(states.STANDING_RIGHT);
@@ -105,7 +107,7 @@ export class RunningRight extends State {
 export class JumpingLeft extends State {
   player: any;
 
-  constructor(player) {
+  constructor(player: Player) {
     super("JUMPING_LEFT");
     this.player = player;
   }
@@ -114,7 +116,7 @@ export class JumpingLeft extends State {
     if (this.player.vy === 0) this.player.vy -= 20;
   }
 
-  handleInput(input) {
+  handleInput(input: { [key: string]: { pressed: boolean } }) {
     if (!input.a.pressed && this.player.vy === 0) this.player.setState(states.STANDING_LEFT);
     else if (input.d.pressed && this.player.vy !== 0) this.player.setState(states.RUNNING_RIGHT);
     else if (input.w.pressed && input.a.pressed) this.player.setState(states.RUNNING_LEFT);
@@ -126,7 +128,7 @@ export class JumpingLeft extends State {
 export class JumpingRight extends State {
   player: any;
   
-  constructor(player) {
+  constructor(player: Player) {
     super("JUMPING_RIGHT");
     this.player = player;
   }
@@ -135,7 +137,7 @@ export class JumpingRight extends State {
     if (this.player.vy === 0) this.player.vy -= 20;
   }
 
-  handleInput(input) {
+  handleInput(input: { [key: string]: { pressed: boolean } }) {
     if (input.a.pressed && input.d.pressed) this.player.setState(states.STANDING_RIGHT);
     else if (input.a.pressed && this.player.vy !== 0) this.player.setState(states.RUNNING_LEFT);
     else if (input.w.pressed && input.d.pressed) this.player.setState(states.RUNNING_RIGHT);
