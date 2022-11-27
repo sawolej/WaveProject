@@ -1,3 +1,5 @@
+import { Player } from "./player";
+
 export class Sun {
   gameWidth: any;
   gameHeight: any;
@@ -7,18 +9,18 @@ export class Sun {
   x: number;
   y: number;
   
-  constructor(gameWidth, gameHeight) {
+  constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('sunImage');
+    this.image = document.getElementById('sunImage') as HTMLImageElement;
     this.width = 655;
     this.height = 655;
     this.x = 372.5;
     this.y = 200;
   }
 
-  draw(context) {
-    context.drawImage(this.image, this.x, this.y);
+  draw(context: CanvasRenderingContext2D) {
+    context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   }
 }
 
@@ -31,18 +33,18 @@ export class Palms {
   x: any;
   y: number;
   
-  constructor(gameWidth, gameHeight, imageName, imageWidth, imageHeight, x) {
+  constructor(gameWidth: number, gameHeight: number, imageName: string, imageWidth: number, imageHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById(imageName);
+    this.image = document.getElementById(imageName) as HTMLImageElement;
     this.width = imageWidth;
     this.height = imageHeight;
     this.x = x;
     this.y = gameHeight - this.height - 105;
   }
 
-  draw(context) {
-    context.drawImage(this.image, this.x, this.y);
+  draw(context: CanvasRenderingContext2D) {
+    context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   }
 }
 
@@ -55,18 +57,18 @@ export class Mountains {
   x: any;
   y: number;
   
-  constructor(gameWidth, gameHeight, x) {
+  constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('mountainsImage');
+    this.image = document.getElementById('mountainsImage') as HTMLImageElement;
     this.width = 5760;
     this.height = 476;
     this.x = x;
     this.y = gameHeight - this.height + 80;
   }
 
-  draw(context) {
-    context.drawImage(this.image, this.x, this.y);
+  draw(context: CanvasRenderingContext2D) {
+    context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   }
 }
 
@@ -79,18 +81,18 @@ export class Ground {
   x: any;
   y: number;
   
-  constructor(gameWidth, gameHeight, x) {
+  constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('groundImage');
+    this.image = document.getElementById('groundImage') as HTMLImageElement;
     this.width = 5760;
     this.height = 105;
     this.x = x;
     this.y = gameHeight - this.height;
   }
 
-  draw(context) {
-    context.drawImage(this.image, this.x, this.y);
+  draw(context: CanvasRenderingContext2D) {
+    context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   }
 }
 
@@ -103,18 +105,18 @@ export class Background {
   x: any;
   y: number;
   
-  constructor(gameWidth, gameHeight, x) {
+  constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('backgroundImage');
+    this.image = document.getElementById('backgroundImage') as HTMLImageElement;
     this.width = 5760;
     this.height = 1080;
     this.x = x;
     this.y = 0;
   }
 
-  draw(context) {
-    context.drawImage(this.image, this.x, this.y);
+  draw(context: CanvasRenderingContext2D) {
+    context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   }
 }
 
@@ -127,21 +129,21 @@ export class SmallPlatform {
   x: any;
   y: any;
   
-  constructor(gameWidth, gameHeight, x, y) {
+  constructor(gameWidth: number, gameHeight: number, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('smallPlatformImage');
+    this.image = document.getElementById('smallPlatformImage') as HTMLImageElement;
     this.width = 108;
     this.height = 42;
     this.x = x;
     this.y = y;
   }
 
-  draw(context) {
-    context.drawImage(this.image, this.x, this.y);
+  draw(context: CanvasRenderingContext2D) {
+    context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   }
 
-  collide(player) {
+  collide(player: Player) {
     if (player.x + player.width >= this.x && player.x <= this.x + this.width && 
       player.y + player.height <= this.y && player.y + player.height + player.vy >= this.y) player.vy = 0;
   }
@@ -156,21 +158,21 @@ export class BigPlatform {
   x: any;
   y: any;
   
-  constructor(gameWidth, gameHeight, x, y) {
+  constructor(gameWidth: number, gameHeight: number, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('bigPlatformImage');
+    this.image = document.getElementById('bigPlatformImage') as HTMLImageElement;
     this.width = 282;
     this.height = 60;
     this.x = x;
     this.y = y;
   }
 
-  draw(context) {
-    context.drawImage(this.image, this.x, this.y);
+  draw(context: CanvasRenderingContext2D) {
+    context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   }
 
-  collide(player) {
+  collide(player: Player) {
     if (player.x + player.width >= this.x && player.x <= this.x + this.width && 
       player.y + player.height <= this.y && player.y + player.height + player.vy >= this.y) player.vy = 0;
   }
@@ -179,8 +181,8 @@ export class BigPlatform {
 export class Disk {
   gameWidth: any;
   gameHeight: any;
-  image: HTMLElement;
-  glowImage: HTMLElement;
+  image: HTMLImageElement;
+  glowImage: HTMLImageElement;
   glowWidth: number;
   glowHeight: number;
   width: number;
@@ -190,11 +192,11 @@ export class Disk {
   isPicked: boolean;
   name: any;
   
-  constructor(gameWidth, gameHeight, imageName, x, y) {
+  constructor(gameWidth: number, gameHeight: number, imageName: string, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById(imageName);
-    this.glowImage = document.getElementById('glowImage');
+    this.image = document.getElementById(imageName) as HTMLImageElement;
+    this.glowImage = document.getElementById('glowImage') as HTMLImageElement;
     this.glowWidth = 122; 
     this.glowHeight = 122;
     this.width = 24;
@@ -205,11 +207,11 @@ export class Disk {
     this.name = imageName;
   }
   
-    drawGlow(context) {
-      if (!this.isPicked) context.drawImage(this.glowImage, this.x - 49, this.y - 49)
+    drawGlow(context: CanvasRenderingContext2D) {
+      if (!this.isPicked) context.drawImage(this.glowImage as CanvasImageSource, this.x - 49, this.y - 49)
     }
   
-  isNear(player) {
+  isNear(player: Player) {
     if (Math.abs(player.x - this.x) <= 30 && Math.abs(player.y - this.y) <= 40) {
       
       if (!this.isPicked) {
@@ -227,7 +229,7 @@ export class Disk {
     audio.play();
   }
 
-  draw(context) {
-    if (!this.isPicked) context.drawImage(this.image, this.x, this.y);
+  draw(context: CanvasRenderingContext2D) {
+    if (!this.isPicked) context.drawImage(this.image as CanvasImageSource, this.x, this.y);
   }
 }
