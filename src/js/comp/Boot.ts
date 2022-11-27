@@ -57,7 +57,7 @@ export class Boot {
 
     const key_click = new Audio("./assets/sounds/click.mp3");
 
-    const write_letter = function (num, txt) {
+    const write_letter = function (num: any, txt: any) {
       const duration = Number(num.dataset.duration) || 5000;
       const portions = ~~(duration / txt.length); //~~ convert to int
       for (let i = 0; i <= txt.length; i++) {
@@ -69,7 +69,7 @@ export class Boot {
       }
     }
 
-    const write_line = function (num) {
+    const write_line = function (num: any) {
       const delay = num.dataset.delay || 0;
       const txt = num.textContetn;
       num.textContetn = "";
@@ -81,7 +81,7 @@ export class Boot {
 
     const date = () => {
       const date = new Date();
-      const zeroFill = data => String(data).padStart(2, "0");
+      const zeroFill = (data: any) => String(data).padStart(2, "0");
 
       const day = zeroFill(date.getDate());
       const month = zeroFill(date.getMonth() + 1);
@@ -153,7 +153,7 @@ export class Boot {
         this.rebootSystem();
       }
 
-      setVisible(className, duration = 0) {
+      setVisible(className: any, duration = 0) {
         return new Promise(resolve => {
           setTimeout(() => {
             // this.shadowRoot.querySelector(className).classList.remove("off");
@@ -162,22 +162,22 @@ export class Boot {
         });
       }
 
-      setHTML(className, HTML, duration = 0) {
+      setHTML(className: any, HTML: any, duration = 0) {
         return new Promise(resolve => {
           setTimeout(() => {
-            const div = this.shadowRoot.querySelector(className);
+            const div = (this.shadowRoot as ShadowRoot).querySelector(className);
             div.innerHTML = HTML;
             resolve(true)
           }, duration);
         });
       }
 
-      addHTML(className, HTML) {
-        const div = this.shadowRoot.querySelector(className);
+      addHTML(className: any, HTML: any) {
+        const div = (this.shadowRoot as ShadowRoot).querySelector(className);
         div.innerHTML += HTML;
       }
 
-      async detectDevice(place, label) {
+      async detectDevice(place: any, label: any) {
         const n = ~~(Math.random() * 4);
 
         if (n === 0) {
@@ -226,7 +226,7 @@ export class Boot {
       }
 
       enterBIOS() {
-        const monitor = document.querySelector(".monitor");
+        const monitor = document.querySelector(".monitor") as HTMLElement;
         const bios = document.createElement("award-bios");
         monitor.appendChild(bios);
         this.remove();
@@ -256,7 +256,7 @@ export class Boot {
       checkMemory() {
         return new Promise(resolve => {
           const BLOCK = 8;
-          const memory = this.shadowRoot.querySelector(".memory");
+          const memory = (this.shadowRoot as ShadowRoot).querySelector(".memory") as HTMLElement;
           const max = Number(memory.textContent);
           memory.textContent = "";
           for (let i = 0; i < max; i = i + BLOCK) {
@@ -278,11 +278,11 @@ export class Boot {
       }
 
       disableEPA() {
-        this.shadowRoot.querySelector(".epa");//.classList.add("fadeoff"); // error here: undefined shadowRoot
+        (this.shadowRoot as ShadowRoot).querySelector(".epa");//.classList.add("fadeoff"); // error here: undefined shadowRoot
       }
 
       render() {
-        this.shadowRoot.innerHTML = `
+        (this.shadowRoot as ShadowRoot).innerHTML = `
     <style>${AwardBoot.styles}</style>
     <div class="screen">
       <div class="header">
@@ -419,7 +419,7 @@ export class Boot {
       }
 
       showExit() {
-        this.shadowRoot.querySelector(".screen").innerHTML += `
+        ((this.shadowRoot as ShadowRoot).querySelector(".screen") as HTMLElement).innerHTML += `
   <div class="message">
     <div class="container">SAVE to CMOS and EXIT (Y/N)?</div>
   </div>`;
@@ -431,7 +431,7 @@ export class Boot {
       }
 
       exitBIOS() {
-        const screen = this.shadowRoot.querySelector(".screen");
+        const screen = (this.shadowRoot as ShadowRoot).querySelector(".screen") as HTMLElement;
         screen.classList.remove("blue");
         screen.innerHTML = `<p>C:\\&gt;<span class="typewriter" data-duration="2000" data-delay="0">UNIWERSYTET ŁÓDZKI</span><span class="cursor"></span>`;
         // typewriter(screen.querySelector(".typewriter"));
@@ -447,7 +447,7 @@ export class Boot {
       }
 
       render() {
-        this.shadowRoot.innerHTML = `
+        (this.shadowRoot as ShadowRoot).innerHTML = `
       //   <head>
       //   <link rel="stylesheet" href="C:\Users\HP\Desktop\studia\rok2\game\WaveProject\src\css\boot.css">
       // </head>

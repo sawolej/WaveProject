@@ -51,9 +51,11 @@ export const audioLoader = (filename: string, loop: boolean = true, volume: numb
  */
 const app = class App {
   filter: string
-  audio: HTMLAudioElement
+  audio: any
   comp: any
 
+  constructor() { this.filter = "" }
+  
   /**
    * Init function
    */

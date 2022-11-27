@@ -6,7 +6,7 @@
  /**
   * Get element
   */
- export const canvas = glob.document.getElementById('render')
+ export const canvas = glob.document.getElementById('render') as HTMLElement
  
  /**
   * Get location hash
