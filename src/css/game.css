@@ -9,8 +9,8 @@
 }
 
 #canvas1 {
-  width: 83%;
-  position: absolute;
+  width: 100%;
+  position: static;
 }
 
 #countdown {
@@ -178,12 +178,12 @@
 }
 
 #endDisks {
-  position: relative;
+  /* position: relative; */
   box-sizing: border-box;
   visibility: hidden;
-  top: -740px;
-  left: inherit;
-  opacity: 1;
+  top: 80%;
+  /* left: inherit; */
+  /* opacity: 1; */
   width: 77%;
   align-items: center;
   cursor: pointer;

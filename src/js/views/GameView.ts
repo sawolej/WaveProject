@@ -23,7 +23,7 @@ export class GameView {
     }, 3800)
   }
 
-  html = `<div id="game-wrapper" class="centred">
+  html = `<div id="game-wrapper">
   <canvas id="canvas1"></canvas>
   <p id="introText">COLLECT ALL DISKS BEFORE THE TIME RUNS OUT!</p>
   <p id="introCountdown"></p>
