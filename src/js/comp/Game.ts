@@ -1,3 +1,5 @@
+import { Application, Loader, Texture, AnimatedSprite } from "pixi.js";
+
 import { glob, canvas as canvasRender, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
 import { InputHandler } from './modules/inputHandler';
