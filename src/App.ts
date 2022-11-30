@@ -1,14 +1,14 @@
-import { RoomView } from './js/views/RoomView.js'
-import { BoardView } from './js/views/BoardView.js'
-import { BootView } from './js/views/BootView.js'
-import { DesktopView } from './js/views/DesktopView.js'
-import { GameView } from './js/views/GameView.js'
+import { RoomView } from './js/views/RoomView'
+import { BoardView } from './js/views/BoardView'
+import { BootView } from './js/views/BootView'
+import { DesktopView } from './js/views/DesktopView'
+import { GameView } from './js/views/GameView'
 
-import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./js/helpers.js";
+import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./js/helpers";
 
 /* Stylesheets */
 import './css/style.css'
-import './css/room.css' // should be room.css?
+import './css/room.css'
 import './css/board.css'
 import './css/desktop.css'
 import './css/boot.css'
@@ -61,10 +61,6 @@ const app = class App {
    */
   public init() {
     this.comp = {}
-    
-    // const rnd = glob.document.createElement('div') as HTMLElement
-    // rnd.id = 'render'
-    // glob.document.body.prepend(rnd)
 
     this.filter = getURLHash()
     glob.window.addEventListener("hashchange", () => {
@@ -109,6 +105,8 @@ const app = class App {
    * @var this.filter @var this.comp
    */
   private render() {
+    // const rndstr = `<div id="render"></div>`
+    // insertHTML(glob.document.body, rndstr)
     // probably better to put this in Router, but do we need it to be responsive so much?
     switch (this.filter) {
       case "#desktop":

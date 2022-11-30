@@ -1,6 +1,6 @@
-import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { audioLoader } from "../../App.js"
+import { audioLoader } from "../../App"
 
 export class RoomView {
   music: any
@@ -19,7 +19,7 @@ export class RoomView {
     glob.document.body.addEventListener('click', this.firstClick)
   }
 
-  loadAudio = () => audioLoader("./assets/sounds/tlo.mp3", true, .1)//, 2.137),
+  loadAudio = () => audioLoader("./src/assets/sounds/tlo.mp3", true, .1)//, 2.137),
 
   // Music fix: DOMException: play() failed because the user didn't interact with the document first.
   firstClick = () => {
@@ -41,6 +41,6 @@ export class RoomView {
       <div class="cup-wrapper cup"></div>
     </a>
     <div class="plant-wrapper plant"></div>
-    <div class="pc-wrapper pc"><a href="#boot"><img class="screen-gif" src="./assets/pics/screen.gif"></a></div>
+    <div class="pc-wrapper pc"><a href="#boot"><img class="screen-gif" src="./src/assets/pics/screen.gif"></a></div>
   </div>`
 }

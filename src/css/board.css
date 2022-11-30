@@ -13,7 +13,7 @@
 .cork-board {
   position: relative;
   width: 100%;
-  background: no-repeat url("./assets/pics/corkBoard.png");
+  background: no-repeat url("../assets/pics/corkBoard.png");
   background-size: contain;
 }
 
@@ -195,12 +195,12 @@
 }
 
 #arrow {
-  background: no-repeat url("./assets/pics/arrow.png");
+  background: no-repeat url("../assets/pics/arrow.png");
   background-size: contain;
 }
 
 #arrow:hover {
-  background: no-repeat url("./assets/pics/arrowOutline.png");
+  background: no-repeat url("../assets/pics/arrowOutline.png");
   background-size: contain;
 }
 

@@ -1,7 +1,8 @@
-import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
 export const Board = class {
-  constructor(){}
+  constructor() { }
+
   init() {
     // click listeners
     (glob.document.getElementById('arrow') as HTMLElement).onclick = () => goBack();
@@ -71,7 +72,7 @@ export const Board = class {
     }
 
   }
-  
+
   goBack() {
     glob.document.location.hash = "";
   }

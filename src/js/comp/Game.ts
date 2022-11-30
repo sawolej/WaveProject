@@ -1,15 +1,15 @@
-import { glob, canvas as canvasRender, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, canvas as canvasRender, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { InputHandler } from './modules/inputHandler.js';
-import { Player } from './modules/player.js';
-import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, Disk } from './modules/Items.js';
-import { Countdown } from './modules/countdown.js';
+import { InputHandler } from './modules/inputHandler';
+import { Player } from './modules/player';
+import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, Disk } from './modules/Items';
+import { Countdown } from './modules/countdown';
 
-import { GameView } from "../views/GameView.js";
+import { GameView } from "../views/GameView";
 
 export const Game = class {
   canvas: HTMLCanvasElement
-  ctx: CanvasRenderingContext2D 
+  ctx: CanvasRenderingContext2D
 
   player: Player;
   input: InputHandler;
@@ -33,124 +33,130 @@ export const Game = class {
   tip: HTMLElement;
 
   constructor() {
-        // Define canvas properties
-        this.canvas = glob.document.getElementById('canvas1') as HTMLCanvasElement;
-        this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
-        this.canvas.width = 1400;
-        this.canvas.height = 900;
-    
-        // Define InputHandler
-        this.input = new InputHandler();
-    
-        // Instantiate objects
-        this.player = new Player(this.canvas.width, this.canvas.height);
-        this.background = new Background(this.canvas.width, this.canvas.height, -1920);
-        this.ground = new Ground(this.canvas.width, this.canvas.height, -1920);
-        this.sun = new Sun(this.canvas.width, this.canvas.height);
-        this.mountains = new Mountains(this.canvas.width, this.canvas.height, -1920);
-    
-        const bigPlatform1 = new BigPlatform(this.canvas.width, this.canvas.height, 390, 625);
-        const bigPlatform2 = new BigPlatform(this.canvas.width, this.canvas.height, 1370, 625);
-        const bigPlatform3 = new BigPlatform(this.canvas.width, this.canvas.height, 2730, 625);
-        const bigPlatform4 = new BigPlatform(this.canvas.width, this.canvas.height, 4005, 641);
-        const bigPlatform5 = new BigPlatform(this.canvas.width, this.canvas.height, 4555, 475);
-        const bigPlatform6 = new BigPlatform(this.canvas.width, this.canvas.height, 5106, 308);
-        const bigPlatform7 = new BigPlatform(this.canvas.width, this.canvas.height, 8464, 475);
-        const smallPlatform1 = new SmallPlatform(this.canvas.width, this.canvas.height, 222, 465);
-        const smallPlatform2 = new SmallPlatform(this.canvas.width, this.canvas.height, 1620, 435);
-        const smallPlatform3 = new SmallPlatform(this.canvas.width, this.canvas.height, 1265, 295);
-        const smallPlatform4 = new SmallPlatform(this.canvas.width, this.canvas.height, 2285, 530);
-        const smallPlatform5 = new SmallPlatform(this.canvas.width, this.canvas.height, 2520, 350);
-        const smallPlatform6 = new SmallPlatform(this.canvas.width, this.canvas.height, 6034, 190);
-        const smallPlatform7 = new SmallPlatform(this.canvas.width, this.canvas.height, 6351, 299);
-        const smallPlatform8 = new SmallPlatform(this.canvas.width, this.canvas.height, 6668, 409);
-        const smallPlatform9 = new SmallPlatform(this.canvas.width, this.canvas.height, 6985, 520);
-        const smallPlatform10 = new SmallPlatform(this.canvas.width, this.canvas.height, 7302, 630);
-        const smallPlatform11 = new SmallPlatform(this.canvas.width, this.canvas.height, 8128, 665);
-        const smallPlatform12 = new SmallPlatform(this.canvas.width, this.canvas.height, 8975, 285);
-        
-        const palmLeftOne1 = new Palms(this.canvas.width, this.canvas.height, "palmLeftOneImage", 155, 265, 3360);
-        const palmLeftTwo1 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 1710);
-        const palmLeftTwo2 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 4690);
-        const palmLeftTwo3 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 8660);
-        const palmRightOne1 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 135);
-        const palmRightOne2 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 5900);
-        const palmRightOne3 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 9130);
-        const palmRightTwo1 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 1070);
-        const palmRightTwo2 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 2200);
-        const palmRightTwo3 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 5500);
-        const palmRightTwo4 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 6830);
-        const palmRightTwo5 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 8170);
-    
-        // Instantiate exportable disk objects
-        const diskBehav = new Disk(this.canvas.width, this.canvas.height, "diskBehavioralImage", 264, 380);
-        const diskBio = new Disk(this.canvas.width, this.canvas.height, "diskBiologyImage", 1307, 205);
-        const diskChad = new Disk(this.canvas.width, this.canvas.height, "diskChadImage", 9460, 135);
-        const diskChem = new Disk(this.canvas.width, this.canvas.height, "diskChemistryImage", 1499, 545);
-        const diskEksoc = new Disk(this.canvas.width, this.canvas.height, "diskEksocImage", 2859, 535);
-        const diskGeo = new Disk(this.canvas.width, this.canvas.height, "diskGeographyImage", 2925, 189);
-        const diskInter = new Disk(this.canvas.width, this.canvas.height, "diskInternationalImage", 4134, 551);
-        const diskLaw = new Disk(this.canvas.width, this.canvas.height, "diskLawImage", 5235, 223);
-        const diskMaths = new Disk(this.canvas.width, this.canvas.height, "diskMathsImage", 519, 535);
-        const diskManagement = new Disk(this.canvas.width, this.canvas.height, "diskManagementImage", 7344, 540);
-        const diskPhilology = new Disk(this.canvas.width, this.canvas.height, "diskPhilologyImage", 6076, 99);
-        const diskPhilosophy = new Disk(this.canvas.width, this.canvas.height, "diskPhilosophyImage", 4850, 85);
-        const diskTomaszow = new Disk(this.canvas.width, this.canvas.height, "diskTomaszowImage", 6710, 319);
-    
-        this.platforms = { smallPlatform1, smallPlatform2, smallPlatform3, smallPlatform4, smallPlatform5,
-          smallPlatform6, smallPlatform7, smallPlatform8, smallPlatform9, smallPlatform10, smallPlatform11,
-          smallPlatform12, bigPlatform1, bigPlatform2, bigPlatform3, bigPlatform4, bigPlatform5, bigPlatform6,
-          bigPlatform7 };
-    
-        this.palms = { palmLeftOne1, palmLeftTwo1, palmLeftTwo2, palmLeftTwo3,
-          palmRightOne1, palmRightOne2, palmRightOne3, palmRightTwo1, palmRightTwo2, palmRightTwo3,
-          palmRightTwo4, palmRightTwo5 };
-    
-        this.disks = { diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw,
-          diskManagement, diskMaths, diskPhilology, diskPhilosophy, diskTomaszow };
-    
-        this.diskCounter = 0;
-        this.ihaveit = [];
-        this.wasAdded = [];
-    
-        this.countdown = new Countdown(this.canvas.width, this.canvas.height);
-        this.quit = false;
-    
-        // Draw countdown timer when the game runs. Move this to a countdown.js class later.
-        this.time = 600;
-        this.countdownEl = glob.document.getElementById("countdown") as HTMLElement
+    // Define canvas properties
+    this.canvas = glob.document.getElementById('canvas1') as HTMLCanvasElement;
+    this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+    this.canvas.width = 1400;
+    this.canvas.height = 900;
 
-        this.tip = glob.document.getElementById("tip") as HTMLElement
+    // Define InputHandler
+    this.input = new InputHandler();
+
+    // Instantiate objects
+    this.player = new Player(this.canvas.width, this.canvas.height);
+    this.background = new Background(this.canvas.width, this.canvas.height, -1920);
+    this.ground = new Ground(this.canvas.width, this.canvas.height, -1920);
+    this.sun = new Sun(this.canvas.width, this.canvas.height);
+    this.mountains = new Mountains(this.canvas.width, this.canvas.height, -1920);
+
+    const bigPlatform1 = new BigPlatform(this.canvas.width, this.canvas.height, 390, 625);
+    const bigPlatform2 = new BigPlatform(this.canvas.width, this.canvas.height, 1370, 625);
+    const bigPlatform3 = new BigPlatform(this.canvas.width, this.canvas.height, 2730, 625);
+    const bigPlatform4 = new BigPlatform(this.canvas.width, this.canvas.height, 4005, 641);
+    const bigPlatform5 = new BigPlatform(this.canvas.width, this.canvas.height, 4555, 475);
+    const bigPlatform6 = new BigPlatform(this.canvas.width, this.canvas.height, 5106, 308);
+    const bigPlatform7 = new BigPlatform(this.canvas.width, this.canvas.height, 8464, 475);
+    const smallPlatform1 = new SmallPlatform(this.canvas.width, this.canvas.height, 222, 465);
+    const smallPlatform2 = new SmallPlatform(this.canvas.width, this.canvas.height, 1620, 435);
+    const smallPlatform3 = new SmallPlatform(this.canvas.width, this.canvas.height, 1265, 295);
+    const smallPlatform4 = new SmallPlatform(this.canvas.width, this.canvas.height, 2285, 530);
+    const smallPlatform5 = new SmallPlatform(this.canvas.width, this.canvas.height, 2520, 350);
+    const smallPlatform6 = new SmallPlatform(this.canvas.width, this.canvas.height, 6034, 190);
+    const smallPlatform7 = new SmallPlatform(this.canvas.width, this.canvas.height, 6351, 299);
+    const smallPlatform8 = new SmallPlatform(this.canvas.width, this.canvas.height, 6668, 409);
+    const smallPlatform9 = new SmallPlatform(this.canvas.width, this.canvas.height, 6985, 520);
+    const smallPlatform10 = new SmallPlatform(this.canvas.width, this.canvas.height, 7302, 630);
+    const smallPlatform11 = new SmallPlatform(this.canvas.width, this.canvas.height, 8128, 665);
+    const smallPlatform12 = new SmallPlatform(this.canvas.width, this.canvas.height, 8975, 285);
+
+    const palmLeftOne1 = new Palms(this.canvas.width, this.canvas.height, "palmLeftOneImage", 155, 265, 3360);
+    const palmLeftTwo1 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 1710);
+    const palmLeftTwo2 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 4690);
+    const palmLeftTwo3 = new Palms(this.canvas.width, this.canvas.height, "palmLeftTwoImage", 165, 270, 8660);
+    const palmRightOne1 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 135);
+    const palmRightOne2 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 5900);
+    const palmRightOne3 = new Palms(this.canvas.width, this.canvas.height, "palmRightOneImage", 185, 265, 9130);
+    const palmRightTwo1 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 1070);
+    const palmRightTwo2 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 2200);
+    const palmRightTwo3 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 5500);
+    const palmRightTwo4 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 6830);
+    const palmRightTwo5 = new Palms(this.canvas.width, this.canvas.height, "palmRightTwoImage", 120, 185, 8170);
+
+    // Instantiate exportable disk objects
+    const diskBehav = new Disk(this.canvas.width, this.canvas.height, "diskBehavioralImage", 264, 380);
+    const diskBio = new Disk(this.canvas.width, this.canvas.height, "diskBiologyImage", 1307, 205);
+    const diskChad = new Disk(this.canvas.width, this.canvas.height, "diskChadImage", 9460, 135);
+    const diskChem = new Disk(this.canvas.width, this.canvas.height, "diskChemistryImage", 1499, 545);
+    const diskEksoc = new Disk(this.canvas.width, this.canvas.height, "diskEksocImage", 2859, 535);
+    const diskGeo = new Disk(this.canvas.width, this.canvas.height, "diskGeographyImage", 2925, 189);
+    const diskInter = new Disk(this.canvas.width, this.canvas.height, "diskInternationalImage", 4134, 551);
+    const diskLaw = new Disk(this.canvas.width, this.canvas.height, "diskLawImage", 5235, 223);
+    const diskMaths = new Disk(this.canvas.width, this.canvas.height, "diskMathsImage", 519, 535);
+    const diskManagement = new Disk(this.canvas.width, this.canvas.height, "diskManagementImage", 7344, 540);
+    const diskPhilology = new Disk(this.canvas.width, this.canvas.height, "diskPhilologyImage", 6076, 99);
+    const diskPhilosophy = new Disk(this.canvas.width, this.canvas.height, "diskPhilosophyImage", 4850, 85);
+    const diskTomaszow = new Disk(this.canvas.width, this.canvas.height, "diskTomaszowImage", 6710, 319);
+
+    this.platforms = {
+      smallPlatform1, smallPlatform2, smallPlatform3, smallPlatform4, smallPlatform5,
+      smallPlatform6, smallPlatform7, smallPlatform8, smallPlatform9, smallPlatform10, smallPlatform11,
+      smallPlatform12, bigPlatform1, bigPlatform2, bigPlatform3, bigPlatform4, bigPlatform5, bigPlatform6,
+      bigPlatform7
+    };
+
+    this.palms = {
+      palmLeftOne1, palmLeftTwo1, palmLeftTwo2, palmLeftTwo3,
+      palmRightOne1, palmRightOne2, palmRightOne3, palmRightTwo1, palmRightTwo2, palmRightTwo3,
+      palmRightTwo4, palmRightTwo5
+    };
+
+    this.disks = {
+      diskBehav, diskBio, diskChad, diskChem, diskEksoc, diskGeo, diskInter, diskLaw,
+      diskManagement, diskMaths, diskPhilology, diskPhilosophy, diskTomaszow
+    };
+
+    this.diskCounter = 0;
+    this.ihaveit = [];
+    this.wasAdded = [];
+
+    this.countdown = new Countdown(this.canvas.width, this.canvas.height);
+    this.quit = false;
+
+    // Draw countdown timer when the game runs. Move this to a countdown.js class later.
+    this.time = 600;
+    this.countdownEl = glob.document.getElementById("countdown") as HTMLElement
+
+    this.tip = glob.document.getElementById("tip") as HTMLElement
   }
 
   init() {
 
-      for (let i = 0; i < Object.keys(this.disks).length; ++i) this.wasAdded[i] = false;
+    for (let i = 0; i < Object.keys(this.disks).length; ++i) this.wasAdded[i] = false;
 
-      // Draw the intro
-      setTimeout(() => { this.countdown.update() }, 2550)
+    // Draw the intro
+    setTimeout(() => { this.countdown.update() }, 2550)
 
-      // End the game after 60 seconds
-      setTimeout(() => {
-        this.quit = true;
-        if (!this.countdown.wasCleared) {
-          this.countdown.wasCleared = true;
-          clearInterval(this.countdown.introInterval);
-          this.countdownEl.style.display = "none"
-        }
-      }, 67550) // 67550 = 60 seconds
+    // End the game after 60 seconds
+    setTimeout(() => {
+      this.quit = true;
+      if (!this.countdown.wasCleared) {
+        this.countdown.wasCleared = true;
+        clearInterval(this.countdown.introInterval);
+        this.countdownEl.style.display = "none"
+      }
+    }, 67550) // 67550 = 60 seconds
 
-      // Toggle timer visibility
-      setTimeout(() => {
-        if (!this.quit) { this.countdownEl.style.display = "inline-flex" }
-        else { this.countdownEl.style.display = "none" };
-      }, 6550)
+    // Toggle timer visibility
+    setTimeout(() => {
+      if (!this.quit) { this.countdownEl.style.display = "inline-flex" }
+      else { this.countdownEl.style.display = "none" };
+    }, 6550)
 
-      // Timer
-      setInterval(this.update, 1000);
+    // Timer
+    setInterval(this.update, 1000);
 
-      // Main game loop - refresh every frame
-      setTimeout(() => this.animate(), 6550)
+    // Main game loop - refresh every frame
+    setTimeout(() => this.animate(), 6550)
   }
 
   update = () => { // arrow function in order to reach class by this.
@@ -354,10 +360,10 @@ export const Game = class {
       modal.style.display = "none";
     }
 
-    
+
     // When the user clicks anywhere outside of the modal, close it
     glob.document.body.onclick = (event) => { if (event.target == modal) modal.style.display = "none" }
-    
+
     const setText = (arr: string[]) => {
       let text = this.tip.innerHTML
       text = text + " \n New text!";
@@ -369,7 +375,7 @@ export const Game = class {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.countdown.drawEnd(this.diskCounter, this.ihaveit);
       setText(this.ihaveit);
-      
+
       // Make the animated disks visible after delay
       setTimeout(() => {
         for (let i = 0; i < this.diskCounter; i++) {

@@ -8,7 +8,7 @@ export class Sun {
   height: number;
   x: number;
   y: number;
-  
+
   constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
@@ -32,7 +32,7 @@ export class Palms {
   height: any;
   x: any;
   y: number;
-  
+
   constructor(gameWidth: number, gameHeight: number, imageName: string, imageWidth: number, imageHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
@@ -56,7 +56,7 @@ export class Mountains {
   height: number;
   x: any;
   y: number;
-  
+
   constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
@@ -80,7 +80,7 @@ export class Ground {
   height: number;
   x: any;
   y: number;
-  
+
   constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
@@ -104,7 +104,7 @@ export class Background {
   height: number;
   x: any;
   y: number;
-  
+
   constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
@@ -128,7 +128,7 @@ export class SmallPlatform {
   height: number;
   x: any;
   y: any;
-  
+
   constructor(gameWidth: number, gameHeight: number, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
@@ -144,7 +144,7 @@ export class SmallPlatform {
   }
 
   collide(player: Player) {
-    if (player.x + player.width >= this.x && player.x <= this.x + this.width && 
+    if (player.x + player.width >= this.x && player.x <= this.x + this.width &&
       player.y + player.height <= this.y && player.y + player.height + player.vy >= this.y) player.vy = 0;
   }
 }
@@ -157,7 +157,7 @@ export class BigPlatform {
   height: number;
   x: any;
   y: any;
-  
+
   constructor(gameWidth: number, gameHeight: number, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
@@ -173,7 +173,7 @@ export class BigPlatform {
   }
 
   collide(player: Player) {
-    if (player.x + player.width >= this.x && player.x <= this.x + this.width && 
+    if (player.x + player.width >= this.x && player.x <= this.x + this.width &&
       player.y + player.height <= this.y && player.y + player.height + player.vy >= this.y) player.vy = 0;
   }
 }
@@ -191,13 +191,13 @@ export class Disk {
   y: any;
   isPicked: boolean;
   name: any;
-  
+
   constructor(gameWidth: number, gameHeight: number, imageName: string, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.image = document.getElementById(imageName) as HTMLImageElement;
     this.glowImage = document.getElementById('glowImage') as HTMLImageElement;
-    this.glowWidth = 122; 
+    this.glowWidth = 122;
     this.glowHeight = 122;
     this.width = 24;
     this.height = 24;
@@ -206,14 +206,14 @@ export class Disk {
     this.isPicked = false;
     this.name = imageName;
   }
-  
-    drawGlow(context: CanvasRenderingContext2D) {
-      if (!this.isPicked) context.drawImage(this.glowImage as CanvasImageSource, this.x - 49, this.y - 49)
-    }
-  
+
+  drawGlow(context: CanvasRenderingContext2D) {
+    if (!this.isPicked) context.drawImage(this.glowImage as CanvasImageSource, this.x - 49, this.y - 49)
+  }
+
   isNear(player: Player) {
     if (Math.abs(player.x - this.x) <= 30 && Math.abs(player.y - this.y) <= 40) {
-      
+
       if (!this.isPicked) {
         this.playSound();
         this.isPicked = true;
@@ -225,7 +225,7 @@ export class Disk {
   }
 
   playSound() {
-    var audio = new Audio('./assets/sounds/diskPickupSound.mp3');
+    const audio = new Audio('./src/assets/sounds/diskPickupSound.mp3');
     audio.play();
   }
 
