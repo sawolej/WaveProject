@@ -15,6 +15,10 @@ export class BoardView {
     newBoard.init()
   }
 
+  destruct = () => {
+    // clearTimeout(this.countdownTrigger)
+  }
+
   html = `
   <div class="board-wrapper cork-board">
     <div id="arrow" class="arrow-wrapper"></div>

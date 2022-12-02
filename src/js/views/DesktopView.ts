@@ -15,6 +15,10 @@ export class DesktopView {
     newDesktop.init()
   }
 
+  destruct = () => {
+    // clearTimeout(this.countdownTrigger)
+  }
+
   html = `<div id="wrapper">
   <!-- App container and bottom taskbar -->
   <div class="os_container">

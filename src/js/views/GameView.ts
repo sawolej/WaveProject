@@ -5,6 +5,9 @@ import { Game as GameEngine } from '../comp/Game'
 import { audioLoader } from "../../App"
 
 export class GameView {
+  countdownTrigger: any
+  audio: any = {}
+
   constructor() {}
   
   init() {
@@ -14,13 +17,16 @@ export class GameView {
     const newGame = new GameEngine()
     newGame.init()
 
-    this.countdownTrigger()
+    // Timeout function
+    this.countdownTrigger = setTimeout( () => { // this timeout bugs music
+      this.audio.countdown = new Audio("./src/assets/sounds/countdown.mp3")
+      this.audio.countdown.play()
+    }, 3800)
   }
 
-  countdownTrigger() { 
-    setTimeout( () => {
-      audioLoader("./src/assets/sounds/countdown.mp3", false)
-    }, 3800)
+  destruct = () => {
+    clearTimeout(this.countdownTrigger)
+    for (let a in this.audio) if (this.audio.hasOwnProperty(a)) this.audio[a].pause()
   }
 
   html = `<div id="game-wrapper">

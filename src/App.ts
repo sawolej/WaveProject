@@ -45,34 +45,36 @@ export const audioLoader = (filename: string, loop: boolean = true, volume: numb
 }
 
 /**
- * Local class App
- * - const in order to use App.prototype (one unique instance of class)
+ * Audio App.prototype currentTime check handler
  * @public
  */
+export const isPlaying = () => app.prototype.audio.currentTime !== 0
+
+/**
+ * Local class App
+ * - const in order to use App.prototype (one unique instance of class)
+ * @private
+ */
 const app = class App {
-  filter: string
+  filter: string = "" 
+  interacted: boolean = false
   audio: any
   comp: any
 
-  constructor() { this.filter = "" }
-  
+  constructor() {  }
+
   /**
    * Init function
    */
   public init() {
     this.comp = {}
+    this.interacted = false
 
     this.filter = getURLHash()
+
     glob.window.addEventListener("hashchange", () => {
-      
+
       this.destructor() // call destructing function
-      
-      const prev = this.filter
-      if ( prev !== "" && prev !== "#" && prev !== "#board" ) {
-        console.error("reloaded")
-        glob.location.reload() // reload and clear event leftovers 
-        // history.go(0) // alternative
-      }
 
       this.filter = getURLHash()
 
@@ -145,13 +147,16 @@ const app = class App {
     // pause and destruct audio
     if (this.audio) {
       this.audio.pause()
-      this.audio = null
+      // this.audio = null
+      delete this.audio
     }
 
     // destruct comp
     for (let c in this.comp) {
-      if (this.comp.hasOwnProperty(c))
-        this.comp[c] = null
+      if (this.comp.hasOwnProperty(c)) {
+        this.comp[c].destruct() // TODO: clear all setTimeout, listeners, etc
+        delete this.comp[c]
+      }
     }
   }
 }

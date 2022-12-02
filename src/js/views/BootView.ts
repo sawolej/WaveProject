@@ -12,6 +12,10 @@ export class BootView {
     newBoot.init()
   }
 
+  destruct = () => {
+    // clearTimeout(this.countdownTrigger)
+  }
+
   html = `
   <div class="monitor">
     <award-boot></award-boot>

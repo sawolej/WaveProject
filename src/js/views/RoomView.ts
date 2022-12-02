@@ -1,11 +1,9 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { audioLoader } from "../../App"
+import { audioLoader, isPlaying } from "../../App"
 
 export class RoomView {
-  music: any
-
-  constructor() { this.music = false }
+  constructor() {}
 
   init() {
     replaceHTML(canvas, this.html)
@@ -13,7 +11,7 @@ export class RoomView {
 
     // Workaround to not play music for a second time in parallel on localhost,
     // its not needed if we would make first quest: turn on the music
-    if (glob.location.hostname === "localhost") this.music = true
+    // if (glob.location.hostname === "localhost") this.music = true
 
     // click event listener
     glob.document.body.addEventListener('click', this.firstClick)
@@ -23,15 +21,16 @@ export class RoomView {
 
   // Music fix: DOMException: play() failed because the user didn't interact with the document first.
   firstClick = () => {
-    if (this.music === false) {
-      this.loadAudio()
-      this.music = true
-    }
+    if (!isPlaying()) this.loadAudio() 
+
     // removing of a listener like below is propably ok as long as
     // we dont use any other document.body listeners in this view,
     // otherwise, we can try to add this to id or class element instead
-    
     glob.document.body.removeEventListener('click', this.firstClick)
+  }
+
+  destruct = () => {
+    // clearTimeout(this.countdownTrigger)
   }
 
   html = `
