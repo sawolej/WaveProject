@@ -1,23 +1,13 @@
-# Compiled code
-build
-
 # Dependency directory
 node_modules
+
+# Bundled code
+dist/*
 
 # Optional npm cache directory
 .npm
 
-# Optional REPL history
-.node_repl_history
-
-# Dist and OSX
-dist
-lib
-.DS_Store
-
-# Lock
-yarn.lock
-package-lock.json
-
-# awesome-typescript
-.awcache
+# Others
+coverage
+.cache
+.env

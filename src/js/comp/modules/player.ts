@@ -1,5 +1,5 @@
-import { SmallPlatform, BigPlatform } from './Items.js';
-import {StandingLeft, StandingRight, RunningLeft, RunningRight, JumpingLeft, JumpingRight} from './state.js';
+import { SmallPlatform, BigPlatform } from './Items';
+import {StandingLeft, StandingRight, RunningLeft, RunningRight, JumpingLeft, JumpingRight} from './state';
 
 export class Player {
   gameWidth: any;

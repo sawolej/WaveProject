@@ -53,10 +53,10 @@ class Countdown {
 
   drawEnd(discI: number, arr: any[]) {
     let end = 0;
-    var count = 0;
+    let count = 0;
     setInterval(() => {if (count <= discI) {console.log(count++)}}, 1000)
 
-    var container = document.querySelector(".text") as HTMLElement;
+    const container = document.querySelector(".text") as HTMLElement;
 
     function showDisks(x: number) {
       let result = "";
@@ -75,7 +75,7 @@ class Countdown {
       return " ";
     }
 
-    var speeds = {
+    const speeds = {
       pause: 500, // Higher number = longer delay
       slow: 120,
       normal: 90,
@@ -83,7 +83,7 @@ class Countdown {
       superFast: 10
     };
 
-    var textLines = [
+    const textLines = [
       {speed: 10, string: "GAME OVER", classes: ["red"]},
       {speed: 500, string:  "", pause: true},
       {speed: 40, string: "  ", classes: ["red"]},
@@ -95,7 +95,7 @@ class Countdown {
       {speed: 200, string: showRest(discI)}
     ];
 
-    var characters: { span: HTMLSpanElement; isSpace: boolean; delayAfter: number; classes: string[]; }[] = [];
+    const characters: { span: HTMLSpanElement; isSpace: boolean; delayAfter: number; classes: string[]; }[] = [];
 
     textLines.forEach((line, index) => {
       if (index < textLines.length - 1) {
@@ -103,7 +103,7 @@ class Countdown {
       }
 
       line.string.split("").forEach((character) => {
-          var span = document.createElement("span");
+          const span = document.createElement("span");
           span.textContent = character;
           container.appendChild(span);
           
@@ -117,13 +117,13 @@ class Countdown {
     });
 
     function revealOneCharacter(list: any[]) {
-      var next = list.splice(0, 1)[0];
+      const next = list.splice(0, 1)[0];
       next.span.classList.add("revealed");
       next.classes.forEach((c: any) => {
           next.span.classList.add(c);
       });
 
-      var delay = next.isSpace && !next.pause ? 0 : next.delayAfter;
+      const delay = next.isSpace && !next.pause ? 0 : next.delayAfter;
 
       if (list.length > 0) {
           setTimeout(function () {

@@ -1,11 +1,12 @@
-import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
 export const Desktop = class {
-  constructor(){}
+  constructor() { }
+
   init() {
     //ELements
     const apps = document.querySelector("#os_apps") as HTMLElement
-    var menu = document.querySelector("#os-ct-menu")
+    const menu = document.querySelector("#os-ct-menu")
     const os_window = document.querySelector(".app_window") as HTMLButtonElement
     const brand_window = document.querySelector(".brand") as HTMLElement
     const app_main = document.querySelector("#app-main") as HTMLElement
@@ -15,7 +16,7 @@ export const Desktop = class {
     const taskbar = document.querySelector("#taskbar")
     const pickedOnes = []
     /* Sound effects */
-    const click = new Audio("./assets/sounds/click.mp3")
+    const click = new Audio("./src/assets/sounds/click.mp3")
     // const con = new Audio("sounds/not.wav")
 
 
@@ -23,11 +24,11 @@ export const Desktop = class {
     /* Reseting window */
     close(os_window)
     /* Creating apps */
-    create_app("File manager", './assets/pics/fileIcon.png', "file-manager")
-    create_app("Recycle bin", "./assets/pics/binIcon.png", "recycle-bin")
-    create_app("Settings", "./assets/pics/settingsIcon.png", "settings")
-    create_app("System Info", "./assets/pics/systemIcon.png", "system-info")
-    create_app("Whats that?", "./assets/pics/gameIcon.png", "game")
+    create_app("File manager", './src/assets/pics/fileIcon.png', "file-manager")
+    create_app("Recycle bin", "./src/assets/pics/binIcon.png", "recycle-bin")
+    create_app("Settings", "./src/assets/pics/settingsIcon.png", "settings")
+    create_app("System Info", "./src/assets/pics/systemIcon.png", "system-info")
+    create_app("Whats that?", "./src/assets/pics/gameIcon.png", "game")
 
 
 
@@ -48,7 +49,7 @@ export const Desktop = class {
         if(id === "game") click_game()
         else window_open(id)
       }
-      
+
       app.oncontextmenu = (e) => {
         click.play()
         // open_menu(e, id)

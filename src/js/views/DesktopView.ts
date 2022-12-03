@@ -1,18 +1,22 @@
-import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { Desktop as DesktopEngine } from '../comp/Desktop.js'
+import { Desktop as DesktopEngine } from '../comp/Desktop'
 
-import { audioLoader } from "../../App.js"
+import { audioLoader } from "../../App"
 
 export class DesktopView {
   constructor() {}
 
   init() {
     replaceHTML(canvas, this.html)
-    audioLoader("./assets/sounds/desktop.mp3")
+    audioLoader("./src/assets/sounds/desktop.mp3")
 
     const newDesktop = new DesktopEngine()
     newDesktop.init()
+  }
+
+  destruct = () => {
+    // clearTimeout(this.countdownTrigger)
   }
 
   html = `

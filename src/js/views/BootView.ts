@@ -1,6 +1,6 @@
-import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { Boot as BootEngine } from '../comp/Boot.js'
+import { Boot as BootEngine } from '../comp/Boot'
 
 export class BootView {
   constructor() {}
@@ -10,6 +10,10 @@ export class BootView {
 
     const newBoot = new BootEngine()
     newBoot.init()
+  }
+
+  destruct = () => {
+    // clearTimeout(this.countdownTrigger)
   }
 
   html = `

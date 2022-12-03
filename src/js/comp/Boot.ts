@@ -1,11 +1,12 @@
-import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { audioLoader } from "../../App.js"
+import { audioLoader } from "../../App"
 
 export class Boot {
   shadowRoot: any // errors because its not inicialised
-  
-  constructor(){}
+
+  constructor() { }
+
   init() {
     const SIZES = [
       "42GB",
@@ -55,7 +56,7 @@ export class Boot {
     ];
 
 
-    const key_click = new Audio("./assets/sounds/click.mp3");
+    const key_click = new Audio("./src/assets/sounds/click.mp3");
 
     const write_letter = function (num: any, txt: any) {
       const duration = Number(num.dataset.duration) || 5000;
@@ -211,7 +212,7 @@ export class Boot {
       turnOn() {
         return this.setHTML(".header", `        
       <div class="brand-text">
-        <img class="ribbon" src="./assets/pics/logo_ul.png" alt="ul">
+        <img class="ribbon" src="./src/assets/pics/logo_ul.png" alt="ul">
           <p>
            Uniwersytet Łódzki v1.0, Veritas et Libertas<br>
               Copyright (C) 1945-22, Award Software, Inc.
@@ -244,7 +245,7 @@ export class Boot {
         ];
 
         // sound.play();
-        audioLoader("./assets/sounds/startup.mp3", false, 1)
+        audioLoader("./src/assets/sounds/startup.mp3", false, 1)
 
         let i = 0;
         while (i < timeline.length) {

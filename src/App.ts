@@ -1,14 +1,14 @@
-import { RoomView } from './js/views/RoomView.js'
-import { BoardView } from './js/views/BoardView.js'
-import { BootView } from './js/views/BootView.js'
-import { DesktopView } from './js/views/DesktopView.js'
-import { GameView } from './js/views/GameView.js'
+import { RoomView } from './js/views/RoomView'
+import { BoardView } from './js/views/BoardView'
+import { BootView } from './js/views/BootView'
+import { DesktopView } from './js/views/DesktopView'
+import { GameView } from './js/views/GameView'
 
-import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./js/helpers.js";
+import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./js/helpers";
 
 /* Stylesheets */
 import './css/style.css'
-import './css/room.css' // should be room.css?
+import './css/room.css'
 import './css/board.css'
 import './css/desktop.css'
 import './css/boot.css'
@@ -45,38 +45,36 @@ export const audioLoader = (filename: string, loop: boolean = true, volume: numb
 }
 
 /**
- * Local class App
- * - const in order to use App.prototype (one unique instance of class)
+ * Audio App.prototype currentTime check handler
  * @public
  */
+export const isPlaying = () => app.prototype.audio.currentTime !== 0
+
+/**
+ * Local class App
+ * - const in order to use App.prototype (one unique instance of class)
+ * @private
+ */
 const app = class App {
-  filter: string
+  filter: string = "" 
+  interacted: boolean = false
   audio: any
   comp: any
 
-  constructor() { this.filter = "" }
-  
+  constructor() {  }
+
   /**
    * Init function
    */
   public init() {
     this.comp = {}
-    
-    // const rnd = glob.document.createElement('div') as HTMLElement
-    // rnd.id = 'render'
-    // glob.document.body.prepend(rnd)
+    this.interacted = false
 
     this.filter = getURLHash()
+
     glob.window.addEventListener("hashchange", () => {
-      
+
       this.destructor() // call destructing function
-      
-      const prev = this.filter
-      if ( prev !== "" && prev !== "#" && prev !== "#board" ) {
-        console.error("reloaded")
-        glob.location.reload() // reload and clear event leftovers 
-        // history.go(0) // alternative
-      }
 
       this.filter = getURLHash()
 
@@ -109,6 +107,8 @@ const app = class App {
    * @var this.filter @var this.comp
    */
   private render() {
+    // const rndstr = `<div id="render"></div>`
+    // insertHTML(glob.document.body, rndstr)
     // probably better to put this in Router, but do we need it to be responsive so much?
     switch (this.filter) {
       case "#desktop":
@@ -147,13 +147,16 @@ const app = class App {
     // pause and destruct audio
     if (this.audio) {
       this.audio.pause()
-      this.audio = null
+      // this.audio = null
+      delete this.audio
     }
 
     // destruct comp
     for (let c in this.comp) {
-      if (this.comp.hasOwnProperty(c))
-        this.comp[c] = null
+      if (this.comp.hasOwnProperty(c)) {
+        this.comp[c].destruct() // TODO: clear all setTimeout, listeners, etc
+        delete this.comp[c]
+      }
     }
   }
 }

@@ -1,18 +1,22 @@
-import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
+import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { Board as BoardEngine } from '../comp/Board.js'
+import { Board as BoardEngine } from '../comp/Board'
 
-import { audioLoader } from "../../App.js"
+import { audioLoader } from "../../App"
 
 export class BoardView {
   constructor() {}
 
   init() {
     replaceHTML(canvas, this.html)
-    audioLoader("./assets/sounds/tlo_b.mp3", true, .1)//, 2.137)
+    audioLoader("./src/assets/sounds/tlo_b.mp3", true, .1)//, 2.137)
 
     const newBoard = new BoardEngine()
     newBoard.init()
+  }
+
+  destruct = () => {
+    // clearTimeout(this.countdownTrigger)
   }
 
   html = `
@@ -22,10 +26,10 @@ export class BoardView {
     <div id="sheet2click" class="undraggable"></div>
     <div id="sheet3click" class="undraggable"></div>
     <div id="sheet4click" class="undraggable"></div>
-    <img id="sheet1" src="./assets/pics/sheet1.png" class="undraggable">
-    <img id="sheet2" src="./assets/pics/sheet2.png" class="undraggable">
-    <img id="sheet3" src="./assets/pics/sheet3.png" class="undraggable">
-    <img id="sheet4" src="./assets/pics/sheet4.png" class="undraggable">
+    <img id="sheet1" src="./src/assets/pics/sheet1.png" class="undraggable">
+    <img id="sheet2" src="./src/assets/pics/sheet2.png" class="undraggable">
+    <img id="sheet3" src="./src/assets/pics/sheet3.png" class="undraggable">
+    <img id="sheet4" src="./src/assets/pics/sheet4.png" class="undraggable">
   
     <a target="_blank" rel="noopener noreferrer" id="fb" href="https://www.facebook.com/unilodz/">Facebook</a>
     <a target="_blank" rel="noopener noreferrer" id="tiktok" href="https://www.tiktok.com/@unilodz">Tik tok</a>

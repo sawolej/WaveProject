@@ -3,7 +3,7 @@
   height: 100%;
   margin-left: auto;
   margin-right: auto;
-  background: no-repeat url("./assets/pics/room.png");
+  background: no-repeat url("../assets/pics/room.png");
   background-size: contain;
 }
 
@@ -16,7 +16,7 @@
 
 /* The borders do not scale for some reason */
 .board:hover {
-  background: no-repeat url("./assets/pics/boardOutline.png");
+  background: no-repeat url("../assets/pics/boardOutline.png");
   background-size: contain;
   cursor: pointer;
 }
@@ -30,13 +30,13 @@
 }
 
 .cup {
-  background: no-repeat url("./assets/pics/cup.png");
+  background: no-repeat url("../assets/pics/cup.png");
   background-size: contain;
 }
 
 .cup:hover {
   cursor: pointer;
-  background: no-repeat url("./assets/pics/cupOutline.png");  
+  background: no-repeat url("../assets/pics/cupOutline.png");  
   background-size: contain;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .plant {
-  background: no-repeat url("./assets/pics/plant.png");
+  background: no-repeat url("../assets/pics/plant.png");
   background-size: contain;
 }
 
@@ -63,12 +63,12 @@
 }
 
 .pc {
-  background: no-repeat url("./assets/pics/pc.png");
+  background: no-repeat url("../assets/pics/pc.png");
   background-size: contain;
 }
 
 .pc:hover {
-  background-image: url("./assets/pics/pcOutline.png");
+  background-image: url("../assets/pics/pcOutline.png");
 }
 
 .screen-gif {
@@ -77,5 +77,5 @@
   top: 13.8%;
   left: 39.8%;
   cursor: pointer;
-  background-image: no-repeat url("./assets/pics/screen.gif");
+  background-image: no-repeat url("../assets/pics/screen.gif");
 }
