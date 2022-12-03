@@ -4,19 +4,19 @@ export const Board = class {
   constructor(){}
   init() {
     // click listeners
-    document.getElementById('arrow').onclick = () => goBack()
-    document.getElementById('sheet1click').onclick = () => openSheet('sheet1')
-    document.getElementById('sheet2click').onclick = () => openSheet('sheet2')
-    document.getElementById('sheet3click').onclick = () => openSheet('sheet3')
-    document.getElementById('sheet4click').onclick = () => openSheet('sheet4')
+    (glob.document.getElementById('arrow') as HTMLElement).onclick = () => goBack();
+    (glob.document.getElementById('sheet1click') as HTMLElement).onclick = () => openSheet('sheet1');
+    (glob.document.getElementById('sheet2click') as HTMLElement).onclick = () => openSheet('sheet2');
+    (glob.document.getElementById('sheet3click') as HTMLElement).onclick = () => openSheet('sheet3');
+    (glob.document.getElementById('sheet4click') as HTMLElement).onclick = () => openSheet('sheet4');
 
-    let ap1 = document.getElementById("insta");
-    let ap2 = document.getElementById("fb");
-    let ap3 = document.getElementById("tiktok");
-    let ule = document.getElementById("buttonsUL");
+    let ap1 = glob.document.getElementById("insta") as HTMLElement;
+    let ap2 = glob.document.getElementById("fb") as HTMLElement;
+    let ap3 = glob.document.getElementById("tiktok") as HTMLElement;
+    let ule = glob.document.getElementById("buttonsUL") as HTMLElement;
 
-    function openSheet(id) {
-      const x = document.getElementById(id);
+    function openSheet(id: any) {
+      const x = glob.document.getElementById(id) as HTMLElement;
       if (x.style.visibility === 'hidden') {
         closeAll();
         closeApp();
@@ -43,7 +43,7 @@ export const Board = class {
     }
 
     function closeAll() {
-      for (let i = 1; i < 5; i++) document.getElementById(`sheet${i}`).style.visibility = 'hidden';
+      for (let i = 1; i < 5; i++) (glob.document.getElementById(`sheet${i}`) as HTMLElement).style.visibility = 'hidden';
     }
 
     function closeApp() {

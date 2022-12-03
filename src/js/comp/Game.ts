@@ -2,17 +2,10 @@ import { glob, canvas as canvasRender, delegate, getURLHash, insertHTML, replace
 
 import { InputHandler } from './modules/inputHandler.js';
 import { Player } from './modules/player.js';
-import { Background } from './modules/background.js';
-import { Ground } from './modules/ground.js';
-import { BigPlatform } from './modules/bigPlatform.js';
-import { SmallPlatform } from './modules/smallPlatform.js';
-import { Disk } from './modules/disk.js';
-import { Sun } from './modules/sun.js';
-import { Mountains } from './modules/mountains.js';
-import { Palms } from './modules/palms.js';
+import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, Disk } from './modules/Items.js';
 import { Countdown } from './modules/countdown.js';
 
-import { GameView } from "../views/game.js";
+import { GameView } from "../views/GameView.js";
 
 export const Game = class {
   canvas: HTMLCanvasElement
@@ -25,31 +18,19 @@ export const Game = class {
   sun: Sun;
   mountains: Mountains;
 
-  platforms: { smallPlatform1: SmallPlatform; smallPlatform2: SmallPlatform; smallPlatform3: SmallPlatform; 
-    smallPlatform4: SmallPlatform; smallPlatform5: SmallPlatform; smallPlatform6: SmallPlatform; 
-    smallPlatform7: SmallPlatform; smallPlatform8: SmallPlatform; smallPlatform9: SmallPlatform; 
-    smallPlatform10: SmallPlatform; smallPlatform11: SmallPlatform; smallPlatform12: SmallPlatform; 
-    bigPlatform1: BigPlatform; bigPlatform2: BigPlatform; bigPlatform3: BigPlatform; bigPlatform4: BigPlatform; 
-    bigPlatform5: BigPlatform; bigPlatform6: BigPlatform; bigPlatform7: BigPlatform; 
-  };
-  palms: { palmLeftOne1: Palms; palmLeftTwo1: Palms; palmLeftTwo2: Palms; palmLeftTwo3: Palms; 
-    palmRightOne1: Palms; palmRightOne2: Palms; palmRightOne3: Palms; palmRightTwo1: Palms;
-    palmRightTwo2: Palms; palmRightTwo3: Palms; palmRightTwo4: Palms; palmRightTwo5: Palms; 
-  };
-  disks: {
-    diskBehav: Disk; diskBio: Disk; diskChad: Disk; diskChem: Disk; diskEksoc: Disk; diskGeo: Disk; 
-    diskInter: Disk; diskLaw: Disk; diskManagement: Disk; diskMaths: Disk; diskPhilology: Disk; 
-    diskPhilosophy: Disk; diskTomaszow: Disk; 
-  };
+  platforms: { [key: string]: SmallPlatform | BigPlatform };
+  palms: { [key: string]: Palms };
+  disks: { [key: string]: Disk };
 
   diskCounter: number;
-  ihaveit: any[];
-  wasAdded: any[];
+  ihaveit: string[];
+  wasAdded: boolean[];
 
   countdown: Countdown;
   quit: boolean;
   time: number;
   countdownEl: HTMLElement;
+  tip: HTMLElement;
 
   constructor() {
         // Define canvas properties
@@ -138,6 +119,8 @@ export const Game = class {
         // Draw countdown timer when the game runs. Move this to a countdown.js class later.
         this.time = 600;
         this.countdownEl = glob.document.getElementById("countdown") as HTMLElement
+
+        this.tip = glob.document.getElementById("tip") as HTMLElement
   }
 
   init() {
@@ -266,33 +249,33 @@ export const Game = class {
     }
 
     // Get the modal
-    const modal = glob.document.getElementById("myModal");
+    const modal = glob.document.getElementById("myModal") as HTMLElement;
 
     // Get the button that opens the modal
-    const btn = glob.document.getElementById("myBtn");
+    const btn = glob.document.getElementById("myBtn") as HTMLButtonElement;
 
     // Get the <span> element that closes the modal
     const span = glob.document.getElementsByClassName("close")[0] as HTMLButtonElement;
 
     // define ids
-    const diskBehavioralImageE = glob.document.getElementById('diskBehavioralImageE')
-    const diskBiologyImageE = glob.document.getElementById('diskBiologyImageE')
-    const diskChadImageE = glob.document.getElementById('diskChadImageE')
-    const diskChemistryImageE = glob.document.getElementById('diskChemistryImageE')
-    const diskEksocImageE = glob.document.getElementById('diskEksocImageE')
-    const diskGeographyImageE = glob.document.getElementById('diskGeographyImageE')
-    const diskInternationalImageE = glob.document.getElementById('diskInternationalImageE')
-    const diskLawImageE = glob.document.getElementById('diskLawImageE')
-    const diskMathsImageE = glob.document.getElementById('diskMathsImageE')
-    const diskManagementImageE = glob.document.getElementById('diskManagementImageE')
-    const diskPhilologyImageE = glob.document.getElementById('diskPhilologyImageE')
-    const diskPhilosophyImageE = glob.document.getElementById('diskPhilosophyImageE')
-    const diskTomaszowImageE = glob.document.getElementById('diskTomaszowImageE')
+    const diskBehavioralImageE = glob.document.getElementById('diskBehavioralImageE') as HTMLElement
+    const diskBiologyImageE = glob.document.getElementById('diskBiologyImageE') as HTMLElement
+    const diskChadImageE = glob.document.getElementById('diskChadImageE') as HTMLElement
+    const diskChemistryImageE = glob.document.getElementById('diskChemistryImageE') as HTMLElement
+    const diskEksocImageE = glob.document.getElementById('diskEksocImageE') as HTMLElement
+    const diskGeographyImageE = glob.document.getElementById('diskGeographyImageE') as HTMLElement
+    const diskInternationalImageE = glob.document.getElementById('diskInternationalImageE') as HTMLElement
+    const diskLawImageE = glob.document.getElementById('diskLawImageE') as HTMLElement
+    const diskMathsImageE = glob.document.getElementById('diskMathsImageE') as HTMLElement
+    const diskManagementImageE = glob.document.getElementById('diskManagementImageE') as HTMLElement
+    const diskPhilologyImageE = glob.document.getElementById('diskPhilologyImageE') as HTMLElement
+    const diskPhilosophyImageE = glob.document.getElementById('diskPhilosophyImageE') as HTMLElement
+    const diskTomaszowImageE = glob.document.getElementById('diskTomaszowImageE') as HTMLElement
 
     // When the user clicks on the button, open the modal
     diskBehavioralImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML =
+      this.tip.innerHTML =
         `Wydział Nauk o Wychowaniu<br>
   <br>
   <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
@@ -309,61 +292,61 @@ export const Game = class {
 
     diskBiologyImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Biologii i Ochrony Środowiska";
+      this.tip.innerHTML = "Wydział Biologii i Ochrony Środowiska";
     }
 
     diskChadImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
+      this.tip.innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
     }
 
     diskChemistryImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Chemii";
+      this.tip.innerHTML = "Wydział Chemii";
     }
 
     diskEksocImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Ekonomiczno-Socjologiczny";
+      this.tip.innerHTML = "Wydział Ekonomiczno-Socjologiczny";
     }
 
     diskGeographyImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Nauk Geograficznych";
+      this.tip.innerHTML = "Wydział Nauk Geograficznych";
     }
 
     diskInternationalImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
+      this.tip.innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
     }
 
     diskLawImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Prawa i Administracji";
+      this.tip.innerHTML = "Wydział Prawa i Administracji";
     }
     diskMathsImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Matematyki i Informatyki";
+      this.tip.innerHTML = "Wydział Matematyki i Informatyki";
     }
 
     diskManagementImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Zarządzania";
+      this.tip.innerHTML = "Wydział Zarządzania";
     }
 
     diskPhilologyImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Filologiczny";
+      this.tip.innerHTML = "Wydział Filologiczny";
     }
 
     diskPhilosophyImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Wydział Filozoficzno-Historyczny";
+      this.tip.innerHTML = "Wydział Filozoficzno-Historyczny";
     }
 
     diskTomaszowImageE.onclick = () => {
       modal.style.display = "block";
-      glob.document.getElementById("tip").innerHTML = "Filia w Tomaszowie Mazowieckim";
+      this.tip.innerHTML = "Filia w Tomaszowie Mazowieckim";
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -375,8 +358,8 @@ export const Game = class {
     // When the user clicks anywhere outside of the modal, close it
     glob.document.body.onclick = (event) => { if (event.target == modal) modal.style.display = "none" }
     
-    const setText = (arr) => {
-      let text = document.getElementById("tip").innerHTML
+    const setText = (arr: string[]) => {
+      let text = this.tip.innerHTML
       text = text + " \n New text!";
     }
 
@@ -390,7 +373,7 @@ export const Game = class {
       // Make the animated disks visible after delay
       setTimeout(() => {
         for (let i = 0; i < this.diskCounter; i++) {
-          glob.document.getElementById(this.ihaveit[i]).style.visibility = 'visible';
+          (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.visibility = 'visible';
         }
       }, 4550 + this.diskCounter * 900)
     }

@@ -1,6 +1,8 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers.js";
 
-export const Boot = class {
+import { audioLoader } from "../../App.js"
+
+export class Boot {
   shadowRoot: any // errors because its not inicialised
   
   constructor(){}
@@ -55,7 +57,7 @@ export const Boot = class {
 
     const key_click = new Audio("./assets/sounds/click.mp3");
 
-    const write_letter = function (num, txt) {
+    const write_letter = function (num: any, txt: any) {
       const duration = Number(num.dataset.duration) || 5000;
       const portions = ~~(duration / txt.length); //~~ convert to int
       for (let i = 0; i <= txt.length; i++) {
@@ -67,18 +69,19 @@ export const Boot = class {
       }
     }
 
-    const write_line = function (num) {
+    const write_line = function (num: any) {
       const delay = num.dataset.delay || 0;
       const txt = num.textContetn;
       num.textContetn = "";
       setTimeout(() => write_letter(num, txt), delay);
     }
 
-    const sound = new Audio("./assets/sounds/startup.mp3");
+    // const sound = new Audio("./assets/sounds/startup.mp3");
+    // replaced in sound.play() line
 
     const date = () => {
       const date = new Date();
-      const zeroFill = data => String(data).padStart(2, "0");
+      const zeroFill = (data: any) => String(data).padStart(2, "0");
 
       const day = zeroFill(date.getDate());
       const month = zeroFill(date.getMonth() + 1);
@@ -150,7 +153,7 @@ export const Boot = class {
         this.rebootSystem();
       }
 
-      setVisible(className, duration = 0) {
+      setVisible(className: any, duration = 0) {
         return new Promise(resolve => {
           setTimeout(() => {
             // this.shadowRoot.querySelector(className).classList.remove("off");
@@ -159,22 +162,22 @@ export const Boot = class {
         });
       }
 
-      setHTML(className, HTML, duration = 0) {
+      setHTML(className: any, HTML: any, duration = 0) {
         return new Promise(resolve => {
           setTimeout(() => {
-            const div = this.shadowRoot.querySelector(className);
+            const div = (this.shadowRoot as ShadowRoot).querySelector(className);
             div.innerHTML = HTML;
             resolve(true)
           }, duration);
         });
       }
 
-      addHTML(className, HTML) {
-        const div = this.shadowRoot.querySelector(className);
+      addHTML(className: any, HTML: any) {
+        const div = (this.shadowRoot as ShadowRoot).querySelector(className);
         div.innerHTML += HTML;
       }
 
-      async detectDevice(place, label) {
+      async detectDevice(place: any, label: any) {
         const n = ~~(Math.random() * 4);
 
         if (n === 0) {
@@ -223,7 +226,7 @@ export const Boot = class {
       }
 
       enterBIOS() {
-        const monitor = document.querySelector(".monitor");
+        const monitor = document.querySelector(".monitor") as HTMLElement;
         const bios = document.createElement("award-bios");
         monitor.appendChild(bios);
         this.remove();
@@ -240,7 +243,8 @@ export const Boot = class {
           { action: () => this.enterBIOS() }
         ];
 
-        sound.play();
+        // sound.play();
+        audioLoader("./assets/sounds/startup.mp3", false, 1)
 
         let i = 0;
         while (i < timeline.length) {
@@ -252,7 +256,7 @@ export const Boot = class {
       checkMemory() {
         return new Promise(resolve => {
           const BLOCK = 8;
-          const memory = this.shadowRoot.querySelector(".memory");
+          const memory = (this.shadowRoot as ShadowRoot).querySelector(".memory") as HTMLElement;
           const max = Number(memory.textContent);
           memory.textContent = "";
           for (let i = 0; i < max; i = i + BLOCK) {
@@ -274,11 +278,11 @@ export const Boot = class {
       }
 
       disableEPA() {
-        this.shadowRoot.querySelector(".epa");//.classList.add("fadeoff"); // error here: undefined shadowRoot
+        (this.shadowRoot as ShadowRoot).querySelector(".epa");//.classList.add("fadeoff"); // error here: undefined shadowRoot
       }
 
       render() {
-        this.shadowRoot.innerHTML = `
+        (this.shadowRoot as ShadowRoot).innerHTML = `
     <style>${AwardBoot.styles}</style>
     <div class="screen">
       <div class="header">
@@ -303,7 +307,8 @@ export const Boot = class {
       }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    customElements.define("award-boot", AwardBoot);
+    try { customElements.define("award-boot", AwardBoot) }
+    catch (error) { console.log(error) }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //AWARD-BIOS/////////////////////////////////////////////////////////////////////////////////////
@@ -414,7 +419,7 @@ export const Boot = class {
       }
 
       showExit() {
-        this.shadowRoot.querySelector(".screen").innerHTML += `
+        ((this.shadowRoot as ShadowRoot).querySelector(".screen") as HTMLElement).innerHTML += `
   <div class="message">
     <div class="container">SAVE to CMOS and EXIT (Y/N)?</div>
   </div>`;
@@ -426,7 +431,7 @@ export const Boot = class {
       }
 
       exitBIOS() {
-        const screen = this.shadowRoot.querySelector(".screen");
+        const screen = (this.shadowRoot as ShadowRoot).querySelector(".screen") as HTMLElement;
         screen.classList.remove("blue");
         screen.innerHTML = `<p>C:\\&gt;<span class="typewriter" data-duration="2000" data-delay="0">UNIWERSYTET ŁÓDZKI</span><span class="cursor"></span>`;
         // typewriter(screen.querySelector(".typewriter"));
@@ -442,7 +447,7 @@ export const Boot = class {
       }
 
       render() {
-        this.shadowRoot.innerHTML = `
+        (this.shadowRoot as ShadowRoot).innerHTML = `
       //   <head>
       //   <link rel="stylesheet" href="C:\Users\HP\Desktop\studia\rok2\game\WaveProject\src\css\boot.css">
       // </head>
@@ -483,7 +488,8 @@ export const Boot = class {
       }
     }
 
-    customElements.define("award-bios", AwardBios);
+    try { customElements.define("award-bios", AwardBios) }
+    catch (error) { console.log(error) }
     // customElements.define("desktop-p", DesktopP);
   }
 }
