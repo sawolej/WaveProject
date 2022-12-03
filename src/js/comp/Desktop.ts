@@ -35,6 +35,7 @@ export const Desktop = class {
     function click_game() {
       glob.document.location.hash = "#game"
     }
+    
     function create_app(name, image, id) {
       let app = document.createElement("div")
       app.classList.add("app")
@@ -45,7 +46,7 @@ export const Desktop = class {
       //   app.setAttribute("onclick", "window_open('" + id + "')")
       // }
       app.onclick = () => {
-        if(id == "game") click_game()
+        if(id === "game") click_game()
         else window_open(id)
       }
       

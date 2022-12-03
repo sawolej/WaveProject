@@ -53,7 +53,7 @@ body {
   width: 30%;
   height: 30vh;
   border: 3px solid rgb(0, 0, 0);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   overflow: hidden;
   resize: both;
   transition: 0.3s;
@@ -64,7 +64,8 @@ body {
   justify-content: space-between;
   width: 100%;
   background: rgb(182, 182, 182);
-  border: 1px solid rgb(0, 0, 0);
+  outline: 1px solid rgb(0, 0, 0);
+  border-bottom: 2px solid black;
   padding: 0 10px;
   cursor: move;
   cursor: grab;
@@ -104,10 +105,10 @@ body {
   border: 6px;
   margin-right: 6px;
   color: rgb(0, 0, 0);
-  padding: 5px;
+  padding: 2px;
   width: 30px;
   height: 30px;
-  border-radius: 95%;
+  border: 3px solid black;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -133,9 +134,9 @@ body {
 .cross-icon {
   width: 50%;
   font-size: 18px;
-  border: 1px solid rgb(255, 255, 255);
   border-color: transparent;
-  margin: auto;
+  color: rgb(100, 100, 100);
+  margin-left: 6px;
 }
 
 .app_window .app {
@@ -155,6 +156,14 @@ p1 {
 
 h1 {
   font-weight: bold;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #screen_page {
