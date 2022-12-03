@@ -3,9 +3,9 @@
   src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
 }
 
+/* Change to #render class so the properties are inherited*/
 * {
   overflow: hidden;
-  padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;

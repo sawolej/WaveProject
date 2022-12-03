@@ -1,5 +1,13 @@
+# Dependency directory
 node_modules
-coverage
+
+# Bundled code
 dist/*
+
+# Optional npm cache directory
+.npm
+
+# Others
+coverage
 .cache
 .env
