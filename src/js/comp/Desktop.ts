@@ -1,158 +1,127 @@
 import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
 export const Desktop = class {
-  constructor() { }
+  constructor() {}
 
   init() {
-    //ELements
     const apps = document.querySelector("#os_apps") as HTMLElement
-    const menu = document.querySelector("#os-ct-menu")
-    const os_window = document.querySelector(".app_window") as HTMLButtonElement
-    const brand_window = document.querySelector(".brand") as HTMLElement
-    const app_main = document.querySelector("#app-main") as HTMLElement
+    const osWindow = document.querySelector(".app_window") as HTMLButtonElement
+    const brandWindow = document.querySelector(".brand") as HTMLElement
+    const mainApp = document.querySelector("#app-main") as HTMLElement
     const maximise = document.querySelector("#maximise") as HTMLButtonElement
     const shorter = document.querySelector("#shorter") as HTMLButtonElement
     const cross = document.querySelector("#cross") as HTMLButtonElement
-    const taskbar = document.querySelector("#taskbar")
-    const pickedOnes = []
+
     /* Sound effects */
     const click = new Audio("./src/assets/sounds/click.mp3")
-    // const con = new Audio("sounds/not.wav")
 
-
-    //Operations
     /* Reseting window */
-    close(os_window)
+    toggleVisibility(osWindow)
+
     /* Creating apps */
-    create_app("File manager", './src/assets/pics/fileIcon.png', "file-manager")
-    create_app("Recycle bin", "./src/assets/pics/binIcon.png", "recycle-bin")
-    create_app("Settings", "./src/assets/pics/settingsIcon.png", "settings")
-    create_app("System Info", "./src/assets/pics/systemIcon.png", "system-info")
-    create_app("Whats that?", "./src/assets/pics/gameIcon.png", "game")
+    createApp("File manager", './src/assets/pics/fileIcon.png', "file-manager")
+    createApp("Recycle bin", "./src/assets/pics/binIcon.png", "recycle-bin")
+    createApp("Settings", "./src/assets/pics/settingsIcon.png", "settings")
+    createApp("System Info", "./src/assets/pics/systemIcon.png", "system-info")
+    createApp("Whats that?", "./src/assets/pics/gameIcon.png", "game")
 
+    function createApp(name: any, image: any, id: any) {
 
-
-    //Functions
-    function click_game() {
-      glob.document.location.hash = "#game"
-    }
-    function create_app(name: any, image: any, id: any) {
       let app = document.createElement("div")
+      let img = document.createElement("img")
+      let p = document.createElement("p")
+
       app.classList.add("app")
       app.id = id
-      // if (app.id == "game") {
-      //   app.setAttribute("onclick", "click_game()")
-      // } else {
-      //   app.setAttribute("onclick", "window_open('" + id + "')")
-      // }
-      app.onclick = () => {
-        if(id === "game") click_game()
-        else window_open(id)
-      }
-
-      app.oncontextmenu = (e) => {
-        click.play()
-        // open_menu(e, id)
-      }
-
-      let img = document.createElement("img")
       img.src = image
-      img.setAttribute("alt", name)
-      let p = document.createElement("p")
       p.innerText = name
+
+      img.setAttribute("alt", name)
       app.appendChild(img)
       app.appendChild(p)
       apps.appendChild(app)
+
+      app.oncontextmenu = (e) => {
+        click.play()
+      }
+
+      app.onclick = () => {
+        if (id === "game") glob.document.location.hash = "#game"
+        else openWindow(id)
+      }
     }
 
-    function open(tag: any) {
-      tag.style.display = "inline-block"
+    function toggleVisibility(tag: any) {
+      if (tag.style.display === "none") tag.style.display = "inline-block"
+      else tag.style.display = "none"
     }
 
-    function close(tag: any) {
-      tag.style.display = "none"
-    }
-
-    function window_open(id: any) {
+    function openWindow(id: any) {
+      initWindow()
       click.play()
-      brand_window.innerHTML = ""
-      app_main.innerHTML = ""
-      init_window()
+      brandWindow.innerHTML = ""
+      mainApp.innerHTML = ""
 
       let main = document.getElementById(id) as HTMLImageElement
       let tmp = main.getAttribute("alt") as string
-
       let img = document.createElement("img")
+      let p = document.createElement("p")
+
+      p.innerText = (main.childNodes[1] as HTMLElement).innerText
       img.src = main.src
       img.setAttribute("alt", tmp)
+      brandWindow.appendChild(img)
+      brandWindow.appendChild(p)
 
-      let p = document.createElement("p")
-      p.innerText = (main.childNodes[1] as HTMLElement).innerText
-      brand_window.appendChild(img)
-      brand_window.appendChild(p)
-
-      open(os_window)
+      toggleVisibility(osWindow)
     }
 
-    function init_window() {
-      close(shorter)
+    function initWindow() {
+      toggleVisibility(shorter)
+      
       maximise.onclick = () => {
         click.play()
-        maximise_window()
+        maximiseWindow()
       }
+      
       shorter.onclick = () => {
         click.play()
-        shorter_window()
+        shortenWindow()
       }
+
       cross.onclick = () => {
         click.play()
-        close(os_window)
-        os_window
+        toggleVisibility(osWindow)
       }
-
     }
 
-    function maximise_window() {
-      open(shorter)
-      close(maximise)
-      // window.restoreX = os_window.style.left  // what is restoreX and Y? its undefined
-      // window.restoreY = os_window.style.top   // should we get sceen x and y here?
+    function maximiseWindow() {
+      toggleVisibility(shorter)
+      toggleVisibility(maximise)
 
-      // here we would have to cut "px" and cast it as Number(os_window.style.top) bcs now its String -> Number
-      // glob.window.innerHeight = Number(os_window.style.top.split('p')[0]) // like this ;>
-
-      os_window.style.top = "0px"
-      os_window.style.left = "0px"
-      os_window.style.width = "100%"
-      os_window.style.height = "100vh"
+      osWindow.style.top = "0px"
+      osWindow.style.left = "0px"
+      osWindow.style.width = "100%"
+      osWindow.style.height = "100vh"
     }
 
-    function shorter_window() {
-      open(maximise)
-      close(shorter)
-      // os_window.style.top = window.restoreY + "px" // "px" here :3
-      // os_window.style.left = window.restoreX
-      os_window.style.width = "60%"
-      os_window.style.height = "60vh"
+    function shortenWindow() {
+      toggleVisibility(maximise)
+      toggleVisibility(shorter)
+
+      osWindow.style.width = "60%"
+      osWindow.style.height = "60%"
     }
 
-    // window.onclick = () => {
-    //   if (menu.classList.contains("active")) {
-    //     menu.classList.remove("active")
-    //   }
-    // }
-
-    os_window.ondragend = (e) => {
+    osWindow.ondragend = (e) => {
       let go_top = e.pageY
       let go_left = e.pageX
-      if (go_top < 0) {
-        go_top = Number(e)
-      }
-      if (go_left < 0) {
-        go_left = 0
-      }
-      os_window.style.top = go_top + "px"
-      os_window.style.left = go_left + "px"
+
+      if (go_top < 0) go_top = Number(e)
+      if (go_left < 0) go_left = 0
+      
+      osWindow.style.top = go_top + "px"
+      osWindow.style.left = go_left + "px"
     }
   }
 }
