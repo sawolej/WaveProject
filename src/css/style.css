@@ -3,8 +3,23 @@
   src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
 }
 
-/* Change to #render class so the properties are inherited*/
-* {
+body {
+  /* webkit */
+  image-rendering: -webkit-crisp-edges;
+  /* for firefox */
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  /* for chrome */
+  image-rendering: pixelated;
+  /* for edge */
+  image-rendering: -webkit-optimize-contrast;
+  /* blend */
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+.render {
+  margin: auto;
+  /* all elements properties */
   overflow: hidden;
   box-sizing: border-box;
   text-decoration: none;
@@ -18,8 +33,4 @@
   /* IE10+/Edge */
   user-select: none;
   /* Standard */
-}
-
-#render {
-  margin: auto;
 }

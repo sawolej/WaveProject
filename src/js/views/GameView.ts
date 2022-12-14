@@ -69,8 +69,8 @@ export class GameView {
 <img id="palmRightTwoImage" src="./src/assets/pics/palmRightTwo.png">
 
 <!-- Trigger/Open The Modal -->
-<div id = "endDisks" class="centred">
-  <img id="myBtn" src="./src/assets/pics/FloppyDiskBehavioralHoney.png">
+<div id = "endDisks" class="endDisks">
+  <!-- <img id="myBtn" src="./src/assets/pics/FloppyDiskBehavioralHoney.png"> -->
   <img id="diskBehavioralImageE" src="./src/assets/pics/beh.gif" class="undraggable">
   <img id="diskBiologyImageE" src="./src/assets/pics/lime.gif" class="undraggable">
   <img id="diskChadImageE" src="./src/assets/pics/hom.gif" class="undraggable">

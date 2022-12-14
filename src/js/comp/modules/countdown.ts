@@ -70,7 +70,7 @@ class Countdown {
     }
     
     function showRest(x: any) {
-      container.replaceChildren(" ");
+      container.replaceChildren(" "); // TODO: check what it does
       console.log(arr);
       return " ";
     }
@@ -84,8 +84,8 @@ class Countdown {
     };
 
     const textLines = [
-      {speed: 10, string: "GAME OVER", classes: ["red"]},
-      {speed: 500, string:  "", pause: true},
+      {speed: 10, string: " GAME OVER", classes: ["red"]},
+      {speed: 500, string: "", pause: true},
       {speed: 40, string: "  ", classes: ["red"]},
       {speed: 80, string: "floppy disks collected:"},
       {speed: 40, string: "  ", classes: ["red"]},
@@ -102,6 +102,7 @@ class Countdown {
         line.string += " \n"; // Add a space between lines
       }
 
+      // string.slice(0, -2) do empty chars algin this?
       line.string.split("").forEach((character) => {
           const span = document.createElement("span");
           span.textContent = character;

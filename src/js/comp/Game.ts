@@ -381,7 +381,7 @@ export const Game = class {
       // Make the animated disks visible after delay
       setTimeout(() => {
         for (let i = 0; i < this.diskCounter; i++) {
-          (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.visibility = 'visible';
+          (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
         }
       }, 4550 + this.diskCounter * 900)
     }
