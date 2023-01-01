@@ -67,7 +67,7 @@
   background-size: contain;
 }
 
-.pc:hover {
+.pc.highlight {
   background-image: url("../assets/pics/pcOutline.png");
 }
 
@@ -78,4 +78,31 @@
   left: 39.8%;
   cursor: pointer;
   background-image: no-repeat url("../assets/pics/screen.gif");
+}
+
+.pc-click-box {
+  position: absolute;
+  cursor: pointer;
+  /* outline: 2px solid red; */
+}
+
+.pc-click-box.box-one {
+  width: 49%;
+  height: 69%;
+  top: 2.5%;
+  left: 34.4%;
+}
+
+.pc-click-box.box-two {
+  width: 96%;
+  height: 23%;
+  top: 72%;
+  left: 2%;
+}
+
+.pc-click-box.box-three {
+  width: 15%;
+  height: 3%;
+  top: 95.5%;
+  left: 79%;
 }
