@@ -8,6 +8,7 @@ import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, 
 import { Countdown } from './modules/countdown';
 
 import { GameView } from "../views/GameView";
+import * as desc from "./txt";
 
 export const Game = class {
   canvas: HTMLCanvasElement
@@ -191,78 +192,66 @@ export const Game = class {
     // When the user clicks on the button, open the modal
     diskBehavioralImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML =
-        `Wydział Nauk o Wychowaniu<br>
-  <br>
-  <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
-  <br>
-  <b>Czy wiesz, że...</b><br>
-  Na Uniwersytecie Łódzkim masz możliwość rozwijania swojej ścieżki naukowej między innymi 
-  dzięki grantom badawczym. Zespół badawczy związany z Wydziałem NAuk o Wychowaniu otrzymał 
-  grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej 
-  w redukcji stresu u osób dorosłych. Głównym celem projektu jest stworzenie aplikacji 
-  wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny 
-  w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
-  `
+      this.tip.innerHTML = desc.txtWNOW;
     }
 
     diskBiologyImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Biologii i Ochrony Środowiska";
+      this.tip.innerHTML = desc.txtWBIOS;
     }
 
     diskChadImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
+      this.tip.innerHTML = desc.txtWFIS;
     }
 
     diskChemistryImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Chemii";
+      this.tip.innerHTML = desc.txtCHEMIA;
     }
 
     diskEksocImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Ekonomiczno-Socjologiczny";
+      this.tip.innerHTML = desc.txtEKSOC;
     }
 
     diskGeographyImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Nauk Geograficznych";
+      this.tip.innerHTML = desc.txtGEO;
     }
 
     diskInternationalImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
+      this.tip.innerHTML = desc.txtWSMIP;
     }
 
     diskLawImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Prawa i Administracji";
+      this.tip.innerHTML = desc.txtWPIA;
     }
     diskMathsImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Matematyki i Informatyki";
+      this.tip.innerHTML = desc.txtMATH;
     }
 
     diskManagementImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Zarządzania";
+      this.tip.innerHTML = desc.txtWZ;
     }
 
     diskPhilologyImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Filologiczny";
+      this.tip.innerHTML = desc.txtFILOLOG;
     }
 
     diskPhilosophyImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Filozoficzno-Historyczny";
+      this.tip.innerHTML = desc.txtFILHIST;
     }
 
     diskTomaszowImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Filia w Tomaszowie Mazowieckim";
+      this.tip.innerHTML = desc.txtFILIA;
     }
 
     // When the user clicks on <span> (x), close the modal
