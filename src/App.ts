@@ -4,7 +4,7 @@ import { Boot } from './js/views/boot.js'
 import { Desktop } from './js/views/desktop.js'
 import { Game } from './js/views/game.js'
 
-import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "./js/helpers.js";
+import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML, showPic } from "./js/helpers.js";
 // import { TodoStore } from "./store.js";
 // const Todos = new TodoStore("todo-modern-vanillajs");
 
@@ -84,9 +84,10 @@ const App = {
       case "#boot": // or booting..
         console.log("loading component.. [boot]")
         // Boot.init()
-        App.comp.Boot = Boot
-        App.comp.Boot.init()
-        App.destructor('boot')
+       // App.comp.Boot = Boot
+        //App.comp.Boot.init()
+        //App.destructor('boot')
+        showPic()
         break
       case "#game":
         console.log("loading component.. [game]")

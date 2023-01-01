@@ -16,3 +16,8 @@ export const replaceHTML = (el, html) => {
 	el.replaceChildren();
 	insertHTML(el, html);
 };
+
+export const showPic = () =>{
+	var img = document.getElementById('bigpic')
+	img.style.display = "block";
+  } 

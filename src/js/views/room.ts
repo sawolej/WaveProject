@@ -10,7 +10,7 @@ export const Room = {
     // Music
     const audio = glob.document.getElementById("tlo") as HTMLAudioElement
     // fix: make it less distorted
-    audio.volume = 0.1//0.7; // FOR DEVELOPING ;~~)))
+    audio.volume = 0.0//0.7; // FOR DEVELOPING ;~~)))
     //animation
     if(isFirstOpen){
     document.body.className = 'hidden';
@@ -29,7 +29,9 @@ export const Room = {
       this.music = true
     }
   },
-  html: `<div id="room" class="room-background">
+  html: `
+  <img style="display:none;" id="bigpic" src="./assets/pics/out.png" />
+  <div id="room" class="room-background">
   <a href="#board"><img id="board" class="undraggable"></a>
   <a href="#boot"><img id="ekranGif" src="./assets/pics/ekran.gif" class="undraggable"></a>
   <a href="https://sklep.uni.lodz.pl/"><img id="cup" src="./assets/pics/cup.png" class="undraggable"></a>
