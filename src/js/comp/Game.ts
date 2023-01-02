@@ -41,7 +41,7 @@ export const Game = class {
   then: number = 0;
   elapsed: number = 0;
   fpsInterval: number = 0;
-  FPS: number = 55; // declare FPS
+  FPS: number = 60; // declare FPS
 
   constructor() {
     // Define canvas properties
@@ -155,7 +155,7 @@ export const Game = class {
         clearInterval(this.countdown.introInterval);
         this.countdownEl.style.display = "none"
       }
-    }, 8550) // 67550 = 60 seconds
+    }, 67550) // 67550 = 60 seconds
 
     // Toggle timer visibility
     setTimeout(() => {
