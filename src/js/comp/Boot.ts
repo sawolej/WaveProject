@@ -194,9 +194,14 @@ export class Boot {
   <style>${AwardBios.styles}</style>`+desc.style_4;
       }
     }
-    //click to skip
-    glob.document.body.onclick = (event) => { glob.document.location.hash = "#desktop" }
-    glob.document.body.addEventListener('keypress', (event) => { glob.document.location.hash = "#desktop" });
+    // click to skip
+    const redirect = () => { 
+      glob.document.location.hash = "#desktop"; 
+      glob.document.body.removeEventListener('click', redirect);
+      glob.document.body.removeEventListener('keypress', redirect);  
+    };
+    glob.document.body.addEventListener('click', redirect);
+    glob.document.body.addEventListener('keypress', redirect);
 
     try { customElements.define("award-bios", AwardBios) }
     catch (error) { console.log(error) }
