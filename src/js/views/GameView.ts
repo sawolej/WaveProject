@@ -8,17 +8,17 @@ export class GameView {
   countdownTrigger: any
   audio: any = {}
 
-  constructor() {}
-  
+  constructor() { }
+
   init() {
     replaceHTML(canvas, this.html)
     audioLoader("./src/assets/sounds/mainGameMusic.mp3")
-    
+
     const newGame = new GameEngine()
     newGame.init()
 
     // Timeout function
-    this.countdownTrigger = setTimeout( () => { // this timeout bugs music
+    this.countdownTrigger = setTimeout(() => { // this timeout bugs music
       this.audio.countdown = new Audio("./src/assets/sounds/countdown.mp3")
       this.audio.countdown.play()
     }, 3800)

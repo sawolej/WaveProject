@@ -283,38 +283,38 @@ export const Game = class {
   }
 
   renderer = (fps: number) => {
-      this.fpsInterval = 1000 / fps;
-      this.then = Date.now();
-      this.startTime = this.then;
-      console.log(this.startTime);
-      this.animate();
+    this.fpsInterval = 1000 / fps;
+    this.then = Date.now();
+    this.startTime = this.then;
+    console.log(this.startTime);
+    this.animate();
   }
 
   animate = () => { // arrow function in order to reach class by this.
-      // Request another frame
-      if (!this.quit) requestAnimationFrame(this.animate);
-      // Clear the main game canvas on game end (else is faster)
-      else {
-        console.log("animate(): this.quit = " + this.quit)
-        // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.canvas.style.visibility = "hidden"
-        this.countdown.drawEnd(this.diskCounter, this.ihaveit);
+    // Request another frame
+    if (!this.quit) requestAnimationFrame(this.animate);
+    // Clear the main game canvas on game end (else is faster)
+    else {
+      console.log("animate(): this.quit = " + this.quit)
+      // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.canvas.style.visibility = "hidden"
+      this.countdown.drawEnd(this.diskCounter, this.ihaveit);
 
-        // Make the animated disks visible after delay
-        setTimeout(() => {
-          for (let i = 0; i < this.diskCounter; i++) {
-            (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
-          }
-        }, 4550 + this.diskCounter * 900)
-      }
+      // Make the animated disks visible after delay
+      setTimeout(() => {
+        for (let i = 0; i < this.diskCounter; i++) {
+          (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
+        }
+      }, 4550 + this.diskCounter * 900)
+    }
 
-      // Calc elapsed time since the last loop
-      this.now = Date.now();
-      this.elapsed = this.now - this.then;
+    // Calc elapsed time since the last loop
+    this.now = Date.now();
+    this.elapsed = this.now - this.then;
 
-      // if enough time has elapsed, draw the next frame
-      if (this.elapsed > this.fpsInterval) {
-        this.then = this.now - (this.elapsed % this.fpsInterval);
+    // if enough time has elapsed, draw the next frame
+    if (this.elapsed > this.fpsInterval) {
+      this.then = this.now - (this.elapsed % this.fpsInterval);
 
       // then draw animating objects
 
@@ -402,7 +402,7 @@ export const Game = class {
           clearInterval(this.countdown.introInterval);
         }
       }
-      
+
 
       // Test performance, check if the frame is animating at the specified fps
 
