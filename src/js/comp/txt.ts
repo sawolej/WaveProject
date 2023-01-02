@@ -1,3 +1,5 @@
+// nice font: PT mono
+
 export const txtWNOW =
         `Wydział Nauk o Wychowaniu<br>
   <br>

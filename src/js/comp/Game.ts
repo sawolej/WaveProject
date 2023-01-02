@@ -1,4 +1,4 @@
-import { Application, Loader, Texture, AnimatedSprite } from "pixi.js";
+// import { Application, Loader, Texture, AnimatedSprite } from "pixi.js";
 
 import { glob, canvas as canvasRender, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
@@ -7,8 +7,9 @@ import { Player } from './modules/player';
 import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, Disk } from './modules/Items';
 import { Countdown } from './modules/countdown';
 
-import { GameView } from "../views/GameView";
-import * as desc from "./txt";
+import { GameView } from "../views/GameView"; // import for audio destructing
+
+import * as desc from "./txt"; // import text content
 
 export const Game = class {
   canvas: HTMLCanvasElement
@@ -34,6 +35,13 @@ export const Game = class {
   time: number;
   countdownEl: HTMLElement;
   tip: HTMLElement;
+
+  startTime: number = 0;
+  now: number = 0;
+  then: number = 0;
+  elapsed: number = 0;
+  fpsInterval: number = 0;
+  FPS: number = 55; // declare FPS
 
   constructor() {
     // Define canvas properties
@@ -147,7 +155,7 @@ export const Game = class {
         clearInterval(this.countdown.introInterval);
         this.countdownEl.style.display = "none"
       }
-    }, 67550) // 67550 = 60 seconds
+    }, 8550) // 67550 = 60 seconds
 
     // Toggle timer visibility
     setTimeout(() => {
@@ -159,7 +167,7 @@ export const Game = class {
     setInterval(this.update, 1000);
 
     // Main game loop - refresh every frame
-    setTimeout(() => this.animate(), 6550)
+    setTimeout(() => this.renderer(this.FPS), 6550)
 
     this.listeners()
   }
@@ -169,7 +177,7 @@ export const Game = class {
     const modal = glob.document.getElementById("myModal") as HTMLElement;
 
     // Get the button that opens the modal
-    const btn = glob.document.getElementById("myBtn") as HTMLButtonElement;
+    // const btn = glob.document.getElementById("myBtn") as HTMLButtonElement;
 
     // Get the <span> element that closes the modal
     const span = glob.document.getElementsByClassName("close")[0] as HTMLButtonElement;
@@ -274,112 +282,135 @@ export const Game = class {
     }, 4550)
   }
 
+  renderer = (fps: number) => {
+      this.fpsInterval = 1000 / fps;
+      this.then = Date.now();
+      this.startTime = this.then;
+      console.log(this.startTime);
+      this.animate();
+  }
+
   animate = () => { // arrow function in order to reach class by this.
-    // Draw background
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.background.draw(this.ctx);
-    this.sun.draw(this.ctx);
-    this.mountains.draw(this.ctx);
-    this.ground.draw(this.ctx);
+      // Request another frame
+      if (!this.quit) requestAnimationFrame(this.animate);
+      // Clear the main game canvas on game end (else is faster)
+      else {
+        console.log("animate(): this.quit = " + this.quit)
+        // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.canvas.style.visibility = "hidden"
+        this.countdown.drawEnd(this.diskCounter, this.ihaveit);
 
-    // Draw palms
-    for (let key in this.palms) {
-      this.palms[key].draw(this.ctx); // expected 1 argument not 2: (this.ctx, diskCounter)
-    }
-
-    // Draw platforms
-    for (let key in this.platforms) {
-      this.platforms[key].draw(this.ctx);
-      this.platforms[key].collide(this.player);
-    }
-
-    // Draw disks
-    for (let key in this.disks) {
-      if (!this.disks[key].isNear(this.player)) { this.disks[key].drawGlow(this.ctx); this.disks[key].draw(this.ctx); }
-    }
-
-    this.player.update(this.input.keys);
-    this.player.draw(this.ctx);
-
-    // Only the one called platform will work for onGround - fix in the future
-    this.player.getPlatformInfo(this.platforms.bigPlatform1);
-
-    // Side scrolling effect for moving rightwards
-    if ((this.player.currentState === this.player.states[3] || (this.player.currentState === this.player.states[5] &&
-      this.input.keys.d.pressed && !this.input.keys.a.pressed)) && this.player.x === 690 && this.palms.palmRightOne3.x >= 2500) {
-
-      for (let key in this.disks) this.disks[key].x -= 10;
-      for (let key in this.palms) this.palms[key].x -= 7;
-      for (let key in this.platforms) this.platforms[key].x -= 10;
-
-      this.background.x -= 0.05;
-      this.ground.x -= 10;
-      this.mountains.x -= 5;
-    }
-
-    // Side scrolling effect for moving leftwards
-    else if ((this.player.currentState == this.player.states[2] || (this.player.currentState === this.player.states[4] &&
-      this.input.keys.a.pressed)) && this.player.x === 400 && this.palms.palmRightOne3.x <= 9500) {
-
-      for (let key in this.disks) this.disks[key].x += 10;
-      for (let key in this.palms) this.palms[key].x += 7;
-      for (let key in this.platforms) this.platforms[key].x += 10;
-
-      this.background.x += 0.05;
-      this.ground.x += 10;
-      this.mountains.x += 5;
-    }
-
-    // Redraw the background images endlessly
-    if (this.background.x <= -3840 || this.background.x >= 0) this.background.x = -1920;
-    if (this.mountains.x <= -3840 || this.mountains.x >= 0) this.mountains.x = -1920;
-    if (this.ground.x <= -3840 || this.ground.x >= 0) this.ground.x = -1920;
-
-    // Store picked disks to render them on endscreen
-    for (let key in this.disks) {
-      const i = Object.keys(this.disks).map(e => e).indexOf(key);
-      if (this.disks[key].isPicked && !this.wasAdded[i]) {
-        this.wasAdded[i] = true;
-        ++this.diskCounter;
-        this.ihaveit.push(this.disks[key].name + "E");
+        // Make the animated disks visible after delay
+        setTimeout(() => {
+          for (let i = 0; i < this.diskCounter; i++) {
+            (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
+          }
+        }, 4550 + this.diskCounter * 900)
       }
-    }
 
-    // Render endscreen with a 3s delay after win condition
-    const callEndscreen = () => {
-      this.quit = true;
-      this.countdownEl.style.display = "none";
-    }
+      // Calc elapsed time since the last loop
+      this.now = Date.now();
+      this.elapsed = this.now - this.then;
 
-    // Call endscreen with a 3s delay after picking up all the disks 
-    if (this.diskCounter === Object.keys(this.disks).length) {
-      setTimeout(callEndscreen, 3000);
-      if (!this.countdown.wasCleared) {
-        this.countdown.wasCleared = true;
-        clearInterval(this.countdown.introInterval);
-      }
-    }
+      // if enough time has elapsed, draw the next frame
+      if (this.elapsed > this.fpsInterval) {
+        this.then = this.now - (this.elapsed % this.fpsInterval);
 
-    // this.listeners()
+      // then draw animating objects
 
-    const setText = (arr: string[]) => {
-      let text = this.tip.innerHTML
-      text = text + " \n New text!";
-    }
-    
-    // Clear the main game canvas on game end
-    if (!this.quit) requestAnimationFrame(this.animate);
-    if (this.quit) {
+      // Draw background
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.countdown.drawEnd(this.diskCounter, this.ihaveit);
-      setText(this.ihaveit);
+      this.background.draw(this.ctx);
+      this.sun.draw(this.ctx);
+      this.mountains.draw(this.ctx);
+      this.ground.draw(this.ctx);
 
-      // Make the animated disks visible after delay
-      setTimeout(() => {
-        for (let i = 0; i < this.diskCounter; i++) {
-          (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
+      // Draw palms
+      for (let key in this.palms) {
+        this.palms[key].draw(this.ctx); // expected 1 argument not 2: (this.ctx, diskCounter)
+      }
+
+      // Draw platforms
+      for (let key in this.platforms) {
+        this.platforms[key].draw(this.ctx);
+        this.platforms[key].collide(this.player);
+      }
+
+      // Draw disks
+      for (let key in this.disks) {
+        if (!this.disks[key].isNear(this.player)) { this.disks[key].drawGlow(this.ctx); this.disks[key].draw(this.ctx); }
+      }
+
+      this.player.update(this.input.keys);
+      this.player.draw(this.ctx);
+
+      // Only the one called platform will work for onGround - fix in the future
+      this.player.getPlatformInfo(this.platforms.bigPlatform1);
+
+      // Side scrolling effect for moving rightwards
+      if ((this.player.currentState === this.player.states[3] || (this.player.currentState === this.player.states[5] &&
+        this.input.keys.d.pressed && !this.input.keys.a.pressed)) && this.player.x === 690 && this.palms.palmRightOne3.x >= 2500) {
+
+        for (let key in this.disks) this.disks[key].x -= 10;
+        for (let key in this.palms) this.palms[key].x -= 7;
+        for (let key in this.platforms) this.platforms[key].x -= 10;
+
+        this.background.x -= 0.05;
+        this.ground.x -= 10;
+        this.mountains.x -= 5;
+      }
+
+      // Side scrolling effect for moving leftwards
+      else if ((this.player.currentState == this.player.states[2] || (this.player.currentState === this.player.states[4] &&
+        this.input.keys.a.pressed)) && this.player.x === 400 && this.palms.palmRightOne3.x <= 9500) {
+
+        for (let key in this.disks) this.disks[key].x += 10;
+        for (let key in this.palms) this.palms[key].x += 7;
+        for (let key in this.platforms) this.platforms[key].x += 10;
+
+        this.background.x += 0.05;
+        this.ground.x += 10;
+        this.mountains.x += 5;
+      }
+
+      // Redraw the background images endlessly
+      if (this.background.x <= -3840 || this.background.x >= 0) this.background.x = -1920;
+      if (this.mountains.x <= -3840 || this.mountains.x >= 0) this.mountains.x = -1920;
+      if (this.ground.x <= -3840 || this.ground.x >= 0) this.ground.x = -1920;
+
+      // Store picked disks to render them on endscreen
+      for (let key in this.disks) {
+        const i = Object.keys(this.disks).map(e => e).indexOf(key);
+        if (this.disks[key].isPicked && !this.wasAdded[i]) {
+          this.wasAdded[i] = true;
+          ++this.diskCounter;
+          this.ihaveit.push(this.disks[key].name + "E");
         }
-      }, 4550 + this.diskCounter * 900)
+      }
+
+      // Render endscreen with a 3s delay after win condition
+      const callEndscreen = () => {
+        this.quit = true;
+        this.countdownEl.style.display = "none";
+      }
+
+      // Call endscreen with a 3s delay after picking up all the disks 
+      if (this.diskCounter === Object.keys(this.disks).length) {
+        setTimeout(callEndscreen, 3000);
+        if (!this.countdown.wasCleared) {
+          this.countdown.wasCleared = true;
+          clearInterval(this.countdown.introInterval);
+        }
+      }
+      
+
+      // Test performance, check if the frame is animating at the specified fps
+
+      // let sinceStart = this.now - this.startTime;
+      // let currentFps = Math.round((1000 / (sinceStart / ++this.frameCount)) * 100) / 100;
+      // console.log("Elapsed time= " 
+      //   + Math.round((sinceStart / 1000) * 100) / 100 
+      //   + " secs @ " + currentFps + " fps.");
     }
   }
 }

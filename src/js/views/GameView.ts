@@ -91,7 +91,7 @@ export class GameView {
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p id="tip">Some text in the Modal..</p>
+    <p id="tip">...</p>
   </div>
 </div>`
 }
