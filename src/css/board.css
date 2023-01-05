@@ -108,7 +108,7 @@
   top: 14%;
   left: 15%;
   color: rgb(255, 255, 255);
-  font-size: 2vw;
+  font-size: 1.5vw;
   visibility: hidden;
   z-index: 1;
 }
@@ -124,7 +124,7 @@
   top: 27%;
   left: 7%;
   color: white;
-  font-size: 2vw;
+  font-size: 1.5vw;
   visibility: hidden;
   z-index: 1;
 }
@@ -140,7 +140,7 @@
   top: 41%;
   left: 14.5%;
   color: rgb(255, 255, 255);
-  font-size: 2vw;
+  font-size: 1.5vw;
   visibility: hidden;
   z-index: 1;
 }
@@ -153,15 +153,15 @@
 
 #buttonsUL {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 10%;
+  height: 10%;
   visibility: hidden;
 }
 
 #UL1 {
   position: absolute;
-  top: 25%;
-  left: 22%;
+  top: 255%;
+  left: 202%;
   font-size: 1.5vw;
   color: white;
 }
@@ -174,8 +174,8 @@
 
 #UL2 {
   position: absolute;
-  top: 46%;
-  left: 22%;
+  top: 400%;
+  left: 202%;
   font-size: 1.5vw;
   color: white;
 }

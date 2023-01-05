@@ -16,35 +16,24 @@ export const Board = class {
     let ap3 = glob.document.getElementById("tiktok") as HTMLElement;
     let ule = glob.document.getElementById("buttonsUL") as HTMLElement;
 
+   // glob.document.body.addEventListener('click', closeAll);
+    glob.document.body.addEventListener('keypress', closeAll);
     function openSheet(id: any) {
-      const x = glob.document.getElementById(id) as HTMLElement;
-      if (x.style.visibility === 'hidden') {
+      
+    const x = glob.document.getElementById(id) as HTMLElement;
+    
         closeAll();
-        closeApp();
-        closeUL();
+        
         x.style.visibility = 'visible';
-        if (id === "sheet1") {
-          if (ap1.style.visibility === 'hidden') {
-            openApp();
-          } else {
-            ap1.style.visibility = 'hidden';
-          }
-        } else if (id === "sheet2") {
-          if (ule.style.visibility === 'hidden') {
-            openUL();
-          } else {
-            ule.style.visibility = 'hidden';
-          }
-        }
-      } else {
-        x.style.visibility = 'hidden';
-        closeApp();
-        closeUL();
-      }
-    }
+        if (id === "sheet1") openApp()
+        else if (id === "sheet2")openUL()        
+      } 
+    
 
     function closeAll() {
       for (let i = 1; i < 5; i++) (glob.document.getElementById(`sheet${i}`) as HTMLElement).style.visibility = 'hidden';
+      closeApp();
+        closeUL();
     }
 
     function closeApp() {
