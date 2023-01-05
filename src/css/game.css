@@ -65,7 +65,7 @@
   height: 100%;
   font-size: min(2vw, 3vh); 
   word-spacing: 0.2em;
-  line-height: 0.6em;
+  line-height: 3.2em;
   text-align: center;
   color: #ffffff;
 }
@@ -78,10 +78,6 @@
   opacity: 1;
 }
 
-.text span.green {
-  color: #27ae60;
-}
-
 .text span.red {
   color: #ffffff;
   font-size: min(10vw, 15vh); 
@@ -91,6 +87,7 @@
 .text span.gold {
   color: #eeea09;
   font-size: min(7.5vw, 11.25vh); 
+  white-space: pre;
 }
 
 #playerImage,
@@ -182,7 +179,7 @@
 .endDisks {
   position: absolute;
   top: 0;
-  padding-top: min(31vw, 50vh);;
+  padding-top: min(38vw, 60vh);
   left: 0;
   width: 100%;
   margin: 0 auto 0 auto;

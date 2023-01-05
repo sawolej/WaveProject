@@ -84,37 +84,37 @@ class Countdown {
     };
 
     const textLines = [
-      {speed: 10, string: " GAME OVER", classes: ["red"]},
-      {speed: 500, string: "", pause: true},
-      {speed: 40, string: "  ", classes: ["red"]},
+      {speed: 10, string: "GAME OVER", classes: ["red"]},
+      {speed: 500, string: " ", pause: true},
+      {speed: 0, string: "<br>"},
       {speed: 80, string: "floppy disks collected:"},
-      {speed: 40, string: "  ", classes: ["red"]},
-      {speed: 40, string: "  ", classes: ["red"]},
+      {speed: 0, string: "<br>"},
       {speed: 500, string: showDisks(discI)},
-      {speed: 500, string: `   ${discI}` , classes: ["gold"]},
+      {speed: 500, string: `${discI}` , classes: ["gold"]},
       {speed: 200, string: showRest(discI)}
     ];
 
     const characters: { span: HTMLSpanElement; isSpace: boolean; delayAfter: number; classes: string[]; }[] = [];
 
     textLines.forEach((line, index) => {
-      if (index < textLines.length - 1) {
-        line.string += " \n"; // Add a space between lines
+      if (line.string === "<br>") {
+        const br = document.createElement("br");
+        container.appendChild(br);
+      } else {
+        // string.slice(0, -2) do empty chars algin this?
+        line.string.split("").forEach((character) => {
+            const span = document.createElement("span");
+            span.textContent = character;
+            container.appendChild(span);
+            
+            characters.push({
+              span: span,
+              isSpace: character === " " && !line.pause,
+              delayAfter: line.speed,
+              classes: line.classes || []
+            });
+        });
       }
-
-      // string.slice(0, -2) do empty chars algin this?
-      line.string.split("").forEach((character) => {
-          const span = document.createElement("span");
-          span.textContent = character;
-          container.appendChild(span);
-          
-          characters.push({
-            span: span,
-            isSpace: character === " " && !line.pause,
-            delayAfter: line.speed,
-            classes: line.classes || []
-          });
-      });
     });
 
     function revealOneCharacter(list: any[]) {
