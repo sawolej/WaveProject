@@ -9,10 +9,10 @@ body {
   /* for firefox */
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  /* for chrome */
-  image-rendering: pixelated;
   /* for edge */
   image-rendering: -webkit-optimize-contrast;
+  /* for chrome */
+  image-rendering: pixelated;
   /* blend */
   -ms-interpolation-mode: nearest-neighbor;
 }
