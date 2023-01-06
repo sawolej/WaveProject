@@ -396,7 +396,7 @@ export const Game = class {
 
       // Call endscreen with a 3s delay after picking up all the disks 
       if (this.diskCounter === Object.keys(this.disks).length) {
-        setTimeout(callEndscreen, 3000);
+        setTimeout(callEndscreen, 30);
         if (!this.countdown.wasCleared) {
           this.countdown.wasCleared = true;
           clearInterval(this.countdown.introInterval);
