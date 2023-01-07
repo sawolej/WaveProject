@@ -28,6 +28,7 @@ body {
   left: 0;
   outline: 3px solid rgb(44, 44, 44);
   background-color: rgb(192, 192, 192);
+  display: inline-flex;
 }
 
 .uni-logo {
@@ -46,6 +47,7 @@ body {
   width: 5%;
   height: 100%;
   padding: 1.4% 0 0 0.3%;
+  font-size: min(0.9vw, 1.5vh)
 }
 
 .menu-info {
@@ -54,6 +56,7 @@ body {
   width: 3%;
   height: 100%;
   padding: 1.4% 0 0 0.3%;
+  font-size: min(0.9vw, 1.5vh)
 }
 
 .on-click-effect:active {
