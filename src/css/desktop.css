@@ -64,17 +64,7 @@ body {
   padding: 1.4% 0 0 0.3%;
 }
 
-.menu-shutdown:active {
-  background-color: rgb(44, 44, 44);
-  color: rgb(192, 192, 192);
-}
-
-.menu-file:active {
-  background-color: rgb(44, 44, 44);
-  color: rgb(192, 192, 192);
-}
-
-.menu-edit:active {
+.on-click-effect:active {
   background-color: rgb(44, 44, 44);
   color: rgb(192, 192, 192);
 }
