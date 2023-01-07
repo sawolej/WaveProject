@@ -1,22 +1,91 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { Board as BoardEngine } from '../comp/Board'
-
 import { audioLoader } from "../../App"
 
 export class BoardView {
-  constructor() {}
+  ap1: any;
+  ap2: any;
+  ap3: any;
+  ule: any;
+  boardWrapper: any;
+
+  constructor() { }
 
   init() {
     replaceHTML(canvas, this.html)
-    audioLoader("./src/assets/sounds/tlo_b.mp3", true, .1)//, 2.137)
+    audioLoader("./src/assets/sounds/tlo_b.mp3", true)
 
-    const newBoard = new BoardEngine()
-    newBoard.init()
+    // const newBoard = new BoardEngine()
+    // newBoard.init()
+    this.initBoard()
   }
 
-  destruct = () => {
-    // clearTimeout(this.countdownTrigger)
+  initBoard() {
+    this.ap1 = glob.document.getElementById("insta") as HTMLElement;
+    this.ap2 = glob.document.getElementById("fb") as HTMLElement;
+    this.ap3 = glob.document.getElementById("tiktok") as HTMLElement;
+    this.ule = glob.document.getElementById("buttonsUL") as HTMLElement;
+
+    // click listeners
+    (glob.document.getElementById('arrow') as HTMLElement).onclick = () => this.goBack();
+    (glob.document.getElementById('sheet1click') as HTMLElement).onclick = () => this.openSheet('sheet1');
+    (glob.document.getElementById('sheet2click') as HTMLElement).onclick = () => this.openSheet('sheet2');
+    (glob.document.getElementById('sheet3click') as HTMLElement).onclick = () => this.openSheet('sheet3');
+    (glob.document.getElementById('sheet4click') as HTMLElement).onclick = () => this.openSheet('sheet4');
+
+    // close by click
+    this.boardWrapper = glob.document.getElementsByClassName("board-wrapper")[0]
+    this.boardWrapper.addEventListener('click', this.closeByClick);
+    // close by key
+    glob.document.body.addEventListener('keypress', this.closeAll);
+  }
+
+  openSheet(id: any) {
+    const x = glob.document.getElementById(id) as HTMLElement;
+    this.closeAll();
+    x.style.visibility = 'visible';
+    if (id === "sheet1") this.openApp()
+    else if (id === "sheet2") this.openUL()
+  }
+
+  closeAll() {
+    for (let i = 1; i < 5; i++) (glob.document.getElementById(`sheet${i}`) as HTMLElement).style.visibility = 'hidden';
+    this.closeApp();
+    this.closeUL();
+  }
+
+  closeApp() {
+    this.ap2.style.visibility = 'hidden';
+    this.ap1.style.visibility = 'hidden';
+    this.ap3.style.visibility = 'hidden';
+  }
+
+  openApp() {
+    this.ap2.style.visibility = 'visible';
+    this.ap1.style.visibility = 'visible';
+    this.ap3.style.visibility = 'visible';
+  }
+
+  openUL() {
+    this.ule.style.visibility = 'visible';
+  }
+
+  closeUL() {
+    this.ule.style.visibility = 'hidden';
+  }
+
+  closeByClick = (e: any) => {
+    if (!e.target.classList.contains("undraggable") && e.target.localName !== "a")
+      this.closeAll()
+  }
+
+  goBack() {
+    glob.document.location.hash = "";
+  }
+
+  destruct() {
+    this.boardWrapper.removeEventListener('click', this.closeByClick);
+    glob.document.body.removeEventListener('keypress', this.closeAll);
   }
 
   html = `
