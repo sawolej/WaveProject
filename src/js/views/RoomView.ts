@@ -29,7 +29,7 @@ export class RoomView {
     glob.document.body.addEventListener('click', this.firstClick)
   }
 
-  loadAudio = () => audioLoader("./src/assets/sounds/tlo.mp3", true, .1)//, 2.137),
+  loadAudio = () => audioLoader("./src/assets/sounds/tlo.mp3", true)
 
   // Music fix: DOMException: play() failed because the user didn't interact with the document first.
   firstClick = () => {

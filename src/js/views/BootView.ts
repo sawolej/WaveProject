@@ -3,6 +3,10 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 import { Boot as BootEngine } from '../comp/Boot'
 
 export class BootView {
+  // audio: any = {}
+  timeouts: any = [];
+  intervals: any = [];
+
   constructor() {}
   
   init() {
@@ -12,9 +16,10 @@ export class BootView {
     newBoot.init()
   }
 
-
   destruct = () => {
-    // clearTimeout(this.countdownTrigger)
+    // for (let a in this.audio) if (this.audio.hasOwnProperty(a)) this.audio[a].pause()
+    for (let a in this.timeouts) if (this.timeouts.hasOwnProperty(a)) clearTimeout(this.timeouts[a])
+    for (let a in this.intervals) if (this.intervals.hasOwnProperty(a)) clearInterval(this.intervals[a])
   }
 
   html = `

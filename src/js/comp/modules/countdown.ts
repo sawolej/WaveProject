@@ -1,3 +1,6 @@
+import { setTimeoutHandler, setIntervalHandler } from "../../../App"
+const view = "Game";
+
 class Countdown {
   x: number;
   y: number;
@@ -40,6 +43,7 @@ class Countdown {
           close = true;
         };
       }, 1000)
+      setIntervalHandler(view, this.introInterval)
     }
 
     // Clear the interval after 
@@ -50,7 +54,7 @@ class Countdown {
     let result = "";
     for (let i = 0; i < x; i++) {
       result += i + " ";
-      console.log(arr[i]);
+      // console.log(arr[i]);
     }
     return result;
   }
@@ -65,16 +69,18 @@ class Countdown {
     const delay = next.isSpace && !next.pause ? 0 : next.delayAfter;
 
     if (list.length > 0) {
-      setTimeout(() => {
-        this.revealOneCharacter(list);
-      }, delay);
+      setTimeoutHandler(view,
+        setTimeout(() => {
+          this.revealOneCharacter(list);
+        }, delay)
+      );
     }
   }
 
   drawEnd(discI: number, arr: any[]) {
     let end = 0;
     let count = 0;
-    setInterval(() => { if (count <= discI) { console.log(count++) } }, 1000)
+    // setInterval(() => { if (count <= discI) { console.log(count++) } }, 1000)
 
     const container = document.querySelector(".text") as HTMLElement;
 
@@ -132,7 +138,9 @@ class Countdown {
     });
 
     // Kick it off
-    setTimeout(() => { this.revealOneCharacter(characters) }, 600)
+    setTimeoutHandler(view,
+      setTimeout(() => { this.revealOneCharacter(characters) }, 600)
+    );
 
     return end;
   }

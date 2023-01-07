@@ -51,6 +51,32 @@ export const audioLoader = (filename: string, loop: boolean = true, volume: numb
 export const isPlaying = () => app.prototype.audio.currentTime !== 0
 
 /**
+ * setTimeout handler
+ * - Stores events for later destruction
+ * @public
+ *  @param {string} component
+ *  @param {NodeJS.Timeout} event
+ * @var app.prototype.comp
+ */
+export const setTimeoutHandler = (component: string, event: NodeJS.Timeout) => {
+  // console.log("currently waiting for: " + event)
+  app.prototype.comp[component].timeouts.push(event)
+}
+
+/**
+ * setInterval handler
+ * - Stores events for later destruction
+ * @public
+ *  @param {string} component
+ *  @param {NodeJS.Timeout} event
+ * @var app.prototype.comp
+ */
+export const setIntervalHandler = (component: string, event: NodeJS.Timer) => {
+  // console.log("currently waiting for: " + event)
+  app.prototype.comp[component].intervals.push(event)
+}
+
+/**
  * Local class App
  * - const in order to use App.prototype (one unique instance of class)
  * @private
@@ -130,6 +156,9 @@ const app = class App {
         console.log("loading component.. [game]")
         this.comp.Game = new GameView()
         this.comp.Game.init()
+        break
+      case "#reload": // game reload
+        glob.document.location.hash = "#game";
         break
       default:
         console.log("loading component.. [room]")

@@ -2,14 +2,17 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { Game as GameEngine } from '../comp/Game'
 
-import { audioLoader } from "../../App"
+import { audioLoader, setTimeoutHandler } from "../../App"
+const view = "Game";
 
 export class GameView {
   countdownTrigger: any
   audio: any = {}
+  timeouts: any = [];
+  intervals: any = [];
 
   constructor() { }
-
+  
   init() {
     replaceHTML(canvas, this.html)
     audioLoader("./src/assets/sounds/mainGameMusic.mp3")
@@ -19,18 +22,21 @@ export class GameView {
 
     const butt = (glob.document.getElementById('endGameButtons') as HTMLElement);
     (butt.children[0] as HTMLElement).addEventListener('click', () => { glob.document.location.hash = ""; });
-    (butt.children[1] as HTMLElement).addEventListener('click', () => { glob.document.location.reload(); });
+    (butt.children[1] as HTMLElement).addEventListener('click', () => { glob.document.location.hash = "#reload"; });
 
     // Timeout function
-    this.countdownTrigger = setTimeout(() => { // this timeout bugs music
-      this.audio.countdown = new Audio("./src/assets/sounds/countdown.mp3")
-      this.audio.countdown.play()
-    }, 3800)
+    setTimeoutHandler(view,
+      setTimeout(() => { // this timeout bugs music
+        this.audio.countdown = new Audio("./src/assets/sounds/countdown.mp3")
+        this.audio.countdown.play()
+      }, 3800)
+    );
   }
 
   destruct = () => {
-    clearTimeout(this.countdownTrigger)
     for (let a in this.audio) if (this.audio.hasOwnProperty(a)) this.audio[a].pause()
+    for (let a in this.timeouts) if (this.timeouts.hasOwnProperty(a)) clearTimeout(this.timeouts[a])
+    for (let a in this.intervals) if (this.intervals.hasOwnProperty(a)) clearInterval(this.intervals[a])
   }
 
   html = `<div id="game-wrapper">
