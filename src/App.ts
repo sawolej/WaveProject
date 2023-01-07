@@ -40,7 +40,7 @@ export const audioLoader = (filename: string, loop: boolean = true, volume: numb
   if (volume !== 1) app.prototype.audio.volume = volume
   if (playbackRate !== 1) app.prototype.audio.playbackRate = playbackRate
   // app.prototype.audio.playbackRate = 2.137; // SUPER SONIC SPEED
-  // app.prototype.audio.volume = 0.1 // FOR DEVELOPING ;~~))) // now as default @param
+  // app.prototype.audio.volume = 0.0 // FOR DEVELOPING ;~~))) // now as default @param
   app.prototype.audio.play()
 }
 

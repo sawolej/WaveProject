@@ -1,6 +1,6 @@
 .monitor {
   background: #000;
-  font-family: "Perfect DOS VGA 437", monospace;
+  /* font-family: "Perfect DOS VGA 437", monospace; we use Silkscreen */ 
   font-size: 22px;
   color: #888;
   display: flex;

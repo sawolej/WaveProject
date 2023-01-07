@@ -1,6 +1,6 @@
 import { Player } from "./player";
 
-export const states = {
+const states = {
   STANDING_LEFT: 0,
   STANDING_RIGHT: 1,
   RUNNING_LEFT: 2,

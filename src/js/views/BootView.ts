@@ -12,6 +12,7 @@ export class BootView {
     newBoot.init()
   }
 
+
   destruct = () => {
     // clearTimeout(this.countdownTrigger)
   }

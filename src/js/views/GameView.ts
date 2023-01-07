@@ -8,17 +8,21 @@ export class GameView {
   countdownTrigger: any
   audio: any = {}
 
-  constructor() {}
-  
+  constructor() { }
+
   init() {
     replaceHTML(canvas, this.html)
     audioLoader("./src/assets/sounds/mainGameMusic.mp3")
-    
+
     const newGame = new GameEngine()
     newGame.init()
 
+    const butt = (glob.document.getElementById('endGameButtons') as HTMLElement);
+    (butt.children[0] as HTMLElement).addEventListener('click', () => { glob.document.location.hash = ""; });
+    (butt.children[1] as HTMLElement).addEventListener('click', () => { glob.document.location.reload(); });
+
     // Timeout function
-    this.countdownTrigger = setTimeout( () => { // this timeout bugs music
+    this.countdownTrigger = setTimeout(() => { // this timeout bugs music
       this.audio.countdown = new Audio("./src/assets/sounds/countdown.mp3")
       this.audio.countdown.play()
     }, 3800)
@@ -41,6 +45,9 @@ export class GameView {
   <!-- text gets injected here // this should be dynamic, DOM createElement -->
 
 </div>
+
+<!-- Trex -->
+<!-- <img id="playerImage" src="./src/assets/favicon.ico"> -->
 
 <img id="playerImage" src="./src/assets/pics/player.png">
 <img id="backgroundImage" src="./src/assets/pics/background.png">
@@ -69,8 +76,8 @@ export class GameView {
 <img id="palmRightTwoImage" src="./src/assets/pics/palmRightTwo.png">
 
 <!-- Trigger/Open The Modal -->
-<div id = "endDisks" class="centred">
-  <img id="myBtn" src="./src/assets/pics/FloppyDiskBehavioralHoney.png">
+<div id="endDisks" class="endDisks">
+  <!-- <img id="myBtn" src="./src/assets/pics/FloppyDiskBehavioralHoney.png"> -->
   <img id="diskBehavioralImageE" src="./src/assets/pics/beh.gif" class="undraggable">
   <img id="diskBiologyImageE" src="./src/assets/pics/lime.gif" class="undraggable">
   <img id="diskChadImageE" src="./src/assets/pics/hom.gif" class="undraggable">
@@ -86,12 +93,17 @@ export class GameView {
   <img id="diskTomaszowImageE" src="./src/assets/pics/toma.gif" class="undraggable">
 </div>
 
+<div id="endGameButtons" class="endGameButtons">
+  <div class="arrowGameBack"></div>
+  <div class="arrowGameReplay"></div>
+</div>
+
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p id="tip">Some text in the Modal..</p>
+    <p id="tip">...</p>
   </div>
 </div>`
 }

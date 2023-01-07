@@ -1,4 +1,4 @@
-import { Application, Loader, Texture, AnimatedSprite } from "pixi.js";
+// import { Application, Loader, Texture, AnimatedSprite } from "pixi.js";
 
 import { glob, canvas as canvasRender, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
@@ -7,7 +7,9 @@ import { Player } from './modules/player';
 import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, Disk } from './modules/Items';
 import { Countdown } from './modules/countdown';
 
-import { GameView } from "../views/GameView";
+import { GameView } from "../views/GameView"; // import for audio destructing
+
+import * as desc from "./txt"; // import text content
 
 export const Game = class {
   canvas: HTMLCanvasElement
@@ -33,6 +35,13 @@ export const Game = class {
   time: number;
   countdownEl: HTMLElement;
   tip: HTMLElement;
+
+  startTime: number = 0;
+  now: number = 0;
+  then: number = 0;
+  elapsed: number = 0;
+  fpsInterval: number = 0;
+  FPS: number = 60; // declare FPS
 
   constructor() {
     // Define canvas properties
@@ -121,7 +130,7 @@ export const Game = class {
     this.ihaveit = [];
     this.wasAdded = [];
 
-    this.countdown = new Countdown(this.canvas.width, this.canvas.height);
+    this.countdown = new Countdown();
     this.quit = false;
 
     // Draw countdown timer when the game runs. Move this to a countdown.js class later.
@@ -158,109 +167,17 @@ export const Game = class {
     setInterval(this.update, 1000);
 
     // Main game loop - refresh every frame
-    setTimeout(() => this.animate(), 6550)
+    setTimeout(() => this.renderer(this.FPS), 6550)
+
+    this.listeners()
   }
 
-  update = () => { // arrow function in order to reach class by this.
-    setTimeout(() => {
-      let seconds: string = String(this.time % 60);
-      seconds = Number(seconds) < 10 ? '0' + seconds : seconds;
-      this.countdownEl.innerHTML = seconds;
-      --this.time;
-    }, 4550)
-  }
-
-  animate = () => { // arrow function in order to reach class by this.
-    // Draw background
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.background.draw(this.ctx);
-    this.sun.draw(this.ctx);
-    this.mountains.draw(this.ctx);
-    this.ground.draw(this.ctx);
-
-    // Draw palms
-    for (let key in this.palms) {
-      this.palms[key].draw(this.ctx); // expected 1 argument not 2: (this.ctx, diskCounter)
-    }
-
-    // Draw platforms
-    for (let key in this.platforms) {
-      this.platforms[key].draw(this.ctx);
-      this.platforms[key].collide(this.player);
-    }
-
-    // Draw disks
-    for (let key in this.disks) {
-      if (!this.disks[key].isNear(this.player)) { this.disks[key].drawGlow(this.ctx); this.disks[key].draw(this.ctx); }
-    }
-
-    this.player.update(this.input.keys);
-    this.player.draw(this.ctx);
-
-    // Only the one called platform will work for onGround - fix in the future
-    this.player.getPlatformInfo(this.platforms.bigPlatform1);
-
-    // Side scrolling effect for moving rightwards
-    if ((this.player.currentState === this.player.states[3] || (this.player.currentState === this.player.states[5] &&
-      this.input.keys.d.pressed && !this.input.keys.a.pressed)) && this.player.x === 690 && this.palms.palmRightOne3.x >= 2500) {
-
-      for (let key in this.disks) this.disks[key].x -= 10;
-      for (let key in this.palms) this.palms[key].x -= 7;
-      for (let key in this.platforms) this.platforms[key].x -= 10;
-
-      this.background.x -= 0.05;
-      this.ground.x -= 10;
-      this.mountains.x -= 5;
-    }
-
-    // Side scrolling effect for moving leftwards
-    else if ((this.player.currentState == this.player.states[2] || (this.player.currentState === this.player.states[4] &&
-      this.input.keys.a.pressed)) && this.player.x === 400 && this.palms.palmRightOne3.x <= 9500) {
-
-      for (let key in this.disks) this.disks[key].x += 10;
-      for (let key in this.palms) this.palms[key].x += 7;
-      for (let key in this.platforms) this.platforms[key].x += 10;
-
-      this.background.x += 0.05;
-      this.ground.x += 10;
-      this.mountains.x += 5;
-    }
-
-    // Redraw the background images endlessly
-    if (this.background.x <= -3840 || this.background.x >= 0) this.background.x = -1920;
-    if (this.mountains.x <= -3840 || this.mountains.x >= 0) this.mountains.x = -1920;
-    if (this.ground.x <= -3840 || this.ground.x >= 0) this.ground.x = -1920;
-
-    // Store picked disks to render them on endscreen
-    for (let key in this.disks) {
-      const i = Object.keys(this.disks).map(e => e).indexOf(key);
-      if (this.disks[key].isPicked && !this.wasAdded[i]) {
-        this.wasAdded[i] = true;
-        ++this.diskCounter;
-        this.ihaveit.push(this.disks[key].name + "E");
-      }
-    }
-
-    // Render endscreen with a 3s delay after win condition
-    const callEndscreen = () => {
-      this.quit = true;
-      this.countdownEl.style.display = "none";
-    }
-
-    // Call endscreen with a 3s delay after picking up all the disks 
-    if (this.diskCounter === Object.keys(this.disks).length) {
-      setTimeout(callEndscreen, 3000);
-      if (!this.countdown.wasCleared) {
-        this.countdown.wasCleared = true;
-        clearInterval(this.countdown.introInterval);
-      }
-    }
-
+  listeners = () => {
     // Get the modal
     const modal = glob.document.getElementById("myModal") as HTMLElement;
 
     // Get the button that opens the modal
-    const btn = glob.document.getElementById("myBtn") as HTMLButtonElement;
+    // const btn = glob.document.getElementById("myBtn") as HTMLButtonElement;
 
     // Get the <span> element that closes the modal
     const span = glob.document.getElementsByClassName("close")[0] as HTMLButtonElement;
@@ -283,78 +200,66 @@ export const Game = class {
     // When the user clicks on the button, open the modal
     diskBehavioralImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML =
-        `Wydział Nauk o Wychowaniu<br>
-  <br>
-  <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
-  <br>
-  <b>Czy wiesz, że...</b><br>
-  Na Uniwersytecie Łódzkim masz możliwość rozwijania swojej ścieżki naukowej między innymi 
-  dzięki grantom badawczym. Zespół badawczy związany z Wydziałem NAuk o Wychowaniu otrzymał 
-  grant Miniatura NCN pt. Zastosowanie rzeczywistości wirtualnej i stymulacji bilateralnej 
-  w redukcji stresu u osób dorosłych. Głównym celem projektu jest stworzenie aplikacji 
-  wspierającej psychoterapię osób z zaburzeniami lękowymi, która od wybuchu wojny 
-  w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
-  `
+      this.tip.innerHTML = desc.txtWNOW;
     }
 
     diskBiologyImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Biologii i Ochrony Środowiska";
+      this.tip.innerHTML = desc.txtWBIOS;
     }
 
     diskChadImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Fizyki i Informatyki Stosowanej";
+      this.tip.innerHTML = desc.txtWFIS;
     }
 
     diskChemistryImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Chemii";
+      this.tip.innerHTML = desc.txtCHEMIA;
     }
 
     diskEksocImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Ekonomiczno-Socjologiczny";
+      this.tip.innerHTML = desc.txtEKSOC;
     }
 
     diskGeographyImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Nauk Geograficznych";
+      this.tip.innerHTML = desc.txtGEO;
     }
 
     diskInternationalImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Studiów Międzynarodowych i Politologicznych";
+      this.tip.innerHTML = desc.txtWSMIP;
     }
 
     diskLawImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Prawa i Administracji";
+      this.tip.innerHTML = desc.txtWPIA;
     }
     diskMathsImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Matematyki i Informatyki";
+      this.tip.innerHTML = desc.txtMATH;
     }
 
     diskManagementImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Zarządzania";
+      this.tip.innerHTML = desc.txtWZ;
     }
 
     diskPhilologyImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Filologiczny";
+      this.tip.innerHTML = desc.txtFILOLOG;
     }
 
     diskPhilosophyImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Wydział Filozoficzno-Historyczny";
+      this.tip.innerHTML = desc.txtFILHIST;
     }
 
     diskTomaszowImageE.onclick = () => {
       modal.style.display = "block";
-      this.tip.innerHTML = "Filia w Tomaszowie Mazowieckim";
+      this.tip.innerHTML = desc.txtFILIA;
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -366,24 +271,151 @@ export const Game = class {
     // When the user clicks anywhere outside of the modal, close it
     glob.document.body.onclick = (event) => { if (event.target == modal) modal.style.display = "none" }
 
-    const setText = (arr: string[]) => {
-      let text = this.tip.innerHTML
-      text = text + " \n New text!";
-    }
+  }
 
-    // Clear the main game canvas on game end
+  update = () => { // arrow function in order to reach class by this.
+    setTimeout(() => {
+      let seconds: string = String(this.time % 60);
+      seconds = Number(seconds) < 10 ? '0' + seconds : seconds;
+      this.countdownEl.innerHTML = seconds;
+      --this.time;
+    }, 4550)
+  }
+
+  renderer = (fps: number) => {
+    this.fpsInterval = 1000 / fps;
+    this.then = Date.now();
+    this.startTime = this.then;
+    console.log(this.startTime);
+    this.animate();
+  }
+
+  animate = () => { // arrow function in order to reach class by this.
+    // Request another frame
     if (!this.quit) requestAnimationFrame(this.animate);
-    if (this.quit) {
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    // Clear the main game canvas on game end (else is faster)
+    else {
+      console.log("animate(): this.quit = " + this.quit)
+      // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.canvas.style.visibility = "hidden"
       this.countdown.drawEnd(this.diskCounter, this.ihaveit);
-      setText(this.ihaveit);
 
       // Make the animated disks visible after delay
       setTimeout(() => {
         for (let i = 0; i < this.diskCounter; i++) {
-          (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.visibility = 'visible';
+          (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
         }
-      }, 4550 + this.diskCounter * 900)
+        setTimeout(() => {
+          const butt = (glob.document.getElementById('endGameButtons') as HTMLElement);
+          (butt.children[0] as HTMLElement).style.display = "inline";
+          (butt.children[1] as HTMLElement).style.display = "inline";
+        }, 400)
+      }, 4550 + this.diskCounter * 250)
+    }
+
+    // Calc elapsed time since the last loop
+    this.now = Date.now();
+    this.elapsed = this.now - this.then;
+
+    // if enough time has elapsed, draw the next frame
+    if (this.elapsed > this.fpsInterval) {
+      this.then = this.now - (this.elapsed % this.fpsInterval);
+
+      // then draw animating objects
+
+      // Draw background
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.background.draw(this.ctx);
+      this.sun.draw(this.ctx);
+      this.mountains.draw(this.ctx);
+      this.ground.draw(this.ctx);
+
+      // Draw palms
+      for (let key in this.palms) {
+        this.palms[key].draw(this.ctx); // expected 1 argument not 2: (this.ctx, diskCounter)
+      }
+
+      // Draw platforms
+      for (let key in this.platforms) {
+        this.platforms[key].draw(this.ctx);
+        this.platforms[key].collide(this.player);
+      }
+
+      // Draw disks
+      for (let key in this.disks) {
+        if (!this.disks[key].isNear(this.player)) { this.disks[key].drawGlow(this.ctx); this.disks[key].draw(this.ctx); }
+      }
+
+      this.player.update(this.input.keys);
+      this.player.draw(this.ctx);
+
+      // Only the one called platform will work for onGround - fix in the future
+      this.player.getPlatformInfo(this.platforms.bigPlatform1);
+
+      // Side scrolling effect for moving rightwards
+      if ((this.player.currentState === this.player.states[3] || (this.player.currentState === this.player.states[5] &&
+        this.input.keys.d.pressed && !this.input.keys.a.pressed)) && this.player.x === 690 && this.palms.palmRightOne3.x >= 2500) {
+
+        for (let key in this.disks) this.disks[key].x -= 10;
+        for (let key in this.palms) this.palms[key].x -= 7;
+        for (let key in this.platforms) this.platforms[key].x -= 10;
+
+        this.background.x -= 0.05;
+        this.ground.x -= 10;
+        this.mountains.x -= 5;
+      }
+
+      // Side scrolling effect for moving leftwards
+      else if ((this.player.currentState == this.player.states[2] || (this.player.currentState === this.player.states[4] &&
+        this.input.keys.a.pressed)) && this.player.x === 400 && this.palms.palmRightOne3.x <= 9500) {
+
+        for (let key in this.disks) this.disks[key].x += 10;
+        for (let key in this.palms) this.palms[key].x += 7;
+        for (let key in this.platforms) this.platforms[key].x += 10;
+
+        this.background.x += 0.05;
+        this.ground.x += 10;
+        this.mountains.x += 5;
+      }
+
+      // Redraw the background images endlessly
+      if (this.background.x <= -3840 || this.background.x >= 0) this.background.x = -1920;
+      if (this.mountains.x <= -3840 || this.mountains.x >= 0) this.mountains.x = -1920;
+      if (this.ground.x <= -3840 || this.ground.x >= 0) this.ground.x = -1920;
+
+      // Store picked disks to render them on endscreen
+      for (let key in this.disks) {
+        const i = Object.keys(this.disks).map(e => e).indexOf(key);
+        if (this.disks[key].isPicked && !this.wasAdded[i]) {
+          this.wasAdded[i] = true;
+          ++this.diskCounter;
+          this.ihaveit.push(this.disks[key].name + "E");
+        }
+      }
+
+      // Render endscreen with a 3s delay after win condition
+      const callEndscreen = () => {
+        this.quit = true;
+        this.countdownEl.style.display = "none";
+      }
+
+      // Call endscreen with a 3s delay after picking up all the disks 
+      if (this.diskCounter === Object.keys(this.disks).length) {
+        setTimeout(callEndscreen, 30);
+        if (!this.countdown.wasCleared) {
+          this.countdown.wasCleared = true;
+          clearInterval(this.countdown.introInterval);
+        }
+      }
+
+
+      // Test performance, check if the frame is animating at the specified fps
+
+      // let sinceStart = this.now - this.startTime;
+      // let currentFps = Math.round((1000 / (sinceStart / ++this.frameCount)) * 100) / 100;
+      // console.log("Elapsed time= " 
+      //   + Math.round((sinceStart / 1000) * 100) / 100 
+      //   + " secs @ " + currentFps + " fps.");
     }
   }
 }

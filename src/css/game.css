@@ -5,6 +5,7 @@
 }
 
 #game-wrapper {
+  position: relative;
   margin-bottom: 0px;
 }
 
@@ -15,55 +16,61 @@
 #countdown {
   position: absolute;
   top: 5%;
-  left: 83%;
+  right: 4%;
   height: 5%;
   width: 5%;
   background-color: #fff;
   display: none;
   align-items: center;
   justify-content: center;
-  font-size: 3vw;
+  font-size: min(3.3vw, 5vh);
+  padding: .12em 0 0 .12em;
   margin: 0;
 }
 
 #introText {
   position: absolute;
-  top: 15%;
-  left: 15%;
-  width: 70%;
+  top: 20%;
+  left: 0;
+  width: 100%;
   display: inline-flex;
-  font-size: 5vh;
+  font-size: min(2vw, 3vh); 
   color: #fff;
   justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #introCountdown {
   position: absolute;
-  top: 0%;
-  left: 45%;
+  top: 24%;
+  left: 0;
+  width: 100%;
   display: none;
-  font-size: 20vw;
+  font-size: min(10vw, 15vh); 
   color: #fff;
   text-align: center;
   justify-content: center;
 }
 
 #endgame-text {
-  width: 77%;
+  width: 100%;
 }
 
 .text {
   position: absolute;
-  width: 83%;
-  height: 83%;
-  font-size: 40px;
+  top: 0;
+  left:0;
+  padding-top: min(10vw, 18vh);
+  /* fix text center */
+  padding-left: .23em;
+  width: 100%;
+  height: 100%;
+  font-size: min(2vw, 3vh); 
   word-spacing: 0.2em;
-  margin-top: 80px;
-  margin-left: 50px;
-  left: 7.5%;
-  line-height: 0.6em;
+  line-height: 3.6em;
   text-align: center;
-  top: 50px;
   color: #ffffff;
 }
 
@@ -75,19 +82,21 @@
   opacity: 1;
 }
 
-.text span.green {
-  color: #27ae60;
-}
-
 .text span.red {
   color: #ffffff;
-  font-size: 200px;
+  font-size: min(10vw, 15vh); 
   white-space: pre;
 }
 
 .text span.gold {
   color: #eeea09;
-  font-size: 150px;
+  font-size: min(7.5vw, 11.25vh); 
+  line-height: 0;
+  white-space: pre;
+}
+
+.text span.huge {
+  line-height: min(7.5vw, 11.25vh)!important;
 }
 
 #playerImage,
@@ -176,106 +185,62 @@
   visibility: hidden;
 }
 
-#endDisks {
-  /* position: relative; */
-  box-sizing: border-box;
-  visibility: hidden;
-  top: 80%;
-  /* left: inherit; */
-  /* opacity: 1; */
-  width: 77%;
-  align-items: center;
+.endDisks {
+  position: absolute;
+  top: min(36vw, 60vh);
+  left: 0;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+
+.endDisks img {
+  display: none;
+  width: min(3vw, 5vh);
+  height: auto;
+  margin: 0 .5vmin .8vmin .5vmin;
   cursor: pointer;
 }
 
-/* Either delete or add the properties to every disk with different positioning */
-#diskBehavioralImageE {
-  margin: 0px;
+.endGameButtons {
   position: absolute;
-  left: 10%;
-  top: 89%;
+  display: flex;
+  top: min(43.2vw, 72vh);
+  left: 0;
+  width: 100%;
+  height: auto;
+  justify-content: center;
 }
 
-#diskBiologyImageE {
-  margin: 0px;
-  position: absolute;
-  left: 19.375%;
-  top: 89%;
+.endGameButtons div {
+  display: none;
+  margin: 0 min(2.1vw, 3.5vh);
+  cursor: pointer;
+  -webkit-transition: all .05s ease-out .15s;
+  transition: all .05s ease-out .15s;
 }
 
-#diskChadImageE {
-  margin: 0px;
-  position: absolute;
-  left: 28.75%;
-  top: 89%;
+.endGameButtons div:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-filter: opacity(.63) brightness(2) drop-shadow(0 0 0 rgb(233, 230, 58)) saturate(4);
+  filter: opacity(.63) brightness(2) drop-shadow(0 0 0 rgb(233, 230, 58)) saturate(4);
 }
 
-#diskChemistryImageE {
-  margin: 0px;
-  position: absolute;
-  left: 38.125%;
-  top: 89%;
+.arrowGameBack {
+  width: min(6vw, 10vh);
+  height: min(6vw, 10vh);;
+  background-image: url(../assets/pics/arrowGameBack.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-#diskEksocImageE {
-  margin: 0px;
-  position: absolute;
-  left: 47.5%;
-  top: 89%;
-}
-
-#diskGeographyImageE {
-  margin: 0px;
-  position: absolute;
-  left: 56.875%;
-  top: 89%;
-}
-
-#diskInternationalImageE {
-  margin: 0px;
-  position: absolute;
-  left: 66.25%;
-  top: 89%;
-}
-
-#diskLawImageE {
-  margin: 0px;
-  position: absolute;
-  left: 75.625%;
-  top: 89%;
-}
-
-#diskMathsImageE {
-  margin: 0px;
-  position: absolute;
-  left: 85%;
-  top: 89%;
-}
-
-#diskManagementImageE {
-  margin: 0px;
-  position: absolute;
-  left: 33.125%;
-  top: 101.5%;
-}
-
-#diskPhilologyImageE {
-  margin: 0px;
-  position: absolute;
-  left: 43.125%;
-  top: 101.5%;
-}
-
-#diskPhilosophyImageE {
-  margin: 0px;
-  position: absolute;
-  left: 53.125%;
-  top: 101.5%;
-}
-
-#diskTomaszowImageE {
-  margin: 0px;
-  position: absolute;
-  left: 63.125%;
-  top: 101.5%;
+.arrowGameReplay {
+  width: min(6vw, 10vh);
+  height: min(6vw, 10vh);
+  background-image: url(../assets/pics/arrowGameReplay.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

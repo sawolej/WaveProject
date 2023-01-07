@@ -13,6 +13,18 @@ export class RoomView {
     // its not needed if we would make first quest: turn on the music
     // if (glob.location.hostname === "localhost") this.music = true
 
+    // pc custom hover area
+    const pc = glob.document.getElementsByClassName('pc')[0]
+    const pcClickBox = glob.document.getElementsByClassName('pc-click-box') as HTMLCollectionOf<Element>
+
+    for (let i = 0; i < pcClickBox.length; i++) {
+      (pcClickBox[i] as HTMLElement).onmouseover = () => { pc.classList.add('highlight') };
+      (pcClickBox[i] as HTMLElement).onmouseout = () => { pc.classList.remove('highlight') };
+    }
+
+    const butt = (glob.document.getElementById('playGame') as HTMLElement);
+    butt.addEventListener('click', () => { glob.document.location.hash = "#game"; });
+
     // click event listener
     glob.document.body.addEventListener('click', this.firstClick)
   }
@@ -40,6 +52,14 @@ export class RoomView {
       <div class="cup-wrapper cup"></div>
     </a>
     <div class="plant-wrapper plant"></div>
-    <div class="pc-wrapper pc"><a href="#boot"><img class="screen-gif" src="./src/assets/pics/screen.gif"></a></div>
+    <div class="pc-wrapper pc">
+      <a href="#boot">
+        <img class="screen-gif" src="./src/assets/pics/screen.gif">
+        <div class="pc-click-box box-one"></div>
+        <div class="pc-click-box box-two"></div>
+        <div class="pc-click-box box-three"></div>
+      </a>
+    </div>
+    <div id="playGame" class="playGameButton"></div>
   </div>`
 }

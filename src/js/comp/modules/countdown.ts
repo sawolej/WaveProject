@@ -1,6 +1,4 @@
 class Countdown {
-  gameWidth: number;
-  gameHeight: number;
   x: number;
   y: number;
   seconds: number;
@@ -13,10 +11,8 @@ class Countdown {
   imageSecond: HTMLElement;
   imageThird: HTMLElement;
   imageBlack: HTMLElement;
-  
-  constructor(gameWidth: number, gameHeight: number) {
-    this.gameWidth = gameWidth;
-    this.gameHeight = gameHeight;
+
+  constructor() {
     this.x = 0;
     this.y = 0;
     this.seconds = 3;
@@ -50,93 +46,96 @@ class Countdown {
     if (close) clearInterval(this.introInterval);
   }
 
+  showDisks(x: number, arr: any[]) {
+    let result = "";
+    for (let i = 0; i < x; i++) {
+      result += i + " ";
+      console.log(arr[i]);
+    }
+    return result;
+  }
+
+  revealOneCharacter(list: any[]) {
+    const next = list.splice(0, 1)[0];
+    next.span.classList.add("revealed");
+    next.classes.forEach((c: any) => {
+      next.span.classList.add(c);
+    });
+
+    const delay = next.isSpace && !next.pause ? 0 : next.delayAfter;
+
+    if (list.length > 0) {
+      setTimeout(() => {
+        this.revealOneCharacter(list);
+      }, delay);
+    }
+  }
 
   drawEnd(discI: number, arr: any[]) {
     let end = 0;
     let count = 0;
-    setInterval(() => {if (count <= discI) {console.log(count++)}}, 1000)
+    setInterval(() => { if (count <= discI) { console.log(count++) } }, 1000)
 
     const container = document.querySelector(".text") as HTMLElement;
 
-    function showDisks(x: number) {
-      let result = "";
-      
-      for (let i = 0; i < x; i++) {
-        result += i + " ";
-        console.log(arr[i]);
-      }
-
-      return result;
-    }
-    
-    function showRest(x: any) {
-      container.replaceChildren(" ");
-      console.log(arr);
-      return " ";
-    }
-
-    const speeds = {
-      pause: 500, // Higher number = longer delay
-      slow: 120,
-      normal: 90,
-      fast: 40,
-      superFast: 10
-    };
-
     const textLines = [
-      {speed: 10, string: "GAME OVER", classes: ["red"]},
-      {speed: 500, string:  "", pause: true},
-      {speed: 40, string: "  ", classes: ["red"]},
-      {speed: 80, string: "floppy disks collected:"},
-      {speed: 40, string: "  ", classes: ["red"]},
-      {speed: 40, string: "  ", classes: ["red"]},
-      {speed: 500, string: showDisks(discI)},
-      {speed: 500, string: `   ${discI}` , classes: ["gold"]},
-      {speed: 200, string: showRest(discI)}
+      { speed: 10, string: "GAME OVER", classes: ["red"] },
+      { speed: 500, string: " ", pause: true },
+      { speed: 0, string: "<br>" },
+      { speed: 80, string: "floppy disks collected:" },
+      { speed: 0, string: "<br>" },
+      { speed: 250, string: this.showDisks(discI, arr), classes: ["huge"] },
+      { speed: 250, string: `${discI}`, classes: ["gold"] }
     ];
 
     const characters: { span: HTMLSpanElement; isSpace: boolean; delayAfter: number; classes: string[]; }[] = [];
 
+    let skip = false
     textLines.forEach((line, index) => {
-      if (index < textLines.length - 1) {
-        line.string += " \n"; // Add a space between lines
-      }
-
-      line.string.split("").forEach((character) => {
+      // new line
+      if (line.string === "<br>") {
+        const br = document.createElement("br");
+        container.appendChild(br);
+      } else {
+        // printing
+        line.string.split("").forEach((character, id) => {
           const span = document.createElement("span");
           span.textContent = character;
-          container.appendChild(span);
-          
-          characters.push({
-            span: span,
-            isSpace: character === " " && !line.pause,
-            delayAfter: line.speed,
-            classes: line.classes || []
-          });
-      });
+
+          if (Number(character) === 9) skip = true // set flag for 2 digit numbers
+
+          // conditions to print 2 digit numbers as one
+          if (skip === true 
+            && (index === 5 && (id === 20 || id === 23 || id === 26))) {
+            // do nothing and skip rest of conditions
+          } else if ((index === 5 && (id === 21 || id === 24 || id === 27))
+            || (index === 6 && (id === 1))) {
+            span.textContent = "1" + character;
+            container.appendChild(span);
+            characters.push({
+              span: span,
+              isSpace: false,
+              delayAfter: line.speed,
+              classes: line.classes || []
+            });
+          } else if (skip === false || character === " " || character === "9") { // XD
+            container.appendChild(span);
+            characters.push({
+              span: span,
+              isSpace: character === " " && !line.pause,
+              delayAfter: line.speed,
+              classes: line.classes || []
+            });
+          }
+        });
+      }
     });
 
-    function revealOneCharacter(list: any[]) {
-      const next = list.splice(0, 1)[0];
-      next.span.classList.add("revealed");
-      next.classes.forEach((c: any) => {
-          next.span.classList.add(c);
-      });
-
-      const delay = next.isSpace && !next.pause ? 0 : next.delayAfter;
-
-      if (list.length > 0) {
-          setTimeout(function () {
-            revealOneCharacter(list);
-          }, delay);
-      }
-    }
-
     // Kick it off
-    setTimeout(() => {revealOneCharacter(characters)}, 600)
+    setTimeout(() => { this.revealOneCharacter(characters) }, 600)
 
     return end;
   }
 }
 
-export {Countdown};
+export { Countdown };
