@@ -32,30 +32,18 @@ body {
 }
 
 .uni-logo {
-  position: absolute;
-  width: 3%;
-  height: 100%;
-  left: 0;
-  top: 0;
+  width: 4%;
   background: url("../assets/pics/logo_ul.png") no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .menu-shutdown {
-  position: absolute;
-  left: 5%;
-  width: 5%;
-  height: 100%;
-  padding: 1.4% 0 0 0.3%;
+  padding: 1.5em 0.5em 0 0.5em;
   font-size: min(0.9vw, 1.5vh)
 }
 
 .menu-info {
-  position: absolute;
-  left: 11%;
-  width: 3%;
-  height: 100%;
-  padding: 1.4% 0 0 0.3%;
+  padding: 1.5em 0.5em 0 0.5em;
   font-size: min(0.9vw, 1.5vh)
 }
 
