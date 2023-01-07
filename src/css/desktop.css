@@ -48,17 +48,9 @@ body {
   padding: 1.4% 0 0 0.3%;
 }
 
-.menu-file {
+.menu-info {
   position: absolute;
   left: 11%;
-  width: 3%;
-  height: 100%;
-  padding: 1.4% 0 0 0.3%;
-}
-
-.menu-edit {
-  position: absolute;
-  left: 15%;
   width: 3%;
   height: 100%;
   padding: 1.4% 0 0 0.3%;

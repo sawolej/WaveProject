@@ -43,7 +43,9 @@ export const Desktop = class {
     this.createApp("Recycle bin", "./src/assets/pics/binIcon.png", "recycle-bin")
     this.createApp("Settings", "./src/assets/pics/settingsIcon.png", "settings")
     this.createApp("System Info", "./src/assets/pics/systemIcon.png", "system-info")
-    this.createApp("Whats that?", "./src/assets/pics/gameIcon.png", "game")
+    this.createApp("Whats that?", "./src/assets/pics/gameIcon.png", "game");
+
+    (glob.document.getElementById('shutdown') as HTMLElement).onclick = () => glob.document.location.hash = "#room";
   }
 
   createApp(name: any, image: any, id: any) {
