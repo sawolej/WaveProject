@@ -150,7 +150,7 @@ export class Boot {
 
       render() {
         (this.shadowRoot as ShadowRoot).innerHTML = `
-    <style>${AwardBoot.styles}</style>`+desc.style_3;
+    <style>${AwardBoot.styles}</style>` + desc.style_3;
       }
     }
 
@@ -191,14 +191,16 @@ export class Boot {
 
       render() {
         (this.shadowRoot as ShadowRoot).innerHTML = `
-  <style>${AwardBios.styles}</style>`+desc.style_4;
+  <style>${AwardBios.styles}</style>` + desc.style_4;
       }
     }
     // click to skip
-    const redirect = () => { 
-      glob.document.location.hash = "#desktop"; 
+    const redirect = () => {
+      if (glob.document.location.hash === "#boot")
+        glob.document.location.hash = "#desktop";
+
       glob.document.body.removeEventListener('click', redirect);
-      glob.document.body.removeEventListener('keypress', redirect);  
+      glob.document.body.removeEventListener('keypress', redirect);
     };
     glob.document.body.addEventListener('click', redirect);
     glob.document.body.addEventListener('keypress', redirect);

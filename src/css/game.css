@@ -216,8 +216,8 @@
   display: none;
   margin: 0 min(2.1vw, 3.5vh);
   cursor: pointer;
-  -webkit-transition: all .05s ease-out .15s;
-  transition: all .05s ease-out .15s;
+  /* -webkit-transition: all .05s ease-out .15s; */
+  /* transition: all .05s ease-out .15s; */
 }
 
 .endGameButtons div:hover {
