@@ -102,7 +102,7 @@ export const Desktop = class {
       osWindow.style.top = "0px"
       osWindow.style.left = "0px"
       osWindow.style.width = "100%"
-      osWindow.style.height = "100vh"
+      osWindow.style.height = "100%"
     }
 
     function shortenWindow() {

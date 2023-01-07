@@ -20,13 +20,18 @@ export class DesktopView {
   }
 
   html = `
-  <div id="wrapper">
+  <div class="content">
     <!-- App container and bottom taskbar -->
     <div class="os_container">
       <!--br-os-container -->
       <div id="os_apps">
         <div class="app"></div>
-        <div id="taskbar"></div>
+        <div class="taskbar">
+          <div class="uni-logo"></div>
+          <div class="menu-shutdown">Shutdown</div>
+          <div class="menu-file">File</div>
+          <div class="menu-edit">Edit</div>
+        </div>
       </div>
 
       <!-- App window -->
