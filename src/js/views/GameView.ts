@@ -46,8 +46,10 @@ export class GameView {
 
 </div>
 
-<!-- <img id="playerImage" src="./src/assets/pics/player.png"> -->
-<img id="playerImage" src="./src/assets/favicon.ico">
+<!-- Trex -->
+<!-- <img id="playerImage" src="./src/assets/favicon.ico"> -->
+
+<img id="playerImage" src="./src/assets/pics/player.png">
 <img id="backgroundImage" src="./src/assets/pics/background.png">
 <img id="smallPlatformImage" src="./src/assets/pics/smallPlatform.png">
 <img id="bigPlatformImage" src="./src/assets/pics/bigPlatform.png">

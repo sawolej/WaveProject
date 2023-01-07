@@ -32,10 +32,10 @@ body {
   width: 64px;
   margin: 0 auto;
   -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 #os_apps .app p {
@@ -68,15 +68,15 @@ body {
   border-bottom: 2px solid black;
   padding: 0 10px;
   cursor: move;
-  cursor: grab;
-  cursor: -moz-grab;
   cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
 }
 
 .app_window .window_bar:active {
-  cursor: grabbing;
-  cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
 }
 
 .app_window .window_bar .brand {
@@ -159,11 +159,11 @@ h1 {
 }
 
 img {
-  user-select: none;
   -webkit-user-drag: none;
-  -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 #screen_page {
