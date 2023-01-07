@@ -36,7 +36,7 @@
 
 .cup:hover {
   cursor: pointer;
-  background: no-repeat url("../assets/pics/cupOutline.png");  
+  background: no-repeat url("../assets/pics/cupOutline.png");
   background-size: contain;
 }
 
@@ -105,4 +105,25 @@
   height: 3.5%;
   top: 95%;
   left: 79%;
+}
+
+.playGameButton {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 13.5%;
+  height: 9%;
+  background-image: url(../assets/pics/playChilly.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  -webkit-transition: all .05s ease-out .15s;
+  transition: all .05s ease-out .15s;
+}
+
+.playGameButton:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  background-image: url(../assets/pics/playPinky.png);
 }

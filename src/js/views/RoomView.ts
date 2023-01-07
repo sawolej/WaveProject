@@ -22,6 +22,9 @@ export class RoomView {
       (pcClickBox[i] as HTMLElement).onmouseout = () => { pc.classList.remove('highlight') };
     }
 
+    const butt = (glob.document.getElementById('playGame') as HTMLElement);
+    butt.addEventListener('click', () => { glob.document.location.hash = "#game"; });
+
     // click event listener
     glob.document.body.addEventListener('click', this.firstClick)
   }
@@ -57,5 +60,6 @@ export class RoomView {
         <div class="pc-click-box box-three"></div>
       </a>
     </div>
+    <div id="playGame" class="playGameButton"></div>
   </div>`
 }

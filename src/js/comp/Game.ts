@@ -305,7 +305,12 @@ export const Game = class {
         for (let i = 0; i < this.diskCounter; i++) {
           (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
         }
-      }, 4550 + this.diskCounter * 900)
+        setTimeout(() => {
+          const butt = (glob.document.getElementById('endGameButtons') as HTMLElement);
+          (butt.children[0] as HTMLElement).style.display = "inline";
+          (butt.children[1] as HTMLElement).style.display = "inline";
+        }, 400)
+      }, 4550 + this.diskCounter * 250)
     }
 
     // Calc elapsed time since the last loop

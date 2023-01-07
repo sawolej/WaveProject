@@ -17,6 +17,10 @@ export class GameView {
     const newGame = new GameEngine()
     newGame.init()
 
+    const butt = (glob.document.getElementById('endGameButtons') as HTMLElement);
+    (butt.children[0] as HTMLElement).addEventListener('click', () => { glob.document.location.hash = ""; });
+    (butt.children[1] as HTMLElement).addEventListener('click', () => { glob.document.location.reload(); });
+
     // Timeout function
     this.countdownTrigger = setTimeout(() => { // this timeout bugs music
       this.audio.countdown = new Audio("./src/assets/sounds/countdown.mp3")
@@ -42,7 +46,8 @@ export class GameView {
 
 </div>
 
-<img id="playerImage" src="./src/assets/pics/player.png">
+<!-- <img id="playerImage" src="./src/assets/pics/player.png"> -->
+<img id="playerImage" src="./src/assets/favicon.ico">
 <img id="backgroundImage" src="./src/assets/pics/background.png">
 <img id="smallPlatformImage" src="./src/assets/pics/smallPlatform.png">
 <img id="bigPlatformImage" src="./src/assets/pics/bigPlatform.png">
@@ -69,7 +74,7 @@ export class GameView {
 <img id="palmRightTwoImage" src="./src/assets/pics/palmRightTwo.png">
 
 <!-- Trigger/Open The Modal -->
-<div id = "endDisks" class="endDisks">
+<div id="endDisks" class="endDisks">
   <!-- <img id="myBtn" src="./src/assets/pics/FloppyDiskBehavioralHoney.png"> -->
   <img id="diskBehavioralImageE" src="./src/assets/pics/beh.gif" class="undraggable">
   <img id="diskBiologyImageE" src="./src/assets/pics/lime.gif" class="undraggable">
@@ -84,6 +89,11 @@ export class GameView {
   <img id="diskPhilologyImageE" src="./src/assets/pics/philo.gif" class="undraggable">
   <img id="diskPhilosophyImageE" src="./src/assets/pics/sofy.gif" class="undraggable">
   <img id="diskTomaszowImageE" src="./src/assets/pics/toma.gif" class="undraggable">
+</div>
+
+<div id="endGameButtons" class="endGameButtons">
+  <div class="arrowGameBack"></div>
+  <div class="arrowGameReplay"></div>
 </div>
 
 <!-- The Modal -->
