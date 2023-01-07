@@ -130,7 +130,7 @@ export const Game = class {
     this.ihaveit = [];
     this.wasAdded = [];
 
-    this.countdown = new Countdown(this.canvas.width, this.canvas.height);
+    this.countdown = new Countdown();
     this.quit = false;
 
     // Draw countdown timer when the game runs. Move this to a countdown.js class later.
