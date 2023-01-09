@@ -98,8 +98,8 @@ export class Boot {
       }
 
       enterBIOS() {
-        const monitor = document.querySelector(".monitor") as HTMLElement;
-        const bios = document.createElement("award-bios");
+        const monitor = glob.document.querySelector(".monitor") as HTMLElement;
+        const bios = glob.document.createElement("award-bios");
         monitor.appendChild(bios);
         this.remove();
       }

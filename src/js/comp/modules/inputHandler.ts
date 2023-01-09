@@ -1,12 +1,14 @@
+import { glob } from "../../helpers";
+
 export class InputHandler {
-  keys: { 
-    d: { pressed: boolean; }; 
-    a: { pressed: boolean; }; 
-    w: { pressed: boolean; }; 
-    e: { pressed: boolean; }; 
+  keys: {
+    d: { pressed: boolean; };
+    a: { pressed: boolean; };
+    w: { pressed: boolean; };
+    e: { pressed: boolean; };
   };
   constructor() {
-    
+
     this.keys = {
       d: {
         pressed: false
@@ -19,13 +21,13 @@ export class InputHandler {
       },
       e: {
         pressed: false
-      }      
+      }
     }
 
     // Assign last WSAD 
-    window.addEventListener('keydown', (e) => {
+    glob.window.addEventListener('keydown', (e) => {
 
-      switch(e.key) {
+      switch (e.key) {
 
         case 'a':
           this.keys.a.pressed = true;
@@ -53,13 +55,13 @@ export class InputHandler {
       }
     });
 
-    window.addEventListener('keyup', (e) => {
+    glob.window.addEventListener('keyup', (e) => {
 
-      switch(e.key) {
+      switch (e.key) {
 
         case 'a':
           this.keys.a.pressed = false;
-        break;
+          break;
 
         case 'A':
           this.keys.a.pressed = false;

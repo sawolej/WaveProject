@@ -3,7 +3,7 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 import { audioLoader, isPlaying } from "../../App"
 
 export class RoomView {
-  constructor() {}
+  constructor() { }
 
   init() {
     replaceHTML(canvas, this.html)
@@ -33,10 +33,10 @@ export class RoomView {
 
   // Music fix: DOMException: play() failed because the user didn't interact with the document first.
   firstClick = () => {
-    if (!isPlaying()) this.loadAudio() 
+    if (!isPlaying()) this.loadAudio()
 
     // removing of a listener like below is propably ok as long as
-    // we dont use any other document.body listeners in this view,
+    // we dont use any other glob.document.body listeners in this view,
     // otherwise, we can try to add this to id or class element instead
     glob.document.body.removeEventListener('click', this.firstClick)
   }

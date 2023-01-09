@@ -15,8 +15,6 @@ export class BoardView {
     replaceHTML(canvas, this.html)
     audioLoader("./src/assets/sounds/tlo_b.mp3", true)
 
-    // const newBoard = new BoardEngine()
-    // newBoard.init()
     this.initBoard()
   }
 

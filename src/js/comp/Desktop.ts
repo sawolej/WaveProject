@@ -1,16 +1,16 @@
 import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
 export const Desktop = class {
-  constructor() {}
+  constructor() { }
 
   init() {
-    const apps = document.querySelector("#os_apps") as HTMLElement
-    const osWindow = document.querySelector(".app_window") as HTMLButtonElement
-    const brandWindow = document.querySelector(".brand") as HTMLElement
-    const mainApp = document.querySelector("#app-main") as HTMLElement
-    const maximise = document.querySelector("#maximise") as HTMLButtonElement
-    const shorter = document.querySelector("#shorter") as HTMLButtonElement
-    const cross = document.querySelector("#cross") as HTMLButtonElement
+    const apps = glob.document.querySelector("#os_apps") as HTMLElement
+    const osWindow = glob.document.querySelector(".app_window") as HTMLButtonElement
+    const brandWindow = glob.document.querySelector(".brand") as HTMLElement
+    const mainApp = glob.document.querySelector("#app-main") as HTMLElement
+    const maximise = glob.document.querySelector("#maximise") as HTMLButtonElement
+    const shorter = glob.document.querySelector("#shorter") as HTMLButtonElement
+    const cross = glob.document.querySelector("#cross") as HTMLButtonElement
 
     /* Sound effects */
     const click = new Audio("./src/assets/sounds/click.mp3")
@@ -27,9 +27,9 @@ export const Desktop = class {
 
     function createApp(name: any, image: any, id: any) {
 
-      let app = document.createElement("div")
-      let img = document.createElement("img")
-      let p = document.createElement("p")
+      let app = glob.document.createElement("div")
+      let img = glob.document.createElement("img")
+      let p = glob.document.createElement("p")
 
       app.classList.add("app")
       app.id = id
@@ -62,10 +62,10 @@ export const Desktop = class {
       brandWindow.innerHTML = ""
       mainApp.innerHTML = ""
 
-      let main = document.getElementById(id) as HTMLImageElement
+      let main = glob.document.getElementById(id) as HTMLImageElement
       let tmp = main.getAttribute("alt") as string
-      let img = document.createElement("img")
-      let p = document.createElement("p")
+      let img = glob.document.createElement("img")
+      let p = glob.document.createElement("p")
 
       p.innerText = (main.childNodes[1] as HTMLElement).innerText
       img.src = main.src
@@ -78,12 +78,12 @@ export const Desktop = class {
 
     function initWindow() {
       toggleVisibility(shorter)
-      
+
       maximise.onclick = () => {
         click.play()
         maximiseWindow()
       }
-      
+
       shorter.onclick = () => {
         click.play()
         shortenWindow()
@@ -119,7 +119,7 @@ export const Desktop = class {
 
       if (go_top < 0) go_top = Number(e)
       if (go_left < 0) go_left = 0
-      
+
       osWindow.style.top = go_top + "px"
       osWindow.style.left = go_left + "px"
     }

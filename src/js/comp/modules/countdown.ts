@@ -1,3 +1,5 @@
+import { glob } from "../../helpers";
+
 import { setTimeoutHandler, setIntervalHandler } from "../../../App"
 const view = "Game";
 
@@ -21,13 +23,13 @@ class Countdown {
     this.seconds = 3;
     this.introInterval;
     this.wasCleared = false;
-    this.countdownEl = document.getElementById('countdown') as HTMLElement;
-    this.introText = document.getElementById('introText') as HTMLElement;
-    this.introNumbers = document.getElementById('introCountdown') as HTMLElement;
-    this.imageFirst = document.getElementById('countdownImageFirst') as HTMLElement;
-    this.imageSecond = document.getElementById('countdownImageSecond') as HTMLElement;
-    this.imageThird = document.getElementById('countdownImageThird') as HTMLElement;
-    this.imageBlack = document.getElementById('blackscreen') as HTMLElement;
+    this.countdownEl = glob.document.getElementById('countdown') as HTMLElement;
+    this.introText = glob.document.getElementById('introText') as HTMLElement;
+    this.introNumbers = glob.document.getElementById('introCountdown') as HTMLElement;
+    this.imageFirst = glob.document.getElementById('countdownImageFirst') as HTMLElement;
+    this.imageSecond = glob.document.getElementById('countdownImageSecond') as HTMLElement;
+    this.imageThird = glob.document.getElementById('countdownImageThird') as HTMLElement;
+    this.imageBlack = glob.document.getElementById('blackscreen') as HTMLElement;
   }
 
   update() {
@@ -82,7 +84,7 @@ class Countdown {
     let count = 0;
     // setInterval(() => { if (count <= discI) { console.log(count++) } }, 1000)
 
-    const container = document.querySelector(".text") as HTMLElement;
+    const container = glob.document.querySelector(".text") as HTMLElement;
 
     const textLines = [
       { speed: 10, string: "GAME OVER", classes: ["red"] },
@@ -100,18 +102,18 @@ class Countdown {
     textLines.forEach((line, index) => {
       // new line
       if (line.string === "<br>") {
-        const br = document.createElement("br");
+        const br = glob.document.createElement("br");
         container.appendChild(br);
       } else {
         // printing
         line.string.split("").forEach((character, id) => {
-          const span = document.createElement("span");
+          const span = glob.document.createElement("span");
           span.textContent = character;
 
           if (Number(character) === 9) skip = true // set flag for 2 digit numbers
 
           // conditions to print 2 digit numbers as one
-          if (skip === true 
+          if (skip === true
             && (index === 5 && (id === 20 || id === 23 || id === 26))) {
             // do nothing and skip rest of conditions
           } else if ((index === 5 && (id === 21 || id === 24 || id === 27))
