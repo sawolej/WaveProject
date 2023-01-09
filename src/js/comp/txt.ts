@@ -1,7 +1,7 @@
 // nice font: PT mono
 
 export const txtWNOW =
-        `Wydział Nauk o Wychowaniu<br>
+  `Wydział Nauk o Wychowaniu<br>
   <br>
   <a href="wnow.uni.lodz.pl">Strona internetowa wydziału</a><br>
   <br>
@@ -14,8 +14,8 @@ export const txtWNOW =
   w Ukrainie daje uchodźcom możliwość relaksu w wirtualnej rzeczywistości.
   `;
 
-  export const txtWBIOS =
-        `Wydział Biologii i Ochrony Środowiska<br>
+export const txtWBIOS =
+  `Wydział Biologii i Ochrony Środowiska<br>
   <br>
   <a href="biol.uni.lodz.pl">Strona internetowa wydziału</a><br>
   <br>
@@ -24,8 +24,8 @@ export const txtWNOW =
   pozyskiwania wiedzy poprzez udział w zajeciach w Ogrodzie Dydaktyczno-Doświadczalnym, Muzeum Przyrodniczym oraz Stacjach Terenowych. 
   `;
 
-  export const txtCHEMIA =
-        `Wydział Chemii<br>
+export const txtCHEMIA =
+  `Wydział Chemii<br>
   <br>
   <a href="chemia.uni.lodz.pl">Strona internetowa wydziału</a><br>
   <br>
@@ -34,7 +34,7 @@ export const txtWNOW =
   udział w wielu programach mobilnościowych, takich jak Erasmus+ bądź CEEPUS ("Central European Exchange Program for University Studies").
   `;
 
-  export const txtEKSOC =
+export const txtEKSOC =
   `Wydział Ekonomiczno-Socjologiczny<br>
 <br>
 <a href="eksoc.uni.lodz.pl">Strona internetowa wydziału</a><br>
@@ -46,7 +46,7 @@ obejmującym wymianę seminaryjną ze studentami z Brazylii, Chile, Chin, Ekwado
 `;
 
 export const txtFILOLOG =
-`Wydział Filologiczny<br>
+  `Wydział Filologiczny<br>
 <br>
 <a href="filolog.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -55,7 +55,7 @@ Na wydziale swoją działalność prowadzi pismo <a href="brakslow.uni.lodz.pl">
 `;
 
 export const txtFILHIST =
-`Wydział Filozficzno-Historyczny<br>
+  `Wydział Filozficzno-Historyczny<br>
 <br>
 <a href="wydzfilhist.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -65,7 +65,7 @@ takimi jak Muzeum Sztuki, Centralne Muzeum Włókiennictwa czy Muzeum Fabryki.
 `;
 
 export const txtWFIS =
-`Wydział Fizyki i Informatyki Stosowanej<br>
+  `Wydział Fizyki i Informatyki Stosowanej<br>
 <br>
 <a href="wfis.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -75,7 +75,7 @@ współtworzyć wydarzenie dołączając do grupy studentów - wolontariuszy.
 `;
 
 export const txtMATH =
-`Wydział Matematyki i Informatyki<br>
+  `Wydział Matematyki i Informatyki<br>
 <br>
 <a href="math.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -84,7 +84,7 @@ Przy Wydziale Matematyki i Informatyki działa Rada Biznesu - wydział ściśle 
 `;
 
 export const txtGEO =
-`Wydział Nauk Geograficznych<br>
+  `Wydział Nauk Geograficznych<br>
 <br>
 <a href="geo.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -94,7 +94,7 @@ minerałów, skał i skamieniałości oraz kryształów związków chemicznych.
 `;
 
 export const txtWPIA =
-`Wydział Prawa i Administracji<br>
+  `Wydział Prawa i Administracji<br>
 <br>
 <a href="wpia.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -104,7 +104,7 @@ w ramach którego wybitnie uzdolnieni studenci mają okazję brać udział w zaj
 `;
 
 export const txtWSMIP =
-`Wydział Studiów Międzynarodowych i Politologicznych<br>
+  `Wydział Studiów Międzynarodowych i Politologicznych<br>
 <br>
 <a href="wsmip.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -114,7 +114,7 @@ kandydatów czekają również Polsko-Francuskie podyplomowe studia zarządzania
 `;
 
 export const txtWZ =
-`Wydział Zarządzania<br>
+  `Wydział Zarządzania<br>
 <br>
 <a href="wz.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -124,7 +124,7 @@ studenci mają możliwość rozpoczęcia kwalifikacji już w trakcie studiów or
 `;
 
 export const txtFILIA =
-`Filia w Tomaszowie Mazowieckim<br>
+  `Filia w Tomaszowie Mazowieckim<br>
 <br>
 <a href="filia.uni.lodz.pl">Strona internetowa wydziału</a><br>
 <br>
@@ -136,64 +136,64 @@ hal sportowych, basenu, siłowni, obiektów lekkoatletycznych oraz kortów tenis
 //boot content
 
 export const sizes = [
-    "42GB",
-    "60GB",
-    "120GB",
-    "250GB",
-    "500GB",
-    "1TB"
-  ];
+  "42GB",
+  "60GB",
+  "120GB",
+  "250GB",
+  "500GB",
+  "1TB"
+];
 
-  export const discs = [
-    "WDC WD1603821JS-84WAA8",
-    "SAMSUNG SP2504C VT100-33",
-    "ExcelStor Technology J880 PF20A21B",
-    "ExcelStor Technology J9250S GM20A52A",
-    "WDC WD3200AAJS-00RYA0 12.01B",
-    "ST9500325AS 0002SDM1",
-    "MAXTOR 6Y060M0 SN0874",
-    "WDC WD800JB-00FMA0"
-  ];
+export const discs = [
+  "WDC WD1603821JS-84WAA8",
+  "SAMSUNG SP2504C VT100-33",
+  "ExcelStor Technology J880 PF20A21B",
+  "ExcelStor Technology J9250S GM20A52A",
+  "WDC WD3200AAJS-00RYA0 12.01B",
+  "ST9500325AS 0002SDM1",
+  "MAXTOR 6Y060M0 SN0874",
+  "WDC WD800JB-00FMA0"
+];
 
-  export const devices = [
-    `HL-DT-ST GCE-8526B 1.04`,
-    `HL-DT-ST DVDRAM GSA-H10A JL02`,
-    "OPTIARC DVD RW AD-7173A 1-01",
-    "SLIMTYPE DVD A DS8A3S HA28",
-    "HL-DT-ST DVDRAM GH22LS50 TL02",
-    "TSSTCORP CDDVDW SH-S202G SB00",
-    "LITE-ON DVD SOHD-16P9S FS09"
-  ];
+export const devices = [
+  `HL-DT-ST GCE-8526B 1.04`,
+  `HL-DT-ST DVDRAM GSA-H10A JL02`,
+  "OPTIARC DVD RW AD-7173A 1-01",
+  "SLIMTYPE DVD A DS8A3S HA28",
+  "HL-DT-ST DVDRAM GH22LS50 TL02",
+  "TSSTCORP CDDVDW SH-S202G SB00",
+  "LITE-ON DVD SOHD-16P9S FS09"
+];
 
-  export const events = [
-    "CMOS checksum error - Defaults loaded",
-    "Floppy disk(s) fail (40)",
-    "Keyboard error or no keyboard present",
-    "<strong>Trend ChipAwayVirus(R) On Guard</strong>",
-    "CMOS battery failed",
-    "Primary IDE channel no 80 conductor cable installed",
-    "Boot Disk failure. Type key to retry",
-    "Non-System Disk or disk error<br>Replace and press any key when ready",
-    "Conflict I/O Ports: 2E8 2EB",
-    "Warning! CPU has been changed",
-    "BIOS Guardian(R) enabled. You will need to disable BIOS Guardian to update BIOS",
-    "OC fail, please enter setup to change OC Fail settings",
-    "AHCI Port0 Device Error",
-    "Press F2 to Resume"
-  ];
+export const events = [
+  "CMOS checksum error - Defaults loaded",
+  "Floppy disk(s) fail (40)",
+  "Keyboard error or no keyboard present",
+  "<strong>Trend ChipAwayVirus(R) On Guard</strong>",
+  "CMOS battery failed",
+  "Primary IDE channel no 80 conductor cable installed",
+  "Boot Disk failure. Type key to retry",
+  "Non-System Disk or disk error<br>Replace and press any key when ready",
+  "Conflict I/O Ports: 2E8 2EB",
+  "Warning! CPU has been changed",
+  "BIOS Guardian(R) enabled. You will need to disable BIOS Guardian to update BIOS",
+  "OC fail, please enter setup to change OC Fail settings",
+  "AHCI Port0 Device Error",
+  "Press F2 to Resume"
+];
 
-  export const style_1 = `
+export const style_1 = `
   .screen {
     display: block;
-    width: var(--width, 1024px);
-    height: var(--height, 768px);
-    position: relative;
+    width: 100%;
+    height: 100%;
+    position: absolute;
     background: #000;
-    padding: 25px;
+    padding: min(6vh, 6vw) 0 0 min(6vw, 6vh);
   }
   .ribbon {
-    width: 48px;
-    height: 48px;
+    width: min(6vw, 10vh);
+    height: min(6vw, 10vh);
     image-rendering: pixelated;
   }
   .brand-text {
@@ -269,7 +269,7 @@ export const style_3 = `
   </p>
 </div>`;
 
-export const style_4 =  `<div class="blue screen">
+export const style_4 = `<div class="blue screen">
 <div class="title center">CMOS Setup Utility - Copyright (C) 1984-2001 Award Software</div>
 <div class="setup">
   <div class="main-options">
@@ -302,15 +302,12 @@ export const style_4 =  `<div class="blue screen">
 </div>
 </div>`;
 
-export const style_5 =`
+export const style_5 = `
 .screen {
+  position: absolute;
   display: block;
-  width: var(--width, 1024px);
-  height: var(--height, 768px);
-  position: relative;
-  padding: 25px;
-  color: #ccc;
-  position: relative;
+  width: 100%;
+  height: 100%;
   background: #000;
 }
 .blue {
@@ -333,11 +330,11 @@ export const style_5 =`
   border-right: 1px solid #fff;
 }
 .options {
-  padding: 35px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-bottom: 125px;
+  padding: 10%;
+  padding-bottom: 15%;
 }
 .main-options span {
   display: block;
@@ -367,8 +364,8 @@ export const style_5 =`
 .message {
   background: #F31A0A;
   position: absolute;
-  top: 320px;
-  left: 350px;
+  top: 32%;
+  left: 26%;
   display: flex;
   align-items: center;
   padding: 8px 3px;
@@ -395,8 +392,8 @@ strong {
 }
 `;
 
-export const style_6 =`<p>C:\\&gt;<span class="typewriter" data-duration="2000" data-delay="0">UNIWERSYTET ŁÓDZKI</span><span class="cursor"></span>`;
-export const style_7 =`
+export const style_6 = `<p>C:\\&gt;<span class="typewriter" data-duration="2000" data-delay="0">UNIWERSYTET ŁÓDZKI</span><span class="cursor"></span>`;
+export const style_7 = `
 <div class="message">
   <div class="container">SAVE to CMOS and EXIT (Y/N)?</div>
 </div>`;

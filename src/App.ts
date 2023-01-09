@@ -55,10 +55,10 @@ export const isPlaying = () => app.prototype.audio.currentTime !== 0
  * - Stores events for later destruction
  * @public
  *  @param {string} component
- *  @param {NodeJS.Timeout} event
+ *  @param {number | NodeJS.Timer} event
  * @var app.prototype.comp
  */
-export const setTimeoutHandler = (component: string, event: NodeJS.Timeout) => {
+export const setTimeoutHandler = (component: string, event: number | NodeJS.Timer) => {
   // console.log("currently waiting for: " + event)
   app.prototype.comp[component].timeouts.push(event)
 }
@@ -68,10 +68,10 @@ export const setTimeoutHandler = (component: string, event: NodeJS.Timeout) => {
  * - Stores events for later destruction
  * @public
  *  @param {string} component
- *  @param {NodeJS.Timeout} event
+ *  @param {number | NodeJS.Timer} event
  * @var app.prototype.comp
  */
-export const setIntervalHandler = (component: string, event: NodeJS.Timer) => {
+export const setIntervalHandler = (component: string, event: number | NodeJS.Timer) => {
   // console.log("currently waiting for: " + event)
   app.prototype.comp[component].intervals.push(event)
 }
@@ -82,12 +82,12 @@ export const setIntervalHandler = (component: string, event: NodeJS.Timer) => {
  * @private
  */
 const app = class App {
-  filter: string = "" 
+  filter: string = ""
   interacted: boolean = false
   audio: any
   comp: any
 
-  constructor() {  }
+  constructor() { }
 
   /**
    * Init function
