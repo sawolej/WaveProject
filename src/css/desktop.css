@@ -93,7 +93,6 @@ body {
   height: 30%;
   outline: 3px solid rgb(0, 0, 0);
   overflow: hidden;
-  transition: 0.3s;
 }
 
 .app_window .window_bar {
@@ -210,8 +209,4 @@ img {
   width: 1400px;
   height: 900px;
   background-color: rgb(0, 0, 0);
-}
-
-#window {
-  position: absolute;
 }

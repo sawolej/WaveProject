@@ -9,11 +9,9 @@ export const Desktop = class {
   shorter: HTMLButtonElement;
   cross: HTMLButtonElement;
   click: HTMLAudioElement;
-  elmnt: HTMLElement;
-  pos1: number;
-  pos2: number;
-  pos3: number;
-  pos4: number;
+  ele: HTMLElement;
+  x: number;
+  y: number;
 
   constructor() {
     this.apps = glob.document.getElementById("os_apps") as HTMLElement
@@ -25,11 +23,9 @@ export const Desktop = class {
     this.cross = glob.document.getElementById("cross") as HTMLButtonElement
 
     // Initialise elmnt as any element, since its changed on click anyway
-    this.elmnt = glob.document.getElementById("window-header") as HTMLElement
-    this.pos1 = 0;
-    this.pos2 = 0;
-    this.pos3 = 0;
-    this.pos4 = 0;
+    this.ele = glob.document.getElementById("window-header") as HTMLElement
+    this.x = 0;
+    this.y = 0;
 
     /* Sound effects */
     this.click = new Audio("./src/assets/sounds/click.mp3")
@@ -38,17 +34,6 @@ export const Desktop = class {
   init() {
     /* Reseting window */
     this.toggleVisibility(this.osWindow)
-
-    this.osWindow.ondragend = (e: any) => {
-      let go_top = e.pageY
-      let go_left = e.pageX
-
-      if (go_top < 0) go_top = Number(e)
-      if (go_left < 0) go_left = 0
-
-      this.osWindow.style.top = go_top + "px"
-      this.osWindow.style.left = go_left + "px"
-    }
 
     /* Creating apps */
     this.createApp("File manager", './src/assets/pics/fileIcon.png', "file-manager")
@@ -59,11 +44,11 @@ export const Desktop = class {
 
     // Return to room view on clicking shutdown
     (glob.document.getElementById('shutdown') as HTMLElement).onclick = () => glob.document.location.hash = "#room";
-    
+
     // Make the window draggable
-    this.dragElement(document.getElementById("window")!);
+    this.ele.addEventListener('mousedown', this.mouseDownHandler);
   }
-  
+
   createApp(name: any, image: any, id: any) {
 
     const app = glob.document.createElement("div")
@@ -137,10 +122,10 @@ export const Desktop = class {
     this.toggleVisibility(this.shorter)
     this.toggleVisibility(this.maximise)
 
-    this.osWindow.style.top = "0px"
+    this.osWindow.style.top = "6%"
     this.osWindow.style.left = "0px"
     this.osWindow.style.width = "100%"
-    this.osWindow.style.height = "100%"
+    this.osWindow.style.height = "94%"
   }
 
   shortenWindow() {
@@ -151,36 +136,38 @@ export const Desktop = class {
     this.osWindow.style.height = "60%"
   }
 
-  dragElement(elmnt: HTMLElement) {
-    if (document.getElementById(elmnt.id + "-header")) {
-      document.getElementById(elmnt.id + "-header")!.onmousedown = this.dragMouseDown;
-    } else {
-      elmnt.onmousedown = this.dragMouseDown;
+  // Handle the mousedown event that's triggered when user drags the element
+  mouseDownHandler = (e: any) => {
+    // Get the current mouse position
+    this.x = e.clientX;
+    this.y = e.clientY;
+
+    // Attach the listeners to `document`
+    document.addEventListener('mousemove', this.mouseMoveHandler);
+    document.addEventListener('mouseup', this.mouseUpHandler);
+  };
+
+  mouseMoveHandler = (e: any) => {
+    // How far the mouse has been moved
+    const dx = e.clientX - this.x;
+    const dy = e.clientY - this.y;
+
+    if (this.ele !== null) {
+      this.ele = global.document.getElementById("window")!;
     }
-  }
 
-  dragMouseDown(e: any) {
-    e = e || window.event;
-    e.preventDefault();
-    this.pos3 = e.clientX;
-    this.pos4 = e.clientY;
-    document.onmouseup = this.closeDragElement;
-    document.onmousemove = this.elementDrag;
-  }
+    // Set the position of element
+    this.ele.style.top = `${this.ele.offsetTop + dy}px`;
+    this.ele.style.left = `${this.ele.offsetLeft + dx}px`;
 
-  elementDrag(e: any) {
-    e = e || window.event;
-    e.preventDefault();
-    this.pos1 = this.pos3 - e.clientX;
-    this.pos2 = this.pos4 - e.clientY;
-    this.pos3 = e.clientX;
-    this.pos4 = e.clientY;
-    this.elmnt.style.top = (this.elmnt.offsetTop - this.pos2) + "px";
-    this.elmnt.style.left = (this.elmnt.offsetLeft - this.pos1) + "px";
-  }
+    // Reassign the position of mouse
+    this.x = e.clientX;
+    this.y = e.clientY;
+  };
 
-  closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
+  mouseUpHandler = () => {
+    // Remove the handlers of `mousemove` and `mouseup`
+    document.removeEventListener('mousemove', this.mouseMoveHandler);
+    document.removeEventListener('mouseup', this.mouseUpHandler);
   }
 }
