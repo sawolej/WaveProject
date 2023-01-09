@@ -18,6 +18,7 @@ body {
 }
 
 .render {
+  position: relative;
   margin: auto;
   /* all elements properties */
   overflow: hidden;
