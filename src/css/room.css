@@ -127,3 +127,16 @@
   transform: scale(1.1);
   background-image: url(../assets/pics/playPinky.png);
 }
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 5s ease-out;
+}
+.out {
+  opacity: 1;
+  transition: opacity 5s ease-out;
+}
