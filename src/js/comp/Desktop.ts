@@ -1,3 +1,4 @@
+import { doc } from "prettier";
 import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
 export const Desktop = class {
@@ -156,9 +157,11 @@ export const Desktop = class {
       this.ele = global.document.getElementById("window")!;
     }
 
-    // Set the position of element
-    this.ele.style.top = `${this.ele.offsetTop + dy}px`;
-    this.ele.style.left = `${this.ele.offsetLeft + dx}px`;
+    // Set the position of element if its contained on the screen
+    if (this.canBeDragged(e)) {
+      this.ele.style.top = `${this.ele.offsetTop + dy}px`;
+      this.ele.style.left = `${this.ele.offsetLeft + dx}px`;
+    }
 
     // Reassign the position of mouse
     this.x = e.clientX;
@@ -169,5 +172,25 @@ export const Desktop = class {
     // Remove the handlers of `mousemove` and `mouseup`
     document.removeEventListener('mousemove', this.mouseMoveHandler);
     document.removeEventListener('mouseup', this.mouseUpHandler);
+  }
+
+  canBeDragged = (e: any) => {
+    let widthMax = glob.document.getElementById("os_apps")!.clientWidth;
+    let heightMax = glob.document.getElementById("os_apps")!.clientHeight;
+    let deltaLeft = (window.innerWidth - widthMax) / 2;
+    let pxLeft = this.ele.style.left;
+    let pxTop = this.ele.style.top;
+    let width = this.ele.clientWidth;
+    let height = this.ele.clientHeight;
+    let pxToLeft = parseInt(pxLeft)
+    let pxToTop = parseInt(pxTop)
+    
+    // Horizontal bound
+    if ((pxToLeft <= 0 || pxToLeft + width >= widthMax) && (e.clientX <= deltaLeft || e.clientX >= widthMax)) return false;
+
+    // Vertical element bound
+    if ((pxToTop <= 0 || pxToTop + height >= heightMax) && (e.clientY <= 0 || e.clientY >= heightMax)) return false;
+
+    return true;
   }
 }
