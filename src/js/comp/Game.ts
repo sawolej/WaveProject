@@ -175,11 +175,11 @@ export const Game = class {
 
         // Controls hint
         this.introText.innerHTML = "Use WSAD to move your character";
-        this.introText.classList.remove("hidden")
+        this.introText.classList.remove("hide")
 
         const controlsHint = () => {
           if (glob.document.location.hash === "#game")
-            this.introText.classList.add("hidden")
+            this.introText.classList.add("hide")
           glob.document.body.removeEventListener('keypress', controlsHint);
         };
         glob.document.body.addEventListener('keypress', controlsHint);

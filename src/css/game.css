@@ -5,8 +5,8 @@
 }
 
 #game-wrapper {
-  /* position: relative; */
-  position: absolute;
+  position: relative;
+  /* position: absolute; */
   margin-bottom: 0px;
 }
 
@@ -253,6 +253,6 @@
   background-size: cover;
 }
 
-.hidden {
-  display: none;
+.hide {
+  visibility: hidden;
 }

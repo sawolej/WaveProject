@@ -2,11 +2,12 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { audioLoader, isPlaying } from "../../App"
 
-
-let isFirstOpen =true //maybe there is a better place for this? 
+let isFirstOpen = true //maybe there is a better place for this? 
 export class RoomView {
+  animation: any;
+
   constructor() { }
-  
+
   init() {
     replaceHTML(canvas, this.html)
     this.loadAudio()
@@ -30,16 +31,18 @@ export class RoomView {
     // click event listener
     glob.document.body.addEventListener('click', this.firstClick)
 
-        //animation
-        
-        if(isFirstOpen){
-          document.body.className = 'hidden';
-          setTimeout(() => {
-            document.body.className = 'visible';
-            isFirstOpen=false;
-          }, 1000)}
+    // Animation
+    // in the future we can use js to detect loading of site
+    // and extend animation depending on the assetsload time
+    if (isFirstOpen) { 
+      glob.document.body.className = 'hidden';
+      this.animation = setTimeout(() => {
+        glob.document.body.className = 'visible';
+        isFirstOpen = false;
+      }, 1000)
+    }
   }
-  
+
   loadAudio = () => audioLoader("./src/assets/sounds/tlo.mp3", true)
 
   // Music fix: DOMException: play() failed because the user didn't interact with the document first.
@@ -53,7 +56,7 @@ export class RoomView {
   }
 
   destruct = () => {
-    // clearTimeout(this.countdownTrigger)
+    clearTimeout(this.animation) // destruct animation event in case of page back etc.
   }
 
   html = `

@@ -44,7 +44,7 @@ class Countdown {
           this.introCountdown.style.display = "none";
           this.introCountdown.remove()
           // this.introText.style.display = "none";
-          this.introText.classList.add("hidden")
+          this.introText.classList.add("hide")
           close = true;
           flag = false;
         };
