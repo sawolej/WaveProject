@@ -237,7 +237,7 @@ export const style_2 = `
   <img class="ribbon" src="./src/assets/pics/logo_ul.png" alt="ul">
     <p>
      Veritas et Libertas<br>
-        Copyright (C) 1945-22, Uniwersytet Łódzki v1.0.
+        Copyright (C) 1945-22, Uniwersytet Lodzki v1.0.
     </p>
   </div>
     <p>CLICK ANY KEY TO SKIP</p>
@@ -392,7 +392,7 @@ strong {
 }
 `;
 
-export const style_6 = `<p>C:\\&gt;<span class="typewriter" data-duration="2000" data-delay="0">UNIWERSYTET ŁODZKI</span><span class="cursor"></span>`;
+export const style_6 = `<p>C:\\&gt;<span class="typewriter" data-duration="2000" data-delay="0">UNIWERSYTET LODZKI</span><span class="cursor"></span>`;
 export const style_7 = `
 <div class="message">
   <div class="container">SAVE to CMOS and EXIT (Y/N)?</div>

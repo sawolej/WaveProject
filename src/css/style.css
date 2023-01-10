@@ -2,7 +2,7 @@
   font-family: "Silkscreen";
   src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
 }
-
+@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
 body {
   /* webkit */
   image-rendering: -webkit-crisp-edges;
