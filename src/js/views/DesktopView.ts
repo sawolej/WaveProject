@@ -34,11 +34,11 @@ export class DesktopView {
       </div>
 
       <!-- App window -->
-      <div class="app_window" draggable="true">
+      <div class="app_window" id="window">
       
         <!--br-os-window -->
         <!-- Top window -->
-        <div class="window_bar">
+        <div class="window_bar" id="window-header">
           <!--window-bar-->
           <!-- Icon -->
           <div class="brand"></div>
