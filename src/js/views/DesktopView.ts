@@ -28,9 +28,8 @@ export class DesktopView {
         <div class="app"></div>
         <div class="taskbar">
           <div class="uni-logo"></div>
-          <div class="menu-shutdown">Shutdown</div>
-          <div class="menu-file">File</div>
-          <div class="menu-edit">Edit</div>
+          <div class="menu-shutdown on-click-effect" id="shutdown">Shutdown</div>
+          <div class="menu-info on-click-effect">Info</div>
         </div>
       </div>
 

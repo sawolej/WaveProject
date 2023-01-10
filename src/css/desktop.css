@@ -28,53 +28,26 @@ body {
   left: 0;
   outline: 3px solid rgb(44, 44, 44);
   background-color: rgb(192, 192, 192);
+  display: inline-flex;
 }
 
 .uni-logo {
-  position: absolute;
-  width: 3%;
-  height: 100%;
-  left: 0;
-  top: 0;
+  width: 4%;
   background: url("../assets/pics/logo_ul.png") no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .menu-shutdown {
-  position: absolute;
-  left: 5%;
-  width: 5%;
-  height: 100%;
-  padding: 1.4% 0 0 0.3%;
+  padding: 1.5em 0.5em 0 0.5em;
+  font-size: min(0.9vw, 1.5vh)
 }
 
-.menu-file {
-  position: absolute;
-  left: 11%;
-  width: 3%;
-  height: 100%;
-  padding: 1.4% 0 0 0.3%;
+.menu-info {
+  padding: 1.5em 0.5em 0 0.5em;
+  font-size: min(0.9vw, 1.5vh)
 }
 
-.menu-edit {
-  position: absolute;
-  left: 15%;
-  width: 3%;
-  height: 100%;
-  padding: 1.4% 0 0 0.3%;
-}
-
-.menu-shutdown:active {
-  background-color: rgb(44, 44, 44);
-  color: rgb(192, 192, 192);
-}
-
-.menu-file:active {
-  background-color: rgb(44, 44, 44);
-  color: rgb(192, 192, 192);
-}
-
-.menu-edit:active {
+.on-click-effect:active {
   background-color: rgb(44, 44, 44);
   color: rgb(192, 192, 192);
 }
