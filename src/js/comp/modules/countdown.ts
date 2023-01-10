@@ -11,7 +11,7 @@ class Countdown {
   wasCleared: boolean;
   countdownEl: HTMLElement;
   introText: HTMLElement;
-  introNumbers: HTMLElement;
+  introCountdown: HTMLElement;
   imageFirst: HTMLElement;
   imageSecond: HTMLElement;
   imageThird: HTMLElement;
@@ -25,7 +25,7 @@ class Countdown {
     this.wasCleared = false;
     this.countdownEl = glob.document.getElementById('countdown') as HTMLElement;
     this.introText = glob.document.getElementById('introText') as HTMLElement;
-    this.introNumbers = glob.document.getElementById('introCountdown') as HTMLElement;
+    this.introCountdown = glob.document.getElementById('introCountdown') as HTMLElement;
     this.imageFirst = glob.document.getElementById('countdownImageFirst') as HTMLElement;
     this.imageSecond = glob.document.getElementById('countdownImageSecond') as HTMLElement;
     this.imageThird = glob.document.getElementById('countdownImageThird') as HTMLElement;
@@ -34,15 +34,19 @@ class Countdown {
 
   update() {
     let close = false;
+    let flag = true;
     if (!close) {
       this.introInterval = setInterval(() => {
-        this.introNumbers.innerHTML = String(this.seconds);
-        if (this.seconds === 3) this.introNumbers.style.display = "inline-flex";
+        this.introCountdown.innerHTML = String(this.seconds);
+        if (this.seconds === 3) this.introCountdown.style.display = "inline-flex";
         if (this.seconds > 0) this.seconds--;
-        else {
-          this.introNumbers.style.display = "none";
-          this.introText.style.display = "none";
+        else if (flag) {
+          this.introCountdown.style.display = "none";
+          this.introCountdown.remove()
+          // this.introText.style.display = "none";
+          this.introText.classList.add("hidden")
           close = true;
+          flag = false;
         };
       }, 1000)
       setIntervalHandler(view, this.introInterval)

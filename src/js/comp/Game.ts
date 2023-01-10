@@ -44,6 +44,8 @@ export const Game = class {
   fpsInterval: number = 0;
   FPS: number = 60; // declare FPS
 
+  introText: HTMLElement;
+
   constructor() {
     // Define canvas properties
     this.canvas = glob.document.getElementById('canvas1') as HTMLCanvasElement;
@@ -139,6 +141,8 @@ export const Game = class {
     this.countdownEl = glob.document.getElementById("countdown") as HTMLElement
 
     this.tip = glob.document.getElementById("tip") as HTMLElement
+
+    this.introText = glob.document.getElementById('introText') as HTMLElement;
   }
 
   init() {
@@ -146,7 +150,7 @@ export const Game = class {
     for (let i = 0; i < Object.keys(this.disks).length; ++i) this.wasAdded[i] = false;
 
     // Draw the intro
-    setTimeoutHandler(view, 
+    setTimeoutHandler(view,
       setTimeout(() => { this.countdown.update() }, 2550)
     );
 
@@ -165,9 +169,21 @@ export const Game = class {
     // Toggle timer visibility
     setTimeoutHandler(view,
       setTimeout(() => {
+        // Top right counter
         if (!this.quit) { this.countdownEl.style.display = "inline-flex" }
         else { this.countdownEl.style.display = "none" };
-      }, 6550)
+
+        // Controls hint
+        this.introText.innerHTML = "Use WSAD to move your character";
+        this.introText.classList.remove("hidden")
+
+        const controlsHint = () => {
+          if (glob.document.location.hash === "#game")
+            this.introText.classList.add("hidden")
+          glob.document.body.removeEventListener('keypress', controlsHint);
+        };
+        glob.document.body.addEventListener('keypress', controlsHint);
+      }, 6550 + 30) // 30ms wait for canvas load
     );
 
     // Timer
@@ -416,7 +432,7 @@ export const Game = class {
 
       // Call endscreen with a 3s delay after picking up all the disks 
       if (this.diskCounter === Object.keys(this.disks).length) {
-        setTimeoutHandler(view, 
+        setTimeoutHandler(view,
           setTimeout(callEndscreen, 30)
         );
         if (!this.countdown.wasCleared) {

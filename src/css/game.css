@@ -252,3 +252,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.hidden {
+  display: none;
+}

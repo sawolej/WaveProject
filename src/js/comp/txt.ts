@@ -392,7 +392,7 @@ strong {
 }
 `;
 
-export const style_6 = `<p>C:\\&gt;<span class="typewriter" data-duration="2000" data-delay="0">UNIWERSYTET ŁÓDZKI</span><span class="cursor"></span>`;
+export const style_6 = `<p>C:\\&gt;<span class="typewriter" data-duration="2000" data-delay="0">UNIWERSYTET ŁODZKI</span><span class="cursor"></span>`;
 export const style_7 = `
 <div class="message">
   <div class="container">SAVE to CMOS and EXIT (Y/N)?</div>
