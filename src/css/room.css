@@ -46,11 +46,11 @@
   height: 36.8%;
   left: 18.98%;
   top: 29.91%;
-  z-index: 0;
+  z-index: 5;
 }
 
 .plant {
-  background: no-repeat url("../assets/pics/plant.png");
+  background: no-repeat url("../assets/pics/plant_2.png");
   background-size: contain;
 }
 
@@ -126,4 +126,17 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   background-image: url(../assets/pics/playPinky.png);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 5s ease-out;
+}
+.out {
+  opacity: 1;
+  transition: opacity 5s ease-out;
 }

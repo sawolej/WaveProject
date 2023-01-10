@@ -7,7 +7,8 @@ import { Player } from './modules/player';
 import { Sun, Palms, Mountains, Ground, Background, SmallPlatform, BigPlatform, Disk } from './modules/Items';
 import { Countdown } from './modules/countdown';
 
-import { GameView } from "../views/GameView"; // import for audio destructing
+import { audioLoader, setTimeoutHandler, setIntervalHandler } from "../../App"
+const view = "Game";
 
 import * as desc from "./txt"; // import text content
 
@@ -42,6 +43,8 @@ export const Game = class {
   elapsed: number = 0;
   fpsInterval: number = 0;
   FPS: number = 60; // declare FPS
+
+  introText: HTMLElement;
 
   constructor() {
     // Define canvas properties
@@ -138,6 +141,8 @@ export const Game = class {
     this.countdownEl = glob.document.getElementById("countdown") as HTMLElement
 
     this.tip = glob.document.getElementById("tip") as HTMLElement
+
+    this.introText = glob.document.getElementById('introText') as HTMLElement;
   }
 
   init() {
@@ -145,29 +150,49 @@ export const Game = class {
     for (let i = 0; i < Object.keys(this.disks).length; ++i) this.wasAdded[i] = false;
 
     // Draw the intro
-    setTimeout(() => { this.countdown.update() }, 2550)
+    setTimeoutHandler(view,
+      setTimeout(() => { this.countdown.update() }, 2550)
+    );
 
     // End the game after 60 seconds
-    setTimeout(() => {
-      this.quit = true;
-      if (!this.countdown.wasCleared) {
-        this.countdown.wasCleared = true;
-        clearInterval(this.countdown.introInterval);
-        this.countdownEl.style.display = "none"
-      }
-    }, 67550) // 67550 = 60 seconds
+    setTimeoutHandler(view,
+      setTimeout(() => {
+        this.quit = true;
+        if (!this.countdown.wasCleared) {
+          this.countdown.wasCleared = true;
+          clearInterval(this.countdown.introInterval);
+          this.countdownEl.style.display = "none"
+        }
+      }, 67550) // 67550 = 60 seconds
+    );
 
     // Toggle timer visibility
-    setTimeout(() => {
-      if (!this.quit) { this.countdownEl.style.display = "inline-flex" }
-      else { this.countdownEl.style.display = "none" };
-    }, 6550)
+    setTimeoutHandler(view,
+      setTimeout(() => {
+        // Top right counter
+        if (!this.quit) { this.countdownEl.style.display = "inline-flex" }
+        else { this.countdownEl.style.display = "none" };
+
+        // Controls hint
+        this.introText.innerHTML = "Use WSAD to move your character";
+        this.introText.classList.remove("hide")
+
+        const controlsHint = () => {
+          if (glob.document.location.hash === "#game")
+            this.introText.classList.add("hide")
+          glob.document.body.removeEventListener('keypress', controlsHint);
+        };
+        glob.document.body.addEventListener('keypress', controlsHint);
+      }, 6550 + 30) // 30ms wait for canvas load
+    );
 
     // Timer
-    setInterval(this.update, 1000);
+    setIntervalHandler(view, setInterval(this.update, 1000));
 
     // Main game loop - refresh every frame
-    setTimeout(() => this.renderer(this.FPS), 6550)
+    setTimeoutHandler(view,
+      setTimeout(() => this.renderer(this.FPS), 6550)
+    );
 
     this.listeners()
   }
@@ -274,19 +299,21 @@ export const Game = class {
   }
 
   update = () => { // arrow function in order to reach class by this.
-    setTimeout(() => {
-      let seconds: string = String(this.time % 60);
-      seconds = Number(seconds) < 10 ? '0' + seconds : seconds;
-      this.countdownEl.innerHTML = seconds;
-      --this.time;
-    }, 4550)
+    setTimeoutHandler(view,
+      setTimeout(() => {
+        let seconds: string = String(this.time % 60);
+        seconds = Number(seconds) < 10 ? '0' + seconds : seconds;
+        this.countdownEl.innerHTML = seconds;
+        --this.time;
+      }, 4550)
+    );
   }
 
   renderer = (fps: number) => {
     this.fpsInterval = 1000 / fps;
     this.then = Date.now();
     this.startTime = this.then;
-    console.log(this.startTime);
+    // console.log(this.startTime);
     this.animate();
   }
 
@@ -295,22 +322,26 @@ export const Game = class {
     if (!this.quit) requestAnimationFrame(this.animate);
     // Clear the main game canvas on game end (else is faster)
     else {
-      console.log("animate(): this.quit = " + this.quit)
+      // console.log("animate(): this.quit = " + this.quit)
       // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.canvas.style.visibility = "hidden"
       this.countdown.drawEnd(this.diskCounter, this.ihaveit);
 
       // Make the animated disks visible after delay
-      setTimeout(() => {
-        for (let i = 0; i < this.diskCounter; i++) {
-          (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
-        }
+      setTimeoutHandler(view,
         setTimeout(() => {
-          const butt = (glob.document.getElementById('endGameButtons') as HTMLElement);
-          (butt.children[0] as HTMLElement).style.display = "inline";
-          (butt.children[1] as HTMLElement).style.display = "inline";
-        }, 400)
-      }, 4550 + this.diskCounter * 250)
+          for (let i = 0; i < this.diskCounter; i++) {
+            (glob.document.getElementById(this.ihaveit[i]) as HTMLElement).style.display = "inline";//visibility = 'visible';
+          }
+          setTimeoutHandler(view,
+            setTimeout(() => {
+              const butt = (glob.document.getElementById('endGameButtons') as HTMLElement);
+              (butt.children[0] as HTMLElement).style.display = "inline";
+              (butt.children[1] as HTMLElement).style.display = "inline";
+            }, 400)
+          );
+        }, 4550 + this.diskCounter * 250)
+      );
     }
 
     // Calc elapsed time since the last loop
@@ -401,7 +432,9 @@ export const Game = class {
 
       // Call endscreen with a 3s delay after picking up all the disks 
       if (this.diskCounter === Object.keys(this.disks).length) {
-        setTimeout(callEndscreen, 30);
+        setTimeoutHandler(view,
+          setTimeout(callEndscreen, 30)
+        );
         if (!this.countdown.wasCleared) {
           this.countdown.wasCleared = true;
           clearInterval(this.countdown.introInterval);

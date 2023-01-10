@@ -2,8 +2,11 @@ import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../
 
 import { audioLoader, isPlaying } from "../../App"
 
+let isFirstOpen = true //maybe there is a better place for this? 
 export class RoomView {
-  constructor() {}
+  animation: any;
+
+  constructor() { }
 
   init() {
     replaceHTML(canvas, this.html)
@@ -27,22 +30,33 @@ export class RoomView {
 
     // click event listener
     glob.document.body.addEventListener('click', this.firstClick)
+
+    // Animation
+    // in the future we can use js to detect loading of site
+    // and extend animation depending on the assetsload time
+    if (isFirstOpen) { 
+      glob.document.body.className = 'hidden';
+      this.animation = setTimeout(() => {
+        glob.document.body.className = 'visible';
+        isFirstOpen = false;
+      }, 1000)
+    }
   }
 
-  loadAudio = () => audioLoader("./src/assets/sounds/tlo.mp3", true, .1)//, 2.137),
+  loadAudio = () => audioLoader("./src/assets/sounds/tlo.mp3", true)
 
   // Music fix: DOMException: play() failed because the user didn't interact with the document first.
   firstClick = () => {
-    if (!isPlaying()) this.loadAudio() 
+    if (!isPlaying()) this.loadAudio()
 
     // removing of a listener like below is propably ok as long as
-    // we dont use any other document.body listeners in this view,
+    // we dont use any other glob.document.body listeners in this view,
     // otherwise, we can try to add this to id or class element instead
     glob.document.body.removeEventListener('click', this.firstClick)
   }
 
   destruct = () => {
-    // clearTimeout(this.countdownTrigger)
+    clearTimeout(this.animation) // destruct animation event in case of page back etc.
   }
 
   html = `

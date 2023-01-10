@@ -1,3 +1,5 @@
+import { glob } from "../../helpers";
+
 import { Player } from "./player";
 
 export class Sun {
@@ -12,7 +14,7 @@ export class Sun {
   constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('sunImage') as HTMLImageElement;
+    this.image = glob.document.getElementById('sunImage') as HTMLImageElement;
     this.width = 655;
     this.height = 655;
     this.x = 372.5;
@@ -36,7 +38,7 @@ export class Palms {
   constructor(gameWidth: number, gameHeight: number, imageName: string, imageWidth: number, imageHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById(imageName) as HTMLImageElement;
+    this.image = glob.document.getElementById(imageName) as HTMLImageElement;
     this.width = imageWidth;
     this.height = imageHeight;
     this.x = x;
@@ -60,7 +62,7 @@ export class Mountains {
   constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('mountainsImage') as HTMLImageElement;
+    this.image = glob.document.getElementById('mountainsImage') as HTMLImageElement;
     this.width = 5760;
     this.height = 476;
     this.x = x;
@@ -84,7 +86,7 @@ export class Ground {
   constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('groundImage') as HTMLImageElement;
+    this.image = glob.document.getElementById('groundImage') as HTMLImageElement;
     this.width = 5760;
     this.height = 105;
     this.x = x;
@@ -108,7 +110,7 @@ export class Background {
   constructor(gameWidth: number, gameHeight: number, x: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('backgroundImage') as HTMLImageElement;
+    this.image = glob.document.getElementById('backgroundImage') as HTMLImageElement;
     this.width = 5760;
     this.height = 1080;
     this.x = x;
@@ -132,7 +134,7 @@ export class SmallPlatform {
   constructor(gameWidth: number, gameHeight: number, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('smallPlatformImage') as HTMLImageElement;
+    this.image = glob.document.getElementById('smallPlatformImage') as HTMLImageElement;
     this.width = 108;
     this.height = 42;
     this.x = x;
@@ -161,7 +163,7 @@ export class BigPlatform {
   constructor(gameWidth: number, gameHeight: number, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById('bigPlatformImage') as HTMLImageElement;
+    this.image = glob.document.getElementById('bigPlatformImage') as HTMLImageElement;
     this.width = 282;
     this.height = 60;
     this.x = x;
@@ -195,8 +197,8 @@ export class Disk {
   constructor(gameWidth: number, gameHeight: number, imageName: string, x: number, y: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.image = document.getElementById(imageName) as HTMLImageElement;
-    this.glowImage = document.getElementById('glowImage') as HTMLImageElement;
+    this.image = glob.document.getElementById(imageName) as HTMLImageElement;
+    this.glowImage = glob.document.getElementById('glowImage') as HTMLImageElement;
     this.glowWidth = 122;
     this.glowHeight = 122;
     this.width = 24;

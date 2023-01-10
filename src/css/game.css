@@ -6,6 +6,7 @@
 
 #game-wrapper {
   position: relative;
+  /* position: absolute; */
   margin-bottom: 0px;
 }
 
@@ -55,6 +56,7 @@
 }
 
 #endgame-text {
+  position: absolute;
   width: 100%;
 }
 
@@ -132,11 +134,14 @@
 .modal {
   display: none;
   /* Hidden by default */
-  position: fixed;
+  /* position: fixed; */
+  position: absolute;
+  font-size: min(2vw, 3.33vh);
   /* Stay in place */
   z-index: 1;
   /* Sit on top */
-  left: 7.5px;
+  /* left: 7.5px; */
+  left: 0;
   top: 0;
   width: 100%;
   /* Full width */
@@ -153,20 +158,23 @@
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 10% auto;
   /* 15% from the top and centered */
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 3%;
   border: 1px solid #888;
   width: 80%;
   /* Could be more or less, depending on screen size */
-  height: 300px;
+  /* height: 300px; */
+  height: 60%;
 }
 
 /* The Close Button */
 .close {
   color: #777;
   float: right;
-  font-size: 28px;
+  /* font-size: 28px; */
+  font-size: min(2.16vw, 3.6vh);
   font-weight: bold;
 }
 
@@ -216,8 +224,8 @@
   display: none;
   margin: 0 min(2.1vw, 3.5vh);
   cursor: pointer;
-  -webkit-transition: all .05s ease-out .15s;
-  transition: all .05s ease-out .15s;
+  /* -webkit-transition: all .05s ease-out .15s; */
+  /* transition: all .05s ease-out .15s; */
 }
 
 .endGameButtons div:hover {
@@ -243,4 +251,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.hide {
+  visibility: hidden;
 }

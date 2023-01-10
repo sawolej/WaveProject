@@ -1,127 +1,196 @@
+import { doc } from "prettier";
 import { glob, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
 export const Desktop = class {
-  constructor() {}
+  apps: HTMLElement;
+  osWindow: HTMLButtonElement;
+  brandWindow: HTMLElement;
+  mainApp: HTMLElement;
+  maximise: HTMLButtonElement;
+  shorter: HTMLButtonElement;
+  cross: HTMLButtonElement;
+  click: HTMLAudioElement;
+  ele: HTMLElement;
+  x: number;
+  y: number;
 
-  init() {
-    const apps = document.querySelector("#os_apps") as HTMLElement
-    const osWindow = document.querySelector(".app_window") as HTMLButtonElement
-    const brandWindow = document.querySelector(".brand") as HTMLElement
-    const mainApp = document.querySelector("#app-main") as HTMLElement
-    const maximise = document.querySelector("#maximise") as HTMLButtonElement
-    const shorter = document.querySelector("#shorter") as HTMLButtonElement
-    const cross = document.querySelector("#cross") as HTMLButtonElement
+  constructor() {
+    this.apps = glob.document.getElementById("os_apps") as HTMLElement
+    this.osWindow = glob.document.getElementsByClassName("app_window")[0] as HTMLButtonElement
+    this.brandWindow = glob.document.getElementsByClassName("brand")[0] as HTMLElement
+    this.mainApp = glob.document.getElementById("app-main") as HTMLElement
+    this.maximise = glob.document.getElementById("maximise") as HTMLButtonElement
+    this.shorter = glob.document.getElementById("shorter") as HTMLButtonElement
+    this.cross = glob.document.getElementById("cross") as HTMLButtonElement
+
+    // Initialise elmnt as any element, since its changed on click anyway
+    this.ele = glob.document.getElementById("window-header") as HTMLElement
+    this.x = 0;
+    this.y = 0;
 
     /* Sound effects */
-    const click = new Audio("./src/assets/sounds/click.mp3")
+    this.click = new Audio("./src/assets/sounds/click.mp3")
+  }
 
+  init() {
     /* Reseting window */
-    toggleVisibility(osWindow)
+    this.toggleVisibility(this.osWindow)
 
     /* Creating apps */
-    createApp("File manager", './src/assets/pics/fileIcon.png', "file-manager")
-    createApp("Recycle bin", "./src/assets/pics/binIcon.png", "recycle-bin")
-    createApp("Settings", "./src/assets/pics/settingsIcon.png", "settings")
-    createApp("System Info", "./src/assets/pics/systemIcon.png", "system-info")
-    createApp("Whats that?", "./src/assets/pics/gameIcon.png", "game")
+    this.createApp("File manager", './src/assets/pics/fileIcon.png', "file-manager")
+    this.createApp("Recycle bin", "./src/assets/pics/binIcon.png", "recycle-bin")
+    this.createApp("Settings", "./src/assets/pics/settingsIcon.png", "settings")
+    this.createApp("System Info", "./src/assets/pics/systemIcon.png", "system-info")
+    this.createApp("Whats that?", "./src/assets/pics/gameIcon.png", "game");
 
-    function createApp(name: any, image: any, id: any) {
+    // Return to room view on clicking shutdown
+    (glob.document.getElementById('shutdown') as HTMLElement).onclick = () => glob.document.location.hash = "#room";
 
-      let app = document.createElement("div")
-      let img = document.createElement("img")
-      let p = document.createElement("p")
+    // Make the window draggable
+    this.ele.addEventListener('mousedown', this.mouseDownHandler);
+  }
 
-      app.classList.add("app")
-      app.id = id
-      img.src = image
-      p.innerText = name
+  createApp(name: any, image: any, id: any) {
 
-      img.setAttribute("alt", name)
-      app.appendChild(img)
-      app.appendChild(p)
-      apps.appendChild(app)
+    const app = glob.document.createElement("div")
+    const img = glob.document.createElement("img")
+    const p = glob.document.createElement("p")
 
-      app.oncontextmenu = (e) => {
-        click.play()
-      }
+    app.classList.add("app")
+    app.id = id
+    img.src = image
+    p.innerText = name
 
-      app.onclick = () => {
-        if (id === "game") glob.document.location.hash = "#game"
-        else openWindow(id)
-      }
+    img.setAttribute("alt", name)
+    app.appendChild(img)
+    app.appendChild(p)
+    this.apps.appendChild(app)
+
+    app.oncontextmenu = (e) => {
+      this.click.play()
     }
 
-    function toggleVisibility(tag: any) {
-      if (tag.style.display === "none") tag.style.display = "inline-block"
-      else tag.style.display = "none"
+    app.onclick = () => {
+      if (id === "game") glob.document.location.hash = "#game"
+      else this.openWindow(id)
+    }
+  }
+
+  toggleVisibility(tag: any) {
+    if (tag.style.display === "none") tag.style.display = "inline-block"
+    else tag.style.display = "none"
+  }
+
+  openWindow(id: any) {
+    this.initWindow()
+    this.click.play()
+    this.brandWindow.innerHTML = ""
+    this.mainApp.innerHTML = ""
+
+    const main = glob.document.getElementById(id) as HTMLImageElement
+    const img = glob.document.createElement("img")
+    const p = glob.document.createElement("p")
+
+    p.innerText = (main.childNodes[1] as HTMLElement).innerText
+    img.src = (main.children[0] as HTMLImageElement).src
+    img.setAttribute("alt", (main.children[0] as HTMLImageElement).getAttribute("alt") as string)
+    this.brandWindow.appendChild(img)
+    this.brandWindow.appendChild(p)
+
+    this.toggleVisibility(this.osWindow)
+  }
+
+  initWindow() {
+    this.toggleVisibility(this.shorter)
+
+    this.maximise.onclick = () => {
+      this.click.play()
+      this.maximiseWindow()
     }
 
-    function openWindow(id: any) {
-      initWindow()
-      click.play()
-      brandWindow.innerHTML = ""
-      mainApp.innerHTML = ""
-
-      let main = document.getElementById(id) as HTMLImageElement
-      let tmp = main.getAttribute("alt") as string
-      let img = document.createElement("img")
-      let p = document.createElement("p")
-
-      p.innerText = (main.childNodes[1] as HTMLElement).innerText
-      img.src = main.src
-      img.setAttribute("alt", tmp)
-      brandWindow.appendChild(img)
-      brandWindow.appendChild(p)
-
-      toggleVisibility(osWindow)
+    this.shorter.onclick = () => {
+      this.click.play()
+      this.shortenWindow()
     }
 
-    function initWindow() {
-      toggleVisibility(shorter)
-      
-      maximise.onclick = () => {
-        click.play()
-        maximiseWindow()
-      }
-      
-      shorter.onclick = () => {
-        click.play()
-        shortenWindow()
-      }
+    this.cross.onclick = () => {
+      this.click.play()
+      this.toggleVisibility(this.osWindow)
+    }
+  }
 
-      cross.onclick = () => {
-        click.play()
-        toggleVisibility(osWindow)
-      }
+  maximiseWindow() {
+    this.toggleVisibility(this.shorter)
+    this.toggleVisibility(this.maximise)
+
+    this.osWindow.style.top = "6%"
+    this.osWindow.style.left = "0px"
+    this.osWindow.style.width = "100%"
+    this.osWindow.style.height = "94%"
+  }
+
+  shortenWindow() {
+    this.toggleVisibility(this.maximise)
+    this.toggleVisibility(this.shorter)
+
+    this.osWindow.style.width = "60%"
+    this.osWindow.style.height = "60%"
+  }
+
+  // Handle the mousedown event that's triggered when user drags the element
+  mouseDownHandler = (e: any) => {
+    // Get the current mouse position
+    this.x = e.clientX;
+    this.y = e.clientY;
+
+    // Attach the listeners to `document`
+    document.addEventListener('mousemove', this.mouseMoveHandler);
+    document.addEventListener('mouseup', this.mouseUpHandler);
+  };
+
+  mouseMoveHandler = (e: any) => {
+    // How far the mouse has been moved
+    const dx = e.clientX - this.x;
+    const dy = e.clientY - this.y;
+
+    if (this.ele !== null) {
+      this.ele = global.document.getElementById("window")!;
     }
 
-    function maximiseWindow() {
-      toggleVisibility(shorter)
-      toggleVisibility(maximise)
-
-      osWindow.style.top = "0px"
-      osWindow.style.left = "0px"
-      osWindow.style.width = "100%"
-      osWindow.style.height = "100%"
+    // Set the position of element if its contained on the screen
+    if (this.canBeDragged(e)) {
+      this.ele.style.top = `${this.ele.offsetTop + dy}px`;
+      this.ele.style.left = `${this.ele.offsetLeft + dx}px`;
     }
 
-    function shortenWindow() {
-      toggleVisibility(maximise)
-      toggleVisibility(shorter)
+    // Reassign the position of mouse
+    this.x = e.clientX;
+    this.y = e.clientY;
+  };
 
-      osWindow.style.width = "60%"
-      osWindow.style.height = "60%"
-    }
+  mouseUpHandler = () => {
+    // Remove the handlers of `mousemove` and `mouseup`
+    document.removeEventListener('mousemove', this.mouseMoveHandler);
+    document.removeEventListener('mouseup', this.mouseUpHandler);
+  }
 
-    osWindow.ondragend = (e) => {
-      let go_top = e.pageY
-      let go_left = e.pageX
+  canBeDragged = (e: any) => {
+    let widthMax = glob.document.getElementById("os_apps")!.clientWidth;
+    let heightMax = glob.document.getElementById("os_apps")!.clientHeight;
+    let deltaLeft = (window.innerWidth - widthMax) / 2;
+    let pxLeft = this.ele.style.left;
+    let pxTop = this.ele.style.top;
+    let width = this.ele.clientWidth;
+    let height = this.ele.clientHeight;
+    let pxToLeft = parseInt(pxLeft)
+    let pxToTop = parseInt(pxTop)
+    
+    // Horizontal bound
+    if ((pxToLeft <= 0 || pxToLeft + width >= widthMax) && (e.clientX <= deltaLeft || e.clientX >= widthMax)) return false;
 
-      if (go_top < 0) go_top = Number(e)
-      if (go_left < 0) go_left = 0
-      
-      osWindow.style.top = go_top + "px"
-      osWindow.style.left = go_left + "px"
-    }
+    // Vertical element bound
+    if ((pxToTop <= 0 || pxToTop + height >= heightMax) && (e.clientY <= 0 || e.clientY >= heightMax)) return false;
+
+    return true;
   }
 }

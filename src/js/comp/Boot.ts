@@ -1,6 +1,7 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { audioLoader } from "../../App"
+import { audioLoader, setTimeoutHandler, setIntervalHandler } from "../../App"
+const view = "Boot";
 
 import * as desc from "./txt";
 
@@ -36,19 +37,23 @@ export class Boot {
 
       setVisible(className: any, duration = 0) {
         return new Promise(resolve => {
-          setTimeout(() => {
-            resolve(true)
-          }, duration);
+          setTimeoutHandler(view,
+            setTimeout(() => {
+              resolve(true)
+            }, duration)
+          );
         });
       }
 
       setHTML(className: any, HTML: any, duration = 0) {
         return new Promise(resolve => {
-          setTimeout(() => {
-            const div = (this.shadowRoot as ShadowRoot).querySelector(className);
-            div.innerHTML = HTML;
-            resolve(true)
-          }, duration);
+          setTimeoutHandler(view,
+            setTimeout(() => {
+              const div = (this.shadowRoot as ShadowRoot).querySelector(className);
+              div.innerHTML = HTML;
+              resolve(true)
+            }, duration)
+          );
         });
       }
 
@@ -93,8 +98,8 @@ export class Boot {
       }
 
       enterBIOS() {
-        const monitor = document.querySelector(".monitor") as HTMLElement;
-        const bios = document.createElement("award-bios");
+        const monitor = glob.document.querySelector(".monitor") as HTMLElement;
+        const bios = glob.document.createElement("award-bios");
         monitor.appendChild(bios);
         this.remove();
       }
@@ -127,15 +132,21 @@ export class Boot {
           const max = Number(memory.textContent);
           memory.textContent = "";
           for (let i = 0; i < max; i = i + BLOCK) {
-            setTimeout(() => {
-              memory.textContent = `${i}K`;
-            }, i / BLOCK);
+            setTimeoutHandler(view,
+              setTimeout(() => {
+                memory.textContent = `${i}K`;
+              }, i / BLOCK)
+            );
           }
-          setTimeout(() => this.disableEPA(), 5000);
-          setTimeout(() => {
-            memory.textContent += " OK";
-            resolve(true);
-          }, max / BLOCK);
+          setTimeoutHandler(view,
+            setTimeout(() => this.disableEPA(), 5000)
+          );
+          setTimeoutHandler(view,
+            setTimeout(() => {
+              memory.textContent += " OK";
+              resolve(true);
+            }, max / BLOCK)
+          );
         });
       }
 
@@ -150,12 +161,12 @@ export class Boot {
 
       render() {
         (this.shadowRoot as ShadowRoot).innerHTML = `
-    <style>${AwardBoot.styles}</style>`+desc.style_3;
+    <style>${AwardBoot.styles}</style>` + desc.style_3;
       }
     }
 
     try { customElements.define("award-boot", AwardBoot) }
-    catch (error) { console.log(error) }
+    catch (error) { /*console.log(error)*/ }
 
 
     //AWARD-BIOS/////////////////////////////////////////////////////////////////////////////////////
@@ -171,16 +182,22 @@ export class Boot {
 
       connectedCallback() {
         this.render();
-        setTimeout(() => this.showExit(), 4000);
+        setTimeoutHandler(view,
+          setTimeout(() => this.showExit(), 4000)
+        );
       }
 
       showExit() {
         ((this.shadowRoot as ShadowRoot).querySelector(".screen") as HTMLElement).innerHTML += desc.style_7;
-        setTimeout(() => this.exitBIOS(), 2000);
-        setTimeout(() => this.remove(), 4000);
-        setTimeout(() => glob.document.location.hash = "#desktop", 4000);
-
-
+        setTimeoutHandler(view,
+          setTimeout(() => this.exitBIOS(), 2000)
+        );
+        setTimeoutHandler(view,
+          setTimeout(() => this.remove(), 4000)
+        );
+        setTimeoutHandler(view,
+          setTimeout(() => glob.document.location.hash = "#desktop", 4000)
+        );
       }
 
       exitBIOS() {
@@ -191,19 +208,21 @@ export class Boot {
 
       render() {
         (this.shadowRoot as ShadowRoot).innerHTML = `
-  <style>${AwardBios.styles}</style>`+desc.style_4;
+  <style>${AwardBios.styles}</style>` + desc.style_4;
       }
     }
     // click to skip
-    const redirect = () => { 
-      glob.document.location.hash = "#desktop"; 
+    const redirect = () => {
+      if (glob.document.location.hash === "#boot")
+        glob.document.location.hash = "#desktop";
+
       glob.document.body.removeEventListener('click', redirect);
-      glob.document.body.removeEventListener('keypress', redirect);  
+      glob.document.body.removeEventListener('keypress', redirect);
     };
     glob.document.body.addEventListener('click', redirect);
     glob.document.body.addEventListener('keypress', redirect);
 
     try { customElements.define("award-bios", AwardBios) }
-    catch (error) { console.log(error) }
+    catch (error) { /*console.log(error)*/ }
   }
 }

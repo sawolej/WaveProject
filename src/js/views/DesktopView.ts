@@ -28,18 +28,17 @@ export class DesktopView {
         <div class="app"></div>
         <div class="taskbar">
           <div class="uni-logo"></div>
-          <div class="menu-shutdown">Shutdown</div>
-          <div class="menu-file">File</div>
-          <div class="menu-edit">Edit</div>
+          <div class="menu-shutdown on-click-effect" id="shutdown">Shutdown</div>
+          <div class="menu-info on-click-effect">Info</div>
         </div>
       </div>
 
       <!-- App window -->
-      <div class="app_window" draggable="true">
+      <div class="app_window" id="window">
       
         <!--br-os-window -->
         <!-- Top window -->
-        <div class="window_bar">
+        <div class="window_bar" id="window-header">
           <!--window-bar-->
           <!-- Icon -->
           <div class="brand"></div>

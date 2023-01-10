@@ -1,5 +1,7 @@
+import { glob } from "../../helpers";
+
 import { SmallPlatform, BigPlatform } from './Items';
-import {StandingLeft, StandingRight, RunningLeft, RunningRight, JumpingLeft, JumpingRight} from './state';
+import { StandingLeft, StandingRight, RunningLeft, RunningRight, JumpingLeft, JumpingRight } from './state';
 
 export class Player {
   gameWidth: any;
@@ -18,18 +20,18 @@ export class Player {
   platformX: any;
   platformY: any;
   platformWidth: any;
-  
+
   constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.states = [new StandingLeft(this), new StandingRight(this), new RunningLeft(this), 
-      new RunningRight(this), new JumpingLeft(this), new JumpingRight(this)];
+    this.states = [new StandingLeft(this), new StandingRight(this), new RunningLeft(this),
+    new RunningRight(this), new JumpingLeft(this), new JumpingRight(this)];
     this.currentState = this.states[0];
     this.width = 24;
     this.height = 45;
     this.x = 400;
     this.y = this.gameHeight - this.height - 105;
-    this.image = document.getElementById('playerImage') as HTMLImageElement;
+    this.image = glob.document.getElementById('playerImage') as HTMLImageElement;
     this.speed = 0;
     this.maxSpeed = 10;
     this.vy = 0;
@@ -44,7 +46,7 @@ export class Player {
     context.fillStyle = 'transparent';
     context.fillRect(this.x, this.y, this.width, this.height);
     context.drawImage(this.image as CanvasImageSource, this.x, this.y);
-  } 
+  }
 
   update(input: { [key: string]: { pressed: boolean } }) {
     this.currentState.handleInput(input);
@@ -58,10 +60,10 @@ export class Player {
     this.y += this.vy;
     if (!this.onGround()) this.vy += this.weight;
     else this.vy = 0;
-    
+
     if (this.y > this.gameHeight - this.height - 105) this.y = this.gameHeight - this.height - 105;
   }
-  
+
   setState(state: number) {
     this.currentState = this.states[state];
     this.currentState.enter();
@@ -74,8 +76,8 @@ export class Player {
   }
 
   onGround() {
-    if (this.y >= this.gameHeight - this.height - 105 || (this.x + this.width >= this.platformX && 
-      this.x <= this.platformX + this.platformWidth && this.y + this.height <= this.platformY && 
+    if (this.y >= this.gameHeight - this.height - 105 || (this.x + this.width >= this.platformX &&
+      this.x <= this.platformX + this.platformWidth && this.y + this.height <= this.platformY &&
       this.y + this.height + this.vy >= this.platformY)) return true;
     else return false;
   }
