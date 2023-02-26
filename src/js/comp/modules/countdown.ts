@@ -86,12 +86,14 @@ class Countdown {
   drawEnd(discI: number, arr: any[]) {
     let end = 0;
     let count = 0;
+   // let final;
+    //(discI==12) ? final = "YOU WIN" : "GAME OVER";
     // setInterval(() => { if (count <= discI) { console.log(count++) } }, 1000)
 
     const container = glob.document.querySelector(".text") as HTMLElement;
 
     const textLines = [
-      { speed: 10, string: "GAME OVER", classes: ["red"] },
+      { speed: 10, string:  (discI==13) ? "YOU WIN!" : "GAME OVER", classes: ["red"] },
       { speed: 500, string: " ", pause: true },
       { speed: 0, string: "<br>" },
       { speed: 80, string: "floppy disks collected:" },
