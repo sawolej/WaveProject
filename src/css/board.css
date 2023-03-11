@@ -157,6 +157,20 @@
   height: 10%;
   visibility: hidden;
 }
+#programs_1 {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  text-align: center;
+  visibility: hidden;
+}
+#programs_2 {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  text-align: center;
+  visibility: hidden;
+}
 
 #UL1 {
   position: absolute;
@@ -181,6 +195,85 @@
 }
 
 #UL2:hover {
+  background-color: #d3b9ea;
+  color: black;
+  cursor: pointer;
+}
+#P1_1 {
+  position: absolute;
+  top: 257%;
+  left: 700%;
+  font-size: min(1.6vw, 2.6vh);
+  color: white;
+ 
+}
+
+#P1_1:hover {
+  background-color: #d3b9ea;
+  color: black;
+  cursor: pointer;
+}
+#P1_2 {
+  position: absolute;
+  top: 160%;
+  left: 792%;
+  font-size: min(1.6vw, 2.6vh);
+  color: white;
+}
+
+#P1_2:hover {
+  background-color: #d3b9ea;
+  color: black;
+  cursor: pointer;
+}
+#P1_3 {
+  position: absolute;
+  top: 142%;
+  left: 630%;
+  font-size: min(1.6vw, 2.6vh);
+  color: white;
+}
+
+#P1_3:hover {
+  background-color: #d3b9ea;
+  color: black;
+  cursor: pointer;
+}
+#P2_1 {
+  position: absolute;
+  top: 488%;
+  left: 552%;
+  font-size: min(2.1vw, 3.5vh);
+  color: white;
+}
+
+#P2_1:hover {
+  background-color: #d3b9ea;
+  color: black;
+  cursor: pointer;
+}
+#P2_2 {
+  position: absolute;
+  top: 390%;
+  left: 513%;
+  font-size: min(2.1vw, 3.5vh);
+  color: white;
+}
+
+#P2_2:hover {
+  background-color: #d3b9ea;
+  color: black;
+  cursor: pointer;
+}
+#P2_3 {
+  position: absolute;
+  top: 628%;
+  left: 609%;
+  font-size: min(2.1vw, 3.5vh);
+  color: white;
+}
+
+#P2_3:hover {
   background-color: #d3b9ea;
   color: black;
   cursor: pointer;
