@@ -6,6 +6,7 @@ const view = "Game";
 class Countdown {
   x: number;
   y: number;
+  score: number;
   seconds: number;
   introInterval: any;
   wasCleared: boolean;
@@ -21,6 +22,7 @@ class Countdown {
     this.x = 0;
     this.y = 0;
     this.seconds = 3;
+    this.score = 0;
     this.introInterval;
     this.wasCleared = false;
     this.countdownEl = glob.document.getElementById('countdown') as HTMLElement;
@@ -83,13 +85,15 @@ class Countdown {
     }
   }
 
-  drawEnd(discI: number, arr: any[]) {
+  drawEnd(discI: number, arr: any[], time: any) {
     let end = 0;
     let count = 0;
    // let final;
     //(discI==12) ? final = "YOU WIN" : "GAME OVER";
     // setInterval(() => { if (count <= discI) { console.log(count++) } }, 1000)
-
+    let sc= (time%60 -1)*10 + discI*100;
+    console.log((time%60 -1));
+    console.log(discI);
     const container = glob.document.querySelector(".text") as HTMLElement;
 
     const textLines = [
@@ -97,14 +101,18 @@ class Countdown {
       { speed: 500, string: " ", pause: true },
       { speed: 0, string: "<br>" },
       { speed: 80, string: "floppy disks collected:" },
-      { speed: 0, string: "<br>" },
+      { speed: 0, string: "<br>" },      
       { speed: 250, string: this.showDisks(discI, arr), classes: ["huge"] },
-      { speed: 250, string: `${discI}`, classes: ["gold"] }
+      { speed: 250, string: `${discI}`, classes: ["gold"] },
+      { speed: 0, string: "<br>" },
+      { speed: 10, string:"Your score: " + sc }
+      
     ];
 
     const characters: { span: HTMLSpanElement; isSpace: boolean; delayAfter: number; classes: string[]; }[] = [];
 
     let skip = false
+    let skipped = false
     textLines.forEach((line, index) => {
       // new line
       if (line.string === "<br>") {
@@ -116,8 +124,9 @@ class Countdown {
           const span = glob.document.createElement("span");
           span.textContent = character;
 
-          if (Number(character) === 9) skip = true // set flag for 2 digit numbers
-
+          if (Number(character) === (discI-10)) skip = false
+          if (Number(character) === 9 && !skipped) {skip = true; skipped = true;} // set flag for 2 digit numbers; 
+          
           // conditions to print 2 digit numbers as one
           if (skip === true
             && (index === 5 && (id === 20 || id === 23 || id === 26))) {
@@ -132,7 +141,7 @@ class Countdown {
               delayAfter: line.speed,
               classes: line.classes || []
             });
-          } else if (skip === false || character === " " || character === "9") { // XD
+          } else if (skip === false || character === " " || character === "9") { // XD 
             container.appendChild(span);
             characters.push({
               span: span,

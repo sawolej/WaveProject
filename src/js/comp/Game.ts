@@ -304,7 +304,7 @@ export const Game = class {
         let seconds: string = String(this.time % 60);
         seconds = Number(seconds) < 10 ? '0' + seconds : seconds;
         this.countdownEl.innerHTML = seconds;
-        --this.time;
+        if((this.time % 60)!=1)--this.time;
       }, 4550)
     );
   }
@@ -325,7 +325,7 @@ export const Game = class {
       // console.log("animate(): this.quit = " + this.quit)
       // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.canvas.style.visibility = "hidden"
-      this.countdown.drawEnd(this.diskCounter, this.ihaveit);
+      this.countdown.drawEnd(this.diskCounter, this.ihaveit, this.time);
 
       // Make the animated disks visible after delay
       setTimeoutHandler(view,
@@ -433,7 +433,7 @@ export const Game = class {
       // Call endscreen with a 3s delay after picking up all the disks 
       if (this.diskCounter === Object.keys(this.disks).length) {
         setTimeoutHandler(view,
-          setTimeout(callEndscreen, 30)
+          setTimeout(callEndscreen, 30)          
         );
         if (!this.countdown.wasCleared) {
           this.countdown.wasCleared = true;

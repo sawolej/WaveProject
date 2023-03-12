@@ -195,7 +195,7 @@
 
 .endDisks {
   position: absolute;
-  top: min(36vw, 60vh);
+  top: min(36vw, 63vh);
   left: 0;
   width: 100%;
   margin: 0 auto 0 auto;

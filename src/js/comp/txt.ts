@@ -242,7 +242,7 @@ export const style_2 = `
   </div>
     <p>CLICK ANY KEY TO SKIP</p>
     <p>
-      Intel(R) Pentium(R) PRO-MMX CPU at 133Mhz<br>
+    Gra stworzona przez studentow Uniwersytetu Lodzkiego<br>
       Memory Test:  <span class="memory">${2 ** 16}</span>
     </p>
 `;
@@ -270,7 +270,7 @@ export const style_3 = `
 </div>`;
 
 export const style_4 = `<div class="blue screen">
-<div class="title center">CMOS Setup Utility - Copyright (C) 1984-2001 Award Software</div>
+<div class="title center">Gra stworzona przez studentow Uniwersytetu Łódzkiego</div>
 <div class="setup">
   <div class="main-options">
     <div class="options options-1">
