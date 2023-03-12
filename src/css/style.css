@@ -35,3 +35,20 @@ body {
   user-select: none;
   /* Standard */
 }
+
+.soundMuteSwitch {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: .3rem;
+  height: 2rem;
+  width: 2rem;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
