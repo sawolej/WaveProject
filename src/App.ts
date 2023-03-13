@@ -35,7 +35,7 @@ const aspectRatio: { width: number, height: number } = {
  *  @param {number} playbackRate
  * @var app.prototype.audio
  */
-export const audioLoader = (filename: string, loop: boolean = true, volume: number = 0.1, playbackRate: number = 1) => {
+export const audioLoader = (filename: string, loop: boolean = true, volume: number = 0.1, playbackRate: number = 1): void => {
   console.log("currently playing: " + filename)
   app.prototype.audio = new Audio(filename)
 
@@ -45,11 +45,20 @@ export const audioLoader = (filename: string, loop: boolean = true, volume: numb
   // app.prototype.audio.playbackRate = 2.137; // SUPER SONIC SPEED
   // app.prototype.audio.volume = 0.0 // FOR DEVELOPING ;~~))) // now as default @param
 
+  playAudio()
+}
+
+/**
+ * Audio App.prototype.audio play and pause
+ * @public
+ */
+export const playAudio = (soundState: boolean = Storage.getSoundState()): void => {
   // sound mute functionality
-  const soundState = Storage.getSoundState()
   if (!soundState) app.prototype.audio.pause()
   // play sound
   else app.prototype.audio.play()
+  const soundMuteSwitchButton = glob.document.getElementById('soundMuteSwitch') as HTMLElement
+  updateSoundStateIcon(soundMuteSwitchButton, soundState) 
 }
 
 /**
@@ -72,13 +81,10 @@ const updateSoundStateIcon = (soundMuteSwitchButton: HTMLElement, soundState = S
  * Audio
  * @private
  */
-const soundMuteSwitch = (soundMuteSwitchButton: HTMLElement): void => {
+const soundMuteSwitch = (): void => {
   const soundState: boolean = !Storage.getSoundState()
   Storage.update(soundState)
-
-  if (!soundState) app.prototype.audio.pause()
-  // play sound
-  else if (isPlaying()) app.prototype.audio.play()
+  playAudio(soundState)
 }
 
 /**
@@ -86,10 +92,10 @@ const soundMuteSwitch = (soundMuteSwitchButton: HTMLElement): void => {
  * - Stores events for later destruction
  * @public
  *  @param {string} component
- *  @param {number} event
+ *  @param {any} event
  * @var app.prototype.comp
  */
-export const setTimeoutHandler = (component: string, event: number) => {
+export const setTimeoutHandler = (component: string, event: any): void => {
   // console.log("currently waiting for: " + event)
   app.prototype.comp[component].timeouts.push(event)
 }
@@ -99,10 +105,10 @@ export const setTimeoutHandler = (component: string, event: number) => {
  * - Stores events for later destruction
  * @public
  *  @param {string} component
- *  @param {number | NodeJS.Timer} event
+ *  @param {any} event
  * @var app.prototype.comp
  */
-export const setIntervalHandler = (component: string, event: number) => {
+export const setIntervalHandler = (component: string, event: any): void => {
   // console.log("currently waiting for: " + event)
   app.prototype.comp[component].intervals.push(event)
 }
@@ -143,11 +149,11 @@ const app = class App {
     glob.window.addEventListener("resize", () => this.setAspect(), true);
 
     const soundMuteSwitchButton = glob.document.getElementById('soundMuteSwitch') as HTMLElement
-    soundMuteSwitchButton.onclick = () => { 
-      soundMuteSwitch(); 
-      updateSoundStateIcon(soundMuteSwitchButton) 
-    }
-    updateSoundStateIcon(soundMuteSwitchButton) 
+    soundMuteSwitchButton.onclick = () => soundMuteSwitch()
+    // for room view music not playing at the begining: firstClick()
+    setTimeout(() => {
+      if (!isPlaying()) updateSoundStateIcon(soundMuteSwitchButton, false)
+    }, 1200)
   }
 
   /**

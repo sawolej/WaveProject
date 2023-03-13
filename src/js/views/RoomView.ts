@@ -1,6 +1,6 @@
 import { glob, canvas, delegate, getURLHash, insertHTML, replaceHTML } from "../helpers";
 
-import { audioLoader, isPlaying } from "../../App"
+import { audioLoader, playAudio, isPlaying, setTimeoutHandler } from "../../App"
 
 let isFirstOpen = true //maybe there is a better place for this? 
 export class RoomView {
@@ -47,7 +47,7 @@ export class RoomView {
 
   // Music fix: DOMException: play() failed because the user didn't interact with the document first.
   firstClick = () => {
-    if (!isPlaying()) this.loadAudio()
+    if (!isPlaying()) playAudio()
 
     // removing of a listener like below is propably ok as long as
     // we dont use any other glob.document.body listeners in this view,
