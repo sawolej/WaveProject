@@ -11,7 +11,7 @@ class Countdown {
   introInterval: any;
   wasCleared: boolean;
   countdownEl: HTMLElement;
-  introText: HTMLElement;
+  // introText: HTMLElement;
   introCountdown: HTMLElement;
   imageFirst: HTMLElement;
   imageSecond: HTMLElement;
@@ -26,7 +26,7 @@ class Countdown {
     this.introInterval;
     this.wasCleared = false;
     this.countdownEl = glob.document.getElementById('countdown') as HTMLElement;
-    this.introText = glob.document.getElementById('introText') as HTMLElement;
+    // this.introText = glob.document.getElementById('introText') as HTMLElement;
     this.introCountdown = glob.document.getElementById('introCountdown') as HTMLElement;
     this.imageFirst = glob.document.getElementById('countdownImageFirst') as HTMLElement;
     this.imageSecond = glob.document.getElementById('countdownImageSecond') as HTMLElement;
@@ -45,8 +45,7 @@ class Countdown {
         else if (flag) {
           this.introCountdown.style.display = "none";
           this.introCountdown.remove()
-          // this.introText.style.display = "none";
-          this.introText.classList.add("hide")
+          // this.introText.classList.add("hide") // hide after 3 sec
           close = true;
           flag = false;
         };
@@ -85,7 +84,8 @@ class Countdown {
     }
   }
 
-  drawEnd(discI: number, arr: any[], time: any) {
+  drawEnd(discI: number, arr: any[], time: any, introText: HTMLElement) {
+    introText.classList.add("hide") // hide hints
     let end = 0;
     let count = 0;
    // let final;

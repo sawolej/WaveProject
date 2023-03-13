@@ -29,18 +29,44 @@
   margin: 0;
 }
 
-#introText {
+.introText {
   position: absolute;
   top: 20%;
   left: 0;
   width: 100%;
-  display: inline-flex;
+  display: flex;
   font-size: min(2vw, 3vh); 
   color: #fff;
   justify-content: center;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.introText div {
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: flex-end;
+}
+
+.key {
+  float:left;
+  width: min(2vw, 3.3vh);
+  height: min(2vw, 3.3vh);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.keyA {
+  background-image: url(../assets/pics/keyA.png);
+}
+.keyW {
+  background-image: url(../assets/pics/keyW.png);
+}
+.keyD {
+  background-image: url(../assets/pics/keyD.png);
 }
 
 #introCountdown {

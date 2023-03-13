@@ -172,18 +172,37 @@ export const Game = class {
         // Top right counter
         if (!this.quit) { this.countdownEl.style.display = "inline-flex" }
         else { this.countdownEl.style.display = "none" };
+      }, 6550 + 30) // 30ms wait for canvas load
+    );
 
+    
+    // Toggle game goal and movement WAD keys hint
+    this.introText.classList.add("hide")
+    setTimeoutHandler(view,
+      setTimeout(() => {
         // Controls hint
-        this.introText.innerHTML = "Use WSAD to move your character";
+        // this.introHint.innerHTML = "Use WSAD to move your character";
         this.introText.classList.remove("hide")
 
-        const controlsHint = () => {
-          if (glob.document.location.hash === "#game")
+        setTimeoutHandler(view,
+          setTimeout(() => {
+            // hide for sec
             this.introText.classList.add("hide")
-          glob.document.body.removeEventListener('keypress', controlsHint);
-        };
-        glob.document.body.addEventListener('keypress', controlsHint);
-      }, 6550 + 30) // 30ms wait for canvas load
+            setTimeoutHandler(view,
+              setTimeout(() => {
+                // show
+                this.introText.classList.remove("hide")
+                const controlsHint = () => {
+                  if (glob.document.location.hash === "#game")
+                    this.introText.classList.add("hide")
+                  glob.document.body.removeEventListener('keypress', controlsHint);
+                };
+                glob.document.body.addEventListener('keypress', controlsHint);
+              }, 200) // 200ms wait to hide when screen is black, then show on top of game
+            );
+          }, 6550 - 300) // 6550 - 300ms wait for end of intro countdown
+        );
+      }, 300) // 300ms wait for font to load
     );
 
     // Timer
@@ -325,7 +344,7 @@ export const Game = class {
       // console.log("animate(): this.quit = " + this.quit)
       // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.canvas.style.visibility = "hidden"
-      this.countdown.drawEnd(this.diskCounter, this.ihaveit, this.time);
+      this.countdown.drawEnd(this.diskCounter, this.ihaveit, this.time, this.introText);
 
       // Make the animated disks visible after delay
       setTimeoutHandler(view,
