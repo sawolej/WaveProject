@@ -125,7 +125,7 @@ class Countdown {
           span.textContent = character;
 
           if (Number(character) === (discI-10)) skip = false
-          if (Number(character) === 9 && !skipped) {skip = true; skipped = true;} // set flag for 2 digit numbers; 
+          if (Number(character) === 9 && !skipped && discI !=9) {skip = true; skipped = true;}  // set flag for 2 digit numbers; 
           
           // conditions to print 2 digit numbers as one
           if (skip === true

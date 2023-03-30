@@ -43,7 +43,7 @@ export class GameView {
   <canvas id="canvas1"></canvas>
   <div id="introText" class="introText">
     <div>COLLECT ALL DISKS BEFORE THE TIME RUNS OUT!</div>
-    <div>Use <span class="key keyA"></span><span class="key keyW"></span><span class="key keyD"></span> to move your character</div>
+    <div>Use &ensp; <span class="key keyA"></span><span class="key keyW"></span><span class="key keyD"></span>&ensp; to move your character</div>
   </div>
   <p id="introCountdown"></p>
   <p id="countdown"></p>
