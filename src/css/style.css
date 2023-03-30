@@ -1,8 +1,10 @@
-@font-face {
-  font-family: "Silkscreen";
-  src: url(https://manzdev.github.io/twitch-manzdev-bios/assets/perfect-dos-vga437.woff2) format("woff2");
-}
+
 @import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+@font-face {
+  font-family: "VT323";
+  src: url(https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isQFJXGdg.woff2) format('woff2');
+}
+
 body {
   /* webkit */
   image-rendering: -webkit-crisp-edges;
@@ -25,7 +27,7 @@ body {
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
-  font-family: 'Silkscreen', sans-serif;
+  font-family: 'VT323', sans-serif;
   -webkit-user-select: none;
   /* Safari */
   -moz-user-select: none;
