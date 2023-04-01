@@ -5,7 +5,6 @@ export class InputHandler {
     d: { pressed: boolean; };
     a: { pressed: boolean; };
     w: { pressed: boolean; };
-    e: { pressed: boolean; };
   };
   constructor() {
 
@@ -17,9 +16,6 @@ export class InputHandler {
         pressed: false
       },
       w: {
-        pressed: false
-      },
-      e: {
         pressed: false
       }
     }

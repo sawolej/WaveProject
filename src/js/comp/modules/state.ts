@@ -117,13 +117,11 @@ export class JumpingLeft extends State {
   }
 
   handleInput(input: { [key: string]: { pressed: boolean } }) {
-    // prob. still could cause inf junp issue: this.player.vy === 0
     if (!input.a.pressed && this.player.vy === 0) this.player.setState(states.STANDING_LEFT);
     else if (input.d.pressed && this.player.vy !== 0) this.player.setState(states.RUNNING_RIGHT);
     else if (input.a.pressed && !input.w.pressed) this.player.setState(states.RUNNING_LEFT);
-    else if (input.a.pressed && input.w.pressed && this.player.onGround()) this.player.setState(states.RUNNING_LEFT);
     else if (!input.w.pressed && this.player.onGround()) this.player.setState(states.STANDING_LEFT);
-  }
+  }  
 }
 
 
@@ -140,11 +138,9 @@ export class JumpingRight extends State {
   }
 
   handleInput(input: { [key: string]: { pressed: boolean } }) {
-    // prob. still could cause inf junp issue: this.player.vy === 0
     if (!input.d.pressed && this.player.vy === 0) this.player.setState(states.STANDING_RIGHT);
     else if (input.a.pressed && this.player.vy !== 0) this.player.setState(states.RUNNING_LEFT);
     else if (input.d.pressed && !input.w.pressed) this.player.setState(states.RUNNING_RIGHT);
-    else if (input.d.pressed && input.w.pressed && this.player.onGround()) this.player.setState(states.RUNNING_RIGHT);
     else if (!input.w.pressed && this.player.onGround()) this.player.setState(states.STANDING_RIGHT);
-  }
+  }  
 }
