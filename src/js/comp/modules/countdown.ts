@@ -113,6 +113,7 @@ class Countdown {
 
     let skip = false
     let skipped = false
+    let before = '0';
     textLines.forEach((line, index) => {
       // new line
       if (line.string === "<br>") {
@@ -124,15 +125,19 @@ class Countdown {
           const span = glob.document.createElement("span");
           span.textContent = character;
 
-          if (Number(character) === (discI-10)) skip = false
+          if (Number(before + character) === (discI)) {
+            skip = false
+          }
           if (Number(character) === 9 && !skipped && discI !=9) {skip = true; skipped = true;}  // set flag for 2 digit numbers; 
           
           // conditions to print 2 digit numbers as one
           if (skip === true
             && (index === 5 && (id === 20 || id === 23 || id === 26))) {
+             
             // do nothing and skip rest of conditions
           } else if ((index === 5 && (id === 21 || id === 24 || id === 27))
             || (index === 6 && (id === 1))) {
+             
             span.textContent = "1" + character;
             container.appendChild(span);
             characters.push({
@@ -142,6 +147,7 @@ class Countdown {
               classes: line.classes || []
             });
           } else if (skip === false || character === " " || character === "9") { // XD 
+            
             container.appendChild(span);
             characters.push({
               span: span,
@@ -150,6 +156,8 @@ class Countdown {
               classes: line.classes || []
             });
           }
+
+          before = character;
         });
       }
     });
