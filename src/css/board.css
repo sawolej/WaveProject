@@ -201,9 +201,9 @@
 }
 #P1_1 {
   position: absolute;
-  top: 257%;
-  left: 700%;
-  font-size: min(1.6vw, 2.6vh);
+  top: 219%;
+  left: 725%;
+  font-size: min(1.6vw, 4vh);
   color: white;
  
 }
@@ -215,9 +215,9 @@
 }
 #P1_2 {
   position: absolute;
-  top: 160%;
-  left: 792%;
-  font-size: min(1.6vw, 2.6vh);
+  top: 133%;
+  left: 817%;
+  font-size: min(1.6vw, 3.6vh);
   color: white;
 }
 
@@ -228,9 +228,9 @@
 }
 #P1_3 {
   position: absolute;
-  top: 142%;
-  left: 630%;
-  font-size: min(1.6vw, 2.6vh);
+  top: 136%;
+  left: 619%;
+  font-size: min(1.6vw, 3.6vh);
   color: white;
 }
 
