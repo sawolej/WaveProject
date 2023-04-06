@@ -24,7 +24,7 @@ export const txtWBIOS =
   <br>
   <a target="_blank" rel="noopener noreferrer" href="http://biol.uni.lodz.pl">Strona internetowa wydziału</a><br>  <br>
   <b>Czy wiesz, że...</b><br>
-  Wielokulturowość, społeczne i ekonomiczne przemiany oraz niepohamowana ciekawość świata utworzyły żywy organizm uczelni o interdyscyplinarnym DNA. Skupienie na człowieku, odpowiedź na lokalne wyzwania, przekładające się na globalne problemy to nasze priorytety badawcze. Każdego roku dostosowujemy naszą ofertę - studiów stacjonarnych, podyplomowych i szkół doktorskich – do potrzeb kandydatów. Ściśle współpracujemy z biznesem, organizacjami pozarządowymi i ekspertami naukowymi. Zależy nam na tym, aby przekazywana przez nas wiedza znajdowała zastosowanie w obliczu wyzwań, przed jakimi aktualnie stają społeczeństwa. Dołącz do nas na Wydziale Biologii i Ochrony Środowiska Uniwersytetu Łódzkiego.
+  Wielokulturowość, społeczne i ekonomiczne przemiany oraz niepohamowana ciekawość świata utworzyły żywy organizm uczelni o interdyscyplinarnym DNA. Skupienie na człowieku, odpowiedź na lokalne wyzwania, przekładające się na globalne problemy to nasze priorytety badawcze. Każdego roku dostosowujemy naszą ofertę - studiów stacjonarnych, podyplomowych i szkół doktorskich - do potrzeb kandydatów. Ściśle współpracujemy z biznesem, organizacjami pozarządowymi i ekspertami naukowymi. Zależy nam na tym, aby przekazywana przez nas wiedza znajdowała zastosowanie w obliczu wyzwań, przed jakimi aktualnie stają społeczeństwa. Dołącz do nas na Wydziale Biologii i Ochrony Środowiska Uniwersytetu Łódzkiego.
   `;
 
 export const txtCHEMIA =
@@ -48,7 +48,7 @@ Uczymy również po angielsku na kierunku dziennym Economics. Jesteśmy najwięk
 Nasza szeroka oferta możliwości i atrakcji “pozaszkolnych” zaskakuje nawet nas! Koła naukowe, warsztaty, szkolenia, święto Wydziału - piknik #HelloEkSoc, wykłady otwarte, wernisaże, gry, zabawy i konkursy.
 Nasza Rada Biznesu pomoże Ci przygotować się także praktycznie do wyzwań rynku pracy. A być może znajdziesz pracę już podczas studiów.
 Pomożemy Ci w podbijaniu świata oferując wyjazdy do Ameryki Południowej w ramach Summer School oraz do ponad 130 uczelni europejskich w ramach programu Erasmus+.
-Znajdujemy się w samym centrum Łodzi, pięć minut do Piotrkowskiej i 15 do Lumumbowa. Isn’t it perfect? Obserwuj nas na FB www.facebook.com/w.eksoc & IG @eksocul"
+Znajdujemy się w samym centrum Łodzi, pięć minut do Piotrkowskiej i 15 do Lumumbowa. Isn't it perfect? Obserwuj nas na FB www.facebook.com/w.eksoc & IG @eksocul"
 `;
 
 export const txtFILOLOG =
@@ -56,7 +56,7 @@ export const txtFILOLOG =
 <br>
 <a target="_blank" rel="noopener noreferrer"  href="http://filolog.uni.lodz.pl">Strona internetowa wydziału</a><br><br>
 <b>Czy wiesz, że...</b><br>
-Język, kultura, literatura i media – te cztery obszary od lat zachęcają absolwentów szkół ponadpodstawowych do rozpoczęcia nauki na Wydziale Filologicznym UŁ. Pierwsze doświadczenia zdobywają tu przyszli dziennikarze, influencerzy, językoznawcy, tłumacze, nauczyciele, lektorzy, bibliotekarze, edytorzy czy logopedzi. Oferujemy ciekawe kierunki i nowoczesną infrastrukturę. W naszych gmachu znajdują się sale translatoryczne, sala kinowa i studia: telewizyjne i radiowe.  
+Język, kultura, literatura i media - te cztery obszary od lat zachęcają absolwentów szkół ponadpodstawowych do rozpoczęcia nauki na Wydziale Filologicznym UŁ. Pierwsze doświadczenia zdobywają tu przyszli dziennikarze, influencerzy, językoznawcy, tłumacze, nauczyciele, lektorzy, bibliotekarze, edytorzy czy logopedzi. Oferujemy ciekawe kierunki i nowoczesną infrastrukturę. W naszym gmachu znajdują się sale translatoryczne, sala kinowa i studia: telewizyjne i radiowe.  
 
 Staramy się patrzeć na świat z różnej perspektywy. Nasi absolwenci dzięki interdyscyplinarności studiów należą do najbardziej wszechstronnych osób kończących Uniwersytet Łódzki. Na co dzień aktywnie współpracujemy z biznesem i pracodawcami, a ważną część naszych działań stanowi też współpraca międzynarodowa.`;
 
@@ -66,7 +66,7 @@ export const txtFILHIST =
 <a target="_blank" rel="noopener noreferrer"  href="http://wydzfilhist.uni.lodz.pl">Strona internetowa wydziału</a><br><br>
 <b>Czy wiesz, że...</b><br>
 Uprawiamy niebezpieczne sporty intelektualne. Dołączysz?
-Jesteśmy wydziałem dla humanistów, chcących poprzez studia realizować swoje pasje a pasjonuje nas człowiek - jego dzieje, kultura i sztuka oraz sposób rozumienia świata. Badamy przeszłość, w której interesują nas fakty. Znajdziesz u nas pięć dyscyplin humanistycznych: historię, archeologię, etnologię i antropologię kulturową, filozofię i nauki o sztuce. Kształcimy profesjonalistów. Tylko u nas nauczysz się rzemiosła wykopalisk, bezbłędnej nawigacji po przeszłości ukrytej w archiwum czy organizacji wystaw i wernisaży. Uczysz się też przy okazji: logicznego myślenia, interpretacji źródeł czy ubierania swoich myśli w słowa. Wszystko to powzwoli Ci na dużą elastyczność na zmieniającym się rynku pracy. Co najważniejsze – poznasz ciekawych ludzi, którzy mają podobne zainteresowania. Możesz uczestniczyć w licznych wydarzeniach kulturalnych, debatach i dyskusjach – to gwarancja rozwoju jakiego potrzebujesz, jako humanista. 
+Jesteśmy wydziałem dla humanistów, chcących poprzez studia realizować swoje pasje a pasjonuje nas człowiek - jego dzieje, kultura i sztuka oraz sposób rozumienia świata. Badamy przeszłość, w której interesują nas fakty. Znajdziesz u nas pięć dyscyplin humanistycznych: historię, archeologię, etnologię i antropologię kulturową, filozofię i nauki o sztuce. Kształcimy profesjonalistów. Tylko u nas nauczysz się rzemiosła wykopalisk, bezbłędnej nawigacji po przeszłości ukrytej w archiwum czy organizacji wystaw i wernisaży. Uczysz się też przy okazji: logicznego myślenia, interpretacji źródeł czy ubierania swoich myśli w słowa. Wszystko to powzwoli Ci na dużą elastyczność na zmieniającym się rynku pracy. Co najważniejsze - poznasz ciekawych ludzi, którzy mają podobne zainteresowania. Możesz uczestniczyć w licznych wydarzeniach kulturalnych, debatach i dyskusjach - to gwarancja rozwoju jakiego potrzebujesz, jako humanista. 
 `;
 
 export const txtWFIS =
@@ -81,7 +81,7 @@ Wydział Fizyki i Informatyki Stosowanej Uniwersytetu Łódzkiego, jako jeden z 
 
 <br>Największą inspiracją są projekty realizowane przez studentów, w tym gry i aplikacje na urządzenia mobilne. Nasi studenci przeprowadzają eksperymenty oraz pokazy w nowoczesnych laboratoriach fizycznych i pracowniach informatycznych.
 
-<br>Programy studiów przygotowane są w oparciu o doświadczenia, autentyczne projekty wdrożeniowe, rozbudowany system praktyk i staży w firmach i organizacjach oświatowo – naukowych.
+<br>Programy studiów przygotowane są w oparciu o doświadczenia, autentyczne projekty wdrożeniowe, rozbudowany system praktyk i staży w firmach i organizacjach oświatowo - naukowych.
 
 <br>Kompetencje i umiejętności nabyte w trakcie studiów pozwalają naszym absolwentom w świadomy sposób planować swoją karierę zawodową, dając możliwości młodym ludziom na podejmowanie pracy w branżach technicznych, zarówno w trakcie studiów, jak po ich zakończeniu.
 `;
@@ -92,8 +92,8 @@ export const txtMATH =
 <a target="_blank" rel="noopener noreferrer"  href="http://math.uni.lodz.pl">Strona internetowa wydziału</a><br><br>
 <b>Czy wiesz, że...</b><br>
 Możesz studiować:
-<br>Nowoczesne technologie, programowanie albo grafika komputerowa to Twoja pasja – zapraszamy na Informatykę!
-Fascynuje Cię sztuczna inteligencja i Big Data i i chcesz pracować jako Data Scientist – Analiza danych jest idealna właśnie dla Ciebie!
+<br>Nowoczesne technologie, programowanie albo grafika komputerowa to Twoja pasja - zapraszamy na Informatykę!
+Fascynuje Cię sztuczna inteligencja i Big Data i chcesz pracować jako Data Scientist - Analiza danych jest idealna właśnie dla Ciebie!
 Bez trudu ogarniasz matmę i chcesz mieć szerokie perspektywy zatrudnienia a przy tym uwielbiać swoją pracę - studiuj Matematykę.
 <br>Dlaczego warto?
 <br>Zdobędziesz świetny, bardzo dobrze płatny zawód
@@ -102,14 +102,15 @@ Bez trudu ogarniasz matmę i chcesz mieć szerokie perspektywy zatrudnienia a pr
 <br>Będziesz studiować w przytulnym i bardzo dobrze wyposażonym budynku
 <br>Dzięki Erasmus+ Europa jest dla Ciebie otwarta!   
  
-<br>Posłuchaj naszych absolwentów: https://www.math.uni.lodz.pl/strefa-kandydata/nasi-absolwenci-o-nas`;
+<br>Posłuchaj naszych absolwentów: 
+<a target="_blank" rel="noopener noreferrer"  href="https://www.math.uni.lodz.pl/strefa-kandydata/nasi-absolwenci-o-nas">https://www.math.uni.lodz.pl/strefa-kandydata/nasi-absolwenci-o-nas</a>`;
 
 export const txtGEO =
   `Wydział Nauk Geograficznych<br>
 <br>
 <a target="_blank" rel="noopener noreferrer"  href="http://geo.uni.lodz.pl">Strona internetowa wydziału</a><br><br>
 <b>Czy wiesz, że...</b><br>
-Tutaj zdobędziesz wiedzę i umiejętności, które pozwolą Ci lepiej zrozumieć otaczający Cię świat i swobodnie się w nim poruszać. Dzięki narzędziom jakimi dysponuje nowoczesna geografia spojrzysz z zupełnie nowej perspektywy na szereg zjawisk, wydarzeń i trendów, zarówno tych, które miały miejsce przeszłości, tych które obecnie obserwujemy, tych które mogą wydarzyć się w przyszłości i będą kształtować naszą rzeczywistość. Studiując na naszym wydziale możesz zostać specjalistą w zakresie kształtowania i monitorowania środowiska przyrodniczego, szeroko rozumianej turystyki, planowanie przestrzennego, GIS-u. Ponadto poznasz wielu ciekawych ludzi i będziesz mógł rozwijać się działając w kołach naukowych, uczestnicząc w zagranicznych wyjazdach naukowych i wymianie studenckiej, realizując zadania praktyczne zdobywać konkretne umiejętności potrzebne współczesnemu człowiekowi. Zdobytą wiedzę i  umiejętności wykorzystasz w praktyce podejmując działalność własną lub pracę w różnych instytucjach i urzędach zajmujących się środowiskiem przyrodniczym, warunkami życia ludzi, organizacją działalności społeczno-gospodarczej, planowaniem przestrzennym, rozwojem turystki czy bazujących na nowoczesnych technologiach geoinformacyjnych.
+Tutaj zdobędziesz wiedzę i umiejętności, które pozwolą Ci lepiej zrozumieć otaczający Cię świat i swobodnie się w nim poruszać. Dzięki narzędziom jakimi dysponuje nowoczesna geografia spojrzysz z zupełnie nowej perspektywy na szereg zjawisk, wydarzeń i trendów, zarówno tych, które miały miejsce w przeszłości, tych które obecnie obserwujemy, tych które mogą wydarzyć się w przyszłości i będą kształtować naszą rzeczywistość. Studiując na naszym wydziale możesz zostać specjalistą w zakresie kształtowania i monitorowania środowiska przyrodniczego, szeroko rozumianej turystyki, planowania przestrzennego, GIS-u. Ponadto poznasz wielu ciekawych ludzi i będziesz mógł rozwijać się działając w kołach naukowych, uczestnicząc w zagranicznych wyjazdach naukowych i wymianie studenckiej, realizując zadania praktyczne zdobywać konkretne umiejętności potrzebne współczesnemu człowiekowi. Zdobytą wiedzę i  umiejętności wykorzystasz w praktyce podejmując działalność własną lub pracę w różnych instytucjach i urzędach zajmujących się środowiskiem przyrodniczym, warunkami życia ludzi, organizacją działalności społeczno-gospodarczej, planowaniem przestrzennym, rozwojem turystki czy bazujących na nowoczesnych technologiach geoinformacyjnych.
 `;
 
 export const txtWPIA =
@@ -125,7 +126,7 @@ W ramach Kliniki Prawa studenci WPiA UniLodz zdobywają doświadczenie zawodowe 
 
 Znajdziecie nas w większości mediów społecznościowych, w tym na Spotify! SPRAWDŹCIE! 
 
-Nasz budynek ma unikatowy kształt paragrafu dlatego potocznie nazywani jesteśmy Paragrafem. Niektórzy mówią, że nasze korytarze są zawiłe niczym polskie prawo, ale to nie prawda. Zapraszamy do nas! Pomożemy Wam odnaleźć się nie tylko w na krętych korytarzach czy w gąszczu przepisów, ale również na drodze do kariery!
+Nasz budynek ma unikatowy kształt paragrafu dlatego potocznie nazywani jesteśmy Paragrafem. Niektórzy mówią, że nasze korytarze są zawiłe niczym polskie prawo, ale to nie prawda. Zapraszamy do nas! Pomożemy Wam odnaleźć się nie tylko na krętych korytarzach czy w gąszczu przepisów, ale również na drodze do kariery!
 `;
 
 export const txtWSMIP =
@@ -148,7 +149,7 @@ export const txtWZ =
 <b>Czy wiesz, że...</b><br>
 Wydział Zarządzania to największe centrum naukowo-dydaktyczne w zakresie nauk o zarządzaniu w regionie łódzkim, miejsce spotkań ekspertów wielu dziedzin. Rozwój relacji z biznesem i instytucjami publicznymi, które wspierają Wydział swoją wiedzą, umożliwia tworzenie unikalnych programów dla studentów oraz ich aktualizację do potrzeb rynku pracy. Wydział Zarządzania współpracuje z międzynarodowymi organizacjami w zakresie certyfikacji kierunków studiów, w tym: ACCA, IACBE, IPMA, CIMA, ELA. 
 
-Chlubą Wydziału Zarządzania są kierunki prowadzone w całości w języku angielskim – Business Management, Management and Finance oraz Digital Communication and Social Media for Management. Absolwenci tych kierunków są przygotowani do efektywnego zarządzania przedsiębiorstwem międzynarodowym i zachodzącymi w nim procesami. 
+Chlubą Wydziału Zarządzania są kierunki prowadzone w całości w języku angielskim - Business Management, Management and Finance oraz Digital Communication and Social Media for Management. Absolwenci tych kierunków są przygotowani do efektywnego zarządzania przedsiębiorstwem międzynarodowym i zachodzącymi w nim procesami. 
 
 Niepowtarzalny jest też sam budynek Wydziału Zarządzania, o powierzchni 16 tys. mkw. Przestronne korytarze, ogromne wewnętrzne patio czy unikatowa na skalę uczelni galeria obrazów ściennych zawsze wywierają niesamowite wrażenie na gościach. To tu odbywają się wydarzenia studenckie, spotkania z firmami, targi pracy i targi edukacyjne. 
 `;
@@ -158,7 +159,7 @@ export const txtFILIA =
 <br>
 <a target="_blank" rel="noopener noreferrer"  href="http://filia.uni.lodz.pl">Strona internetowa wydziału</a><br><br>
 <b>Czy wiesz, że...</b><br>
-Jeśli marzysz o wyrwaniu się z wielkiego miasta na studia, a jednocześnie otrzymaniu solidnego wielkomiejskiego dyplomu Filia Uniwerstyetu Łódzkiego w Tomaszowie Mazowieckim może być doskonałym pomysłem....
+Jeśli marzysz o wyrwaniu się z wielkiego miasta na studia, a jednocześnie otrzymaniu solidnego wielkomiejskiego dyplomu Filia Uniwersytetu Łódzkiego w Tomaszowie Mazowieckim może być doskonałym pomysłem...
 Dojazd i lokalizacja - Petarda! 
 Jesteśmy położeni zaledwie 55 minut jazdy z Łodzi i mniej więcej godzinkę z Warszawy przy bardzo ruchliwej trasie S8 na Śląsk.
 Tomaszów po rewitalizacji centrum miasta, jest bardzo fajnym miejscem do życia. Kawiarenki i nowoczesny wygląd rynku miejskiego sprawiają, że niezależnie od pory roku, chce się tam przebywać. Tomaszów położony jest na skraju lasów spalskich, na terenach o dużej atrakcyjności krajoznawczej.
@@ -167,7 +168,7 @@ Inaczej niż na Uczelni Macierzystej, nie mamy dziesiątek wydziałów i setek s
 Niezbyt wiele, ale konkretnych i atrakcyjnych kierunków: Administracja, Leśnictwo, Zarządzanie, Turystyka i Rekreacja.
 Profile praktyczne, doświadczeni wykładowcy, duża ilość praktyk zawodowych.
 Klimat - Rodzinny!
-Mała jednostka, życzliwi wykładowcy, przytulne sale, uśmiechnięty dziekanat – niemożliwe? A jednak…..
+Mała jednostka, życzliwi wykładowcy, przytulne sale, uśmiechnięty dziekanat - niemożliwe? A jednak…
 Studia u nas przypominają bardziej przebywanie w rodzinie, niż w bezdusznej instytucji edukacji wyższej.
 
 `;
