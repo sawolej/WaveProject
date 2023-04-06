@@ -277,12 +277,13 @@ export const style_2 = `
   <img class="ribbon" src="./src/assets/pics/logo_ul.png" alt="ul">
     <p>
      Veritas et Libertas<br>
-        Copyright (C) 1945-22, Uniwersytet Lodzki v1.0.
+        Copyright (C) 1945-23, Uniwersytet Łódzki v1.0.
     </p>
   </div>
     <p>CLICK ANY KEY TO SKIP</p>
     <p>
-    Gra stworzona przez studentow Uniwersytetu Lodzkiego<br>
+    Gra stworzona przez studentów Uniwersytetu Łódzkiego<br>
+      Muzyka: Hubert Tkaczyński<br>
       Memory Test:  <span class="memory">${2 ** 16}</span>
     </p>
 `;
