@@ -1,7 +1,7 @@
 # WaveProject
 Project Wave is a 2D platformer, pixel-art based game written in TS, HTML and CSS. The main goal of the game is to familiarise future University of Lodz's students with perks and points of interests of each faculty in an enganing, user-friendly manner. 
 
-The project was build by [Kamila](https://github.com/sawolej), [Krzysztof](https://github.com/NakerTheFirst) and [Mikołaj](https://github.com/mikitfreek) in collaboration with University of Lodz's [Communication and PR Centre](https://www.uni.lodz.pl/wydzialy-i-jednostki-ul/centrum-komunikacji-i-pr).
+The project was build by [Kamila](https://github.com/sawolej), [Krzysztof](https://github.com/NakerTheFirst) and [Mikołaj](https://github.com/mikitfreek) in collaboration with University of Lodz's [Communication and PR Centre](https://www.uni.lodz.pl/wydzialy-i-jednostki-ul/centrum-komunikacji-i-pr). <br> The in-game platformer music is provided by [lofi_hubi](https://soundcloud.com/lofihubi).
 
 ## Live build
 The game can be played [here](https://project-wave.github.io/) - let us know what you think! 
