@@ -1,21 +1,23 @@
 # WaveProject
+Project Wave is a 2D platformer, pixel-art based game written in TS, HTML and CSS. The main goal of the game is to familiarise future University of Lodz's students with perks and points of interests of each faculty in an enganing, user-friendly manner. 
 
-## Useful tips
-- Developer commands shortcuts: `alt + t`, then `r`
-- Run development server: `npm run dev`
-- Commit names keywords: `add`, `fix`, `delete`, `update`, `refactor`
-- Branch names keywords: `feature`, `fix`, `refactor`
-- Exemplary commit name: `Feature update graphics to .jpg`
-- Exemplary branch name: `feature-add-character`
-- Everything in JS is written in `camelCase` but for class names, which are in `PascalCase`
-- PR in a nutshell [article](https://namingconvention.org/git/pull-request-naming.html)
+The project was build by [Kamila](https://github.com/sawolej), [Krzysztof](https://github.com/NakerTheFirst) and [Mikołaj](https://github.com/mikitfreek) in collaboration with University of Lodz's [Communication and PR Centre](https://www.uni.lodz.pl/wydzialy-i-jednostki-ul/centrum-komunikacji-i-pr).
 
-## Implementation
+## Live build
+The game can be played [here](https://project-wave.github.io/) - let us know what you think! 
+
+## Screenshots
+![An in-game picture of main menu, aka room](https://github.com/sawolej/WaveProject/blob/main/src/assets/pics/readme_room.png)
+<br>
+![An in-game picture of platformer game](https://github.com/sawolej/WaveProject/blob/main/src/assets/pics/readme_game.png)
+
+## Developer info
+### Implementation
 `App.ts` <- `views/RoomView.ts` as `RoomView`
 
 `App.ts` <- `views/GameView.ts` as `GameView` <- `comp/Game.ts` as `GameEngine` <- `comp/modules/*.ts`
 
-## Project structure
+### Project structure
 static:
 
     src/                    - project source
